@@ -720,9 +720,7 @@ ON_SIGNAL3(BaseModel, COMMENTADD, signal) {
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     if (scrollView==self.table) {
-        [self.view endEditing:YES];
-        
-        // 测试
+        [self.view endEditing:YES];        
     }
 }
 
