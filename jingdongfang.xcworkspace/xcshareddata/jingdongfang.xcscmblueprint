@@ -1,7 +1,7 @@
 {
   "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "03C5165E05A1812EFD8DC59522132FBE980C63E1",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
-    "260c505a-e9d9-485f-8815-c1da6431d45c++8825" : {
+    "273254B5BB043474FF3935193B12CD99FCC818AA" : {
 
     },
     "03C5165E05A1812EFD8DC59522132FBE980C63E1" : {
@@ -9,12 +9,12 @@
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "260c505a-e9d9-485f-8815-c1da6431d45c++8825" : 0,
+    "273254B5BB043474FF3935193B12CD99FCC818AA" : 9223372036854775807,
     "03C5165E05A1812EFD8DC59522132FBE980C63E1" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A5463F26-0590-4D3C-B684-96AF62FE83A0",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "260c505a-e9d9-485f-8815-c1da6431d45c++8825" : "%E4%BA%AC%E4%B8%9C%E6%96%B9\/",
+    "273254B5BB043474FF3935193B12CD99FCC818AA" : "%E4%BA%AC%E4%B8%9C%E6%96%B9\/",
     "03C5165E05A1812EFD8DC59522132FBE980C63E1" : "%E4%BA%AC%E4%B8%9C%E6%96%B91\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "jingdongfang",
@@ -29,7 +29,7 @@
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jxd001\/ZPF-project.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "260c505a-e9d9-485f-8815-c1da6431d45c++8825"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "273254B5BB043474FF3935193B12CD99FCC818AA"
     }
   ]
 }
