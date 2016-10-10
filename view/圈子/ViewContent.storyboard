@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View All Content View Controller-->
+        <scene sceneID="cKg-2E-MJZ">
+            <objects>
+                <viewController storyboardIdentifier="ViewAllContentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0eX-R5-4VE" customClass="ViewAllContentViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Tkx-3k-dih"/>
+                        <viewControllerLayoutGuide type="bottom" id="bYc-sa-WjG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Gy-5S-njh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyt-02-nhl">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pOb-cf-dLH">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="pOb-cf-dLH" secondAttribute="bottom" id="0GH-AE-rEO"/>
+                                    <constraint firstItem="pOb-cf-dLH" firstAttribute="leading" secondItem="hyt-02-nhl" secondAttribute="leading" id="1n0-tA-Cgs"/>
+                                    <constraint firstItem="pOb-cf-dLH" firstAttribute="top" secondItem="hyt-02-nhl" secondAttribute="top" id="ORP-Yv-cb0"/>
+                                    <constraint firstAttribute="trailing" secondItem="pOb-cf-dLH" secondAttribute="trailing" id="fHm-IE-D0a"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hyt-02-nhl" firstAttribute="leading" secondItem="1Gy-5S-njh" secondAttribute="leading" id="39E-aL-12w"/>
+                            <constraint firstItem="bYc-sa-WjG" firstAttribute="top" secondItem="hyt-02-nhl" secondAttribute="bottom" id="W2n-z4-iMb"/>
+                            <constraint firstAttribute="trailing" secondItem="hyt-02-nhl" secondAttribute="trailing" id="tTX-V5-Qye"/>
+                            <constraint firstItem="hyt-02-nhl" firstAttribute="top" secondItem="Tkx-3k-dih" secondAttribute="bottom" id="xRE-Sv-xgE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentLabel" destination="pOb-cf-dLH" id="fav-SE-9c5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jS5-9O-YRu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="724" y="-81"/>
+        </scene>
+    </scenes>
+</document>

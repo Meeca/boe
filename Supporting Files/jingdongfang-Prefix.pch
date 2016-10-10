@@ -1,0 +1,57 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import "hzy.h"
+    #import "YYModel.h"
+    #import "MCNetTool.h"
+    #import "UserManager.h"
+#import "UITableView+MJRefresh.h"
+#import "UIViewController+MBShow.h"
+#import "UIBarButtonItem+Extension.h"
+#import "UIView+Frame.h"
+#import "UICollectionView+MJRefresh.h"
+#import "UIViewController+MBShow.h"
+#import "UIViewController+MBShow.h"
+#import "UITableView+MJRefresh.h"
+#import "MJExtension.h"
+//  判断 字符串是否为 NULL 或者 nil
+
+#define checkNULL(__X__) checkNull(__X__,@"")
+#define checkNull(__X__,__Y__)  [(__X__) isKindOfClass:[NSNull class]] || (__X__) == nil|| (__X__) == NULL||[(__X__) isEqualToString:@"<null>"]||[(__X__) isEqualToString:@"(null)"]||[(__X__) isEqualToString:@"null"] ? [NSString stringWithFormat:@"%@", (__Y__)] : [NSString stringWithFormat:@"%@", (__X__)]
+
+
+
+#define kUserId [NSString stringWithFormat:@"%@",checkNULL([UserManager readModel].uid)]
+#define kTel [NSString stringWithFormat:@"%@",checkNULL([UserManager readModel].tel)]
+#define kCollection_num [NSString stringWithFormat:@"%@",checkNULL([UserManager readModel].collection_num)]
+#define kContent [NSString stringWithFormat:@"%@",checkNULL([UserManager readModel].content)]
+#define kFans [NSString stringWithFormat:@"%@",checkNULL([UserManager readModel].fans)]
+#define kImage [NSString stringWithFormat:@"%@",checkNULL([UserManager readModel].image)]
+#define kNike [NSString stringWithFormat:@"%@",checkNULL([UserManager readModel].nike)]
+#define kToken [NSString stringWithFormat:@"%@",checkNULL([UserManager readModel].token)]
+
+
+
+
+/***********屏幕适配*************/
+#define XMGScreenW [UIScreen mainScreen].bounds.size.width
+#define XMGScreenH [UIScreen mainScreen].bounds.size.height
+#define iphone6P (XMGScreenH == 736)
+#define iphone6 (XMGScreenH == 667)
+#define iphone5 (XMGScreenH == 568)
+#define iphone4 (XMGScreenH == 480)
+/***********屏幕适配*************/
+
+#endif

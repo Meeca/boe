@@ -1,0 +1,880 @@
+{
+    "title": "boeProject",
+    "author": "haozhiyu1990",
+    "server": {
+        "development": "http://boe.ccifc.cn/",
+        //"development": "http://114.247.181.15/",
+        "test" : "",
+        "production" : ""
+    },
+    "model": {
+        "UserInfo": {
+            "uid": "3",                 //用户id
+            "tel": "15201453585",       //电话（登录用户名）
+            "token": "5311515673021465156",      //三方登录唯一标识 token
+            "nike": "boe_372562",
+            "image": "null",
+            "content": "null",
+            "fans": "1",
+            "collection_num": "4"
+        },
+        "VerifyInfo" : {
+            "user": "13663492448",
+            "verify": "444362",
+            "time": "1467950351"
+        },
+        "VerifyIs" : {
+            "cation": "1"   //验证结果（1通过，2不通过）
+        },
+        "ThemeList" : {
+            "c_id": "4",
+            "title": "复古"
+        },
+        "ClassList" : {
+            "c_id": "4",
+            "title": "二次元"
+        },
+        "HomeIndex" : {
+            "p_id": "70",
+            "title": "鼠鼠",
+            "image": "http://boe.ccifc.cn/assets/upload/chanpinimages/0256df4c35c33f72639b6bb510fa747b.jpg",
+            "u_image": "null",
+            "u_name": "boe_372562",
+            "years": "2016",
+            "classs" : "sdfsf",
+            "theme": "在一起 这么",
+            "created_at": "1468041660",
+            "coll_nums": "2",
+            "collection": "0",
+            "plates": "2"
+        },
+        "DetailsInfo" : {
+            "p_id": "195",
+            "title": "两姐妹",
+            "image_url": "http://boe.ccifc.cn/assets/upload/chanpinimages/27.jpg",
+            "image": "http://boe.ccifc.cn/assets/upload/chanpinimages/1079_1919_27.jpg",
+            "u_id": "22",
+            "u_image": "http://boe.ccifc.cn/assets/upload/userimages/7315af1ee5d25f13dfafcf4b5298f8cb.jpg",
+            "u_name": "风之笔端",
+            "years": "1881",
+            "classs": "油画",
+            "theme": "布面 油画",
+            "content": "这幅画色彩鲜艳明快，色彩的表现接近完美，给人爽朗的视觉感受：两位少女天真娇美，眼神分别朝向左右两个不同方向，随意而可爱。这是一种“动态的美”，毫无夸张，充盈着生活气氛，作者抓住了平凡而动人的一瞬间。画中的姊姊正值韶华，明眸善睐，娴静优雅，身着一袭素净的藏蓝色连衣裙，头戴一顶鲜红色遮阳帽，胸前佩着一簇小花，两手合拢轻搭在腿上，含胸而坐若有所思地遥望左侧。一旁的妹妹是黄发垂髫，天真烂漫的孩童模样，红扑扑的脸颊，宝石蓝的眼睛，一身雪白裙装，藏蓝色帽檐插满了娇艳欲滴的鲜花，双手扶着茶几上的篮筐，身靠着姊姊，似乎正入神地看一只小狗在眼前调皮。姊妹俩一长一幼，一坐一立，眼神各望一方，洋溢着清新纯真。",
+            "created_at": "1468470414",
+            "coll_nums": "0",
+            "collection": "0",
+            "zambia_nums": "null",
+            "reward_nums": "null",
+            "electronics_nume": "null",
+            "zambia": "0",
+            "plates": "2",
+            "electronic_price": "null",
+            "electronic_nums": "0",
+            "material_price": "null",
+            "price_open": "1", 
+            "material_nums": "0",
+            "guess_list" : ["{GuessInfo}"],
+            "comment_list" : ["{CommentInfo}"],
+            "material_num": "sdf",
+            "material_sum": "sf",
+            "pictureFrameTypeOne": "sdf",
+            "pictureFrameTypeTwo": "sdf",
+            "pay_type" : "sdf",
+            "works_nums" : "sfd"
+        },
+        "GuessInfo" : {
+            "p_id": "176",
+            "image": "http://boe.ccifc.cn/assets/upload/chanpinimages/1079_1919_10.jpg"
+        },
+        "CommentInfo" : {
+            "c_id": "8",
+            "content": "不错",
+            "u_id": "22",
+            "nike": "风之笔端",
+            "image": "http://boe.ccifc.cn/assets/upload/userimages/7315af1ee5d25f13dfafcf4b5298f8cb.jpg",
+            "r_comment_list": ["ReCommentInfo"]
+        },
+        "EquipmentList" : {
+            "e_id": "12",
+            "title": "我的苦",
+            "mac_id": "A8A668F45039",
+            "uid": "5",
+            "l_time": "null",
+            "s_time": "null",
+            "e_time": "null",
+            "push_type": "null",
+            "authoris": "1"  
+        },
+        "BannerInfo" : {
+            "banner_id": "1",
+            "banner_title": "红色主题",
+            "banner_image": "http://boe.ccifc.cn/assets/upload/bannerimages/7a11408eb8b7e512c1800e409c71019e.jpg",
+            "banner_url": "2",
+            "types": "sfs"
+        },
+        "FindIndex" : {
+            "p_id": "766",
+            "title": "最后的晚餐",
+            "image_url": "http://boe.ccifc.cn/assets/upload/chanpinimages/39.jpg",
+            "image": "http://boe.ccifc.cn/assets/upload/chanpinimages/1919_1079_39.jpg",
+            "u_image": "http://boe.ccifc.cn/assets/upload/userimages/7315af1ee5d25f13dfafcf4b5298f8cb.jpg",
+            "u_name": "风之笔端",
+            "years": "1881",
+            "classs": "油画",
+            "theme": "null",
+            "created_at": "1468652772",
+            "coll_nums": "0",
+            "plates": "1",
+            "zambia_nums": "sdf",
+            "material_nums": "sdf",
+            "follow_nums": "sdf"
+        },
+        "ArtistInfo" : {
+            "u_id": "22",
+            "nike": "风之笔端",
+            "image": "http://boe.ccifc.cn/assets/upload/userimages/7315af1ee5d25f13dfafcf4b5298f8cb.jpg",
+            "works_num": "10",
+            "fans": "1",
+            "products_list": ["{ArtistWorkList}"],
+            "collection_num": "0",
+            "content": "null",
+            "collection": "0"
+        },
+        "ArtistWorkList" : {
+            "p_id": "194",
+            "image": "http://boe.ccifc.cn/assets/upload/chanpinimages/1079_1919_26.jpg"
+        },
+        "SpecialInfo" : {
+            "s_id": "1",
+            "p_id": "1",       
+            "title": "最后的晚餐",
+            "content": "《最后的晚餐(The Last Supper)》是意大利艺术家 列奥纳多·达·芬奇 所创作，是所有以这个题材创作的作品中最著名的一幅。画面中的人物，以惊恐、愤怒、怀疑、剖白等神态，以及手势、眼神和行为，都刻画得精细入微，惟妙惟肖。收藏于意大利 米兰 圣玛利亚 德尔格契修道院。",
+            "image": "http://boe.ccifc.cn/assets/upload/bannerimages/66a936b88fe6711d962d0cccabd7ae24.jpg",
+            "created_at": "1469786076",
+            "read_num": "3",
+            "u_id": "5",
+            "nike": "猫头鹰",
+            "u_image": "http://boe.ccifc.cn/assets/upload/userimages/a28c606e9997f04f2b9079f79de88683.jpg",
+            "time": "一小时前"
+        },
+        "RankingList" : {
+            "collection_list" : ["{FindIndex}"],
+            "purchase_list" : ["{FindIndex}"],
+            "follow_list" : ["{FindIndex}"]
+        },
+        "Provi" : {
+            "sheng_id": "110000",
+            "title": "北京市"
+        },
+        "City" : {
+            "shi_id": "140100",
+            "title": "太原市"
+        },
+        "Area" : {
+            "qu_id": "140201",
+            "title": "市辖区"
+        },
+        "AddressInfo" : {
+            "a_id": "72",
+            "tel": "13663598555",
+            "home": "1",
+            "name": "在一起吧",
+            "sheng": "吉林省",
+            "sheng_id": "220000",
+            "shi": "松原市",
+            "shi_id": "220700",
+            "qu": "乾安县",
+            "qu_id": "220723",
+            "address": "如今却成了这样"
+        },
+        "BalanceInfo" : {
+            "uid": "5",
+            "nike": "猫头鹰",
+            "balance": "null"
+        },
+        "OrderInfo" : {
+            "image_url": "http://boe.ccifc.cn/assets/upload/chanpinimages/38.jpg",
+            "image": "http://boe.ccifc.cn/assets/upload/chanpinimages/1919_1079_38.jpg",
+            "u_id": "22",
+            "nike": "风之笔端",
+            "order_num": "null",
+            "state": "0",
+            "created_at": "1470890838",
+            "types": "1",
+            "p_id": "1",                        //作品id
+            "title": "京东方",                  //作品主题
+            "price": "500",                     //支付金额
+            "balance": "100",                   //用户余额
+            "orders": "12569820",               //订单号
+            "o_id": "52",
+            "order_type": "null",
+            "state_order": "null",
+            "s_name": "null",
+            "s_tel": "null",
+            "s_address": "sdfsf"
+        },
+        "CapitalFlow" : {
+            "p_id": "183",
+            "title": "秋千",
+            "price": "1588",
+            "order_num": "null",
+            "created_at": "1470902084",
+            "types": "2",
+            "type": "2",
+            "o_id": "sdf"
+        },
+        "ReCommentInfo": {
+            "c_id": "123",
+            "content": "sdf",
+            "image": "sdf",
+            "nike": "sdfs",
+            "u_id": "sdfd"
+        },
+        "ShareToEquipObj": {
+            "my_list": ["{my_listObje}"],
+            "all_list" : ["{all_listObje}"]
+        },
+        "my_listObje" : {
+            "uid" : "addasas",
+            "image" : "acsd",
+            "nike" : "adcs"
+        },
+        "all_listObje" : {
+            "e_id": "1",                    //设备id
+            "mac_id": "1",                  //设备mac id
+            "uid": "1",                     //用户id
+            "image": "1",                   //用户头像
+            "nike": "1",                    //用户昵称
+            "title": "sdsf-1",              //设备名称
+            "l_time": "2",                  //轮播时间
+            "s_time": "24:00:00",           //开机时间
+            "e_time": "24:00:00",           //关机时间
+            "push_type": "1",               //接收推送（1接收，2不接收）
+            "authoris": "1"               //是否授权（1，未授权，2已授权）
+        }
+    },  
+    "controller": {
+        "GET /app.php/Verify/index": {  //  发送验证码
+            "request": {
+                "tel": "1",   //电话（
+                "type" : "sdfsd" //(1注册,2忘记密码，3绑定手机
+            },
+            "response": {
+                "result": "succ",
+                "info": "{VerifyInfo}",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/codecation": {  //  验证验证码
+            "request": {
+                "tel": "1",
+                "code" : "sdfsd"
+            },
+            "response": {
+                "result": "succ",
+                "info": "{VerifyIs}",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/login": {  //  登录
+            "request": {
+                "tel": "1",
+                "pass" : "sdfsd"
+            },
+            "response": {
+                "result": "succ",
+                "info": "{UserInfo}",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/register": {  //  注册
+            "request": {
+                "tel": "1",
+                "pass" : "sdfsd",
+                "code" : "sdfsd"
+            },
+            "response": {
+                "result": "succ",
+                "info": "{UserInfo}",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/password": {  //  忘记密码保存密码
+            "request": {
+                "tel": "1",
+                "newpass" : "sdfsd",
+                "code" : "sdfsd"
+            },
+            "response": {
+                "result": "succ",
+                "info": "sdfs",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Index/theme_list": {  //  题材列表
+            "request": {
+            },
+            "response": {
+                "result": "succ",
+                "info": ["{ThemeList}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Index/class_list": {  //  类别列表
+            "request": {
+            },
+            "response": {
+                "result": "succ",
+                "info": ["{ClassList}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/works_add": {  //  上传作品
+            "request": {
+                "uid" : "sdf",
+                "image" : "sdf",
+                "title" : "sdf",
+                "classs" : "sdf",
+                "content" : "sdf",
+                "secrecy" : "sdf",
+                "years" : "sdf",
+                "theme" : "sdf",
+                "labels" : "sdf",
+                "coll_price" : "sdf",
+                "coll_nums" : "sdf",
+                "sales_status" : "sdf",
+                "price_open" : "sdf",
+                "open_price" : "sdf",
+                "open_nums" : "sdf",
+                "open_images" : "sdf",
+                "plates" : "sdf"
+            },
+            "response": {
+                "result": "succ",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Index/index": {  //  首页作品列表
+            "request": {
+                "uid" : "sfsdf",
+                "page" : "sfsdf",
+                "pagecount" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": ["{HomeIndex}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Index/read": {  //  作品详情
+            "request": {
+                "uid" : "sfsdf",
+                "p_id" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": "{DetailsInfo}",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/equipment_add": {  //  添加设备
+            "request": {
+                "uid" : "sfsdf",
+                "title" : "sfsdf",
+                "mac_id" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/equipment_list": {  //  设备列表
+            "request": {
+                "uid" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info" : ["{EquipmentList}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/share_equipment_list": {  //  设备列表
+            "request": {
+                "uid" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info" : ["{EquipmentList}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/equipment_info": {  //  设备详情
+            "request": {
+                "uid" : "sfsdf",
+                "e_id" : "sdfds"
+            },
+            "response": {
+                "result": "succ",
+                "info" : "{EquipmentList}",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/equipment_del": {  //  解绑设备
+            "request": {
+                "uid" : "sfsdf",
+                "mac_id" : "dsfds"
+            },
+            "response": {
+                "result": "succ",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Jpush/index": {  //  推送图像至设备
+            "request": {
+                "p_id" : "sfsdf",
+                "e_id" : "dsfds",
+                "type" : "sdf",
+                "pay_type": "sdfs"
+            },
+            "response": {
+                "result": "succ",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/user_info": {  //  个人中心
+            "request": {
+                "uid" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info" : "{UserInfo}",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/user_nike": {  //  修改昵称
+            "request": {
+                "uid" : "sfsdf",
+                "nike" : "sfds"
+            },
+            "response": {
+                "result": "succ",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/user_image": {  //  修改头像
+            "request": {
+                "uid" : "sfsdf",
+                "image" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Index/banner": {  //  banner列表
+            "request": {
+            },
+            "response": {
+                "result": "succ",
+                "info" : ["{BannerInfo}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/works_list": {  //  艺术馆作品列表
+            "request": {
+                "uid" : "sfsdf",
+                "page" : "sfsdf",
+                "type" : "sdfdsf",  //（2收藏馆，3认证作品，4私密馆）
+                "pagecount" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": ["{HomeIndex}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Index/gz_index": {  //  首页作品列表
+            "request": {
+                "uid" : "sfsdf",
+                "page" : "sfsdf",
+                "pagecount" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": ["{HomeIndex}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Finds/index": {  //  发现艺术馆作品列表
+            "request": {
+                "classs" : "sfsdf",
+                "artist" : "sfsdf",
+                "plates" : "sfsdf",
+                "page" : "sfsdf",
+                "pagecount" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": ["{FindIndex}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Index/class_list": {  // 发现艺术馆类别列表
+            "request": {
+            },
+            "response": {
+                "result": "succ",
+                "info": ["{ClassList}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Finds/artist": {  //  艺术家列表
+            "request": {
+                "uid" : "sfsdf",
+                "page" : "sfsdf",
+                "pagecount" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": ["{ArtistInfo}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Index/collection_add": {  //  添加关注
+            "request": {
+                "uid" : "sfsdf",   //  当前登陆者id
+                "u_id" : "sdfsf"  //  艺术家id
+            },
+            "response": {
+                "result": "succ",
+                "info": "sdfds",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Index/collection_del": {  //  取消关注
+            "request": {
+                "uid" : "sfsdf",   //  当前登陆者id
+                "u_id" : "sdfsf"  //  艺术家id
+            },
+            "response": {
+                "result": "succ",
+                "info": "sdfds",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Finds/artist_works_list": {  //  艺术家 主页 作品
+            "request": {
+                "u_id" : "sfsdf",
+                "page" : "sfsdf",
+                "pagecount" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": ["{ArtistWorkList}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Finds/artist_read": {  //  艺术家 主页 简介
+            "request": {
+                "u_id" : "sfsdf",
+                "uid" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": "{ArtistInfo}",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Finds/collection_list": {  //  艺术家 主页 我的关注
+            "request": {
+                "uid" : "sfsdf",
+                "u_id" : "sdfs",
+                "page" : "sfsdf",
+                "pagecount" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": ["{ArtistInfo}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Finds/fanss": {  //  艺术家 主页 粉丝
+            "request": {
+                "uid" : "sfsdf",
+                "u_id" : "sdfs",
+                "page" : "sfsdf",
+                "pagecount" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": ["{ArtistInfo}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Finds/special": {  //  专题
+            "request": {
+                "page" : "sfsdf",
+                "pagecount" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": ["{SpecialInfo}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Finds/special_read": {  //  专题详情
+            "request": {
+                "s_id" : "sfsdf",
+                "uid" : "sdfs"
+            },
+            "response": {
+                "result": "succ",
+                "info": "{SpecialInfo}",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Finds/ranking_list": {  //  排行榜
+            "request": {
+            },
+            "response": {
+                "result": "succ",
+                "info": "{RankingList}",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Finds/activity_list": {  //  活动与展览
+            "request": {
+                "page" : "sfsdf",
+                "pagecount" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": ["{SpecialInfo}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Finds/activity_read": {  //  活动详情
+            "request": {
+                "s_id" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": "{SpecialInfo}",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/sheng": {  //  获取省
+            "request": {
+            },
+            "response": {
+                "result": "succ",
+                "info": ["{Provi}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/shi": {  //  获取市
+            "request": {
+                "sheng_id" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": ["{City}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/qu": {  //  获取区
+            "request": {
+                "shi_id" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": ["{Area}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/address_add": {  //  添加地址
+            "request": {
+                "a_id" : "sfsdf",
+                "uid" : "sfsdf",
+                "tel" : "sfsdf",
+                "name" : "sfsdf",
+                "city" : "sfsdf",
+                "address" : "sfsdf",
+                "home" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": "sdfsrea",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/address_del": {  //  删除地址
+            "request": {
+                "a_id" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": "sdfsrea",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/address_list": {  //  地址列表
+            "request": {
+                "uid" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": ["{AddressInfo}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/user_content": {  //  修改简介
+            "request": {
+                "uid" : "sfsdf",
+                "content" : "sdfs"
+            },
+            "response": {
+                "result": "succ",
+                "info": "ddrsdfessnfo",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/balance": {  //  我的余额
+            "request": {
+                "uid" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": "{BalanceInfo}",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Index/balance": {  //  下单
+            "request": {
+                "uid" : "sfsdf",
+                "u_id" : "sfsdf",
+                "p_id" : "sfsdf",
+                "a_id" : "sfsdf",
+                "price" : "sfsdf",
+                "balance" : "sfsdf",
+                "type" : "sfsdf",
+                "content" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": "{OrderInfo}",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/pre_list": {  //  我的购买列表
+            "request": {
+                "uid" : "sfsdf",
+                "page" : "sfsdf",
+                "pagecount" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": ["{OrderInfo}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/pay_list": {  //  我的出售列表
+            "request": {
+                "uid" : "sfsdf",
+                "page" : "sfsdf",
+                "pagecount" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": ["{OrderInfo}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/pre_read": {  //  购买列表详情
+            "request": {
+                "o_id" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": "{OrderInfo}",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/pay_read": {  //  出售列表详情
+            "request": {
+                "o_id" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": "{OrderInfo}",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/capital_flow": {  //  我的帐单列表
+            "request": {
+                "uid" : "sfsdf",
+                "page" : "sfsdf",
+                "pagecount" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": ["{CapitalFlow}"],
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Index/comment_add": {  //  发布评论
+            "request": {
+                "uid" : "sfsdf",
+                "p_id" : "sfsdf",
+                "content" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": "apitalsdfowdfd",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/Index/r_comm_add": {  //  回复发布的评论
+            "request": {
+                "uid" : "sfsdf",
+                "comm_id" : "sfsdf",
+                "p_id" : "sfsdf",
+                "title" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": "apitalsdfowdfd",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/post_comd": {  //  确认收货
+            "request": {
+                "o_id" : "sfsdf"
+            },
+            "response": {
+                "result": "succ",
+                "info": "apitalsdfowdfd",
+                "msg": "登陆成功"
+            }
+        },
+        "GET /app.php/User/share_to_equipment_list": {  //  
+            "request": {
+                "uid" : "sfsdf",
+                "mac_id" : "aaaa",
+                "page" : "ssss",
+                "pagecount" : "asd"
+            },
+            "response": {
+                "result": "succ",
+                "info": "{ShareToEquipObj}",
+                "msg": "登陆成功"
+            }
+        }
+    }
+}
+
+
+
+
+
+
