@@ -66,7 +66,11 @@ ON_SIGNAL3(HomeModel, RELOADED, signal) {
     if (homeModel.loaded) {
         [collect.mj_footer endRefreshingWithNoMoreData];
     }
-    [collect reloadData];
+    [UIView animateWithDuration:0 animations:^{
+        [collect performBatchUpdates:^{
+            [collect reloadData];
+        } completion:nil];
+    }];
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout, UICollectionViewDataSource

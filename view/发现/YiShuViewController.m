@@ -110,7 +110,11 @@ ON_SIGNAL3(FindModel, RELOADED, signal) {
     if (findModel.loaded) {
         [collect.mj_footer endRefreshingWithNoMoreData];
     }
-    [collect reloadData];
+    [UIView animateWithDuration:0 animations:^{
+        [collect performBatchUpdates:^{
+            [collect reloadData];
+        } completion:nil];
+    }];
 }
 
 ON_SIGNAL3(FindModel, CLASSSLIST, signal) {
