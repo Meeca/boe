@@ -62,6 +62,11 @@ ON_SIGNAL3(FansModel, RELOADED, signal) {
     if (fansModel.loaded) {
         [self.table.mj_footer endRefreshingWithNoMoreData];
     }
+    self.table.mj_footer.hidden = NO;
+    if (fansModel.recommends.count==0) {
+        self.table.mj_footer.hidden = YES;
+        [self presentMessageTips:@"暂无数据"];
+    }
     [self.table reloadData];
 }
 

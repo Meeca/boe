@@ -10,7 +10,7 @@
 #import "TPKeyboardAvoidingTableView.h"
 #import "AreaViewController.h"
 
-@interface NewOrEitdViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate> {
+@interface NewOrEitdViewController () <UITableViewDelegate, UITableViewDataSource> {
     NSString *name;
     NSString *number;
     NSString *area;
@@ -61,16 +61,6 @@ ON_SIGNAL3(UserModel, ADDRESSADD, signal) {
     } afterDelay:.3];
 }
 
-#pragma mark - UITextFieldDelegate
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    
-    if ([textField.placeholder isEqualToString:@"请输入收货人"] && range.location > 4) {
-        return NO;
-    }
-    
-    return YES;
-}
-
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -85,7 +75,6 @@ ON_SIGNAL3(UserModel, ADDRESSADD, signal) {
     CGFloat h = [self tableView:tableView heightForRowAtIndexPath:indexPath];
     
     UITextField *textView = [[UITextField alloc] initWithFrame:CGRectMake(25, 0, KSCREENWIDTH-50, h)];
-    textView.delegate = self;
     textView.borderStyle = UITextBorderStyleNone;
     textView.font = [UIFont systemFontOfSize:15];
     textView.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -167,6 +156,14 @@ ON_SIGNAL3(UserModel, ADDRESSADD, signal) {
 
 - (void)textChange:(UITextField *)textView {
     if (textView.tag == 0) {
+        UITextRange *markedRange = [textView markedTextRange];
+        if (markedRange) {
+            return;
+        }
+        if (textView.text.length > 6) {
+            NSRange range = [textView.text rangeOfComposedCharacterSequenceAtIndex:6];
+            textView.text = [textView.text substringToIndex:range.location];
+        }
         name = textView.text;
     } else if (textView.tag == 1) {
         //手机号

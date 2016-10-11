@@ -96,7 +96,18 @@ ON_SIGNAL3(UserModel, USERNIKE, signal) {
 
 - (void)textChange:(UITextField *)textView {
     if (textView.tag == 0) {
+        UITextRange *markedRange = [textView markedTextRange];
+        if (markedRange) {
+            
+            return;
+        }
         
+        if (textView.text.length > 12) {
+            [self presentMessageTips:@"最多可输入12个字"];
+            NSRange range = [textView.text rangeOfComposedCharacterSequenceAtIndex:12];
+            textView.text = [textView.text substringToIndex:range.location];
+        }
+
         self.nick = textView.text;
     }
 }
