@@ -90,7 +90,11 @@ static NSString * const JDFSquareCellID = @"JDFSquareCell";
             _collectionView.frame =CGRectMake(0, 0, KSCREENWIDTH, self.view.height-44);
             
             _isChooseBtn = YES;
-            [_collectionView reloadData];
+            [UIView animateWithDuration:0 animations:^{
+                [_collectionView performBatchUpdates:^{
+                    [_collectionView reloadData];
+                } completion:nil];
+            }];
             
         }];
     }else{
@@ -103,8 +107,11 @@ static NSString * const JDFSquareCellID = @"JDFSquareCell";
             _collectionView.frame =CGRectMake(0, 0, KSCREENWIDTH, self.view.height);
             
             _isChooseBtn = NO;
-            [_collectionView reloadData];
-            
+            [UIView animateWithDuration:0 animations:^{
+                [_collectionView performBatchUpdates:^{
+                    [_collectionView reloadData];
+                } completion:nil];
+            }];
         }];
     }
     
@@ -180,7 +187,11 @@ static NSString * const JDFSquareCellID = @"JDFSquareCell";
          
          firstPage?[_squareItems  setArray:array]:[_squareItems addObjectsFromArray:array];
          // 刷新表格
-         [self.collectionView reloadData];
+         [UIView animateWithDuration:0 animations:^{
+             [self.collectionView performBatchUpdates:^{
+                 [self.collectionView reloadData];
+             } completion:nil];
+         }];
          
          if (array.count < 20) {
              [self.collectionView hidenFooter];

@@ -74,6 +74,7 @@
 //            UIImage *image = [UIImage imageWithCGImage:[asset aspectRatioThumbnail]];
             [_images addObject:image];
         }
+        
         [self.collectionView reloadData];
         NSLog(@"photo - %@",arr);
     }];

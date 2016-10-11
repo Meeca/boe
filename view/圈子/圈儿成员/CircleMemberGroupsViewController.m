@@ -152,7 +152,11 @@
              
          }
          // 刷新表格
-         [_contactsPickerView reloadData];
+         [UIView animateWithDuration:0 animations:^{
+             [_contactsPickerView performBatchUpdates:^{
+                 [_contactsPickerView reloadData];
+             } completion:nil];
+         }];
          
          if (array.count < 20) {
              [_contactsPickerView hidenFooter];
@@ -308,8 +312,11 @@
             
             self.selectedIndexSet = [NSMutableIndexSet indexSet];
             _isChooseBtn = YES;
-            [_contactsPickerView reloadData];
-            
+            [UIView animateWithDuration:0 animations:^{
+                [_contactsPickerView performBatchUpdates:^{
+                    [_contactsPickerView reloadData];
+                } completion:nil];
+            }];
             
         }];
     }else{
@@ -329,9 +336,13 @@
         _circleMembersFooterView = nil;
         _contactsPickerView.frame =CGRectMake(0, 0, KSCREENWIDTH, self.view.height);
          _isChooseBtn = NO;
-        [_contactsPickerView reloadData];
-      }];
- }
+        [UIView animateWithDuration:0 animations:^{
+            [_contactsPickerView performBatchUpdates:^{
+                [_contactsPickerView reloadData];
+            } completion:nil];
+        }];
+    }];
+}
 
 
 

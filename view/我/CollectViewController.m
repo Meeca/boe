@@ -83,7 +83,11 @@ ON_SIGNAL3(ZuoPinModel, RELOADED, signal) {
     if (zuoPinModel.loaded) {
         [collect.mj_footer endRefreshingWithNoMoreData];
     }
-    [collect reloadData];
+    [UIView animateWithDuration:0 animations:^{
+        [collect performBatchUpdates:^{
+            [collect reloadData];
+        } completion:nil];
+    }];
 }
 
 #pragma mark - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
@@ -131,8 +135,11 @@ ON_SIGNAL3(ZuoPinModel, RELOADED, signal) {
         [selArr removeObjectAtIndex:indexPath.item];
         [selArr insertObject:@(!sel) atIndex:indexPath.item];
         
-        [collectionView reloadData];
-        
+        [UIView animateWithDuration:0 animations:^{
+            [collect performBatchUpdates:^{
+                [collect reloadData];
+            } completion:nil];
+        }];
     } else {
         HomeIndex *list = zuoPinModel.recommends[indexPath.item];
         XiangQingViewController *vc = [[XiangQingViewController alloc] init];
@@ -199,7 +206,11 @@ ON_SIGNAL3(ZuoPinModel, RELOADED, signal) {
             collect.mj_footer = nil;
             collect.mj_header = nil;
             collect.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
-            [collect reloadData];
+            [UIView animateWithDuration:0 animations:^{
+                [collect performBatchUpdates:^{
+                    [collect reloadData];
+                } completion:nil];
+            }];
         }];
     }
 }
@@ -288,7 +299,11 @@ ON_SIGNAL3(ZuoPinModel, RELOADED, signal) {
         collect.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         [self addHeader];
         [self addFooter];
-        [collect reloadData];
+        [UIView animateWithDuration:0 animations:^{
+            [collect performBatchUpdates:^{
+                [collect reloadData];
+            } completion:nil];
+        }];
     }];
 }
 
