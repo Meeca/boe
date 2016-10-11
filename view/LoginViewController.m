@@ -221,11 +221,11 @@
             
             [UserManager archiverModel:userInfoModel];
             
-            
+            [UserModel postNotification:UserModel.LOGIN];
+
             [Tool performBlock:^{
                 [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
             } afterDelay:1];
-            
             
             
             
@@ -276,7 +276,8 @@
         
         [UserManager archiverModel:userInfoModel];
         
-        
+        [UserModel postNotification:UserModel.LOGIN];
+
         [Tool performBlock:^{
             [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
         } afterDelay:1];

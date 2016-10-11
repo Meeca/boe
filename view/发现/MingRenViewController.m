@@ -63,6 +63,11 @@ ON_SIGNAL3(ArtistModel, RELOADED, signal) {
     if (artisModel.loaded) {
         [self.table.mj_footer endRefreshingWithNoMoreData];
     }
+    self.table.mj_footer.hidden = NO;
+    if (artisModel.recommends.count==0) {
+        self.table.mj_footer.hidden = YES;
+        [self presentMessageTips:@"暂无数据"];
+    }
     [self.table reloadData];
 }
 

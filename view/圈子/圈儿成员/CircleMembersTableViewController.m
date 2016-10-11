@@ -90,11 +90,10 @@ static NSString * const JDFSquareCellID = @"JDFSquareCell";
             _collectionView.frame =CGRectMake(0, 0, KSCREENWIDTH, self.view.height-44);
             
             _isChooseBtn = YES;
-            [UIView animateWithDuration:0 animations:^{
-                [_collectionView performBatchUpdates:^{
-                    [_collectionView reloadData];
-                } completion:nil];
-            }];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [_collectionView reloadData];
+            });
+
             
         }];
     }else{
@@ -107,11 +106,9 @@ static NSString * const JDFSquareCellID = @"JDFSquareCell";
             _collectionView.frame =CGRectMake(0, 0, KSCREENWIDTH, self.view.height);
             
             _isChooseBtn = NO;
-            [UIView animateWithDuration:0 animations:^{
-                [_collectionView performBatchUpdates:^{
-                    [_collectionView reloadData];
-                } completion:nil];
-            }];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [_collectionView reloadData];
+            });
         }];
     }
     
@@ -187,11 +184,9 @@ static NSString * const JDFSquareCellID = @"JDFSquareCell";
          
          firstPage?[_squareItems  setArray:array]:[_squareItems addObjectsFromArray:array];
          // 刷新表格
-         [UIView animateWithDuration:0 animations:^{
-             [self.collectionView performBatchUpdates:^{
-                 [self.collectionView reloadData];
-             } completion:nil];
-         }];
+         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+             [_collectionView reloadData];
+         });
          
          if (array.count < 20) {
              [self.collectionView hidenFooter];

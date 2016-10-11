@@ -54,6 +54,11 @@ ON_SIGNAL3(ZTModel, RELOADED, signal) {
     if (ztModel.loaded) {
         [self.table.mj_footer endRefreshingWithNoMoreData];
     }
+    self.table.mj_footer.hidden = NO;
+    if (ztModel.recommends.count==0) {
+        self.table.mj_footer.hidden = YES;
+        [self presentMessageTips:@"暂无数据"];
+    }
     [self.table reloadData];
 }
 

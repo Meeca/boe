@@ -19,7 +19,7 @@
 #import "WeiXinPayManager.h"
 #import "AliPayManager.h"
 #import "UIViewController+MBShow.h"
-
+#import "ArtGalleryViewController.h"
 #import "DBHCommentCellTableViewCell.h"
 
 #import "TLChatViewController.h"
@@ -317,6 +317,10 @@ ON_SIGNAL3(BaseModel, COMMENTADD, signal) {
             contextHeight = heght;
             [tableView reloadData];
         }
+        
+        if (pictureName.right > zan.left) {
+            pictureName.width = zan.left - 5 - pictureName.left;
+        }
     } else if (indexPath.section==2) {
         cell.clipsToBounds = YES;
         CGFloat iconWidth = 40;
@@ -406,6 +410,10 @@ ON_SIGNAL3(BaseModel, COMMENTADD, signal) {
         [cell.contentView addSubview:shixinImage];
         shixinImage.center = shixin.center;
         shixinImage.centerY = shixin.centerY - 8;
+        
+        if (name.right > shixin.left) {
+            name.width = shixin.left - 5 - name.left;
+        }
     } else if (indexPath.section==3) {
         if (indexPath.row==0) {
             cell.textLabel.textColor = KAPPCOLOR;
@@ -757,7 +765,11 @@ ON_SIGNAL3(BaseModel, COMMENTADD, signal) {
     [self.view endEditing:YES];
 
     if (self.isRoot) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        if ([self.navigationController.viewControllers[1] isKindOfClass:[ArtGalleryViewController class]]) {
+            [self.navigationController popToViewController:self.navigationController.viewControllers[1] animated:YES];
+        } else {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
     } else {
         [self.navigationController popViewControllerAnimated:YES];
     }

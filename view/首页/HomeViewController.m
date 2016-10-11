@@ -139,7 +139,7 @@ ON_NOTIFICATION3(UserModel, REGISTER, notification) {
 #pragma mark - EScrollerViewDelegate
 
 -(void)EScrollerViewDidClicked:(NSUInteger)index {
-    BannerInfo *model = bannerArr[index];
+    BannerInfo *model = bannerArr[index-1];
     if ([model.types isEqualToString:@"1"]) {
         DBHBuyPictureFrameViewController *buyPictureFrameVC = [[DBHBuyPictureFrameViewController alloc] init];
         [Tool setBackButtonNoTitle:self];

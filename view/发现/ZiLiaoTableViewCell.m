@@ -73,6 +73,10 @@
         [follow setTitle:@"＋ 关注" forState:UIControlStateNormal];
         [follow setTitleColor:KAPPCOLOR forState:UIControlStateNormal];
     }
+    
+    if (name.right > follow.left) {
+        name.width = follow.left - 5 -name.left;
+    }
 }
 
 - (void)follAction:(UIButton *)btn {

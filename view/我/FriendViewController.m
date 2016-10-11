@@ -60,6 +60,11 @@ ON_SIGNAL3(FollowerModel, RELOADED, signal) {
     if (follwer.loaded) {
         [self.table.mj_footer endRefreshingWithNoMoreData];
     }
+    self.table.mj_footer.hidden = NO;
+    if (follwer.recommends.count==0) {
+        self.table.mj_footer.hidden = YES;
+        [self presentMessageTips:@"暂无数据"];
+    }
     [self.table reloadData];
 }
 
