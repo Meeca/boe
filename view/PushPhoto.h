@@ -12,5 +12,8 @@
 
 @property (nonatomic, strong) DetailsInfo *info;
 @property (nonatomic, strong) NSArray *dataArr;
+@property (nonatomic, strong) NSMutableArray *imgArr;
+@property (nonatomic, copy) NSString *pay_type;
+@property (nonatomic, copy) NSString *p_idsStr;
 
 @end

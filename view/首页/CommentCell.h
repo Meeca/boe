@@ -10,4 +10,6 @@
 
 @interface CommentCell : UITableViewCell
 
+@property (nonatomic, copy) void (^iconAction)(CommentInfo *model);
+
 @end

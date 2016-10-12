@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>为了你能更好的使用iGallery，请同意iGallery使用您的媒体资料库</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>为了你能更好的使用iGallery，请同意iGallery使用您的媒体资料库</string>
 	<key>NSMicrophoneUsageDescription</key>

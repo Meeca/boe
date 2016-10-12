@@ -36,11 +36,13 @@
         },
         "HomeIndex" : {
             "p_id": "70",
+            "p_id1": "70",
             "title": "鼠鼠",
             "image": "http://boe.ccifc.cn/assets/upload/chanpinimages/0256df4c35c33f72639b6bb510fa747b.jpg",
             "u_image": "null",
             "u_name": "boe_372562",
             "years": "2016",
+            "pay_type": "1",
             "classs" : "sdfsf",
             "theme": "在一起 这么",
             "created_at": "1468041660",

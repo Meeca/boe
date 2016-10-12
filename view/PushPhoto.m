@@ -97,6 +97,26 @@ ON_SIGNAL3(BaseModel, JPUSHINDEX, signal) {
     } afterDelay:.3];
 }
 
+- (void)setImgArr:(NSMutableArray *)imgArr {
+    if (_imgArr != imgArr) {
+        _imgArr = imgArr;
+    }
+    CGFloat width = (self.width-71)/4;
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.width, (self.width-71)/4*2+50)];
+    
+    for (int i=0; i<imgArr.count; i++) {
+        int row = i/4;
+        int col = i%4;
+        UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(20+(width+10)*col, 20+(width+10)*row, width, width)];
+        imgView.contentMode = UIViewContentModeScaleAspectFill;
+        imgView.clipsToBounds = YES;
+        [imgView sd_setImageWithURL:[NSURL URLWithString:imgArr[i]] placeholderImage:KZHANWEI];
+        [header addSubview:imgView];
+    }
+    
+    table.tableHeaderView = header;
+}
+
 - (void)setInfo:(DetailsInfo *)info {
     if (_info != info) {
         _info = info;
@@ -229,7 +249,11 @@ ON_SIGNAL3(BaseModel, JPUSHINDEX, signal) {
         [dvs addObject:list.e_id];
     }
     NSString *e_id = [dvs componentsJoinedByString:@"-"];
-    [baseModel app_php_Jpush_indexWithP_id:self.info.p_id e_id:e_id pay_type:_info.pay_type];
+    if (self.info) {
+        [baseModel app_php_Jpush_indexWithP_id:self.info.p_id e_id:e_id type:@"1" pay_type:_info.pay_type];
+    } else {
+        [baseModel app_php_Jpush_indexWithP_id:self.p_idsStr e_id:e_id type:@"2" pay_type:self.pay_type];
+    }
 }
 
 - (void)allSel:(UIGestureRecognizer *)tap {

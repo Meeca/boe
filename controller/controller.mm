@@ -10,7 +10,7 @@
 //    												
 // title:  boeProject
 // author: haozhiyu1990
-// date:   2016-09-30 07:16:12 +0000
+// date:   2016-10-12 15:12:30 +0000
 //
 
 #import "controller.h"
@@ -306,6 +306,8 @@ CONVERT_PROPERTY_CLASS( guess_list, GuessInfo );
 @synthesize created_at = _created_at;
 @synthesize image = _image;
 @synthesize p_id = _p_id;
+@synthesize p_id1 = _p_id1;
+@synthesize pay_type = _pay_type;
 @synthesize plates = _plates;
 @synthesize theme = _theme;
 @synthesize title = _title;

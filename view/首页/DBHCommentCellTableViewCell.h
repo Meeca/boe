@@ -19,6 +19,8 @@
 
 @property (nonatomic, strong) DBHTopicModelRCommentList *otherModel;
 
+@property (nonatomic, copy) void (^iconAction)(CommentInfo *model);
+
 - (void)hideSeparation;
 
 @end

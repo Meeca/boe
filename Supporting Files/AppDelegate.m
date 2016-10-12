@@ -52,7 +52,7 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-      [LaunchIntroductionView sharedWithImages:@[@"launch0.jpg",@"launch1.jpg",@"launch2.jpg",@"launch3.jpg"] buttonImage:@"" buttonFrame:CGRectMake(kScreen_width/2 - 551/4, kScreen_height - 150, 551/2, 45)];
+    [LaunchIntroductionView sharedWithImages:@[@"launch0.jpg", @"launch1.jpg", @"launch2.jpg", @"launch3.jpg"] buttonImage:@"" buttonFrame:CGRectMake(kScreen_width/2 - 551/4, kScreen_height - 150, 551/2, 45)];
     return YES;
 }
 

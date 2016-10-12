@@ -90,7 +90,7 @@ static NSString * const JDFSquareCellID = @"JDFSquareCell";
             _collectionView.frame =CGRectMake(0, 0, KSCREENWIDTH, self.view.height-44);
             
             _isChooseBtn = YES;
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [_collectionView reloadData];
             });
 
@@ -106,7 +106,7 @@ static NSString * const JDFSquareCellID = @"JDFSquareCell";
             _collectionView.frame =CGRectMake(0, 0, KSCREENWIDTH, self.view.height);
             
             _isChooseBtn = NO;
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [_collectionView reloadData];
             });
         }];
@@ -184,7 +184,7 @@ static NSString * const JDFSquareCellID = @"JDFSquareCell";
          
          firstPage?[_squareItems  setArray:array]:[_squareItems addObjectsFromArray:array];
          // 刷新表格
-         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
              [_collectionView reloadData];
          });
          
