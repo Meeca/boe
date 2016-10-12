@@ -86,6 +86,17 @@ ON_SIGNAL3(UserModel, USERCONTENT, signal) {
     if ([not.object isMemberOfClass:[IWTextView class]]) {
         IWTextView *textView = not.object;
         if (textView.tag == 0) {
+            UITextRange *markedRange = [textView markedTextRange];
+            if (markedRange) {
+                
+                return;
+            }
+            
+            if (textView.text.length > 50) {
+                [self presentMessageTips:@"最多可输入50个字"];
+                NSRange range = [textView.text rangeOfComposedCharacterSequenceAtIndex:50];
+                textView.text = [textView.text substringToIndex:range.location];
+            }
             self.context = textView.text;
         }
     }

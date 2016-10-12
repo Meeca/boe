@@ -87,6 +87,8 @@
 - (UIImageView *)topImageView {
     if (!_topImageView) {
         _topImageView = [[UIImageView alloc] init];
+        _topImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _topImageView.clipsToBounds = YES;
     }
     return _topImageView;
 }

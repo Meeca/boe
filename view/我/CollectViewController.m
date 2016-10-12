@@ -83,11 +83,14 @@ ON_SIGNAL3(ZuoPinModel, RELOADED, signal) {
     if (zuoPinModel.loaded) {
         [collect.mj_footer endRefreshingWithNoMoreData];
     }
-    [UIView animateWithDuration:0 animations:^{
-        [collect performBatchUpdates:^{
-            [collect reloadData];
-        } completion:nil];
-    }];
+    collect.mj_footer.hidden = NO;
+    if (zuoPinModel.recommends.count==0) {
+        collect.mj_footer.hidden = YES;
+        [self presentMessageTips:@"暂无数据"];
+    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [collect reloadData];
+    });
 }
 
 #pragma mark - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
@@ -135,11 +138,9 @@ ON_SIGNAL3(ZuoPinModel, RELOADED, signal) {
         [selArr removeObjectAtIndex:indexPath.item];
         [selArr insertObject:@(!sel) atIndex:indexPath.item];
         
-        [UIView animateWithDuration:0 animations:^{
-            [collect performBatchUpdates:^{
-                [collect reloadData];
-            } completion:nil];
-        }];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [collect reloadData];
+        });
     } else {
         HomeIndex *list = zuoPinModel.recommends[indexPath.item];
         XiangQingViewController *vc = [[XiangQingViewController alloc] init];
@@ -206,11 +207,9 @@ ON_SIGNAL3(ZuoPinModel, RELOADED, signal) {
             collect.mj_footer = nil;
             collect.mj_header = nil;
             collect.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
-            [UIView animateWithDuration:0 animations:^{
-                [collect performBatchUpdates:^{
-                    [collect reloadData];
-                } completion:nil];
-            }];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [collect reloadData];
+            });
         }];
     }
 }
@@ -299,11 +298,9 @@ ON_SIGNAL3(ZuoPinModel, RELOADED, signal) {
         collect.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         [self addHeader];
         [self addFooter];
-        [UIView animateWithDuration:0 animations:^{
-            [collect performBatchUpdates:^{
-                [collect reloadData];
-            } completion:nil];
-        }];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [collect reloadData];
+        });
     }];
 }
 

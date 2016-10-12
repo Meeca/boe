@@ -152,11 +152,9 @@
              
          }
          // 刷新表格
-         [UIView animateWithDuration:0 animations:^{
-             [_contactsPickerView performBatchUpdates:^{
-                 [_contactsPickerView reloadData];
-             } completion:nil];
-         }];
+         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+             [_contactsPickerView reloadData];
+         });
          
          if (array.count < 20) {
              [_contactsPickerView hidenFooter];
@@ -312,11 +310,10 @@
             
             self.selectedIndexSet = [NSMutableIndexSet indexSet];
             _isChooseBtn = YES;
-            [UIView animateWithDuration:0 animations:^{
-                [_contactsPickerView performBatchUpdates:^{
-                    [_contactsPickerView reloadData];
-                } completion:nil];
-            }];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [_contactsPickerView reloadData];
+            });
             
         }];
     }else{
@@ -336,11 +333,10 @@
         _circleMembersFooterView = nil;
         _contactsPickerView.frame =CGRectMake(0, 0, KSCREENWIDTH, self.view.height);
          _isChooseBtn = NO;
-        [UIView animateWithDuration:0 animations:^{
-            [_contactsPickerView performBatchUpdates:^{
-                [_contactsPickerView reloadData];
-            } completion:nil];
-        }];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [_contactsPickerView reloadData];
+        });
+
     }];
 }
 

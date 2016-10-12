@@ -53,6 +53,11 @@ ON_SIGNAL3(HuoDongModel, RELOADED, signal) {
     if (model.loaded) {
         [self.table.mj_footer endRefreshingWithNoMoreData];
     }
+    self.table.mj_footer.hidden = NO;
+    if (model.recommends.count==0) {
+        self.table.mj_footer.hidden = YES;
+        [self presentMessageTips:@"暂无数据"];
+    }
     [self.table reloadData];
 }
 

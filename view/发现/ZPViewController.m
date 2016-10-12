@@ -68,7 +68,14 @@ ON_SIGNAL3(WorksModel, RELOADED, signal) {
     if (worksModel.loaded) {
         [collect.mj_footer endRefreshingWithNoMoreData];
     }
-    [collect reloadData];
+    collect.mj_footer.hidden = NO;
+    if (worksModel.recommends.count==0) {
+        collect.mj_footer.hidden = YES;
+        [self presentMessageTips:@"暂无数据"];
+    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [collect reloadData];
+    });
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout, UICollectionViewDataSource

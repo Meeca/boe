@@ -66,11 +66,14 @@ ON_SIGNAL3(HomeModel, RELOADED, signal) {
     if (homeModel.loaded) {
         [collect.mj_footer endRefreshingWithNoMoreData];
     }
-    [UIView animateWithDuration:0 animations:^{
-        [collect performBatchUpdates:^{
-            [collect reloadData];
-        } completion:nil];
-    }];
+    collect.mj_footer.hidden = NO;
+    if (homeModel.recommends.count==0) {
+        collect.mj_footer.hidden = YES;
+        [self presentMessageTips:@"暂无数据"];
+    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [collect reloadData];
+    });
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout, UICollectionViewDataSource

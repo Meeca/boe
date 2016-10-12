@@ -31,7 +31,7 @@
 #pragma mark - ui
 - (void)setUI {
     [self.contentView addSubview:self.pictureImageView];
-    
+    [self.contentView setClipsToBounds:YES];
     [_pictureImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.bottom.right.offset(0);
     }];
@@ -40,10 +40,15 @@
 #pragma mark - getters and setters
 - (void)setImage:(NSString *)image {
     [_pictureImageView sd_setImageWithURL:[NSURL URLWithString:image]];
+    [_pictureImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.bottom.right.offset(0);
+    }];
 }
 - (UIImageView *)pictureImageView {
     if (!_pictureImageView) {
         _pictureImageView = [[UIImageView alloc] init];
+        _pictureImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _pictureImageView.clipsToBounds = YES;
     }
     return _pictureImageView;
 }

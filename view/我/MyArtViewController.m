@@ -76,6 +76,11 @@ ON_SIGNAL3(ZuoPinModel, RELOADED, signal) {
     if (zuoPinModel.loaded) {
         [collect.mj_footer endRefreshingWithNoMoreData];
     }
+    collect.mj_footer.hidden = NO;
+    if (zuoPinModel.recommends.count==0) {
+        collect.mj_footer.hidden = YES;
+        [self presentMessageTips:@"暂无数据"];
+    }
     [collect reloadData];
 }
 
