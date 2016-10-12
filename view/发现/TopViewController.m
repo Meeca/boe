@@ -71,7 +71,10 @@ ON_SIGNAL3(TopModel, RANKINGLIST, signal) {
     [cell itmeAction:^(id f) {
         if ([f isKindOfClass:[FindIndex class]]) {
             XiangQingViewController *vc = [[XiangQingViewController alloc] init];
-            vc.p_id = ((FindIndex *)f).p_id;
+//            vc.p_id = ((FindIndex *)f).p_id;
+            [vc readWithP_id:((FindIndex *)f).p_id collBack:^(NSString *p_id) {
+                
+            }];
             vc.hidesBottomBarWhenPushed = YES;
             [self.nav pushViewController:vc animated:YES];
         }

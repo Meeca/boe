@@ -14,15 +14,21 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // 通知
-        // 当UITextView的文字发生改变时，UITextView自己会发出一个UITextViewTextDidChangeNotification通知
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:self];
-        
-        
+        [self addNotfi];
     }
     return self;
 }
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [self addNotfi];
+}
+
+- (void)addNotfi {
+    // 通知
+    // 当UITextView的文字发生改变时，UITextView自己会发出一个UITextViewTextDidChangeNotification通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:self];
+}
 
 - (void)dealloc
 {

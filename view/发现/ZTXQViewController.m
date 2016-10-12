@@ -159,7 +159,10 @@ ON_SIGNAL3(ZTModel, SPECIALREAD, signal) {
     
     SpecialInfo * specialInfo = ztModel.recommends[0];
     XiangQingViewController *vc = [[XiangQingViewController alloc] init];
-    vc.p_id =specialInfo.p_id;
+//    vc.p_id =specialInfo.p_id;
+    [vc readWithP_id:specialInfo.p_id collBack:^(NSString *p_id) {
+        
+    }];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
     

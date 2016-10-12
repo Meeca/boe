@@ -85,6 +85,17 @@ ON_SIGNAL3(HomeModel, RELOADED, signal) {
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     HomeCellView *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"choice" forIndexPath:indexPath];
     cell.data = homeModel.recommends[indexPath.item];
+    [cell setCollBack:^(HomeIndex *ff) {
+        for (HomeIndex *f in homeModel.recommends) {
+            if ([f.p_id isEqualToString:ff.p_id]) {
+                f.collection = ff.collection;
+                f.coll_nums = ff.coll_nums;
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [collectionView reloadData];
+                });
+            }
+        }
+    }];
     [cell setNeedsLayout];
     return cell;
 }
@@ -92,7 +103,23 @@ ON_SIGNAL3(HomeModel, RELOADED, signal) {
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     HomeIndex *f = homeModel.recommends[indexPath.item];
     XiangQingViewController *vc = [[XiangQingViewController alloc] init];
-    vc.p_id = f.p_id;
+//    vc.p_id = f.p_id;
+    [vc readWithP_id:f.p_id collBack:^(NSString *p_id) {
+        for (HomeIndex *f in homeModel.recommends) {
+            if ([f.p_id isEqualToString:p_id]) {
+                if ([f.collection integerValue]==1) {
+                    f.collection = @"0";
+                    f.coll_nums = [NSString stringWithFormat:@"%@", @([f.coll_nums integerValue]-1)];
+                } else {
+                    f.collection = @"1";
+                    f.coll_nums = [NSString stringWithFormat:@"%@", @([f.coll_nums integerValue]+1)];
+                }
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [collectionView reloadData];
+                });
+            }
+        }
+    }];
     vc.hidesBottomBarWhenPushed = YES;
     [self.nav pushViewController:vc animated:YES];
 }

@@ -128,7 +128,7 @@ static NSString * const kCommentCellTableViewCellIdentifier = @"kCommentCellTabl
 - (void)changeBtndStateWithIsType:(BOOL )type{
     
     
-    _btnTitles =  type? @[@"分享",@"删除话题", @"解除评论",@"举报"]: @[@"分享",@"删除话题", @"禁止评论",@"举报"];
+    _btnTitles =  type? @[@"分享",@"删除话题", @"开启评论",@"举报"]: @[@"分享",@"删除话题", @"禁止评论",@"举报"];
 }
 
 

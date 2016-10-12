@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn4;
 @property (weak, nonatomic) IBOutlet UIButton *btn5;
 @property (weak, nonatomic) IBOutlet UIButton *btn6;
-@property (weak, nonatomic) IBOutlet UITextField *moreTextField;
+@property (weak, nonatomic) IBOutlet IWTextView *moreTextField;
 @property (copy, nonatomic) NSString *jubaoContent;
 @property (strong, nonatomic) NSArray *titles;
 
@@ -30,6 +30,7 @@
     self.title =@"举报";
     _jubaoContent = @"";
     _titles = @[@"色情",@"欺诈",@"谣言",@"政治敏感",@"隐私犯罪",@"侵权(抄袭，盗用)"];
+    _moreTextField.placeholder = @"多行输入";
 }
 
 
@@ -123,13 +124,6 @@ NSString *path = @"/app.php/Circles/report";
         [self showToastWithMessage:@"您已经举报过了"];
                       }];
 
-}
-
-- (IBAction)moreTextFeild:(id)sender
-
-{
-    NSLog(@"多行输入");
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -10,4 +10,6 @@
 
 @interface HomeCellView : UICollectionViewCell
 
+@property (nonatomic, copy) void(^collBack)(HomeIndex *f);
+
 @end

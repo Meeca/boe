@@ -342,13 +342,13 @@ ON_SIGNAL3(UserModel, COLLECTIONDEL, signal) {
 }
 
 - (void)back {
-    if (self.navigationController.viewControllers.count>2) {
-        [self.navigationController popToViewController:self.navigationController.viewControllers[1] animated:YES];
-    } else {
-        
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
-    
+//    if (self.navigationController.viewControllers.count>2) {
+//        [self.navigationController popToViewController:self.navigationController.viewControllers[1] animated:YES];
+//    } else {
+//        
+//        [self.navigationController popToRootViewControllerAnimated:YES];
+//    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)shareBtnAction:(UIButton *)btn {

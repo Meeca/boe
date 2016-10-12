@@ -10,7 +10,7 @@
 
 @interface JDFProduct : NSObject
 
-@property (nonatomic, copy) NSString *pID;
+@property (nonatomic, copy) NSString *c_id;
 
 @property (nonatomic, copy) NSString *title;
 

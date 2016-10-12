@@ -840,6 +840,7 @@
 		75FE9AF51D6AFDF100FC1E78 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FE9AF41D6AFDF100FC1E78 /* UserInfoModel.m */; };
 		75FE9B411D6C29B700FC1E78 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FE9B401D6C29B700FC1E78 /* DataModel.m */; };
 		75FE9B8C1D6CACE700FC1E78 /* circleSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FE9B8B1D6CACE700FC1E78 /* circleSearchTableViewCell.m */; };
+		CD7C33091DAE6F0700084EEA /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7C33081DAE6F0700084EEA /* NSString+Emoji.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -2407,6 +2408,8 @@
 		75FE9B401D6C29B700FC1E78 /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		75FE9B8A1D6CACE700FC1E78 /* circleSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = circleSearchTableViewCell.h; sourceTree = "<group>"; };
 		75FE9B8B1D6CACE700FC1E78 /* circleSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = circleSearchTableViewCell.m; sourceTree = "<group>"; };
+		CD7C33071DAE6F0700084EEA /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
+		CD7C33081DAE6F0700084EEA /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
 		D9B37477A01F29A81B4BD158 /* libPods-jingdongfang.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-jingdongfang.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -2938,6 +2941,7 @@
 		4DC6B3C11961C0C300C87D1B /* util */ = {
 			isa = PBXGroup;
 			children = (
+				CD7C33061DAE6ED400084EEA /* NSString+Emoji */,
 				7507BA181D76BF720031ECE8 /* UMengSocial */,
 				7530E2E21D73059600CFBC9F /* alipay */,
 				75FE9AD21D6AEF5000FC1E78 /* MCNetTool */,
@@ -5820,6 +5824,15 @@
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
+		CD7C33061DAE6ED400084EEA /* NSString+Emoji */ = {
+			isa = PBXGroup;
+			children = (
+				CD7C33071DAE6F0700084EEA /* NSString+Emoji.h */,
+				CD7C33081DAE6F0700084EEA /* NSString+Emoji.m */,
+			);
+			path = "NSString+Emoji";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -6161,6 +6174,7 @@
 				4DC6BB081961C20700C87D1B /* Bee_UICameraView.m in Sources */,
 				4DC6BB281961C20700C87D1B /* Bee_UIQuery.m in Sources */,
 				75196E6D1D1A2A91002D403B /* BaseNavigationController.m in Sources */,
+				CD7C33091DAE6F0700084EEA /* NSString+Emoji.m in Sources */,
 				4DC6BB0B1961C20700C87D1B /* Bee_UIMatrixView.m in Sources */,
 				4DC6BBA71961C20700C87D1B /* FMDatabase.m in Sources */,
 				4DC6BBB01961C20700C87D1B /* CXHTMLDocument.m in Sources */,

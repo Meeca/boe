@@ -135,27 +135,12 @@
 - (void)zanClick:(UIButton *)button
 {
     
-    button.selected = !button.isSelected;
     
     HomeIndex *f = self.data;
     
-    if (button.isSelected)
-    {
-        f.coll_nums = [NSString stringWithFormat:@"%ld", f.coll_nums.integerValue + 1];
-
-    }
-    else
-    {
-        f.coll_nums = [NSString stringWithFormat:@"%ld", f.coll_nums.integerValue - 1];
-    }
-    
-    [zan setTitle:f.coll_nums forState:UIControlStateNormal];
-    
-    
-    
     NSString *path;
     
-    if (button.isSelected)
+    if (!button.isSelected)
     {
         path = @"/app.php/Index/zambia_add";
     }
@@ -171,8 +156,25 @@
                              };
     [MCNetTool postWithUrl:path params:params hud:YES success:^(NSDictionary *requestDic, NSString *msg)
      {
+         button.selected = !button.isSelected;
+
+         if (button.isSelected)
+         {
+             f.coll_nums = [NSString stringWithFormat:@"%ld", f.coll_nums.integerValue + 1];
+             f.collection = @"1";
+             
+         }
+         else
+         {
+             f.coll_nums = [NSString stringWithFormat:@"%ld", f.coll_nums.integerValue - 1];
+             f.collection = @"0";
+         }
          
+         [zan setTitle:f.coll_nums forState:UIControlStateNormal];
          
+         if (self.collBack) {
+             self.collBack(f);
+         }
          
      } fail:^(NSString *error) {
          

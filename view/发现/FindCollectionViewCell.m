@@ -29,8 +29,8 @@
             numberLaber = [[UILabel alloc] initWithFrame:CGRectMake(0, self.height-20, 100 , 20)];
             numberLaber.textColor = [UIColor whiteColor];
 //        numberLaber.font = [UIFont fontWithName:@"" size:10];
-        numberLaber.font = [UIFont fontWithName:@"STHeiti-Medium.ttc" size:10];
-            numberLaber.backgroundColor = [UIColor lightGrayColor];
+        numberLaber.font = [UIFont fontWithName:@"STHeiti-Medium.ttc" size:8];
+            numberLaber.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:.7];
             numberLaber.textAlignment = UITextAlignmentCenter;
             [imgView addSubview:numberLaber];
         numberLaber.hidden = YES;
@@ -49,11 +49,11 @@
     
     if (_isShow) {
         if (self.index.section == 0) {
-            numberLaber.text = [NSString stringWithFormat:@"%@人收藏",_shoucang];
+            numberLaber.text = [NSString stringWithFormat:@"%@人收藏",_shoucang.length>0?_shoucang:@"0"];
         } else if (self.index.section == 1) {
-            numberLaber.text = [NSString stringWithFormat:@"%@人点赞",_goumai];
+            numberLaber.text = [NSString stringWithFormat:@"%@人点赞",_goumai.length>0?_goumai:@"0"];
         } else if (self.index.section == 2) {
-            numberLaber.text = [NSString stringWithFormat:@"%@人推送",_guanzhu];
+            numberLaber.text = [NSString stringWithFormat:@"%@人推送",_guanzhu.length>0?_guanzhu:@"0"];
         }
         
         

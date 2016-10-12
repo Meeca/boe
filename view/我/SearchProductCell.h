@@ -13,5 +13,6 @@
 @interface SearchProductCell : UICollectionViewCell
 
 @property (nonatomic, strong) JDFProduct *product;
+@property (nonatomic, copy) void(^ tapAction)(JDFProduct *product);
 
 @end

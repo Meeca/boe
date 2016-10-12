@@ -10,7 +10,7 @@
 
 @interface JDFArtist : NSObject
 
-@property (nonatomic, copy) NSString *uID;
+@property (nonatomic, copy) NSString *u_id;
 
 @property (nonatomic, copy) NSString *nike;
 

@@ -105,6 +105,17 @@ ON_SIGNAL3(UserModel, USERCONTENT, signal) {
 - (void)sure:(UIBarButtonItem *)btn {
     [self.view endEditing:YES];
 
+    if (self.context.length == 0) {
+        [self presentMessageTips:@"请输入简要内容"];
+        return;
+    }
+    BOOL ishas = [NSString stringContainsEmoji:self.context];
+    NSLog(@" %@ 表情", ishas?@"有":@"没有");
+    if (ishas) {
+        [self presentMessageTips:@"不支持表情符号"];
+        return;
+    }
+    
     [userModel app_php_User_user_content:self.context.length>0?self.context:@""];
 }
 
