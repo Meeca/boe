@@ -34,7 +34,11 @@
     imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     imageView.layer.masksToBounds = YES;
     imageView.contentMode = UIViewContentModeScaleAspectFill;
+    imageView.userInteractionEnabled = YES;
     [self.contentView addSubview:imageView];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [imageView addGestureRecognizer:tap];
     
     name = [[UILabel alloc] initWithFrame:CGRectZero];
     name.textColor = KAPPCOLOR;
@@ -78,6 +82,13 @@
     
     line.frame = CGRectMake(content.x, content.y, content.width, .5);
     line.bottom = self.height;
+}
+
+- (void)tapAction:(UIGestureRecognizer *)tap {
+    if (self.iconAction) {
+        CommentInfo *comment = self.data;
+        self.iconAction(comment);
+    }
 }
 
 - (void)awakeFromNib {

@@ -10,6 +10,8 @@
 #import "ZuoPinModel.h"
 #import "ZuoPinCell.h"
 #import "XiangQingViewController.h"
+#import "BaseModel.h"
+#import "PushPhoto.h"
 
 @interface SiMiViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
     UICollectionView *collect;
@@ -19,6 +21,12 @@
     NSMutableArray *selArr;
     BOOL isEdit;
     UIView *tabbar;
+    
+    BaseModel *baseModel;
+    NSString *p_idsStr;
+    NSString *pay_type;
+    NSMutableArray *imageUrlArr;
+    NSMutableArray *_dataArray;
 }
 
 @end
@@ -48,6 +56,9 @@
     
     zuoPinModel = [ZuoPinModel modelWithObserver:self];
     zuoPinModel.type = @"4";
+    
+    baseModel = [BaseModel modelWithObserver:self];
+    _dataArray = [NSMutableArray array];
     
     [self addHeader];
     [self addFooter];
@@ -81,7 +92,60 @@ ON_SIGNAL3(ZuoPinModel, RELOADED, signal) {
         collect.mj_footer.hidden = YES;
         [self presentMessageTips:@"暂无数据"];
     }
-    [collect reloadData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [collect reloadData];
+    });
+}
+
+ON_SIGNAL3(BaseModel, EQUIPMENTLIST, signal) {
+    [_dataArray removeAllObjects];
+    NSArray *dataArr = signal.object;
+    for (id obj in dataArr) {
+        [_dataArray addObject:obj];
+    }
+    [baseModel app_php_Share_User_equipment_list];
+}
+
+
+
+ON_SIGNAL3(BaseModel, SHAREEQUIPMENTLIST, signal) {
+    NSArray *dataArra = signal.object;
+    
+    for (id obj in dataArra) {
+        [_dataArray addObject:obj];
+    }
+    
+    if (_dataArray.count>1) {
+        PushPhoto *view = [[PushPhoto alloc] initWithFrame:CGRectMake(0, 20, KSCREENWIDTH, KSCREENHEIGHT-20)];
+        view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.9];
+        view.x = KSCREENWIDTH;
+        view.p_idsStr = p_idsStr;
+        view.imgArr = imageUrlArr;
+        view.dataArr = _dataArray;
+        UIWindow *win = [UIApplication sharedApplication].keyWindow;
+        [win addSubview:view];
+        
+        [UIView animateWithDuration:.3 animations:^{
+            view.x = 0;
+        } completion:^(BOOL finished) {
+            if (self.editBlock) {
+                self.editBlock(NO);
+            }
+        }];
+    } else {
+        if (_dataArray.count==1) {
+            EquipmentList *list = _dataArray[0];
+            [baseModel app_php_Jpush_indexWithP_id:p_idsStr e_id:list.e_id type:@"2" pay_type:pay_type];
+        } else {
+            [self presentMessageTips:@"请先绑定设备"];
+        }
+    }
+}
+
+ON_SIGNAL3(BaseModel, JPUSHINDEX, signal) {
+    if (self.editBlock) {
+        self.editBlock(NO);
+    }
 }
 
 #pragma mark - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
@@ -136,11 +200,45 @@ ON_SIGNAL3(ZuoPinModel, RELOADED, signal) {
         
     } else {
         HomeIndex *list = zuoPinModel.recommends[indexPath.item];
-        XiangQingViewController *vc = [[XiangQingViewController alloc] init];
-        vc.p_id = list.p_id;
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.nav pushViewController:vc animated:YES];
+//        XiangQingViewController *vc = [[XiangQingViewController alloc] init];
+//        vc.p_id = list.p_id;
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [self.nav pushViewController:vc animated:YES];
+        UIControl *ctrl = [[UIControl alloc] initWithFrame:CGRectMake(0, 20, KSCREENWIDTH, KSCREENHEIGHT-20)];
+        ctrl.backgroundColor = RGB(66, 66, 66);
+        [ctrl addTarget:self action:@selector(hiddenCtrl:) forControlEvents:UIControlEventTouchUpInside];
+        
+        UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        [imgView sd_setImageWithURL:[NSURL URLWithString:list.image] placeholderImage:KZHANWEI];
+        imgView.contentMode = UIViewContentModeScaleAspectFill;
+        imgView.layer.borderColor = [UIColor whiteColor].CGColor;
+        imgView.layer.borderWidth = 15;
+        imgView.layer.masksToBounds = YES;
+        [ctrl addSubview:imgView];
+        
+        if ([list.plates integerValue]==1) { // 横屏
+            imgView.frame = CGRectMake(0, 0, (KSCREENWIDTH-80)*1920/1080, KSCREENWIDTH-80);
+            imgView.transform = CGAffineTransformMakeRotation(-M_PI/2);
+        } else {  //竖屏
+            imgView.frame = CGRectMake(0, 0, KSCREENWIDTH-80, (KSCREENWIDTH-80)*1920/1080);
+        }
+        imgView.center = CGPointMake(ctrl.width/2, ctrl.height/2);
+        
+        UIWindow *win = [UIApplication sharedApplication].keyWindow;
+        [win addSubview:ctrl];
+        ctrl.alpha = 0;
+        [UIView animateWithDuration:.3 animations:^{
+            ctrl.alpha = 1;
+        }];
     }
+}
+
+- (void)hiddenCtrl:(UIControl *)ctrl {
+    [UIView animateWithDuration:.3 animations:^{
+        ctrl.alpha = 0;
+    } completion:^(BOOL finished) {
+        [ctrl removeFromSuperview];
+    }];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -196,8 +294,8 @@ ON_SIGNAL3(ZuoPinModel, RELOADED, signal) {
         [UIView animateWithDuration:.3 animations:^{
             tabbar.bottom = self.view.height;
         } completion:^(BOOL finished) {
-            collect.mj_footer = nil;
-            collect.mj_header = nil;
+            collect.mj_footer.hidden = YES;
+            collect.mj_header.hidden = YES;
             collect.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
             [collect reloadData];
         }];
@@ -244,8 +342,6 @@ ON_SIGNAL3(ZuoPinModel, RELOADED, signal) {
     
     [MCNetTool postWithUrl:@"/app.php/User/works_del" params:dict hud:YES success:^(NSDictionary *requestDic, NSString *msg) {
         
-        [self loadModel];
-        [self canel];
         [self showToastWithMessage:msg];
         
         if (self.editBlock) {
@@ -274,11 +370,25 @@ ON_SIGNAL3(ZuoPinModel, RELOADED, signal) {
         [self presentMessageTips:@"至少选择一个作品"];
         return;
     }
+    
+    imageUrlArr = [NSMutableArray array];
+
+    NSMutableArray *payArr = [NSMutableArray array];
     NSMutableArray *infoArr = [NSMutableArray array];
     for (NSNumber *index in selIndexArr) {
         HomeIndex *info = zuoPinModel.recommends[[index integerValue]];
-        [infoArr addObject:info];
+        [infoArr addObject:info.p_id];
+        [payArr addObject:@"2"];
+        [imageUrlArr addObject:info.image];
     }
+    
+    p_idsStr = nil;
+    p_idsStr = [infoArr componentsJoinedByString:@"-"];
+    
+    pay_type = nil;
+    pay_type = [payArr componentsJoinedByString:@"_"];
+    
+    [baseModel app_php_User_equipment_list];
 }
 
 - (void)canel {
@@ -288,9 +398,8 @@ ON_SIGNAL3(ZuoPinModel, RELOADED, signal) {
         tabbar.top = self.view.height;
     } completion:^(BOOL finished) {
         collect.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        [self addHeader];
-        [self addFooter];
-        [collect reloadData];
+        collect.mj_header.hidden = NO;
+        [self loadModel];
     }];
 }
 

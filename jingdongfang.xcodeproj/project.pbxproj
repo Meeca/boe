@@ -4546,8 +4546,6 @@
 		75196E741D1A2D82002D403B /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
-				3F1F50C51D9BD0780030FF7B /* DBHCommentCellTableViewCell.h */,
-				3F1F50C61D9BD0780030FF7B /* DBHCommentCellTableViewCell.m */,
 				75196E761D1A2DA9002D403B /* HomeViewController.h */,
 				75196E771D1A2DA9002D403B /* HomeViewController.m */,
 				75196E781D1A2DA9002D403B /* HomeViewController.xib */,
@@ -4562,6 +4560,8 @@
 				750618B01D2E029800E94B6F /* XiangQingViewController.h */,
 				750618B11D2E029800E94B6F /* XiangQingViewController.m */,
 				750618B21D2E029800E94B6F /* XiangQingViewController.xib */,
+				3F1F50C51D9BD0780030FF7B /* DBHCommentCellTableViewCell.h */,
+				3F1F50C61D9BD0780030FF7B /* DBHCommentCellTableViewCell.m */,
 				75A0904D1D5C7F990096D19E /* CommentCell.h */,
 				75A0904E1D5C7F990096D19E /* CommentCell.m */,
 			);

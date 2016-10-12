@@ -185,9 +185,11 @@
     
     upOrdown = NO;
     num = 0;
-    _line = [[UIImageView alloc] initWithFrame:CGRectMake((KSCREENWIDTH-250)/2, 100, 250, 1)];
-    _line.contentMode = UIViewContentModeScaleAspectFill;
-    _line.image = [UIImage imageNamed:@"扫面线.png"];
+    if (!_line) {
+        _line = [[UIImageView alloc] initWithFrame:CGRectMake((KSCREENWIDTH-250)/2, 100, 250, 1)];
+        _line.contentMode = UIViewContentModeScaleAspectFill;
+        _line.image = [UIImage imageNamed:@"扫面线.png"];
+    }
     [self.view addSubview:_line];
 }
 
@@ -197,6 +199,9 @@
 }
 
 - (void)addDv {
+    [self.previewLayer removeFromSuperlayer];
+    [self.view removeAllSubviews];
+
     HandViewController *vc = [[HandViewController alloc] init];
     vc.hidesBottomBarWhenPushed = YES;
     [Tool setBackButtonNoTitle:self];

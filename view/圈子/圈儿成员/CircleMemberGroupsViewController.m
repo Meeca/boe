@@ -152,7 +152,7 @@
              
          }
          // 刷新表格
-         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
              [_contactsPickerView reloadData];
          });
          
@@ -311,7 +311,7 @@
             self.selectedIndexSet = [NSMutableIndexSet indexSet];
             _isChooseBtn = YES;
             
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [_contactsPickerView reloadData];
             });
             
@@ -333,7 +333,7 @@
         _circleMembersFooterView = nil;
         _contactsPickerView.frame =CGRectMake(0, 0, KSCREENWIDTH, self.view.height);
          _isChooseBtn = NO;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [_contactsPickerView reloadData];
         });
 

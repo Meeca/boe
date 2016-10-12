@@ -21,7 +21,7 @@
 #import "UIViewController+MBShow.h"
 #import "ArtGalleryViewController.h"
 #import "DBHCommentCellTableViewCell.h"
-
+#import "IntroViewController.h"
 #import "TLChatViewController.h"
 #import "YXScrollowActionSheet.h"
 #import "ShareModel.h"
@@ -191,7 +191,7 @@ ON_SIGNAL3(BaseModel, SHAREEQUIPMENTLIST, signal) {
     } else {
         if (_dataArray.count==1) {
             EquipmentList *list = _dataArray[0];
-            [baseModel app_php_Jpush_indexWithP_id:detailsInfo.p_id e_id:list.e_id pay_type:detailsInfo.pay_type];
+            [baseModel app_php_Jpush_indexWithP_id:detailsInfo.p_id e_id:list.e_id type:@"1" pay_type:detailsInfo.pay_type];
         } else {
             [self presentMessageTips:@"请先绑定设备"];
         }
@@ -212,8 +212,6 @@ ON_SIGNAL3(BaseModel, COMMENTADD, signal) {
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     [picture addGestureRecognizer:tap];
-    
-    
 }
 
 #pragma mark - ScrollView delegate
@@ -228,6 +226,13 @@ ON_SIGNAL3(BaseModel, COMMENTADD, signal) {
             }
         }
     }
+}
+
+- (void)tapAct {
+    IntroViewController *vc = [[IntroViewController alloc] init];
+    vc.u_id = detailsInfo.u_id;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
@@ -331,6 +336,10 @@ ON_SIGNAL3(BaseModel, COMMENTADD, signal) {
         [icon sd_setImageWithURL:[NSURL URLWithString:detailsInfo.u_image] placeholderImage:KZHANWEI];
         icon.contentMode = UIViewContentModeScaleAspectFit;
         [cell.contentView addSubview:icon];
+        icon.userInteractionEnabled = YES;
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAct)];
+        [icon addGestureRecognizer:tap];
         
         UILabel *name = [[UILabel alloc] initWithFrame:CGRectZero];
         name.font = font;
@@ -558,6 +567,13 @@ ON_SIGNAL3(BaseModel, COMMENTADD, signal) {
                 comCell.selectionStyle = UITableViewCellSelectionStyleNone;
             }
             comCell.data = detailsInfo.comment_list[indexPath.section - 6];
+            [comCell setIconAction:^(CommentInfo *model) {
+                IntroViewController *vc = [[IntroViewController alloc] init];
+                vc.u_id = model.u_id;
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            }];
+
             [comCell setNeedsLayout];
             return comCell;
         } else {
@@ -571,6 +587,13 @@ ON_SIGNAL3(BaseModel, COMMENTADD, signal) {
             model.image = [reCommen valueForKey:@"u_image"];
             model.nike = [reCommen valueForKey:@"u_name"];
             model.u_id = [reCommen valueForKey:@"u_id"];
+            
+            [cell setIconAction:^(CommentInfo *model) {
+                IntroViewController *vc = [[IntroViewController alloc] init];
+                vc.u_id = model.u_id;
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            }];
             
             cell.model = model;
             

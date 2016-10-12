@@ -10,7 +10,7 @@
 //    												
 // title:  boeProject
 // author: haozhiyu1990
-// date:   2016-09-30 07:16:12 +0000
+// date:   2016-10-12 15:12:30 +0000
 //
 
 #import "Bee.h"
@@ -202,6 +202,8 @@
 @property (nonatomic, retain) NSString *			created_at;
 @property (nonatomic, retain) NSString *			image;
 @property (nonatomic, retain) NSString *			p_id;
+@property (nonatomic, retain) NSString *			p_id1;
+@property (nonatomic, retain) NSString *			pay_type;
 @property (nonatomic, retain) NSString *			plates;
 @property (nonatomic, retain) NSString *			theme;
 @property (nonatomic, retain) NSString *			title;

@@ -103,12 +103,22 @@
 
 
 - (void)nameTextFiledChangeValueAction:(UITextField *)textField{
+    
+    UITextRange *markedRange = [textField markedTextRange];
+    if (markedRange) {
+        
+        return;
+    }
+    
+    if (textField.text.length > 8) {
+        [self presentMessageTips:@"最多可输入8个字"];
+        NSRange range = [textField.text rangeOfComposedCharacterSequenceAtIndex:8];
+        textField.text = [textField.text substringToIndex:range.location];
+    }
 
     NSString * text = textField.text;
 
     _deviceName = text;
-    
-    
     
     
 

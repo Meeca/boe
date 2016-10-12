@@ -127,12 +127,22 @@
     }
 }
 
+- (void)tapAction:(UIGestureRecognizer *)tap {
+    if (self.iconAction) {
+        self.iconAction(self.model);
+    }
+}
+
 - (UIImageView *)headImageView {
     if (!_headImageView) {
         _headImageView = [[UIImageView alloc] init];
         _headImageView.layer.masksToBounds = YES;
         _headImageView.layer.cornerRadius = 17.5;
+        _headImageView.userInteractionEnabled = YES;
         _headImageView.contentMode = UIViewContentModeScaleAspectFill;
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        [_headImageView addGestureRecognizer:tap];
     }
     return _headImageView;
 }
