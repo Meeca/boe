@@ -83,10 +83,10 @@ UITableViewDataSource>{
         [self loadCircleDataWithFirstPage:NO hud:NO];
 
     }];
-    [header setTitle:MJRefreshBackFooterIdleText forState:MJRefreshStateIdle];
-    [header setTitle:MJRefreshBackFooterPullingText forState:MJRefreshStatePulling];
-    [header setTitle:MJRefreshBackFooterRefreshingText forState:MJRefreshStateRefreshing];
-    [header setTitle:MJRefreshBackFooterNoMoreDataText forState:MJRefreshStateNoMoreData];
+//    [header setTitle:MJRefreshBackFooterIdleText forState:MJRefreshStateIdle];
+//    [header setTitle:MJRefreshBackFooterPullingText forState:MJRefreshStatePulling];
+//    [header setTitle:MJRefreshBackFooterRefreshingText forState:MJRefreshStateRefreshing];
+//    [header setTitle:MJRefreshBackFooterNoMoreDataText forState:MJRefreshStateNoMoreData];
     _chatTableView.mj_header = header;
 
 //     [_chatTableView headerAddMJRefresh:^{

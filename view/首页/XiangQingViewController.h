@@ -10,9 +10,12 @@
 
 @interface XiangQingViewController : UIViewController
 
-@property (nonatomic, copy) NSString *p_id;
+@property (nonatomic, readonly) NSString *p_id;
+@property (nonatomic, readonly) void (^collBack)(NSString *p_id);
 @property (nonatomic, assign) BOOL isRoot;
 
 @property (strong, nonatomic) NSMutableArray *dataArray;
+
+- (void)readWithP_id:(NSString *)p_id collBack:(void(^)(NSString *p_id))block;
 
 @end

@@ -21,6 +21,16 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+    
+    [self.contentView addGestureRecognizer:tap];
+
+}
+
+- (void)tap {
+    if (self.tapAction) {
+        self.tapAction(_artist);
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

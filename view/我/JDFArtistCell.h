@@ -13,5 +13,6 @@
 @interface JDFArtistCell : UITableViewCell
 
 @property (nonatomic, strong) JDFArtist *artist;
+@property (nonatomic, copy) void(^ tapAction)(JDFArtist *artist);
 
 @end

@@ -46,6 +46,7 @@
 #import "BaseNavigationController.h"
 #import "UserModel.h"
 #import "LocationManager.h"
+#import "NSString+Emoji.h"
 
 #define KSCREENWIDTH   ([UIScreen mainScreen].bounds.size.width)
 #define KSCREENHEIGHT  ([UIScreen mainScreen].bounds.size.height)
@@ -56,7 +57,7 @@
 #define INTROHEIGHT   (KSCALE(520))
 #define UPDATASUCC @"UPDATASUCC"
 
-
+#define FOLLOWUPDATA @"followUpdata"
 //极光推送的key
 #define JPUSH_APP_KEY @"0d137a96526fbde25b79c78a"
 

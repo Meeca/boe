@@ -203,6 +203,10 @@ ON_SIGNAL3(BaseModel, COMMENTADD, signal) {
     [homeModel app_php_Index_read:self.p_id];
 }
 
+ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
+    [homeModel app_php_Index_read:self.p_id];
+}
+
 - (void)picture {
     picture = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, KSCREENWIDTH, KSCREENWIDTH*1080/1920)];
     picture.backgroundColor = [UIColor lightGrayColor];
@@ -233,6 +237,11 @@ ON_SIGNAL3(BaseModel, COMMENTADD, signal) {
     vc.u_id = detailsInfo.u_id;
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)readWithP_id:(NSString *)p_id collBack:(void(^)(NSString *p_id))block {
+    _p_id = [p_id copy];
+    _collBack = [block copy];
 }
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
@@ -774,7 +783,10 @@ ON_SIGNAL3(BaseModel, COMMENTADD, signal) {
 
     GuessInfo *r = detailsInfo.guess_list[indexPath.item];
     XiangQingViewController *vc = [[XiangQingViewController alloc] init];
-    vc.p_id = r.p_id;
+//    vc.p_id = r.p_id;
+    [vc readWithP_id:r.p_id collBack:^(NSString *p_id) {
+        
+    }];
     vc.isRoot = YES;
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
@@ -787,15 +799,15 @@ ON_SIGNAL3(BaseModel, COMMENTADD, signal) {
 - (void)back {
     [self.view endEditing:YES];
 
-    if (self.isRoot) {
-        if ([self.navigationController.viewControllers[1] isKindOfClass:[ArtGalleryViewController class]]) {
-            [self.navigationController popToViewController:self.navigationController.viewControllers[1] animated:YES];
-        } else {
-            [self.navigationController popToRootViewControllerAnimated:YES];
-        }
-    } else {
+//    if (self.isRoot) {
+//        if ([self.navigationController.viewControllers[1] isKindOfClass:[ArtGalleryViewController class]]) {
+//            [self.navigationController popToViewController:self.navigationController.viewControllers[1] animated:YES];
+//        } else {
+//            [self.navigationController popToRootViewControllerAnimated:YES];
+//        }
+//    } else {
         [self.navigationController popViewControllerAnimated:YES];
-    }
+//    }
 }
 
 - (void)pushPhoto:(UIButton *)btn {
@@ -996,10 +1008,7 @@ ON_SIGNAL3(BaseModel, COMMENTADD, signal) {
     } else {
         [baseModel app_php_Index_comment_add:self.p_id content:imText.text];
     }
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [homeModel app_php_Index_read:self.p_id];
-    });
-    
+
     imText.text = nil;
     [self.view endEditing:YES];
 }
@@ -1007,6 +1016,9 @@ ON_SIGNAL3(BaseModel, COMMENTADD, signal) {
 #pragma mark - UITextViewDelegate
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if (![textView isKindOfClass:[IWTextView class]]) {
+        return NO;
+    }
     if ([text isEqualToString:@"\n"]){
         
         if (textView.text.length==0) {
@@ -1022,6 +1034,23 @@ ON_SIGNAL3(BaseModel, COMMENTADD, signal) {
         return NO;
     }
     return YES;
+}
+
+- (void)textViewDidChange:(UITextView *)textView {
+    if (![textView isKindOfClass:[IWTextView class]]) {
+        return;
+    }
+    UITextRange *markedRange = [textView markedTextRange];
+    if (markedRange) {
+        
+        return;
+    }
+    
+    if (textView.text.length > 50) {
+        [self presentMessageTips:@"最多可输入50个字"];
+        NSRange range = [textView.text rangeOfComposedCharacterSequenceAtIndex:50];
+        textView.text = [textView.text substringToIndex:range.location];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -1044,27 +1073,11 @@ ON_SIGNAL3(BaseModel, COMMENTADD, signal) {
 - (void)zanClick:(UIButton *)button
 {
     
-    button.selected = !button.isSelected;
-    
     DetailsInfo *f = detailsInfo;
-    
-    if (button.isSelected)
-    {
-        f.zambia_nums = [NSString stringWithFormat:@"%@", @(f.zambia_nums.integerValue + 1)];
-        
-    }
-    else
-    {
-        f.zambia_nums = [NSString stringWithFormat:@"%@", @(f.zambia_nums.integerValue - 1)];
-    }
-    
-    [button setTitle:f.zambia_nums forState:UIControlStateNormal];
-    
-    
     
     NSString *path;
     
-    if (button.isSelected)
+    if (!button.isSelected)
     {
         path = @"/app.php/Index/zambia_add";
     }
@@ -1080,7 +1093,23 @@ ON_SIGNAL3(BaseModel, COMMENTADD, signal) {
                              };
     [MCNetTool postWithUrl:path params:params hud:YES success:^(NSDictionary *requestDic, NSString *msg)
      {
+         button.selected = !button.isSelected;
          
+         if (button.isSelected)
+         {
+             f.zambia_nums = [NSString stringWithFormat:@"%@", @(f.zambia_nums.integerValue + 1)];
+             
+         }
+         else
+         {
+             f.zambia_nums = [NSString stringWithFormat:@"%@", @(f.zambia_nums.integerValue - 1)];
+         }
+         
+         [button setTitle:f.zambia_nums forState:UIControlStateNormal];
+         
+         if (self.collBack) {
+             self.collBack(self.p_id);
+         }
      } fail:^(NSString *error) {
          
      }];
@@ -1126,7 +1155,7 @@ ON_SIGNAL3(BaseModel, COMMENTADD, signal) {
      {
          [self showToastWithMessage:msg];
          
-         
+         [[NSNotificationCenter defaultCenter] postNotificationName:FOLLOWUPDATA object:nil];
      } fail:^(NSString *error) {
          [self showToastWithMessage:@"您已经关注关注了"];
      }];

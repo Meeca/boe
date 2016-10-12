@@ -10,7 +10,7 @@
 
 @interface JDFStory : NSObject
 
-@property (nonatomic, copy) NSString *sID;
+@property (nonatomic, copy) NSString *n_id;
 
 @property (nonatomic, copy) NSString *title;
 

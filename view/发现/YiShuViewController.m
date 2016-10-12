@@ -304,7 +304,10 @@ ON_SIGNAL3(FindModel, CLASSSLIST, signal) {
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     FindIndex *f = findModel.recommends[indexPath.item];
     XiangQingViewController *vc = [[XiangQingViewController alloc] init];
-    vc.p_id = f.p_id;
+//    vc.p_id = f.p_id;
+    [vc readWithP_id:f.p_id collBack:^(NSString *p_id) {
+        
+    }];
     vc.hidesBottomBarWhenPushed = YES;
     [self.nav pushViewController:vc animated:YES];
 }

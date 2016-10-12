@@ -627,6 +627,7 @@ DEF_NOTIFICATION(LOGIN)
                 else{
                     [self dismissTips];
                     [self sendUISignal:self.COLLECTIONADD];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:FOLLOWUPDATA object:nil];
                 }
             }
             else{
@@ -679,6 +680,7 @@ DEF_NOTIFICATION(LOGIN)
                 else{
                     [self dismissTips];
                     [self sendUISignal:self.COLLECTIONDEL];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:FOLLOWUPDATA object:nil];
                 }
             }
             else{

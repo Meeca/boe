@@ -18,6 +18,9 @@
 #import "JDFStoryCell.h"
 #import "UIViewController+MBShow.h"
 #import "JDFSearchHotKeyModel.h"
+#import "XiangQingViewController.h"
+#import "IntroViewController.h"
+#import "ZTXQViewController.h"
 
 @interface SeachViewController () <UISearchBarDelegate, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 {
@@ -51,9 +54,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     _searchHotArray = [NSMutableArray array];
     // Do any additional setup after loading the view from its nib.
-    seach = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, KSCREENWIDTH - 60, 44)];
+    seach = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, KSCREENWIDTH - 80, 44)];
     seach.searchBarStyle = UISearchBarStyleMinimal;
     seach.delegate = self;
     seach.placeholder = @"输入关键词搜索";
@@ -83,7 +87,9 @@
     [self addTableViewRefreshView1];
     [self addTableViewRefreshView2];
     [self addTableViewRefreshView3];
-    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [seach becomeFirstResponder];
+    });
 }
 //下拉刷新
 
@@ -162,7 +168,9 @@
             [self.searchHotArray addObject:model];
             
         }
-        [self.hotKeyCollectionView reloadData];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.hotKeyCollectionView reloadData];
+        });
         
     }
                       fail:^(NSString *error) {
@@ -181,12 +189,10 @@
     self.resultView.hidden = !_isSearch;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [seach becomeFirstResponder];
-    [self loadCircleDataWithFirstPage:YES hud:NO];
-}
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    [self loadCircleDataWithFirstPage:YES hud:NO];
+//}
 
 - (void)backAction:(UIButton *)button
 {
@@ -252,9 +258,11 @@
              self.pList = nil;
              self.uList = nil;
              self.newlist = nil;
-             [self.collectionView reloadData];
-             [self.actistTableView reloadData];
-             [self.aticleTableView reloadData];
+             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                 [self.collectionView reloadData];
+                 [self.actistTableView reloadData];
+                 [self.aticleTableView reloadData];
+             });
              [self showToastWithMessage:msg];
          }
          else{
@@ -290,10 +298,11 @@
              //             [_actistTableView footerEndRefresh];
              [_aticleTableView headerEndRefresh];
              //             [_aticleTableView footerEndRefresh];
-             [self.collectionView reloadData];
-             [self.actistTableView reloadData];
-             [self.aticleTableView reloadData];
-         
+             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                 [self.collectionView reloadData];
+                 [self.actistTableView reloadData];
+                 [self.aticleTableView reloadData];
+             });
          }
          
          
@@ -306,7 +315,7 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     
-    [self.view endEditing:YES];
+    [seach resignFirstResponder];
     _isSearch = YES;
     
     [self loadCircleDataWithFirstPage:YES hud:NO];
@@ -349,7 +358,13 @@
         
         JDFArtist *artist = self.uList[indexPath.row];
         cell.artist = artist;
-        
+        [cell setTapAction:^(JDFArtist * artist) {
+            IntroViewController *vc = [[IntroViewController alloc] init];
+            vc.u_id = artist.u_id;
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+
+        }];
         return cell;
     }
     else
@@ -363,7 +378,12 @@
         
         JDFStory *story = self.newlist[indexPath.row];
         cell.story = story;
-        
+        [cell setTapAction:^(JDFStory * story) {
+            ZTXQViewController *vc = [[ZTXQViewController alloc] init];
+            vc.s_id = story.n_id;
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
         return cell;
     }
 }
@@ -372,7 +392,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     if (_hotKeyCollectionView  == collectionView) {
-        NSLog(@"%d", self.searchHotArray.count);
+        NSLog(@"%@", @(self.searchHotArray.count));
         return self.searchHotArray.count;
     }else
     {
@@ -405,7 +425,15 @@
         
         JDFProduct *product = self.pList[indexPath.item];
         cell.product = product;
-        
+        [cell setTapAction:^(JDFProduct *product) {
+            XiangQingViewController *vc = [[XiangQingViewController alloc] init];
+//            vc.p_id = product.c_id;
+            [vc readWithP_id:product.c_id collBack:^(NSString *p_id) {
+                
+            }];;
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
         [cell setNeedsLayout];
         return cell;
 
@@ -414,10 +442,17 @@
     
    }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    JDFProduct *product = self.pList[indexPath.item];
-    
-}
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    if (collectionView == _collectionView) {
+//        
+//        JDFProduct *product = self.pList[indexPath.item];
+//        XiangQingViewController *vc = [[XiangQingViewController alloc] init];
+//        vc.p_id = product.c_id;
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
+//    
+//}
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     

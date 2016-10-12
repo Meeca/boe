@@ -19,6 +19,16 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.productImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+    
+    [self.productImageView addGestureRecognizer:tap];
+}
+
+- (void)tap {
+    if (self.tapAction) {
+        self.tapAction(_product);
+    }
 }
 
 -(void)setProduct:(JDFProduct *)product

@@ -119,6 +119,13 @@ ON_SIGNAL3(UserModel, USERNIKE, signal) {
         return;
     }
     
+    BOOL ishas = [NSString stringContainsEmoji:self.nick];
+    NSLog(@" %@ 表情", ishas?@"有":@"没有");
+    if (ishas) {
+        [self presentMessageTips:@"不支持表情符号"];
+        return;
+    }
+    
     [userModel app_php_User_user_nikeWithNike:self.nick];
 }
 

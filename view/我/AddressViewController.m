@@ -60,7 +60,9 @@
 ON_SIGNAL3(UserModel, ADDRESSLIST, signal) {
     [self.table.mj_header endRefreshing];
     dataArr = signal.object;
-    
+    if (dataArr.count == 0) {
+        [self presentMessageTips:@"暂无任何收货地址请添加"];
+    }
     [self.table reloadData];
 }
 

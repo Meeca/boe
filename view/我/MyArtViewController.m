@@ -201,7 +201,10 @@ ON_SIGNAL3(BaseModel, JPUSHINDEX, signal) {
     } else {
         HomeIndex *list = zuoPinModel.recommends[indexPath.item];
         XiangQingViewController *vc = [[XiangQingViewController alloc] init];
-        vc.p_id = list.p_id;
+//        vc.p_id = list.p_id;
+        [vc readWithP_id:list.p_id collBack:^(NSString *p_id) {
+            
+        }];
         vc.hidesBottomBarWhenPushed = YES;
         [self.nav pushViewController:vc animated:YES];
     }

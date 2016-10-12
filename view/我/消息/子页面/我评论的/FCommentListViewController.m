@@ -145,7 +145,10 @@
     if (fCommentModel.type == 1) {
         
         XiangQingViewController * vc= [[XiangQingViewController alloc]init];
-        vc.p_id =fCommentModel.p_id;
+//        vc.p_id =fCommentModel.p_id;
+        [vc readWithP_id:fCommentModel.p_id collBack:^(NSString *p_id) {
+            
+        }];
         vc.isRoot = NO;
         [self.navigationController pushViewController:vc animated:YES];
         

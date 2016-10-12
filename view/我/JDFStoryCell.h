@@ -13,5 +13,6 @@
 @interface JDFStoryCell : UITableViewCell
 
 @property (nonatomic, strong) JDFStory *story;
+@property (nonatomic, copy) void(^ tapAction)(JDFStory *story);
 
 @end
