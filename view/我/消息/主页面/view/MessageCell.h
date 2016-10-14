@@ -11,5 +11,6 @@
 @interface MessageCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titileLab;
 @property (weak, nonatomic) IBOutlet UILabel *numLab;
+@property (nonatomic, copy) NSString *str;
 
 @end

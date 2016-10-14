@@ -28,6 +28,9 @@
     
     self.title = @"修改密码";
     // Do any additional setup after loading the view.
+    self.originalPasswordTextFeild.keyboardType = UIKeyboardTypeAlphabet;
+    self.passwordNew.keyboardType = UIKeyboardTypeAlphabet;
+    self.confirmPasswordTextField.keyboardType = UIKeyboardTypeAlphabet;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -64,7 +67,10 @@
         [self.confirmPasswordTextField becomeFirstResponder];
         return;
     }
-
+    if (![self.passwordNew.text isPassword]) {
+        [self showToastWithMessage:@"密码格式不正确"];
+        return;
+    }
 
     
     

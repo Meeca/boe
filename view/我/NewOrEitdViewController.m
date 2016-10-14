@@ -219,7 +219,7 @@ ON_SIGNAL3(UserModel, ADDRESSADD, signal) {
     req.name = name;
     req.city = city;
     req.address = address;
-    req.home = @"1";
+    req.home = @"0";
     
     [userModel app_php_User_address_add:req];
 }

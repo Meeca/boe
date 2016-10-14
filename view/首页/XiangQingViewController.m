@@ -827,13 +827,6 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
     [cusSheet showInView:[UIApplication sharedApplication].keyWindow contentArray:contentArray];
 
     NSLog(@"你点击了分享分享");
-    
-    
-    
-    
-    
-    
-    
 }
 #pragma mark ------分享代理
 #pragma mark - YXScrollowActionSheetDelegate

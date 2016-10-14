@@ -93,6 +93,7 @@
                     NSRange ran = [textField.text rangeOfString:@"."];
                     NSInteger tt = range.location - ran.location;
                     if (textField.text.length-ran.location == 3) { // 已经有两位了
+                        NSLog(@"亲，您最多输入两位小数");
                         return NO;
                     }
                     if (tt <= 2){

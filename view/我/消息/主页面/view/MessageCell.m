@@ -20,6 +20,12 @@
     // Initialization code
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    _titileLab.text = self.str;
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

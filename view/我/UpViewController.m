@@ -691,6 +691,8 @@ ON_SIGNAL3(BaseModel, WORKSADD, signal) {
     } else if (btn.tag == 101) {  // 非卖品
         if ([sales_status integerValue]!=1) {
             sales_status = @"1";
+            openPrice = @"";
+            openKuc = @"";
             [self.table reloadData];
         }
     } else if (btn.tag == 102) {  // 出售
@@ -701,6 +703,8 @@ ON_SIGNAL3(BaseModel, WORKSADD, signal) {
     } else if (btn.tag == 103) {  // 已售
         if ([sales_status integerValue]!=3) {
             sales_status = @"3";
+            openPrice = @"";
+            openKuc = @"";
             [self.table reloadData];
         }
     } else if (btn.tag == 111) {  // 价格公开 是
@@ -943,8 +947,28 @@ ON_SIGNAL3(BaseModel, WORKSADD, signal) {
     } else if (textField.tag == collectKucTag) {
         collectKuc = textField.text;
     } else if (textField.tag == openPriceTag) {
+        if ([sales_status isEqualToString:@"1"]) {
+            [self presentMessageTips:@"此作品为非卖品"];
+            textField.text = @"";
+            return;
+        }
+        if ([sales_status isEqualToString:@"3"]) {
+            [self presentMessageTips:@"此作品已售"];
+            textField.text = @"";
+            return;
+        }
         openPrice = textField.text;
     } else if (textField.tag == openKucTag) {
+        if ([sales_status isEqualToString:@"1"]) {
+            [self presentMessageTips:@"此作品为非卖品"];
+            textField.text = @"";
+            return;
+        }
+        if ([sales_status isEqualToString:@"3"]) {
+            [self presentMessageTips:@"此作品已售"];
+            textField.text = @"";
+            return;
+        }
         openKuc = textField.text;
     }
     else if (textField.tag == 10001)
@@ -1015,21 +1039,21 @@ ON_SIGNAL3(BaseModel, WORKSADD, signal) {
             [self presentMessageTips:@"请给作品加上标签"];
             return;
         }
-        if (collectPrice.length==0) {
-            [self presentMessageTips:@"请填写收藏价"];
-            return;
+        if ([sales_status isEqualToString:@"2"]) {
+            if (openPrice.length==0) {
+                [self presentMessageTips:@"请填写公开价"];
+                return;
+            }
+            if (openKuc.length==0) {
+                [self presentMessageTips:@"请填写公开库存"];
+                return;
+            }
         }
-        if (collectKuc.length==0) {
-            [self presentMessageTips:@"请填写收藏库存"];
-            return;
-        }
-        if (openPrice.length==0) {
-            [self presentMessageTips:@"请填写公开价"];
-            return;
-        }
-        if (openKuc.length==0) {
-            [self presentMessageTips:@"请填写公开库存"];
-            return;
+        if (openPrice.length>0) {
+            if ([collectPrice integerValue]>[openPrice integerValue]) {
+                [self presentMessageTips:@"电子版价格不能大于真品价"];
+                return;
+            }
         }
     } else {
         if (defName.length==0) {
@@ -1085,6 +1109,10 @@ ON_SIGNAL3(BaseModel, WORKSADD, signal) {
     }];
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self.view endEditing:YES];
+}
+
 - (void)upZuoPin:(NSString *)imgUrl {
     
     [[UserModel sharedInstance] loadCache];
@@ -1110,16 +1138,16 @@ ON_SIGNAL3(BaseModel, WORKSADD, signal) {
         }
         req.theme = [them componentsJoinedByString:@","];
         req.labels = biaoQian;
-        req.coll_price = collectPrice;
-        req.coll_nums = collectKuc;
+        req.coll_price = collectPrice.length>0?collectPrice:@"0";
+        req.coll_nums = collectKuc.length>0?collectKuc:@"0";
         req.sales_status = sales_status;
         if (isOpen) {
             req.price_open = @"1";
         } else {
             req.price_open = @"2";
         }
-        req.open_price = openPrice;
-        req.open_nums = openKuc;
+        req.open_price = openPrice.length>0?openPrice:@"";
+        req.open_nums = openKuc.length>0?openKuc:@"";
         req.open_images = @"";
     } else {  //  私密
         req.title = defName;

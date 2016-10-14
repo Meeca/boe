@@ -41,6 +41,11 @@
 {
     if (self.mainInput.text.length == 0) {
         [self showToastWithMessage:@"请输入邮箱"];
+        return;
+    }
+    if (![self.mainInput.text isEmail]) {
+        [self showToastWithMessage:@"请输入正确的邮箱"];
+        return;
     }
     NSString *path = @"/app.php/User/email";
     NSDictionary *params = @{
