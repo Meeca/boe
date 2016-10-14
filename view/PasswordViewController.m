@@ -140,6 +140,10 @@ ON_NOTIFICATION3(UserModel, REGISTER, notification) {
         [self presentMessageTips:@"两次密码不一致"];
         return;
     }
+    if (![passwordone isPassword]) {
+        [self presentMessageTips:@"密码格式不正确"];
+        return;
+    }
     [userModel registerWithPhone:self.number code:self.verification pass:passwordone];
 }
 

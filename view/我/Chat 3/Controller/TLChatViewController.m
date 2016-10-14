@@ -254,6 +254,7 @@ UITableViewDataSource>{
     messageModel.messageType  = MessageType_SEND;
     messageModel.u_id = kUserId;
     messageModel.type = messageType;
+    messageModel.image = kImage;
  
     [self insertMessage:messageModel];
     [self retrySendMessage:messageModel];

@@ -140,8 +140,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        MessageCell *cell =[tableView dequeueReusableCellWithIdentifier:@"MessageCell"];
+        NSArray *arr = @[@"评论我的", @"我评论的"];
         
+        MessageCell *cell =[tableView dequeueReusableCellWithIdentifier:@"MessageCell"];
+        cell.str = arr[indexPath.row];
         if(indexPath.row == 0){
             
             if ([num isEqualToString:@"0"]) {
@@ -153,7 +155,7 @@
         }else{
             cell.numLab.hidden = YES;
         }
-        
+        [cell setNeedsLayout];
         return cell;
     }
     MessageContentCell *cell =[tableView dequeueReusableCellWithIdentifier:@"MessageContentCell"];

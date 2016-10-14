@@ -65,7 +65,7 @@
         
         
     } fail:^(NSString *error) {
-        [self showToastWithMessage:@"发送失败"];
+        [self showToastWithMessage:error];
     }];
 }
 

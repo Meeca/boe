@@ -232,6 +232,10 @@ ON_SIGNAL3(UserModel, VERIFYCODE, signal) {
         [self presentMessageTips:@"两次密码不一致"];
         return;
     }
+    if (![passwordone isPassword]) {
+        [self presentMessageTips:@"密码格式不正确"];
+        return;
+    }
     [userModel findPassWithPhone:self.number code:verification pass:passwordone];
 }
 

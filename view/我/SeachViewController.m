@@ -103,12 +103,12 @@
     }];
     [_collectionView headerBeginRefresh];
     
-    [_collectionView footerAddMJRefresh:^{
-        
-        //        [self loadCircleDataWithFirstPage:NO hud:NO];
-        
-        
-    }];
+//    [_collectionView footerAddMJRefresh:^{
+//        
+//                [self loadCircleDataWithFirstPage:NO hud:NO];
+//        
+//        
+//    }];
     
     
 }
@@ -124,12 +124,12 @@
     }];
     [_actistTableView headerBeginRefresh];
     
-    [_actistTableView footerAddMJRefresh:^{
-        
-        //        [self loadCircleDataWithFirstPage:YES hud:NO];
-        
-        
-    }];
+//    [_actistTableView footerAddMJRefresh:^{
+//        
+//                [self loadCircleDataWithFirstPage:YES hud:NO];
+//        
+//        
+//    }];
     
     
 }
@@ -144,12 +144,12 @@
     }];
     [_aticleTableView headerBeginRefresh];
     
-    [_aticleTableView footerAddMJRefresh:^{
-        
-        //        [self loadCircleDataWithFirstPage:YES hud:NO];
-        
-        
-    }];
+//    [_aticleTableView footerAddMJRefresh:^{
+//        
+//                [self loadCircleDataWithFirstPage:YES hud:NO];
+//        
+//        
+//    }];
     
     
 }
