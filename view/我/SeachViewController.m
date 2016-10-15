@@ -349,7 +349,7 @@
 {
     if (tableView == self.actistTableView)
     {
-        NSString *ID = @"JDFArtistCell";
+        static NSString *ID = @"JDFArtistCell";
         JDFArtistCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
         if (cell == nil)
         {
@@ -369,7 +369,7 @@
     }
     else
     {
-        NSString *ID = @"JDFStoryCell";
+        static NSString *ID = @"JDFStoryCell";
         JDFStoryCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
         if (cell == nil)
         {

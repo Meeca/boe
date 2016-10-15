@@ -131,6 +131,7 @@ ON_SIGNAL3(UserModel, COLLECTIONDEL, signal) {
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
 }
 
 /*
