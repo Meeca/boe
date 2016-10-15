@@ -25,7 +25,7 @@
     [super viewWillAppear:animated];
     
     [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
-    [[UITabBar appearance] setSelectedImageTintColor:KAPPCOLOR];
+    [[UITabBar appearance] setTintColor:KAPPCOLOR];
 }
 
 - (void)didReceiveMemoryWarning {

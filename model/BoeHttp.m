@@ -107,6 +107,7 @@ static BoeHttp *http = nil;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         NSError *err = nil;
+        NSLog(@"\n\n%@\n\n", responseObject);
 
         id obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&err];
         NSLog(@"\n\n%@\n\n", obj);
@@ -118,12 +119,15 @@ static BoeHttp *http = nil;
         }
         err = nil;
         
-        NSData *datas = [NSJSONSerialization dataWithJSONObject:obj options:NSJSONWritingPrettyPrinted error:&err];
-        
-        if (err == nil) {
-            if (datas) {
-                NSString *str = [[NSString alloc] initWithData:datas encoding:NSUTF8StringEncoding];
-                NSLog(@"\n\n%@\n\n", str);
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            
+            NSData *datas = [NSJSONSerialization dataWithJSONObject:obj options:NSJSONWritingPrettyPrinted error:&err];
+            
+            if (err == nil) {
+                if (datas) {
+                    NSString *str = [[NSString alloc] initWithData:datas encoding:NSUTF8StringEncoding];
+                    NSLog(@"\n\n%@\n\n", str);
+                }
             }
         }
         

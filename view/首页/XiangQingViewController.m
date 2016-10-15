@@ -1061,6 +1061,7 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
 }
 
 - (void)zanClick:(UIButton *)button

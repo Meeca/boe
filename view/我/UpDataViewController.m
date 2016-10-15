@@ -7,7 +7,7 @@
 //
 
 #import "UpDataViewController.h"
-#import <AssetsLibrary/AssetsLibrary.h>
+#import <Photos/Photos.h>
 #import "PhotoCollecCell.h"
 #import "PrintViewController.h"
 
@@ -28,15 +28,6 @@
 
 @implementation UpDataViewController
 
-static ALAssetsLibrary *_library = nil;
-
-+ (ALAssetsLibrary *)defaultAssetsLibrary {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _library = [[ALAssetsLibrary alloc] init];
-    });
-    return _library;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,34 +36,20 @@ static ALAssetsLibrary *_library = nil;
     self.navigationController.navigationBar.tintColor = [UIColor grayColor];
     
     [self _initView];
-    //1.创建相册
-    _library = [UpDataViewController defaultAssetsLibrary];
+    
     _dataImages = [NSMutableArray array];
     
-    //通过相册取得文件夹
-    /*
-     通过相册枚举遍历所有的文件夹ALAssetsGroup
-     注意：usingBlock会多次调用，有多少个文件夹就调用多少次
-     */
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        [_library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-            
-            if(group != nil) {
-                
-                //2.通过文件夹遍历所有的资源文件Asset
-                [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
-                    
-                    if (result != nil) {
-                        [_dataImages addObject:result];
-                    }
-                }];
-                [self performSelectorOnMainThread:@selector(loacUI) withObject:nil waitUntilDone:YES];
-            }
-        } failureBlock:^(NSError *error) {
-            NSLog(@"文件读取失败：error:%@",error);
-        }];
-    });
+    // 获取所有资源的集合，并按资源的创建时间排序
+    PHFetchOptions *options = [[PHFetchOptions alloc] init];
+    options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
+    PHFetchResult *result = [PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeImage options:options];
+    //    Results 中包含的，应该就是各个资源（PHAsset）
+    
+    [result enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        PHAsset *asset = (PHAsset *)obj;
+        [_dataImages addObject:asset];
+    }];
+    [self performSelectorOnMainThread:@selector(loacUI) withObject:nil waitUntilDone:YES];
 }
 
 - (void)loacUI {
@@ -152,16 +129,18 @@ static ALAssetsLibrary *_library = nil;
             cell.isHidSel = NO;
             cell.isSel = [selArr[indexPath.item-1] boolValue];
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                ALAsset *result = _dataImages[indexPath.item - 1];
-                CGImageRef imageRef = [result aspectRatioThumbnail];  //  缩略图
-                //            ALAssetRepresentation *representation = [result defaultRepresentation];
-                //            CGImageRef imageRef = [representation fullResolutionImage];  //  全尺寸图
-                UIImage *image = [UIImage imageWithCGImage:imageRef];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    NSLog(@"%@",NSStringFromCGSize(image.size));
-                    cell.image = image;
-                    [cell setNeedsLayout];
-                });
+                PHAsset *phAsset = _dataImages[indexPath.item - 1];
+                PHImageRequestOptions *phImageRequestOptions = [[PHImageRequestOptions alloc] init];
+                phImageRequestOptions.synchronous = YES;
+                // 在 PHImageManager 中，targetSize 等 size 都是使用 px 作为单位，因此需要对targetSize 中对传入的 Size 进行处理，宽高各自乘以 ScreenScale，从而得到正确的图片
+                PHImageManager *imageManager = [[PHImageManager alloc] init];
+                [imageManager requestImageForAsset:phAsset targetSize:CGSizeMake((KSCREENWIDTH-21)/3, (KSCREENWIDTH-21)/3) contentMode:PHImageContentModeDefault options:phImageRequestOptions resultHandler:^(UIImage *result, NSDictionary *info) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NSLog(@"%@",NSStringFromCGSize(result.size));
+                        cell.image = result;
+                        [cell setNeedsLayout];
+                    });
+                }];
             });
         }
     } else {
@@ -171,16 +150,18 @@ static ALAssetsLibrary *_library = nil;
             [cell setNeedsLayout];
         } else {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                ALAsset *result = _dataImages[indexPath.item - 1];
-                CGImageRef imageRef = [result aspectRatioThumbnail];  //  缩略图
-                //            ALAssetRepresentation *representation = [result defaultRepresentation];
-                //            CGImageRef imageRef = [representation fullResolutionImage];  //  全尺寸图
-                UIImage *image = [UIImage imageWithCGImage:imageRef];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    NSLog(@"%@",NSStringFromCGSize(image.size));
-                    cell.image = image;
-                    [cell setNeedsLayout];
-                });
+                PHAsset *phAsset = _dataImages[indexPath.item - 1];
+                PHImageRequestOptions *phImageRequestOptions = [[PHImageRequestOptions alloc] init];
+                phImageRequestOptions.synchronous = YES;
+                // 在 PHImageManager 中，targetSize 等 size 都是使用 px 作为单位，因此需要对targetSize 中对传入的 Size 进行处理，宽高各自乘以 ScreenScale，从而得到正确的图片
+                PHImageManager *imageManager = [[PHImageManager alloc] init];
+                [imageManager requestImageForAsset:phAsset targetSize:CGSizeMake((KSCREENWIDTH-21)/3, (KSCREENWIDTH-21)/3) contentMode:PHImageContentModeDefault options:phImageRequestOptions resultHandler:^(UIImage *result, NSDictionary *info) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NSLog(@"%@",NSStringFromCGSize(result.size));
+                        cell.image = result;
+                        [cell setNeedsLayout];
+                    });
+                }];
             });
         }
     }
@@ -246,19 +227,45 @@ static ALAssetsLibrary *_library = nil;
             [self presentViewController:picker animated:YES completion:NULL];
         } else {
             
-            PrintViewController *vc = [[PrintViewController alloc] init];
+            BlockUIAlertView *alact = [[BlockUIAlertView alloc] initWithTitle:@"" message:@"如果您开启了 iCloud 照片库，并且选择了“优化 iPhone/iPad 储存空间，可能需要等待图片下载完成，是否继续" cancelButtonTitle:@"取消" clickButton:^(NSInteger index) {
+                if (index) {
+                    PrintViewController *vc = [[PrintViewController alloc] init];
+                    
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                        PHAsset *phAsset = _dataImages[indexPath.item - 1];
+                        PHImageRequestOptions *phImageRequestOptions = [[PHImageRequestOptions alloc] init];
+                        phImageRequestOptions.synchronous = YES;
+                        phImageRequestOptions.networkAccessAllowed = YES;
+                        phImageRequestOptions.resizeMode = PHImageRequestOptionsResizeModeExact;
+                        [phImageRequestOptions setProgressHandler:^(double progress, NSError *__nullable error, BOOL *stop, NSDictionary *__nullable info){
+                            NSLog(@"%@",@(progress));
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                NSString *str = [NSString stringWithFormat:@"%d %%...", (int)(progress*100)];
+                                [self presentLoadingTips:str];
+                            });
+                        }];
+                        // 在 PHImageManager 中，targetSize 等 size 都是使用 px 作为单位，因此需要对targetSize 中对传入的 Size 进行处理，宽高各自乘以 ScreenScale，从而得到正确的图片
+                        PHImageManager *imageManager = [[PHImageManager alloc] init];
+                        [imageManager requestImageForAsset:phAsset targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:phImageRequestOptions resultHandler:^(UIImage *result, NSDictionary *info) {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                NSLog(@"%@",NSStringFromCGSize(result.size));
+                                [self dismissTips];
+                                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                    if (!result) {
+                                        [self presentMessageTips:@"下载失败"];
+                                        return;
+                                    }
+                                    vc.image = result;
+                                    [self.navigationController pushViewController:vc animated:YES];
+                                });
+                            });
+                        }];
+                        NSLog(@"卡这里了。。。。");
+                    });
+                }
+            } otherButtonTitles:@"确定"];
+            [alact show];
             
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                ALAsset *result = _dataImages[indexPath.item - 1];
-                ALAssetRepresentation *representation = [result defaultRepresentation];
-                CGImageRef imageRef = [representation fullResolutionImage];  //  全尺寸图
-                UIImage *image = [UIImage imageWithCGImage:imageRef scale:[representation scale] orientation:(UIImageOrientation)[representation orientation]];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    NSLog(@"%@",NSStringFromCGSize(image.size));
-                    vc.image = image;
-                    [self.navigationController pushViewController:vc animated:YES];
-                });
-            });
         }
     }
 }
@@ -311,10 +318,7 @@ static ALAssetsLibrary *_library = nil;
     
     NSMutableArray *arr = [NSMutableArray array];
     for (NSNumber *index in selIndexArr) {
-        ALAsset *result = _dataImages[[index integerValue]];
-//        ALAssetRepresentation *representation = [result defaultRepresentation];
-//        CGImageRef imageRef = [representation fullResolutionImage];  //  全尺寸图
-//        UIImage *image = [UIImage imageWithCGImage:imageRef];
+        PHAsset *result = _dataImages[[index integerValue]];
 
         [arr addObject:result];
     }
