@@ -75,15 +75,12 @@
     [_tableView headerAddMJRefresh:^{
         
         [self loadCircleDataWithFirstPage:YES hud:NO];
-        
-        
     }];
     [_tableView headerBeginRefresh];
     
     [_tableView footerAddMJRefresh:^{
         
         [self loadCircleDataWithFirstPage:NO hud:NO];
-        
         
     }];
     
@@ -203,12 +200,8 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    UILabel *msg = [[UILabel alloc] initWithFrame:CGRectZero];
-    msg.text = @"正在研发中。。。";
-    msg.font = [UIFont boldSystemFontOfSize:25];
-    //    [self.view addSubview:msg];
-    [msg sizeToFit];
-    msg.center = CGPointMake(self.view.width/2, self.view.height/2);
+   
+    
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

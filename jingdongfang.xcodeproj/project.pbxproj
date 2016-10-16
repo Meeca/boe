@@ -5866,7 +5866,7 @@
 				ORGANIZATIONNAME = "ZhiYu Hao";
 				TargetAttributes = {
 					4D18513A1961B01200C098AF = {
-						DevelopmentTeam = HC6K8FDE97;
+						DevelopmentTeam = 6GYN7E2YTH;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -6843,9 +6843,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = NO;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Fengming Hu (62HKHDP579)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fengming Hu (62HKHDP579)";
-				DEVELOPMENT_TEAM = HC6K8FDE97;
+				CODE_SIGN_IDENTITY = "iPhone Developer: qizhong feng (L53RMXZS6K)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: qizhong feng (L53RMXZS6K)";
+				DEVELOPMENT_TEAM = 6GYN7E2YTH;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6887,8 +6887,8 @@
 				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zipingfang.jingdongfang;
 				PRODUCT_NAME = iGallery;
-				PROVISIONING_PROFILE = "5ef06788-7678-4d4b-872f-f0fefa507dda";
-				PROVISIONING_PROFILE_SPECIFIER = boe_development;
+				PROVISIONING_PROFILE = "f4fe9ed9-1e45-4dea-84f6-6668e7544b5a";
+				PROVISIONING_PROFILE_SPECIFIER = ZPF_Development;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
