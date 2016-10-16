@@ -77,7 +77,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="27" id="Qyx-nQ-FAx"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -343,7 +343,7 @@
                                             <constraint firstAttribute="width" constant="1" id="omG-EK-UMb"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="搜索圈子" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zVA-fU-SC6">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="搜索圈子" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="zVA-fU-SC6">
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -354,7 +354,7 @@
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="rst-i3-OB7" firstAttribute="leading" secondItem="5lW-Bf-9xo" secondAttribute="trailing" constant="1" id="1u3-3j-eGT"/>
+                                    <constraint firstItem="rst-i3-OB7" firstAttribute="leading" secondItem="5lW-Bf-9xo" secondAttribute="trailing" id="1u3-3j-eGT"/>
                                     <constraint firstItem="zVA-fU-SC6" firstAttribute="top" secondItem="Edg-gV-ydx" secondAttribute="top" constant="21" id="3Q9-h8-l2V"/>
                                     <constraint firstAttribute="bottom" secondItem="zVA-fU-SC6" secondAttribute="bottom" constant="13" id="6IP-H2-lwA"/>
                                     <constraint firstItem="kCX-1D-0k5" firstAttribute="leading" secondItem="5lW-Bf-9xo" secondAttribute="trailing" constant="1" id="7wK-Bd-lRr"/>
@@ -363,7 +363,7 @@
                                     <constraint firstItem="5lW-Bf-9xo" firstAttribute="leading" secondItem="Edg-gV-ydx" secondAttribute="leading" constant="8" id="O8T-hK-fOA"/>
                                     <constraint firstItem="rst-i3-OB7" firstAttribute="top" secondItem="Edg-gV-ydx" secondAttribute="top" constant="15" id="Yvy-jL-6ww"/>
                                     <constraint firstAttribute="bottom" secondItem="rst-i3-OB7" secondAttribute="bottom" constant="7" id="eMO-g3-ayQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="zVA-fU-SC6" secondAttribute="trailing" id="f08-Vv-tIU"/>
+                                    <constraint firstAttribute="trailing" secondItem="zVA-fU-SC6" secondAttribute="trailing" constant="10" id="f08-Vv-tIU"/>
                                     <constraint firstAttribute="height" constant="64" id="lba-Id-8x2"/>
                                     <constraint firstAttribute="bottom" secondItem="5lW-Bf-9xo" secondAttribute="bottom" constant="8" id="q4X-Px-dKI"/>
                                 </constraints>
