@@ -76,6 +76,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         _menuNameLabel.font = [UIFont systemFontOfSize:13];
         _menuNameLabel.textColor = FTDefaultTextColor;
         _menuNameLabel.text = menuName;
+        _menuNameLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_menuNameLabel];
     }
     return self;
