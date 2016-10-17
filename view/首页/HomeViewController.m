@@ -43,7 +43,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"iGALLERY";
-    
+
     userModel = [UserModel modelWithObserver:self];
     [self observeNotification:userModel.LOGIN];
     [self observeNotification:userModel.REGISTER];

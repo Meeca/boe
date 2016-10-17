@@ -132,6 +132,7 @@ ON_SIGNAL3(BaseModel, EQUIPMENTADD, signal) {
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
 }
 
 /*

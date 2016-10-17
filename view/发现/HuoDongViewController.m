@@ -95,6 +95,7 @@ ON_SIGNAL3(HuoDongModel, RELOADED, signal) {
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
 }
 
 /*

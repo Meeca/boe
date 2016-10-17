@@ -13,7 +13,7 @@
 #import "TiCaiCell.h"
 #import "UpDataViewController.h"
 #import "DuoTuViewCell.h"
-#import <AssetsLibrary/AssetsLibrary.h>
+#import <Photos/Photos.h>
 
 #define nameTag             512
 #define collectPriceTag     522
@@ -62,6 +62,10 @@
     UICollectionView *ticaiView;
     UICollectionView *imgsCollectView;
     NSMutableArray *imgsArr;
+    
+    NSString *zuoPinUrl;
+    NSInteger photoIndex;
+    NSMutableArray *duoTuUrl;
 }
 
 @property (weak, nonatomic) IBOutlet TPKeyboardAvoidingTableView *table;
@@ -758,16 +762,24 @@ ON_SIGNAL3(BaseModel, WORKSADD, signal) {
     } else if (collectionView==imgsCollectView) {
         DuoTuViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DuoTuViewCell" forIndexPath:indexPath];
         cell.backgroundColor = KAPPCOLOR;
-        if ([imgsArr[indexPath.item] isKindOfClass:[ALAsset class]]) {
+        if ([imgsArr[indexPath.item] isKindOfClass:[PHAsset class]]) {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                ALAsset *result = imgsArr[indexPath.item];
-                CGImageRef imageRef = [result aspectRatioThumbnail];  //  缩略图
-                UIImage *image = [UIImage imageWithCGImage:imageRef];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    cell.data = image;
-                    [cell setNeedsLayout];
-                });
+                PHAsset *phAsset = imgsArr[indexPath.item];
+                PHImageRequestOptions *phImageRequestOptions = [[PHImageRequestOptions alloc] init];
+                phImageRequestOptions.synchronous = YES;
+//                phImageRequestOptions.networkAccessAllowed = YES;
+//                phImageRequestOptions.resizeMode = PHImageRequestOptionsResizeModeFast;
+                // 在 PHImageManager 中，targetSize 等 size 都是使用 px 作为单位，因此需要对targetSize 中对传入的 Size 进行处理，宽高各自乘以 ScreenScale，从而得到正确的图片
+                PHImageManager *imageManager = [[PHImageManager alloc] init];
+                [imageManager requestImageForAsset:phAsset targetSize:CGSizeMake(KSCREENWIDTH/3, KSCREENWIDTH/3) contentMode:PHImageContentModeDefault options:phImageRequestOptions resultHandler:^(UIImage *result, NSDictionary *info) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NSLog(@"img size %@  dic %@",NSStringFromCGSize(result.size), info);
+                        cell.data = result;
+                        [cell setNeedsLayout];
+                    });
+                }];
             });
+
         } else {
             cell.data = imgsArr[indexPath.item];
             [cell setNeedsLayout];
@@ -1089,14 +1101,81 @@ ON_SIGNAL3(BaseModel, WORKSADD, signal) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSLog(@" ----- responseObject  ----   %@", responseObject);
             if ([responseObject[@"result"] isEqualToString:@"succ"]) {
                 NSDictionary *imgDic = responseObject[@"info"];
+                zuoPinUrl = imgDic[@"image_url"];
                 // 这里处理  有细节图和没有细节图的逻辑  有的话  先上传细节图再传作品   没有的话  直接上传作品
-                //        if (有) {  // 有细节图
-                //
-                //        } else {  //  没有细节图
-                [self upZuoPin:imgDic[@"image_url"]];
-                //        }
+                if (imgsArr.count>0) {  // 有细节图
+                    photoIndex = 0;
+                    duoTuUrl = [NSMutableArray array];
+                    [self upPhoto];
+                } else {  //  没有细节图
+                    [self upZuoPin:zuoPinUrl];
+                }
+            }
+        } else {
+            UIWindow *win = [UIApplication sharedApplication].keyWindow;
+            [win presentMessageTips:@"数据格式错误"];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        UIWindow *win = [UIApplication sharedApplication].keyWindow;
+        [win presentMessageTips:@"上传失败"];
+        NSLog(@"%@", error);
+    }];
+}
+
+- (void)upPhoto {
+    UIWindow *win = [UIApplication sharedApplication].keyWindow;
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        PHAsset *phAsset = imgsArr[photoIndex];
+        PHImageRequestOptions *phImageRequestOptions = [[PHImageRequestOptions alloc] init];
+        phImageRequestOptions.synchronous = YES;
+        phImageRequestOptions.networkAccessAllowed = YES;
+        phImageRequestOptions.resizeMode = PHImageRequestOptionsResizeModeExact;
+        // 在 PHImageManager 中，targetSize 等 size 都是使用 px 作为单位，因此需要对targetSize 中对传入的 Size 进行处理，宽高各自乘以 ScreenScale，从而得到正确的图片
+        PHImageManager *imageManager = [[PHImageManager alloc] init];
+        [imageManager requestImageForAsset:phAsset targetSize:CGSizeMake(KSCREENWIDTH, KSCREENHEIGHT) contentMode:PHImageContentModeDefault options:phImageRequestOptions resultHandler:^(UIImage *result, NSDictionary *info) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSLog(@"img size %@  dic %@",NSStringFromCGSize(result.size), info);
+                if (!result) {
+                    [win presentMessageTips:@"上传失败"];
+                    return;
+                }
+                [self upPhotoImage:result];
+                
+            });
+        }];
+    });
+}
+
+- (void)upPhotoImage:(UIImage *)image {
+    NSString *urlstr = [@"http://boe.ccifc.cn/" stringByAppendingString:@"/app.php/Index/image_add"];
+    NSString *url = [urlstr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSData *data = UIImageJPEGRepresentation(image, 1);
+    
+    NSDictionary *parameters = @{@"type" : @"1", @"plates" : @"1"};
+    
+    UIWindow *win = [UIApplication sharedApplication].keyWindow;
+    NSString *msg = [NSString stringWithFormat:@"图片上传中(%@/%@)...", @(photoIndex+1), @(imgsArr.count)];
+    [win presentLoadingTips:msg];
+    
+    [[BoeHttp shareHttp] postWithUrl:url parameters:parameters data:data progress:^(NSProgress * _Nonnull progress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSLog(@" ----- responseObject  ----   %@", responseObject);
+            if ([responseObject[@"result"] isEqualToString:@"succ"]) {
+                NSDictionary *imgDic = responseObject[@"info"];
+                photoIndex++;
+                [duoTuUrl addObject:imgDic[@"image_url"]];
+                if (photoIndex<imgsArr.count) {
+                    [self upPhoto];
+                    return;
+                }
+                
+                [self upZuoPin:zuoPinUrl];
             }
         } else {
             UIWindow *win = [UIApplication sharedApplication].keyWindow;
@@ -1114,6 +1193,8 @@ ON_SIGNAL3(BaseModel, WORKSADD, signal) {
 }
 
 - (void)upZuoPin:(NSString *)imgUrl {
+    
+    NSString *duotu = [duoTuUrl componentsJoinedByString:@"-"];
     
     [[UserModel sharedInstance] loadCache];
     REQ_APP_PHP_USER_WORKS_ADD *req = [REQ_APP_PHP_USER_WORKS_ADD new];
@@ -1148,7 +1229,7 @@ ON_SIGNAL3(BaseModel, WORKSADD, signal) {
         }
         req.open_price = openPrice.length>0?openPrice:@"";
         req.open_nums = openKuc.length>0?openKuc:@"";
-        req.open_images = @"";
+        req.open_images = duotu.length>0?duotu:@"";
     } else {  //  私密
         req.title = defName;
         req.content = defContext;

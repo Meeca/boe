@@ -36,7 +36,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.title = @"发现";
-    
+
     UIButton *left = [UIButton buttonWithType:UIButtonTypeCustom];
     left.frame = CGRectMake(0, 0, 50, 50);
     [left setImageEdgeInsets:UIEdgeInsetsMake(0, -15, 0, 15)];
@@ -142,6 +142,7 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
 }
 
 /*
