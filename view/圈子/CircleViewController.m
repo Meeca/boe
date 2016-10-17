@@ -313,21 +313,17 @@
                                  };
     
     [MCNetTool postWithCacheUrl:path params:parameters hud:YES success:^(NSDictionary *requestDic, NSString *msg) {
-        
-//        if ([requestDic isKindOfClass:[NSDictionary class]])
-//        {
-//            return ;
-//        }
-if ([requestDic isKindOfClass:[NSString class]] && ((NSString *)requestDic).length <= 0)
-{
-
-//    return ;
-    [_tableView headerEndRefresh];
-    [_tableView footerEndRefresh];
-    return ;
-
-}
+ 
         _page ++;
+        if ([requestDic isKindOfClass:[NSString class]] && ((NSString *)requestDic).length <= 0)
+        {
+            
+            //    return ;
+            [_tableView headerEndRefresh];
+            [_tableView footerEndRefresh];
+            return ;
+            
+        }
         
         NSArray * myList = [NSArray yy_modelArrayWithClass:[JDFCircleModel class] json:requestDic[@"my_list"]];
         NSArray * allList= [NSArray yy_modelArrayWithClass:[JDFCircleModel class] json:requestDic[@"all_list"]];
@@ -363,11 +359,9 @@ if ([requestDic isKindOfClass:[NSString class]] && ((NSString *)requestDic).leng
         UINavigationController *naviVC = [[UINavigationController alloc] initWithRootViewController:circleSearchVC];
         [naviVC setNavigationBarHidden:YES animated:YES];
         [self.navigationController presentViewController:naviVC animated:NO completion:^{
-            
         }];
         return ;
     }
-    
 #pragma mark ---------进入界面提示框
     JDFCircleCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     JDFCircleModel *circle = cell.circle;
@@ -376,16 +370,7 @@ if ([requestDic isKindOfClass:[NSString class]] && ((NSString *)requestDic).leng
     {
         self.circle = circle;
         CYAlertView *alert = [[[NSBundle mainBundle] loadNibNamed:@"CYAlertView" owner:nil options:nil] firstObject];
-        
         alert.delegate = self;
-        //    [self addTableViewRefreshView];
-        //    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(endEditing)];
-        //    [self.view addGestureRecognizer:tap];
-        //- (void)endEditing
-        //{
-        //    [self.view endEditing:YES];
-        //}
-        
         [alert show];
     }
     else
@@ -416,7 +401,6 @@ if ([requestDic isKindOfClass:[NSString class]] && ((NSString *)requestDic).leng
     NSDictionary *params = @{
                              @"c_id" : self.circle.ID,
                              @"pass":self.password,
-                             
                              };
     
     [MCNetTool postWithUrl:path params:params hud:YES success:^(NSDictionary *requestDic, NSString *msg)
