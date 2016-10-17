@@ -239,6 +239,7 @@
     PrivateMessageCell *cell =[tableView dequeueReusableCellWithIdentifier:@"PrivateMessageCell"];
     SiXinModel * siXinModel = _dataArray[indexPath.row];
     cell.siXinModel = siXinModel;
+    [cell setNeedsLayout];
     return cell;
 
 }
