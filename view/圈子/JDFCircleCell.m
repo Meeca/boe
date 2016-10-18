@@ -45,7 +45,7 @@
     self.circleTitleLabel.text = title;
     self.circleContentLabel.text = circle.content;
     self.circleConversNumLabel.text = [NSString stringWithFormat:@"%ld个新话题", (long)circle.conversNum];
-    [self.circleImageView sd_setImageWithURL:[NSURL URLWithString:circle.image] placeholderImage:nil];
+    [self.circleImageView sd_setImageWithURL:[NSURL URLWithString:circle.image] placeholderImage:[UIImage imageNamed:@"chatfrom_doctor_icon"]];
     self.lockImageView.hidden = circle.attributes == 1;
     
     

@@ -66,6 +66,8 @@
     NSString *zuoPinUrl;
     NSInteger photoIndex;
     NSMutableArray *duoTuUrl;
+    
+    NSString *nowYear;
 }
 
 @property (weak, nonatomic) IBOutlet TPKeyboardAvoidingTableView *table;
@@ -83,6 +85,10 @@
     sales_status = @"1";
     classIndex = -1;
     model = [BaseModel modelWithObserver:self];
+    
+    NSDate *data = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval ss = data.timeIntervalSince1970;
+    nowYear = [Tool timestampToString:[NSString stringWithFormat:@"%@", @(ss)] Format:@"yyyy"];
     
     [[UserModel sharedInstance] loadCache];
     defName = [NSString stringWithFormat:@"%@的作品", kNike.length>0?kNike:@""];
@@ -321,6 +327,7 @@ ON_SIGNAL3(BaseModel, WORKSADD, signal) {
             textfield.centerY = view.centerY;
             textfield.borderStyle = UITextBorderStyleRoundedRect;
             textfield.placeholder = @"手动输入年份";
+            textfield.keyboardType = UIKeyboardTypeNumberPad;
             textfield.font = [UIFont systemFontOfSize:14];
             textfield.textColor = [UIColor blackColor];
              [textfield addTarget:self action:@selector(textChange:) forControlEvents:UIControlEventEditingChanged];
@@ -985,6 +992,11 @@ ON_SIGNAL3(BaseModel, WORKSADD, signal) {
     }
     else if (textField.tag == 10001)
     {
+        if ([textField.text integerValue] > [nowYear integerValue]) {
+            textField.text = self.year;
+            [self presentMessageTips:@"创作年代时间不对"];
+            return;
+        }
         self.year = textField.text;
     }
 }

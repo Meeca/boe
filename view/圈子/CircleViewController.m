@@ -75,15 +75,12 @@
     [_tableView headerAddMJRefresh:^{
         
         [self loadCircleDataWithFirstPage:YES hud:NO];
-        
-        
     }];
     [_tableView headerBeginRefresh];
     
     [_tableView footerAddMJRefresh:^{
         
         [self loadCircleDataWithFirstPage:NO hud:NO];
-        
         
     }];
     
@@ -203,12 +200,8 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    UILabel *msg = [[UILabel alloc] initWithFrame:CGRectZero];
-    msg.text = @"正在研发中。。。";
-    msg.font = [UIFont boldSystemFontOfSize:25];
-    //    [self.view addSubview:msg];
-    [msg sizeToFit];
-    msg.center = CGPointMake(self.view.width/2, self.view.height/2);
+   
+    
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -320,21 +313,17 @@
                                  };
     
     [MCNetTool postWithCacheUrl:path params:parameters hud:YES success:^(NSDictionary *requestDic, NSString *msg) {
-        
-//        if ([requestDic isKindOfClass:[NSDictionary class]])
-//        {
-//            return ;
-//        }
-if ([requestDic isKindOfClass:[NSString class]] && ((NSString *)requestDic).length <= 0)
-{
-
-//    return ;
-    [_tableView headerEndRefresh];
-    [_tableView footerEndRefresh];
-    return ;
-
-}
+ 
         _page ++;
+        if ([requestDic isKindOfClass:[NSString class]] && ((NSString *)requestDic).length <= 0)
+        {
+            
+            //    return ;
+            [_tableView headerEndRefresh];
+            [_tableView footerEndRefresh];
+            return ;
+            
+        }
         
         NSArray * myList = [NSArray yy_modelArrayWithClass:[JDFCircleModel class] json:requestDic[@"my_list"]];
         NSArray * allList= [NSArray yy_modelArrayWithClass:[JDFCircleModel class] json:requestDic[@"all_list"]];
@@ -370,11 +359,9 @@ if ([requestDic isKindOfClass:[NSString class]] && ((NSString *)requestDic).leng
         UINavigationController *naviVC = [[UINavigationController alloc] initWithRootViewController:circleSearchVC];
         [naviVC setNavigationBarHidden:YES animated:YES];
         [self.navigationController presentViewController:naviVC animated:NO completion:^{
-            
         }];
         return ;
     }
-    
 #pragma mark ---------进入界面提示框
     JDFCircleCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     JDFCircleModel *circle = cell.circle;
@@ -383,16 +370,7 @@ if ([requestDic isKindOfClass:[NSString class]] && ((NSString *)requestDic).leng
     {
         self.circle = circle;
         CYAlertView *alert = [[[NSBundle mainBundle] loadNibNamed:@"CYAlertView" owner:nil options:nil] firstObject];
-        
         alert.delegate = self;
-        //    [self addTableViewRefreshView];
-        //    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(endEditing)];
-        //    [self.view addGestureRecognizer:tap];
-        //- (void)endEditing
-        //{
-        //    [self.view endEditing:YES];
-        //}
-        
         [alert show];
     }
     else
@@ -423,16 +401,10 @@ if ([requestDic isKindOfClass:[NSString class]] && ((NSString *)requestDic).leng
     NSDictionary *params = @{
                              @"c_id" : self.circle.ID,
                              @"pass":self.password,
-                             
                              };
     
     [MCNetTool postWithUrl:path params:params hud:YES success:^(NSDictionary *requestDic, NSString *msg)
      {
-         //         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
-         //                        {
-         //                           [MBProgressHUD showMessag:msg toView:self.view];
-         //                        });
-         //
          
          if ([msg isKindOfClass:[NSString class]] && ((NSString *)msg).length <= 0)
          {
@@ -442,12 +414,7 @@ if ([requestDic isKindOfClass:[NSString class]] && ((NSString *)requestDic).leng
              [self.navigationController pushViewController:conversVC animated:YES];
              [self showToastWithMessage:@"验证成功"];
          }
-//         else if(((NSString *)msg).length > 0)
-//         {
-//             [self showToastWithMessage:@"密码错误"];
-//         }
-         
-         
+ 
          
      }
                       fail:^(NSString *error)

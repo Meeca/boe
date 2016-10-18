@@ -15,7 +15,7 @@
 
 #else
 
-    #define NSLog(...) {}
+    #define NSLog(...)
 
 #endif
 

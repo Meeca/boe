@@ -29,6 +29,7 @@ PictureUpLoad *pictureUpLoad;
 @property (weak, nonatomic) IBOutlet UILabel *attributeLabel;//属性
 @property (weak, nonatomic) IBOutlet UILabel *passwordLabel;
 @property (weak, nonatomic) IBOutlet UILabel *introduceLabel;
+@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 
 
 @end
@@ -180,9 +181,8 @@ PictureUpLoad *pictureUpLoad;
     }
 //    self.attributeLabel.text  = self.circlesRead.attributes;
     self.passwordLabel.text = self.circlesRead.pass;
-    self.introduceLabel.text = self.circlesRead.content;
-    
-    
+//    self.introduceLabel.text = self.circlesRead.content;
+    _contentTextView.text =self.circlesRead.content;
 }
 
 - (void)changeContent
