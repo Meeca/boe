@@ -261,37 +261,6 @@ static NSString * const kCommentCellTableViewCellIdentifier = @"kCommentCellTabl
 //    return 162;
 //}
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        DBHTopicModelCommsList *model = self.commentArray[indexPath.section];
-        circleTopicCommentTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        
-        _com_id = model.commId;
-        _commID = model.commId;
-        _name = model.uName;
-        
-        //初始化menu
-        UIMenuController * menu = [UIMenuController sharedMenuController];
-        
-        NSMutableArray *menuItems = [NSMutableArray array];
-        UIMenuItem *leftMenuItem = [[UIMenuItem alloc] initWithTitle:@"回复" action:@selector(respondsLeftMenuItem)];
-        [menuItems addObject:leftMenuItem];
-        
-        if ([model.uId isEqualToString:kUserId]) {
-            UIMenuItem *rightMenuItem = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(respondsRightMenuItem)];
-            [menuItems addObject:rightMenuItem];
-        }
-        
-        menu.menuItems = menuItems;
-        
-        //设置menu的显示位置
-        CGRect rect = cell.bounds;
-        rect.origin.y += 60;
-        [menu setTargetRect:rect inView:cell.contentView];
-        //让menu显示并且伴有动画
-        [menu setMenuVisible:YES animated:YES];
-    }
-}
 
 #pragma mark - event responds
 - (void)respondsLeftMenuItem {
@@ -357,6 +326,42 @@ static NSString * const kCommentCellTableViewCellIdentifier = @"kCommentCellTabl
     return UITableViewAutomaticDimension;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        DBHTopicModelCommsList *model = self.commentArray[indexPath.section];
+        circleTopicCommentTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        
+        _com_id = model.commId;
+        _commID = model.commId;
+        _name = model.uName;
+        
+        //初始化menu
+        UIMenuController * menu = [UIMenuController sharedMenuController];
+        
+        NSMutableArray *menuItems = [NSMutableArray array];
+        UIMenuItem *leftMenuItem = [[UIMenuItem alloc] initWithTitle:@"回复" action:@selector(respondsLeftMenuItem)];
+        [menuItems addObject:leftMenuItem];
+        
+        if ([model.uId isEqualToString:kUserId]) {
+            UIMenuItem *rightMenuItem = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(respondsRightMenuItem)];
+            [menuItems addObject:rightMenuItem];
+        }
+        
+        menu.menuItems = menuItems;
+        
+        //设置menu的显示位置
+        CGRect rect = cell.bounds;
+        rect.origin.y += 60;
+        [menu setTargetRect:rect inView:cell.contentView];
+        //让menu显示并且伴有动画
+        [menu setMenuVisible:YES animated:YES];
+    }
+}
+
+
+
+
+
 -(void)longTap:(UILongPressGestureRecognizer *)longRecognizer
 {
     if (longRecognizer.state==UIGestureRecognizerStateBegan) {
@@ -416,10 +421,11 @@ static NSString * const kCommentCellTableViewCellIdentifier = @"kCommentCellTabl
             [self loadCircleTopicDetailData:YES hud:NO];
             [self.tableView reloadData];
 //        }
-        
+        [self showToastWithMessage:msg];
+
         
     } fail:^(NSString *error) {
-        
+        [self showToastWithMessage:error];
     }];
     
 }

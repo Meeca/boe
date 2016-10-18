@@ -22,7 +22,7 @@
 #import "UIViewController+MBShow.h"
 #import "CircleMemberGroupsViewController.h"
 #import "JoinCircleOrNot.h"
-//#import "MJExtension/"
+#import "EmptyViewFactory.h"
 
 #import "MBProgressHUD.h"
 
@@ -71,21 +71,16 @@ JoinCircleOrNot *circleOrNot;
 {
     
     NSString *path = @"/app.php/Circles/join_see";
-//    NSMutableDictionary *params;
-    
-//    params[@"c_id"] = self.circle.ID;
-//    params[@"u_id" ] = kUserId;
     NSDictionary *params = @{
                              @"c_id":self.circle.ID,
                              @"u_id":kUserId,
-                             
                              };
         [MCHttp postRequestURLStr:path withDic:params success:^(NSDictionary *requestDic, NSString *msg)
      {
          circleOrNot = [JoinCircleOrNot yy_modelWithJSON:requestDic];
          
      } failure:^(NSString *error) {
-         
+         [self showToastWithMessage:error];
      }];
     
 }
@@ -360,13 +355,19 @@ JoinCircleOrNot *circleOrNot;
             [_tableView hidenFooter];
         }
         
+        [EmptyViewFactory emptyDataAnalyseWithDataSouce:self.converses emptyContent:@"此圈子还没有任何话题" withScrollView:_tableView];
+        
+        
         firstPage?[_tableView headerEndRefresh]:[_tableView footerEndRefresh];
+        
         
         
     } fail:^(NSString *error) {
         
         firstPage?[_tableView headerEndRefresh]:[_tableView footerEndRefresh];
         
+        [EmptyViewFactory emptyDataAnalyseWithDataSouce:self.converses emptyContent:@"此圈子还没有任何话题" withScrollView:_tableView];
+
     }];
     
     
