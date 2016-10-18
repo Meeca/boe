@@ -25,14 +25,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "view/&#x5708;&#x5b50;/CircleConversViewController.m"
-            timestampString = "495382113.370936"
+            filePath = "view/&#x9996;&#x9875;/XiangQingViewController.m"
+            timestampString = "498371812.411178"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
-            landmarkName = "-newConversAction:"
-            landmarkType = "5">
+            startingLineNumber = "369"
+            endingLineNumber = "369"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

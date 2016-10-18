@@ -160,6 +160,7 @@
         _objectLabel = [[UILabel alloc] init];
 //        _objectLabel.textColor = KAPPCOLOR;
         _objectLabel.font = [UIFont systemFontOfSize:15];
+        _objectLabel.numberOfLines = 0;
     }
     return _objectLabel;
 }

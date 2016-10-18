@@ -72,6 +72,17 @@ UITableViewDataSource>{
 //    NSString *const MJRefreshBackFooterNoMoreDataText = @"已经全部加载完毕";
     
     
+    
+    /*
+     
+     
+     ceshi fen zhi
+     
+     */
+    
+    
+    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshNewMessageList:) name:@"siMessageNotificationKey" object:nil];
     //
      [self loadCircleDataWithFirstPage:YES hud:NO];

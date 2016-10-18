@@ -215,10 +215,9 @@
     [MCHttp postRequestURLStr:path withDic:params success:^(NSDictionary *requestDic, NSString *msg)
      {
          
-         //         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
-         //                        {
-         //                            [self.navigationController popViewControllerAnimated:YES];
-         //                        });
+         [self showToastWithMessage:@"圈子创建成功"];
+         
+        
          [self.navigationController popViewControllerAnimated:YES];
      }
                       failure:^(NSString *error) {
