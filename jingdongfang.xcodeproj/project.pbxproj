@@ -797,8 +797,6 @@
 		75C662571D7AD2250070A405 /* PrivateMessageListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75C662451D7AD2250070A405 /* PrivateMessageListVC.xib */; };
 		75C662581D7AD2250070A405 /* choose_n@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 75C662481D7AD2250070A405 /* choose_n@2x.png */; };
 		75C662591D7AD2250070A405 /* choose_s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 75C662491D7AD2250070A405 /* choose_s@2x.png */; };
-		75C6625A1D7AD2250070A405 /* PrivateMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C6624B1D7AD2250070A405 /* PrivateMessageCell.m */; };
-		75C6625B1D7AD2250070A405 /* PrivateMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75C6624C1D7AD2250070A405 /* PrivateMessageCell.xib */; };
 		75C6625C1D7AD2250070A405 /* PrivateMessageListFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C6624E1D7AD2250070A405 /* PrivateMessageListFooterView.m */; };
 		75C6625D1D7AD2250070A405 /* PrivateMessageListFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75C6624F1D7AD2250070A405 /* PrivateMessageListFooterView.xib */; };
 		75C662601D7AD2660070A405 /* UIButton+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C6625F1D7AD2660070A405 /* UIButton+Block.m */; };
@@ -846,6 +844,7 @@
 		75FE9B411D6C29B700FC1E78 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FE9B401D6C29B700FC1E78 /* DataModel.m */; };
 		75FE9B8C1D6CACE700FC1E78 /* circleSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FE9B8B1D6CACE700FC1E78 /* circleSearchTableViewCell.m */; };
 		CD7C33091DAE6F0700084EEA /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7C33081DAE6F0700084EEA /* NSString+Emoji.m */; };
+		E48DDE5D1DB6454400D8BD73 /* PrivateMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E48DDE5C1DB6454400D8BD73 /* PrivateMTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -2333,9 +2332,6 @@
 		75C662451D7AD2250070A405 /* PrivateMessageListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrivateMessageListVC.xib; sourceTree = "<group>"; };
 		75C662481D7AD2250070A405 /* choose_n@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "choose_n@2x.png"; sourceTree = "<group>"; };
 		75C662491D7AD2250070A405 /* choose_s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "choose_s@2x.png"; sourceTree = "<group>"; };
-		75C6624A1D7AD2250070A405 /* PrivateMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageCell.h; sourceTree = "<group>"; };
-		75C6624B1D7AD2250070A405 /* PrivateMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessageCell.m; sourceTree = "<group>"; };
-		75C6624C1D7AD2250070A405 /* PrivateMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrivateMessageCell.xib; sourceTree = "<group>"; };
 		75C6624D1D7AD2250070A405 /* PrivateMessageListFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMessageListFooterView.h; sourceTree = "<group>"; };
 		75C6624E1D7AD2250070A405 /* PrivateMessageListFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMessageListFooterView.m; sourceTree = "<group>"; };
 		75C6624F1D7AD2250070A405 /* PrivateMessageListFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrivateMessageListFooterView.xib; sourceTree = "<group>"; };
@@ -2426,6 +2422,8 @@
 		CD7C33071DAE6F0700084EEA /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
 		CD7C33081DAE6F0700084EEA /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
 		D9B37477A01F29A81B4BD158 /* libPods-jingdongfang.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-jingdongfang.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E48DDE5B1DB6454400D8BD73 /* PrivateMTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMTableViewCell.h; sourceTree = "<group>"; };
+		E48DDE5C1DB6454400D8BD73 /* PrivateMTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -5765,9 +5763,8 @@
 			children = (
 				75C662481D7AD2250070A405 /* choose_n@2x.png */,
 				75C662491D7AD2250070A405 /* choose_s@2x.png */,
-				75C6624A1D7AD2250070A405 /* PrivateMessageCell.h */,
-				75C6624B1D7AD2250070A405 /* PrivateMessageCell.m */,
-				75C6624C1D7AD2250070A405 /* PrivateMessageCell.xib */,
+				E48DDE5B1DB6454400D8BD73 /* PrivateMTableViewCell.h */,
+				E48DDE5C1DB6454400D8BD73 /* PrivateMTableViewCell.m */,
 				75C6624D1D7AD2250070A405 /* PrivateMessageListFooterView.h */,
 				75C6624E1D7AD2250070A405 /* PrivateMessageListFooterView.m */,
 				75C6624F1D7AD2250070A405 /* PrivateMessageListFooterView.xib */,
@@ -6044,7 +6041,6 @@
 				75321E1B1D705D31009C1374 /* MBProgressHUD.bundle in Resources */,
 				7507BA951D76BF730031ECE8 /* WeiboSDK.bundle in Resources */,
 				7564F7BB1D50AF0700A46736 /* FSViewController.xib in Resources */,
-				75C6625B1D7AD2250070A405 /* PrivateMessageCell.xib in Resources */,
 				75BF44CD1D86E4BE0092C98D /* FCommentCell.xib in Resources */,
 				7523D0021D5B0B7000C74318 /* QueRenViewController.xib in Resources */,
 				4DA848FC1A903E0100D6B62B /* tutorial_background_00@2x.jpg in Resources */,
@@ -6271,6 +6267,7 @@
 				04CC32811D81ABDF006A4752 /* ShareDeviceHeaderView.m in Sources */,
 				759415841D8544580089A8CE /* TLTextMessageCell.m in Sources */,
 				755C45C11D86DBE900659948 /* SystemMessageModel.m in Sources */,
+				E48DDE5D1DB6454400D8BD73 /* PrivateMTableViewCell.m in Sources */,
 				4DC6BBBC1961C20700C87D1B /* ioapi.c in Sources */,
 				7564F7921D505ED300A46736 /* TableHeader.m in Sources */,
 				4DC6BB441961C20700C87D1B /* Bee_UITemplateMediaQuery.m in Sources */,
@@ -6500,7 +6497,6 @@
 				4DC6BAB21961C20700C87D1B /* UIViewController+UINavigationBar.m in Sources */,
 				4D02D57A1B539C8300C92F60 /* NINonRetainingCollections.m in Sources */,
 				4DC6BB0F1961C20700C87D1B /* Bee_UIZoomView.m in Sources */,
-				75C6625A1D7AD2250070A405 /* PrivateMessageCell.m in Sources */,
 				3F7B77CF1D9BD3790055074E /* DBHRedEnvelopeListViewController.m in Sources */,
 				4DC6BB111961C20700C87D1B /* BeeUIZoomImageView+BeeUIStyle.m in Sources */,
 				4DC6BB4E1961C20700C87D1B /* Bee_System.mm in Sources */,

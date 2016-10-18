@@ -7,11 +7,11 @@
 //
 
 #import "PrivateMessageListVC.h"
-#import "PrivateMessageCell.h"
 #import "PrivateMessageListFooterView.h"
 #import "UIButton+Block.h"
 #import "SiXinModel.h"
 #import "TLChatViewController.h"
+#import "PrivateMTableViewCell.h"
 
 @interface PrivateMessageListVC (){
 
@@ -55,11 +55,9 @@
     
     
     
-    [_tableView registerNib:[UINib nibWithNibName:@"PrivateMessageCell" bundle:nil] forCellReuseIdentifier:@"PrivateMessageCell"];
+    [_tableView registerClass:[PrivateMTableViewCell class] forCellReuseIdentifier:@"PrivateMTableViewCell"];
     _tableView.tableFooterView = [UIView new];
-    
-    
-    
+        
     
     [_tableView headerAddMJRefresh:^{
         [self loadMessageDataWithFirstPage:YES];
@@ -236,7 +234,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    PrivateMessageCell *cell =[tableView dequeueReusableCellWithIdentifier:@"PrivateMessageCell"];
+    PrivateMTableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"PrivateMTableViewCell"];
     SiXinModel * siXinModel = _dataArray[indexPath.row];
     cell.siXinModel = siXinModel;
     [cell setNeedsLayout];
@@ -249,7 +247,6 @@
 
 //选中时将选中行的在self.dataArray 中的数据添加到删除数组self.deleteArr中
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     
     if (self.tableView.editing) {
         
