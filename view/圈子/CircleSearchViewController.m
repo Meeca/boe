@@ -346,12 +346,7 @@ CircleSearch *circleSearch;
     
     [MCNetTool postWithUrl:path params:params hud:YES success:^(NSDictionary *requestDic, NSString *msg)
      {
-         //         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
-         //                        {
-         //                           [MBProgressHUD showMessag:msg toView:self.view];
-         //                        });
-         //
-         
+       
          if ([msg isKindOfClass:[NSString class]] && ((NSString *)msg).length <= 0)
          {
              
@@ -365,11 +360,6 @@ CircleSearch *circleSearch;
              [self.navigationController pushViewController:conversVC animated:YES];
              [self showToastWithMessage:@"验证成功"];
          }
-         //         else if(((NSString *)msg).length > 0)
-         //         {
-         //             [self showToastWithMessage:@"密码错误"];
-         //         }
-         
          
          
      }

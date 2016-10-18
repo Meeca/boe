@@ -58,7 +58,7 @@
     
     [UMSocialWechatHandler setWXAppId:weiXinAppId appSecret:weiXinAppSecret url:nil];
     
-    
+    [UMSocialConfig setFinishToastIsHidden:NO position:UMSocialiToastPositionCenter];
     
 
     

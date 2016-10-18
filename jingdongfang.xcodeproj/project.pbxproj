@@ -35,6 +35,11 @@
 		04D3EEDF1D86E88C002C2B9B /* FCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D3EEDE1D86E88C002C2B9B /* FCommentModel.m */; };
 		04D3EEE21D86F398002C2B9B /* UIViewController+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D3EEE11D86F398002C2B9B /* UIViewController+Utils.m */; };
 		04D3EEE51D86F7CF002C2B9B /* SiXinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D3EEE41D86F7CF002C2B9B /* SiXinModel.m */; };
+		04DAC3C11DB4F083002235A7 /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAC3BA1DB4F083002235A7 /* UIScrollView+EmptyDataSet.m */; };
+		04DAC3C21DB4F083002235A7 /* EmptyViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAC3BC1DB4F083002235A7 /* EmptyViewFactory.m */; };
+		04DAC3C31DB4F083002235A7 /* FOREmptyAssistantConfiger.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAC3BE1DB4F083002235A7 /* FOREmptyAssistantConfiger.m */; };
+		04DAC3C41DB4F083002235A7 /* FORScrollViewEmptyAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAC3C01DB4F083002235A7 /* FORScrollViewEmptyAssistant.m */; };
+		04DAC3CA1DB4F483002235A7 /* EmptyView.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DAC3C91DB4F483002235A7 /* EmptyView.png */; };
 		2D26B4DB1D7BB8E3000D65B4 /* LTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D26B4D91D7BB8E3000D65B4 /* LTPickerView.m */; };
 		2D26B4DC1D7BB8E3000D65B4 /* LTPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D26B4DA1D7BB8E3000D65B4 /* LTPickerView.xib */; };
 		2D90E3421D845271001472EA /* FenLeiDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D90E3401D845271001472EA /* FenLeiDetailViewController.m */; };
@@ -892,6 +897,16 @@
 		04D3EEE11D86F398002C2B9B /* UIViewController+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Utils.m"; sourceTree = "<group>"; };
 		04D3EEE31D86F7CF002C2B9B /* SiXinModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiXinModel.h; sourceTree = "<group>"; };
 		04D3EEE41D86F7CF002C2B9B /* SiXinModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiXinModel.m; sourceTree = "<group>"; };
+		04DAC3B61DB4A07A002235A7 /* iGallery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iGallery.entitlements; sourceTree = "<group>"; };
+		04DAC3B91DB4F083002235A7 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
+		04DAC3BA1DB4F083002235A7 /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
+		04DAC3BB1DB4F083002235A7 /* EmptyViewFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyViewFactory.h; sourceTree = "<group>"; };
+		04DAC3BC1DB4F083002235A7 /* EmptyViewFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyViewFactory.m; sourceTree = "<group>"; };
+		04DAC3BD1DB4F083002235A7 /* FOREmptyAssistantConfiger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FOREmptyAssistantConfiger.h; sourceTree = "<group>"; };
+		04DAC3BE1DB4F083002235A7 /* FOREmptyAssistantConfiger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FOREmptyAssistantConfiger.m; sourceTree = "<group>"; };
+		04DAC3BF1DB4F083002235A7 /* FORScrollViewEmptyAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORScrollViewEmptyAssistant.h; sourceTree = "<group>"; };
+		04DAC3C01DB4F083002235A7 /* FORScrollViewEmptyAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORScrollViewEmptyAssistant.m; sourceTree = "<group>"; };
+		04DAC3C91DB4F483002235A7 /* EmptyView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EmptyView.png; sourceTree = "<group>"; };
 		1BADD449114815B1184AD96A /* Pods-jingdongfang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jingdongfang.debug.xcconfig"; path = "Pods/Target Support Files/Pods-jingdongfang/Pods-jingdongfang.debug.xcconfig"; sourceTree = "<group>"; };
 		2D26B4D81D7BB8E3000D65B4 /* LTPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTPickerView.h; sourceTree = "<group>"; };
 		2D26B4D91D7BB8E3000D65B4 /* LTPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPickerView.m; sourceTree = "<group>"; };
@@ -2580,6 +2595,39 @@
 			path = "我的设备管理";
 			sourceTree = "<group>";
 		};
+		04DAC3B71DB4F083002235A7 /* EmptyAssistant */ = {
+			isa = PBXGroup;
+			children = (
+				04DAC3B81DB4F083002235A7 /* DZNEmptyDataSet */,
+				04DAC3BB1DB4F083002235A7 /* EmptyViewFactory.h */,
+				04DAC3BC1DB4F083002235A7 /* EmptyViewFactory.m */,
+				04DAC3BD1DB4F083002235A7 /* FOREmptyAssistantConfiger.h */,
+				04DAC3BE1DB4F083002235A7 /* FOREmptyAssistantConfiger.m */,
+				04DAC3BF1DB4F083002235A7 /* FORScrollViewEmptyAssistant.h */,
+				04DAC3C01DB4F083002235A7 /* FORScrollViewEmptyAssistant.m */,
+				04DAC3C91DB4F483002235A7 /* EmptyView.png */,
+			);
+			path = EmptyAssistant;
+			sourceTree = "<group>";
+		};
+		04DAC3B81DB4F083002235A7 /* DZNEmptyDataSet */ = {
+			isa = PBXGroup;
+			children = (
+				04DAC3B91DB4F083002235A7 /* UIScrollView+EmptyDataSet.h */,
+				04DAC3BA1DB4F083002235A7 /* UIScrollView+EmptyDataSet.m */,
+			);
+			path = DZNEmptyDataSet;
+			sourceTree = "<group>";
+		};
+		04DAC3CB1DB4F939002235A7 /* 话题列表 */ = {
+			isa = PBXGroup;
+			children = (
+				75EF73541D6DA2DC00E4CD63 /* CircleConversDetailViewController.h */,
+				75EF73551D6DA2DC00E4CD63 /* CircleConversDetailViewController.m */,
+			);
+			name = "话题列表";
+			sourceTree = "<group>";
+		};
 		2D26B4D71D7BB8E3000D65B4 /* LTPickerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2756,6 +2804,7 @@
 		4D1851321961B01200C098AF = {
 			isa = PBXGroup;
 			children = (
+				04DAC3B61DB4A07A002235A7 /* iGallery.entitlements */,
 				75A7F7091D7EB15600859FCD /* NewFeature */,
 				4DC6B3B01961BC9400C87D1B /* AppDelegate.h */,
 				4DC6B3B11961BC9400C87D1B /* AppDelegate.m */,
@@ -5210,6 +5259,7 @@
 		757F327F1D69D25F006D4887 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				04DAC3B71DB4F083002235A7 /* EmptyAssistant */,
 				7507BAA91D7701950031ECE8 /* UIBarButtonItem+Extension.h */,
 				7507BAAA1D77019E0031ECE8 /* UIBarButtonItem+Extension.m */,
 				75AD75EC1D746E76006C31D3 /* AppDelegate+UMShare.h */,
@@ -5596,8 +5646,7 @@
 				3F1F50B71D9BD04F0030FF7B /* Model */,
 				756841561D894607006F9FBE /* 再次评论 */,
 				7568413F1D8874A3006F9FBE /* 查看话题全文 */,
-				75EF73541D6DA2DC00E4CD63 /* CircleConversDetailViewController.h */,
-				75EF73551D6DA2DC00E4CD63 /* CircleConversDetailViewController.m */,
+				04DAC3CB1DB4F939002235A7 /* 话题列表 */,
 				7579BAA51D73D8AB004940A7 /* CircleTopicConverseRead.h */,
 				7579BAA61D73D8AB004940A7 /* CircleTopicConverseRead.m */,
 				75EF73581D6DA8DC00E4CD63 /* JDFTopicHeaderView.h */,
@@ -5866,8 +5915,13 @@
 				ORGANIZATIONNAME = "ZhiYu Hao";
 				TargetAttributes = {
 					4D18513A1961B01200C098AF = {
-						DevelopmentTeam = HC6K8FDE97;
+						DevelopmentTeam = 6GYN7E2YTH;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -5926,6 +5980,7 @@
 				7535A2CE1D1D1CB60050F9E0 /* ArtGalleryViewController.xib in Resources */,
 				754BD68A1D7C7325001488DA /* SearchHotKeyCell.xib in Resources */,
 				7523D00A1D5B33FD00C74318 /* ShangViewController.xib in Resources */,
+				04DAC3CA1DB4F483002235A7 /* EmptyView.png in Resources */,
 				7507BA881D76BF720031ECE8 /* UMSocialSDKResourcesNew.bundle in Resources */,
 				7535A2EB1D1D24480050F9E0 /* PersonalDataVCtrol.xib in Resources */,
 				75C662551D7AD2250070A405 /* MessageContentCell.xib in Resources */,
@@ -6148,6 +6203,7 @@
 				4DC6BAA61961C20700C87D1B /* BeeUIBoard+ModalBoard.m in Sources */,
 				4DC6BB301961C20700C87D1B /* BeeUIQuery+Offset.m in Sources */,
 				4DC6BC2D1961E3B600C87D1B /* EScrollerView.m in Sources */,
+				04DAC3C11DB4F083002235A7 /* UIScrollView+EmptyDataSet.m in Sources */,
 				4DC6BAB31961C20700C87D1B /* UIViewController+UINavigationController.m in Sources */,
 				04CC32881D81B10A006A4752 /* SearchDeviceListViewController.m in Sources */,
 				75A0904F1D5C7F990096D19E /* CommentCell.m in Sources */,
@@ -6200,6 +6256,7 @@
 				4DC6BB6A1961C20700C87D1B /* Bee_Sandbox.mm in Sources */,
 				4DC6BB011961C20700C87D1B /* UIView+PinchGesture.m in Sources */,
 				759415811D8544580089A8CE /* TLMessageCell.m in Sources */,
+				04DAC3C31DB4F083002235A7 /* FOREmptyAssistantConfiger.m in Sources */,
 				7530E3191D73059600CFBC9F /* NSDataEx.m in Sources */,
 				4DC6BAB91961C20700C87D1B /* UIActivityIndicatorView+BeeUIStyle.m in Sources */,
 				4DC6BB601961C20700C87D1B /* BeeDatabase+BeeActiveRecord.m in Sources */,
@@ -6218,6 +6275,7 @@
 				7564F7921D505ED300A46736 /* TableHeader.m in Sources */,
 				4DC6BB441961C20700C87D1B /* Bee_UITemplateMediaQuery.m in Sources */,
 				75AD75F21D746E76006C31D3 /* AppDelegate+UMShare.m in Sources */,
+				04DAC3C21DB4F083002235A7 /* EmptyViewFactory.m in Sources */,
 				4DC6BB151961C20700C87D1B /* Bee_UISignalBus.m in Sources */,
 				4DC6BB6E1961C20700C87D1B /* Bee_Ticker.mm in Sources */,
 				4DC6BB9D1961C20700C87D1B /* NSObject+Resource.mm in Sources */,
@@ -6313,6 +6371,7 @@
 				7506F8411D5DB45D00A387D2 /* PayViewController.m in Sources */,
 				4DC6BAF41961C20700C87D1B /* Bee_UITableView.m in Sources */,
 				4DC6BB521961C20700C87D1B /* Bee_CacheProtocol.mm in Sources */,
+				04DAC3C41DB4F083002235A7 /* FORScrollViewEmptyAssistant.m in Sources */,
 				7535A2D21D1D1D500050F9E0 /* FriendViewController.m in Sources */,
 				7537243C1D4F15FB00428008 /* ZuanTiViewController.m in Sources */,
 				4DC6BA8D1961C20700C87D1B /* Bee_Message.mm in Sources */,
@@ -6843,9 +6902,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = NO;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Fengming Hu (62HKHDP579)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fengming Hu (62HKHDP579)";
-				DEVELOPMENT_TEAM = HC6K8FDE97;
+				CODE_SIGN_IDENTITY = "iPhone Developer: qizhong feng (L53RMXZS6K)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: qizhong feng (L53RMXZS6K)";
+				DEVELOPMENT_TEAM = 6GYN7E2YTH;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6887,8 +6946,8 @@
 				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zipingfang.jingdongfang;
 				PRODUCT_NAME = iGallery;
-				PROVISIONING_PROFILE = "5ef06788-7678-4d4b-872f-f0fefa507dda";
-				PROVISIONING_PROFILE_SPECIFIER = boe_development;
+				PROVISIONING_PROFILE = "40ce4de8-3bb8-4e17-9182-10ae9bc598b9";
+				PROVISIONING_PROFILE_SPECIFIER = ZPF_Development;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -6902,8 +6961,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = NO;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Zipingfang Information Technology Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Zipingfang Information Technology Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: qizhong feng (L53RMXZS6K)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: qizhong feng (L53RMXZS6K)";
 				DEVELOPMENT_TEAM = HC6K8FDE97;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -6947,7 +7006,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.zipingfang.jingdongfang;
 				PRODUCT_NAME = iGallery;
 				PROVISIONING_PROFILE = "c6747bdb-5ee3-4b34-b921-b7dfb39d60a4";
-				PROVISIONING_PROFILE_SPECIFIER = ZPF_DISTRIBUTION;
+				PROVISIONING_PROFILE_SPECIFIER = ZPF_Development;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};

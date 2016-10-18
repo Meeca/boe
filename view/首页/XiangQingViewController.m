@@ -41,6 +41,7 @@ static NSString * const kCommentCellTableViewCellIdentifier = @"kCommentCellTabl
     BaseModel *baseModel;
     DetailsInfo * detailsInfo;
     
+    
     NSString *comment;
     
     UIView *imView;
@@ -61,6 +62,7 @@ static NSString * const kCommentCellTableViewCellIdentifier = @"kCommentCellTabl
 @end
 
 @implementation XiangQingViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -125,7 +127,20 @@ static NSString * const kCommentCellTableViewCellIdentifier = @"kCommentCellTabl
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
     
     _dataArray = [NSMutableArray new];
-  
+    
+    
+//    NSMutableDictionary * params = [NSMutableDictionary new];
+//    params[@"uid"] = kUserId;
+//    params[@"p_id"] = _p_id;
+// 
+//    [MCNetTool postWithCacheUrl:@"app.php/Index/read" params:params hud:YES success:^(NSDictionary *requestDic, NSString *msg) {
+//        
+//        
+//        
+//        
+//    } fail:^(NSString *error) {
+//        
+//    }];
 }
 
 
@@ -360,6 +375,10 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
         
         UILabel *zuoPin = [[UILabel alloc] initWithFrame:CGRectZero];
         zuoPin.font = [UIFont systemFontOfSize:13];
+        
+        
+        NSLog(@"________  %@",detailsInfo.works_nums);
+        
         zuoPin.text = [NSString stringWithFormat:@"作品 %@",detailsInfo.works_nums ];
         zuoPin.textColor = [UIColor grayColor];
         [cell.contentView addSubview:zuoPin];
