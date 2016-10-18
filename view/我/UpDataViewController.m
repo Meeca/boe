@@ -230,37 +230,38 @@
             BlockUIAlertView *alact = [[BlockUIAlertView alloc] initWithTitle:@"" message:@"如果您开启了 iCloud 照片库，并且选择了“优化 iPhone/iPad 储存空间，可能需要等待图片下载完成，是否继续" cancelButtonTitle:@"取消" clickButton:^(NSInteger index) {
                 if (index) {
                     PrintViewController *vc = [[PrintViewController alloc] init];
-                    
-                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                        PHAsset *phAsset = _dataImages[indexPath.item - 1];
-                        PHImageRequestOptions *phImageRequestOptions = [[PHImageRequestOptions alloc] init];
-                        phImageRequestOptions.synchronous = YES;
-                        phImageRequestOptions.networkAccessAllowed = YES;
-                        phImageRequestOptions.resizeMode = PHImageRequestOptionsResizeModeExact;
-                        [phImageRequestOptions setProgressHandler:^(double progress, NSError *__nullable error, BOOL *stop, NSDictionary *__nullable info){
-                            NSLog(@"%@",@(progress));
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                NSString *str = [NSString stringWithFormat:@"%d %%...", (int)(progress*100)];
-                                [self presentLoadingTips:str];
-                            });
-                        }];
-                        // 在 PHImageManager 中，targetSize 等 size 都是使用 px 作为单位，因此需要对targetSize 中对传入的 Size 进行处理，宽高各自乘以 ScreenScale，从而得到正确的图片
-                        PHImageManager *imageManager = [[PHImageManager alloc] init];
-                        [imageManager requestImageForAsset:phAsset targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:phImageRequestOptions resultHandler:^(UIImage *result, NSDictionary *info) {
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                NSLog(@"%@",NSStringFromCGSize(result.size));
-                                [self dismissTips];
-                                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                    if (!result) {
-                                        [self presentMessageTips:@"下载失败"];
-                                        return;
-                                    }
-                                    vc.image = result;
-                                    [self.navigationController pushViewController:vc animated:YES];
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                            PHAsset *phAsset = _dataImages[indexPath.item - 1];
+                            PHImageRequestOptions *phImageRequestOptions = [[PHImageRequestOptions alloc] init];
+                            phImageRequestOptions.synchronous = YES;
+                            phImageRequestOptions.networkAccessAllowed = YES;
+                            phImageRequestOptions.resizeMode = PHImageRequestOptionsResizeModeExact;
+                            [phImageRequestOptions setProgressHandler:^(double progress, NSError *__nullable error, BOOL *stop, NSDictionary *__nullable info){
+                                NSLog(@"%@",@(progress));
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    NSString *str = [NSString stringWithFormat:@"%d %%...", (int)(progress*100)];
+                                    [self presentLoadingTips:str];
                                 });
-                            });
-                        }];
-                        NSLog(@"卡这里了。。。。");
+                            }];
+                            // 在 PHImageManager 中，targetSize 等 size 都是使用 px 作为单位，因此需要对targetSize 中对传入的 Size 进行处理，宽高各自乘以 ScreenScale，从而得到正确的图片
+                            PHImageManager *imageManager = [[PHImageManager alloc] init];
+                            [imageManager requestImageForAsset:phAsset targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:phImageRequestOptions resultHandler:^(UIImage *result, NSDictionary *info) {
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    NSLog(@"%@",NSStringFromCGSize(result.size));
+                                    [self dismissTips];
+                                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                        if (!result) {
+                                            [self presentMessageTips:@"下载失败"];
+                                            return;
+                                        }
+                                        vc.image = result;
+                                        [self.navigationController pushViewController:vc animated:YES];
+                                    });
+                                });
+                            }];
+                            NSLog(@"卡这里了。。。。");
+                        });
                     });
                 }
             } otherButtonTitles:@"确定"];

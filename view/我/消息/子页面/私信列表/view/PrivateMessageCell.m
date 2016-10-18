@@ -49,8 +49,8 @@
 
 
     [_iconImageView sd_setImageWithURL:[NSURL URLWithString:siXinModel.image] placeholderImage:nil];
-    
     _nameLab.text = siXinModel.name;
+//    _nameLab.text = @"这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试";
     _contentLab.text = siXinModel.title;
     _timeLab.text = [Tool timestampToString:siXinModel.times Format:@"MM月dd日 HH:mm"];
     
@@ -60,6 +60,7 @@
     }else{
         _numlab.hidden = YES;
     }
+
     
 }
 
@@ -121,6 +122,11 @@
         }
     }
     
+    
+    [_nameLab sizeToFit];
+    if (_nameLab.right > _timeLab.left-10) {
+        _nameLab.width = _timeLab.left-10-_nameLab.left;
+    }
 }
 
 @end
