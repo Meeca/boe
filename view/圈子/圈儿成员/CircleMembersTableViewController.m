@@ -320,11 +320,6 @@ static NSString * const JDFSquareCellID = @"JDFSquareCell";
 }
 
 
-
-
-
-
-
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
     return CGSizeMake(0, 0);
 }
