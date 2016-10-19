@@ -325,4 +325,42 @@ PictureUpLoad *pictureUpLoad;
         
     }
 }
+
+
+- (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+
+    return 10.f;
+}
+
+
+- (CGFloat )tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+
+    return 0.01f;
+}
+
+-(void)viewDidLayoutSubviews
+{
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsMake(0,10,0,10)];
+    }
+    
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView setLayoutMargins:UIEdgeInsetsMake(0,10,0,10)];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsMake(0,10,0,10)];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsMake(0,10,0,10)];
+    }
+}
+
+
+
+
 @end

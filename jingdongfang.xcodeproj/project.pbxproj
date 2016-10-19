@@ -40,6 +40,7 @@
 		04DAC3C31DB4F083002235A7 /* FOREmptyAssistantConfiger.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAC3BE1DB4F083002235A7 /* FOREmptyAssistantConfiger.m */; };
 		04DAC3C41DB4F083002235A7 /* FORScrollViewEmptyAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAC3C01DB4F083002235A7 /* FORScrollViewEmptyAssistant.m */; };
 		04DAC3CA1DB4F483002235A7 /* EmptyView.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DAC3C91DB4F483002235A7 /* EmptyView.png */; };
+		04DAC3DF1DB7A7A0002235A7 /* MCTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAC3DE1DB7A7A0002235A7 /* MCTextView.m */; };
 		2D26B4DB1D7BB8E3000D65B4 /* LTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D26B4D91D7BB8E3000D65B4 /* LTPickerView.m */; };
 		2D26B4DC1D7BB8E3000D65B4 /* LTPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D26B4DA1D7BB8E3000D65B4 /* LTPickerView.xib */; };
 		2D90E3421D845271001472EA /* FenLeiDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D90E3401D845271001472EA /* FenLeiDetailViewController.m */; };
@@ -907,6 +908,8 @@
 		04DAC3BF1DB4F083002235A7 /* FORScrollViewEmptyAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FORScrollViewEmptyAssistant.h; sourceTree = "<group>"; };
 		04DAC3C01DB4F083002235A7 /* FORScrollViewEmptyAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FORScrollViewEmptyAssistant.m; sourceTree = "<group>"; };
 		04DAC3C91DB4F483002235A7 /* EmptyView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EmptyView.png; sourceTree = "<group>"; };
+		04DAC3DD1DB7A7A0002235A7 /* MCTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCTextView.h; sourceTree = "<group>"; };
+		04DAC3DE1DB7A7A0002235A7 /* MCTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCTextView.m; sourceTree = "<group>"; };
 		1BADD449114815B1184AD96A /* Pods-jingdongfang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jingdongfang.debug.xcconfig"; path = "Pods/Target Support Files/Pods-jingdongfang/Pods-jingdongfang.debug.xcconfig"; sourceTree = "<group>"; };
 		2D26B4D81D7BB8E3000D65B4 /* LTPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTPickerView.h; sourceTree = "<group>"; };
 		2D26B4D91D7BB8E3000D65B4 /* LTPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPickerView.m; sourceTree = "<group>"; };
@@ -2626,6 +2629,15 @@
 				75EF73551D6DA2DC00E4CD63 /* CircleConversDetailViewController.m */,
 			);
 			name = "话题列表";
+			sourceTree = "<group>";
+		};
+		04DAC3DC1DB7A7A0002235A7 /* MCTextView */ = {
+			isa = PBXGroup;
+			children = (
+				04DAC3DD1DB7A7A0002235A7 /* MCTextView.h */,
+				04DAC3DE1DB7A7A0002235A7 /* MCTextView.m */,
+			);
+			path = MCTextView;
 			sourceTree = "<group>";
 		};
 		2D26B4D71D7BB8E3000D65B4 /* LTPickerView */ = {
@@ -5207,6 +5219,7 @@
 		7579BAAD1D73E39A004940A7 /* 评论 */ = {
 			isa = PBXGroup;
 			children = (
+				04DAC3DC1DB7A7A0002235A7 /* MCTextView */,
 				75AD75F81D758413006C31D3 /* CircleCommentTableViewController.h */,
 				75AD75F91D758413006C31D3 /* CircleCommentTableViewController.m */,
 			);
@@ -6189,6 +6202,7 @@
 				7530E3171D73059600CFBC9F /* SBJsonWriter.m in Sources */,
 				4D02D5801B539C8300C92F60 /* NIState.m in Sources */,
 				4DC6BB321961C20700C87D1B /* BeeUIQuery+Traversing.m in Sources */,
+				04DAC3DF1DB7A7A0002235A7 /* MCTextView.m in Sources */,
 				751BED5A1D2F8D17004A6BA8 /* BaseModel.m in Sources */,
 				75196E941D1A67D4002D403B /* FollowViewController.m in Sources */,
 				4DC6BAFE1961C20700C87D1B /* UIView+Manipulation.m in Sources */,
