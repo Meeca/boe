@@ -9,9 +9,11 @@
 #import "CircleCommentTableViewController.h"
 #import "MCHttp.h"
 #import "UIViewController+MBShow.h"
+#import "MCTextView.h"
 
 @interface CircleCommentTableViewController ()<UITextViewDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *commentTextFeild;
+//@property (weak, nonatomic) IBOutlet UITextField *commentTextFeild;
+@property (weak, nonatomic) IBOutlet MCTextView *textView;
 
 @end
 
@@ -36,16 +38,17 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
 
+    _textView.placeholder = @"你想说些什么呢";
     
 }
-- (void)textFieldDidChange:(UITextField *)textField
-{
-    if (textField == self.commentTextFeild) {
-        if (textField.text.length > 20) {
-            textField.text = [textField.text substringToIndex:20];
-        }
-    }
-}
+//- (void)textFieldDidChange:(UITextField *)textField
+//{
+//    if (textField == self.commentTextFeild) {
+//        if (textField.text.length > 20) {
+//            textField.text = [textField.text substringToIndex:20];
+//        }
+//    }
+//}
 
 - (void)addCircle:(UIButton *)btn
 {
@@ -62,7 +65,7 @@ NSString *path = @"/app.php/Circles/comm_add";
                              
                              @"uid":kUserId,
                               @"co_id":self.coId,
-                              @"title":self.commentTextFeild.text,
+                              @"title":self.textView.text,
                              
                              };
     [MCNetTool postWithUrl:path params:params hud:YES
@@ -77,6 +80,16 @@ NSString *path = @"/app.php/Circles/comm_add";
                        
                    }];
     
+}
+- (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    return 10.f;
+}
+
+
+- (CGFloat )tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    
+    return 0.01f;
 }
 
 @end
