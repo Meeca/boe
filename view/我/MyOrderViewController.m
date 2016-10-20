@@ -52,11 +52,16 @@
 }
 
 ON_SIGNAL3(SaleModel, RELOADED, signal) {
+    self.table.mj_footer.hidden = NO;
     [self.table.mj_header endRefreshing];
     [self.table.mj_footer endRefreshing];
     [self.table.mj_footer resetNoMoreData];
     if (saleModel.loaded) {
         [self.table.mj_footer endRefreshingWithNoMoreData];
+    }
+    if (saleModel.recommends.count==0) {
+        [self presentMessageTips:@"暂无数据"];
+        self.table.mj_footer.hidden = YES;
     }
     [self.table reloadData];
 }
