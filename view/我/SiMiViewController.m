@@ -281,7 +281,7 @@ ON_SIGNAL3(BaseModel, JPUSHINDEX, signal) {
             push.backgroundColor = KAPPCOLOR;
             push.titleLabel.font = [UIFont systemFontOfSize:15];
             [push setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [push setTitle:@"推送到GALLERY" forState:UIControlStateNormal];
+            [push setTitle:@"推送到iGallery" forState:UIControlStateNormal];
             [push addTarget:self action:@selector(pushModel:) forControlEvents:UIControlEventTouchUpInside];
             push.frame = CGRectMake(del.right, 0, KSCREENWIDTH/3*2, 49);
             [tabbar addSubview:push];

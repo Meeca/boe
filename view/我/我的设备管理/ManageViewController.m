@@ -164,9 +164,9 @@ ON_SIGNAL3(BaseModel, SHAREEQUIPMENTLIST, signal){
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section==0) {
-        return @"我的Gallery";
+        return @"我的iGallery";
     } else if (section==1) {
-        return @"分享的Gallery";
+        return @"分享的iGallery";
     }
     return nil;
 }

@@ -77,7 +77,7 @@ static NSString * const kCommentCellTableViewCellIdentifier = @"kCommentCellTabl
     UIButton *push = [UIButton buttonWithType:UIButtonTypeCustom];
     push.frame = CGRectMake(0, 0, KSCREENWIDTH, 44);
     push.backgroundColor = KAPPCOLOR;
-    [push setTitle:@"推送到Gallery" forState:UIControlStateNormal];
+    [push setTitle:@"推送到iGallery" forState:UIControlStateNormal];
     [push setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [push addTarget:self action:@selector(pushPhoto:) forControlEvents:UIControlEventTouchUpInside];
     push.titleLabel.font = [UIFont systemFontOfSize:16];
