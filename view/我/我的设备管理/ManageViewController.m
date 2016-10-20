@@ -154,7 +154,7 @@ ON_SIGNAL3(BaseModel, SHAREEQUIPMENTLIST, signal){
         vc.hidesBottomBarWhenPushed = YES;
         vc.list = s;
         [Tool setBackButtonNoTitle:self];
-//        [self.navigationController pushViewController:vc animated:YES];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 

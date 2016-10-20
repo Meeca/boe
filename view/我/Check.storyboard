@@ -18,14 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sF6-xW-9jl">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sF6-xW-9jl">
+                                <frame key="frameInset" minY="20" width="320" height="460"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GALLERY APP-buy-ljj0727-12" translatesAutoresizingMaskIntoConstraints="NO" id="rnn-FT-9Zb">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="GALLERY APP-buy-ljj0727-12" translatesAutoresizingMaskIntoConstraints="NO" id="rnn-FT-9Zb">
+                                        <frame key="frameInset" minX="32" minY="55" width="256" height="350"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="350" id="Wza-n2-hhZ"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收到打赏" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWU-Xu-h7P">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="收到打赏" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWU-Xu-h7P">
+                                        <frame key="frameInset" minX="124" minY="86" width="72" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="Moa-a9-yZ0"/>
                                             <constraint firstAttribute="width" constant="72" id="Z3E-zX-ClU"/>
@@ -34,7 +37,8 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="来自XXX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vcb-AF-p7l">
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="来自XXX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vcb-AF-p7l">
+                                        <frame key="frameInset" minX="134" minY="161" width="52.5" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="nJN-lW-DgI"/>
                                         </constraints>
@@ -42,7 +46,8 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已存入钱包" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7FL-Ql-LYw">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="已存入钱包" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7FL-Ql-LYw">
+                                        <frame key="frameInset" minX="118" minY="333" width="85" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="YfM-8Y-ouA"/>
                                             <constraint firstAttribute="width" constant="85" id="sVk-dI-QQN"/>
@@ -51,7 +56,8 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNo-ut-vH0">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNo-ut-vH0">
+                                        <frame key="frameInset" minX="112" minY="364" width="95" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="95" id="25a-GE-uya"/>
                                             <constraint firstAttribute="height" constant="30" id="R5P-y5-YV4"/>
@@ -64,13 +70,15 @@
                                             <action selector="checkBtnClick:" destination="hBu-qj-9sa" eventType="touchUpInside" id="xob-Hp-mGS"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="B-6" translatesAutoresizingMaskIntoConstraints="NO" id="7zU-Ks-F9I">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="B-6" translatesAutoresizingMaskIntoConstraints="NO" id="7zU-Ks-F9I">
+                                        <frame key="frameInset" minX="138" minY="112" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="Nvo-fV-rh7"/>
                                             <constraint firstAttribute="width" constant="44" id="rF6-1j-LNb"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1元" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvw-Xk-5PO">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1元" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvw-Xk-5PO">
+                                        <frame key="frameInset" minX="113" minY="304" width="95" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="2JD-8Y-uvI"/>
                                             <constraint firstAttribute="width" constant="95" id="5zC-oo-JSc"/>
@@ -118,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ypd-bP-Lkz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="347" y="211"/>
+            <point key="canvasLocation" x="74" y="211"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="CvC-1M-Eyv">
