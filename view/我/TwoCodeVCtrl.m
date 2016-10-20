@@ -179,7 +179,7 @@
     labIntroudction.backgroundColor = [UIColor clearColor];
     labIntroudction.numberOfLines=2;
     labIntroudction.textColor=[UIColor whiteColor];
-    labIntroudction.text = @"请扫描Gallery的二维码";
+    labIntroudction.text = @"请扫描iGallery的二维码";
     labIntroudction.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:labIntroudction];
     

@@ -115,7 +115,7 @@ ON_SIGNAL3(BaseModel, SHAREEQUIPMENTLIST, signal){
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     cell.textLabel.font = [UIFont systemFontOfSize:15];
-//    cell.textLabel.text = @"       Gallery 客厅";
+//    cell.textLabel.text = @"       iGallery 客厅";
     UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     img.center = CGPointMake(25, 55/2);
     img.contentMode = UIViewContentModeScaleAspectFit;
@@ -164,9 +164,9 @@ ON_SIGNAL3(BaseModel, SHAREEQUIPMENTLIST, signal){
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section==0) {
-        return @"我的Gallery";
+        return @"我的iGallery";
     } else if (section==1) {
-        return @"分享的Gallery";
+        return @"分享的iGallery";
     }
     return nil;
 }
