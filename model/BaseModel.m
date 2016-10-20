@@ -486,7 +486,7 @@ DEF_SIGNAL(RCOMMENTADD)
 }
 
 //推送图像至设备
-- (void)app_php_Jpush_indexWithP_id:(NSString *)p_id e_id:(NSString *)e_id type:(NSString *)type pay_type:(NSString *)pay_type {
+- (void)app_php_Jpush_indexWithP_id:(NSString *)p_id e_id:(NSString *)e_id type:(NSString *)type pay_type:(NSString *)pay_type u_id:(NSString *)u_id{
     [API_APP_PHP_JPUSH_INDEX cancel];
     
     API_APP_PHP_JPUSH_INDEX *api = [API_APP_PHP_JPUSH_INDEX api];
@@ -495,7 +495,8 @@ DEF_SIGNAL(RCOMMENTADD)
     api.req.e_id = e_id;
     api.req.type = type;
     api.req.pay_type = pay_type;
-    
+    api.req.u_id = u_id;
+
     @weakify(api);
     @weakify(self);
     

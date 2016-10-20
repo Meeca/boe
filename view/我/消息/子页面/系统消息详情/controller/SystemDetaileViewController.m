@@ -26,27 +26,19 @@
     
     self.navigationItem.title = @"系统消息";
         
-    self.navigationItem.rightBarButtonItem =[UIBarButtonItem itemWithImage:@"C-13-3" highImage:@"C-13-3" target:self action:@selector(deleteItemAction)];
+    self.navigationItem.rightBarButtonItem =[UIBarButtonItem itemWithImage:@"delsys" highImage:@"delsys" target:self action:@selector(deleteItemAction)];
 
     /*
-     
      系统消息详情
-     
      get:/app.php/User/news_read
      n_id#消息id
-     
-
-     
      */
-    
-    
-    
+
     
     [MCNetTool postWithUrl:@"/app.php/User/news_read" params:@{@"n_id":_n_id} hud:YES success:^(NSDictionary *requestDic, NSString *msg) {
         
         NSString * time =requestDic[@"created_at"];
         
-//        timestampToString
         _timeLab.text = [Tool timestampToString:time Format:@"yyyy-MM-dd HH:mm"];
         _contentLab.text = requestDic[@"title"];
         _type = [requestDic[@"types"] integerValue];

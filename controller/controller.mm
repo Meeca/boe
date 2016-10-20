@@ -2550,6 +2550,7 @@ CONVERT_PROPERTY_CLASS( info, ThemeList );
 @synthesize p_id = _p_id;
 @synthesize pay_type = _pay_type;
 @synthesize type = _type;
+@synthesize u_id = _u_id;
 
 - (BOOL)validate
 {

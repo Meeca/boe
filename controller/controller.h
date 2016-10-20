@@ -718,6 +718,8 @@
 @property (nonatomic, retain) NSString *			p_id;
 @property (nonatomic, retain) NSString *			pay_type;
 @property (nonatomic, retain) NSString *			type;
+@property (nonatomic, retain) NSString *			u_id;
+
 @end
 
 @interface RESP_APP_PHP_JPUSH_INDEX : BeeActiveObject

@@ -43,6 +43,7 @@
 		04DAC3DF1DB7A7A0002235A7 /* MCTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAC3DE1DB7A7A0002235A7 /* MCTextView.m */; };
 		04DAC3EB1DB89BB1002235A7 /* QuanAearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAC3E91DB89BB1002235A7 /* QuanAearchViewController.m */; };
 		04DAC3EC1DB89BB1002235A7 /* QuanAearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DAC3EA1DB89BB1002235A7 /* QuanAearchViewController.xib */; };
+		04DAC6401DB8EDDB002235A7 /* delsys.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DAC63F1DB8EDDB002235A7 /* delsys.png */; };
 		2D26B4DB1D7BB8E3000D65B4 /* LTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D26B4D91D7BB8E3000D65B4 /* LTPickerView.m */; };
 		2D26B4DC1D7BB8E3000D65B4 /* LTPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D26B4DA1D7BB8E3000D65B4 /* LTPickerView.xib */; };
 		2D90E3421D845271001472EA /* FenLeiDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D90E3401D845271001472EA /* FenLeiDetailViewController.m */; };
@@ -914,6 +915,7 @@
 		04DAC3E81DB89BB1002235A7 /* QuanAearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuanAearchViewController.h; sourceTree = "<group>"; };
 		04DAC3E91DB89BB1002235A7 /* QuanAearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuanAearchViewController.m; sourceTree = "<group>"; };
 		04DAC3EA1DB89BB1002235A7 /* QuanAearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuanAearchViewController.xib; sourceTree = "<group>"; };
+		04DAC63F1DB8EDDB002235A7 /* delsys.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delsys.png; sourceTree = "<group>"; };
 		1BADD449114815B1184AD96A /* Pods-jingdongfang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jingdongfang.debug.xcconfig"; path = "Pods/Target Support Files/Pods-jingdongfang/Pods-jingdongfang.debug.xcconfig"; sourceTree = "<group>"; };
 		2D26B4D81D7BB8E3000D65B4 /* LTPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTPickerView.h; sourceTree = "<group>"; };
 		2D26B4D91D7BB8E3000D65B4 /* LTPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPickerView.m; sourceTree = "<group>"; };
@@ -5040,6 +5042,7 @@
 				755C45C61D86DEE800659948 /* SystemDetaileViewController.h */,
 				755C45C71D86DEE800659948 /* SystemDetaileViewController.m */,
 				755C45C81D86DEE800659948 /* SystemDetaileViewController.xib */,
+				04DAC63F1DB8EDDB002235A7 /* delsys.png */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -6059,6 +6062,7 @@
 				752096B41D59C1440006CF5A /* AreaViewController.xib in Resources */,
 				4D56885819EB65EB00459A1B /* icon_rightarrow@2x.png in Resources */,
 				7507BA861D76BF720031ECE8 /* UMSnsAccountViewController.xib in Resources */,
+				04DAC6401DB8EDDB002235A7 /* delsys.png in Resources */,
 				755546161D785ECB0011F46A /* UserCertification.storyboard in Resources */,
 				759415801D8544580089A8CE /* account.plist in Resources */,
 				2D90E3431D845271001472EA /* FenLeiDetailViewController.xib in Resources */,
