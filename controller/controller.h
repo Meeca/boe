@@ -160,6 +160,9 @@
 @property (nonatomic, retain) NSString *			years;
 @property (nonatomic, retain) NSString *			zambia;
 @property (nonatomic, retain) NSString *			zambia_nums;
+@property (nonatomic, retain) NSString *			sales_status;
+
+
 @end
 
 @interface EquipmentList : BeeActiveObject

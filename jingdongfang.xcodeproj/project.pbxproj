@@ -44,6 +44,7 @@
 		04DAC3EB1DB89BB1002235A7 /* QuanAearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAC3E91DB89BB1002235A7 /* QuanAearchViewController.m */; };
 		04DAC3EC1DB89BB1002235A7 /* QuanAearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DAC3EA1DB89BB1002235A7 /* QuanAearchViewController.xib */; };
 		04DAC6401DB8EDDB002235A7 /* delsys.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DAC63F1DB8EDDB002235A7 /* delsys.png */; };
+		04DAC6481DB9008B002235A7 /* DBHBuyPictureFrameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAC6471DB9008B002235A7 /* DBHBuyPictureFrameModel.m */; };
 		2D26B4DB1D7BB8E3000D65B4 /* LTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D26B4D91D7BB8E3000D65B4 /* LTPickerView.m */; };
 		2D26B4DC1D7BB8E3000D65B4 /* LTPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D26B4DA1D7BB8E3000D65B4 /* LTPickerView.xib */; };
 		2D90E3421D845271001472EA /* FenLeiDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D90E3401D845271001472EA /* FenLeiDetailViewController.m */; };
@@ -916,6 +917,8 @@
 		04DAC3E91DB89BB1002235A7 /* QuanAearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuanAearchViewController.m; sourceTree = "<group>"; };
 		04DAC3EA1DB89BB1002235A7 /* QuanAearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuanAearchViewController.xib; sourceTree = "<group>"; };
 		04DAC63F1DB8EDDB002235A7 /* delsys.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delsys.png; sourceTree = "<group>"; };
+		04DAC6461DB9008B002235A7 /* DBHBuyPictureFrameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBHBuyPictureFrameModel.h; sourceTree = "<group>"; };
+		04DAC6471DB9008B002235A7 /* DBHBuyPictureFrameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBHBuyPictureFrameModel.m; sourceTree = "<group>"; };
 		1BADD449114815B1184AD96A /* Pods-jingdongfang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jingdongfang.debug.xcconfig"; path = "Pods/Target Support Files/Pods-jingdongfang/Pods-jingdongfang.debug.xcconfig"; sourceTree = "<group>"; };
 		2D26B4D81D7BB8E3000D65B4 /* LTPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTPickerView.h; sourceTree = "<group>"; };
 		2D26B4D91D7BB8E3000D65B4 /* LTPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPickerView.m; sourceTree = "<group>"; };
@@ -2688,6 +2691,8 @@
 				3F1F50AB1D9BCFF50030FF7B /* DBHBuyPictureFrameView.m */,
 				3F1F50AC1D9BCFF50030FF7B /* DBHBuyPictureFrameViewController.h */,
 				3F1F50AD1D9BCFF50030FF7B /* DBHBuyPictureFrameViewController.m */,
+				04DAC6461DB9008B002235A7 /* DBHBuyPictureFrameModel.h */,
+				04DAC6471DB9008B002235A7 /* DBHBuyPictureFrameModel.m */,
 			);
 			path = "购买画框";
 			sourceTree = "<group>";
@@ -6305,6 +6310,7 @@
 				E48DDE5D1DB6454400D8BD73 /* PrivateMTableViewCell.m in Sources */,
 				4DC6BBBC1961C20700C87D1B /* ioapi.c in Sources */,
 				7564F7921D505ED300A46736 /* TableHeader.m in Sources */,
+				04DAC6481DB9008B002235A7 /* DBHBuyPictureFrameModel.m in Sources */,
 				4DC6BB441961C20700C87D1B /* Bee_UITemplateMediaQuery.m in Sources */,
 				75AD75F21D746E76006C31D3 /* AppDelegate+UMShare.m in Sources */,
 				04DAC3C21DB4F083002235A7 /* EmptyViewFactory.m in Sources */,
@@ -6934,7 +6940,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = NO;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: qizhong feng (L53RMXZS6K)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: zhou bo (4LT22BKL6H)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: qizhong feng (L53RMXZS6K)";
 				DEVELOPMENT_TEAM = 6GYN7E2YTH;
 				ENABLE_BITCODE = NO;
@@ -6978,7 +6984,7 @@
 				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zipingfang.jingdongfang;
 				PRODUCT_NAME = iGallery;
-				PROVISIONING_PROFILE = "40ce4de8-3bb8-4e17-9182-10ae9bc598b9";
+				PROVISIONING_PROFILE = "f4fe9ed9-1e45-4dea-84f6-6668e7544b5a";
 				PROVISIONING_PROFILE_SPECIFIER = ZPF_Development;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -6993,7 +6999,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = NO;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: qizhong feng (L53RMXZS6K)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: zhou bo (4LT22BKL6H)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: qizhong feng (L53RMXZS6K)";
 				DEVELOPMENT_TEAM = HC6K8FDE97;
 				ENABLE_BITCODE = NO;

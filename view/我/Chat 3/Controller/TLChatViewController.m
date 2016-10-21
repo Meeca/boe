@@ -292,7 +292,6 @@ UITableViewDataSource>{
     NSData * imageData = [[NSData alloc]init ];
     imageData = UIImageJPEGRepresentation(image, 1);
 
-     
     
       NSDictionary *params = @{
                              @"image":image,

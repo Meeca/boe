@@ -20,6 +20,10 @@
 #import "DBHBuyPictureFrameDataModels.h"
 #import "DBHBuyPictureFrameSizeInfoDataModels.h"
 
+
+#import "DBHBuyPictureFrameModel.h"
+
+
 #define  SCREENWIDTH [UIScreen mainScreen].bounds.size.width
 #define  SCREENHEIGHT [UIScreen mainScreen].bounds.size.height
 #define AUTOLAYOUTSIZE(size) ((size) * (SCREENWIDTH / 375))
@@ -33,11 +37,15 @@ static NSString * const kBuyPictureFrameImageTableViewCellIdentifier = @"kBuyPic
 @property (nonatomic, strong) DBHBuyPictureFrameView *buyPictureFrameView;
 @property (nonatomic, strong) UIButton *buyButton;
 
-@property (nonatomic, strong) DBHBuyPictureFrameModelInfo *model;
+@property (nonatomic, strong) DBHBuyPictureFrameModel *model;
 
 @property (nonatomic, strong) NSArray *imageArray;
 @property (nonatomic, strong) NSMutableArray *pictureFrameSizeArray;
 @property (nonatomic, strong) NSMutableArray *pictureFrameBorderArray;
+
+@property (nonatomic, strong) NSMutableArray *imageHeightArray;;
+
+
 
 @end
 
@@ -46,9 +54,12 @@ static NSString * const kBuyPictureFrameImageTableViewCellIdentifier = @"kBuyPic
 #pragma mark - life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
- 
+    
     self.title = @"iGallery高清电子画框";
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    _imageHeightArray = [NSMutableArray new];
+    
     
     [self setUI];
     [self loadData];
@@ -78,7 +89,10 @@ static NSString * const kBuyPictureFrameImageTableViewCellIdentifier = @"kBuyPic
     NSDictionary *paramters = @{};
     
     [MCNetTool postWithUrl:urlString params:paramters hud:YES success:^(NSDictionary *requestDic, NSString *msg) {
-        self.model = [DBHBuyPictureFrameModelInfo modelObjectWithDictionary:requestDic];
+        _model = [DBHBuyPictureFrameModel mj_objectWithKeyValues:requestDic];
+        
+        [_tableView reloadData];
+        
     } fail:^(NSString *error) {
         
     }];
@@ -115,18 +129,17 @@ static NSString * const kBuyPictureFrameImageTableViewCellIdentifier = @"kBuyPic
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _imageArray.count + 1;
+    return _model.all_image.count + 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         DBHBuyPictureFrameInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBuyPictureFrameInfoTableViewCellIdentifier forIndexPath:indexPath];
         cell.model = _model;
-        
         return cell;
     } else {
         DBHBuyPictureFrameImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBuyPictureFrameImageTableViewCellIdentifier forIndexPath:indexPath];
-        cell.image = _imageArray[indexPath.row - 1];
-        
+        All_Image * image = _model.all_image[indexPath.row - 1];
+        cell.image = image.a_image;
         return cell;
     }
 }
@@ -149,12 +162,12 @@ static NSString * const kBuyPictureFrameImageTableViewCellIdentifier = @"kBuyPic
         imgView.layer.masksToBounds = YES;
         [ctrl addSubview:imgView];
         
-//        if ([detailsInfo.plates integerValue]==1) { // 横屏
-//            imgView.frame = CGRectMake(0, 0, (KSCREENWIDTH-80)*1920/1080, KSCREENWIDTH-80);
-//            imgView.transform = CGAffineTransformMakeRotation(-M_PI/2);
-//        } else {  //竖屏
-            imgView.frame = CGRectMake(0, 0, KSCREENWIDTH-80, (KSCREENWIDTH-80)*1920/1080);
-//        }
+        //        if ([detailsInfo.plates integerValue]==1) { // 横屏
+        //            imgView.frame = CGRectMake(0, 0, (KSCREENWIDTH-80)*1920/1080, KSCREENWIDTH-80);
+        //            imgView.transform = CGAffineTransformMakeRotation(-M_PI/2);
+        //        } else {  //竖屏
+        imgView.frame = CGRectMake(0, 0, KSCREENWIDTH-80, (KSCREENWIDTH-80)*1920/1080);
+        //        }
         imgView.center = CGPointMake(ctrl.width/2, ctrl.height/2);
         
         UIWindow *win = [UIApplication sharedApplication].keyWindow;
@@ -166,8 +179,16 @@ static NSString * const kBuyPictureFrameImageTableViewCellIdentifier = @"kBuyPic
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return indexPath.row == 0 ? AUTOLAYOUTSIZE(373) : AUTOLAYOUTSIZE(212);
+    
+    if(indexPath.row ==0){
+        return AUTOLAYOUTSIZE(373);
+    }
+    All_Image * image = _model.all_image[indexPath.row - 1];
+    CGFloat height = SCREENWIDTH / image.kuan  * image.gao;
+    return height;
 }
+
+
 
 #pragma mark - event responds
 - (void)hiddenCtrl:(UIControl *)ctrl {
@@ -181,7 +202,7 @@ static NSString * const kBuyPictureFrameImageTableViewCellIdentifier = @"kBuyPic
 {
     NSLog(@"你点击了私信");
     TLChatViewController *vc = [TLChatViewController new];
-//    vc.userId = _model;
+    //    vc.userId = _model;
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)buyAction:(UIButton *)btn {
@@ -195,7 +216,7 @@ static NSString * const kBuyPictureFrameImageTableViewCellIdentifier = @"kBuyPic
     vc.isBuyPictureFrame = YES;
     
     model.u_name = _model.title;
-    model.p_id = _model.pId;
+    model.p_id = _model.p_id;
     model.image = _model.image;
     vc.info = model;
     [Tool setBackButtonNoTitle:self];
@@ -204,12 +225,15 @@ static NSString * const kBuyPictureFrameImageTableViewCellIdentifier = @"kBuyPic
 }
 
 #pragma mark - getters and setters
-- (void)setModel:(DBHBuyPictureFrameModelInfo *)model {
-    _model = model;
-    
-    _imageArray = [_model.allImage componentsSeparatedByString:@"-"];
-    [_tableView reloadData];
-}
+//- (void)setModel:(DBHBuyPictureFrameModel *)model {
+//    _model = model;
+//
+////    _imageArray = [_model.allImage componentsSeparatedByString:@"-"];
+//
+//
+//
+//    [_tableView reloadData];
+//}
 - (UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[UITableView alloc] init];
@@ -259,5 +283,24 @@ static NSString * const kBuyPictureFrameImageTableViewCellIdentifier = @"kBuyPic
     }
     return _pictureFrameBorderArray;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end
