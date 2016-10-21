@@ -191,7 +191,8 @@
     SDImageCache* cache = [SDImageCache sharedImageCache];
     //此方法会先从memory中取。
     UIImage *image = [cache imageFromDiskCacheForKey:key];
-    if (image) {    
+    
+    if (image) {
         return KSCREENWIDTH*image.size.height/image.size.width;
     }
     return 5;

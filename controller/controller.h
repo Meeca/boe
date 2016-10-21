@@ -10,7 +10,7 @@
 //    												
 // title:  boeProject
 // author: haozhiyu1990
-// date:   2016-10-20 17:55:31 +0000
+// date:   2016-10-21 10:06:21 +0000
 //
 
 #import "Bee.h"
@@ -724,7 +724,10 @@
 @property (nonatomic, retain) NSString *			pay_type;
 @property (nonatomic, retain) NSString *			type;
 @property (nonatomic, retain) NSString *			u_id;
+<<<<<<< HEAD
 
+=======
+>>>>>>> haozhiyu1990/master
 @end
 
 @interface RESP_APP_PHP_JPUSH_INDEX : BeeActiveObject
