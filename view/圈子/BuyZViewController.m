@@ -13,7 +13,6 @@
 @interface BuyZViewController () <UITableViewDelegate, UITableViewDataSource> {
     
     UIView *header;
-    NSArray *imageArr;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
@@ -60,7 +59,7 @@
     
     self.table.backgroundColor = RGB(234, 234, 234);
     self.table.tableHeaderView = header;
-    self.table.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     self.table.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
     self.table.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 44, 0);
 }
@@ -94,9 +93,6 @@
     [name sizeToFit];
     name.x = imgView.right + 10;
     name.top = imgView.top+2;
-    if (name.right>KSCREENWIDTH) {
-        name.width = KSCREENWIDTH - name.left - 15;
-    }
     
     UILabel *author = [[UILabel alloc] initWithFrame:CGRectZero];
 //    author.text = [@"作者 " stringByAppendingString:info.u_name?:@" "];
@@ -126,36 +122,20 @@
     price.right = KSCREENWIDTH - 20;
     price.centerY = header.height/2;
     
-    if (author.right>price.left) {
-        author.width = price.left-author.left - 15;
-    }
-    
     self.table.tableHeaderView = header;
-    
-    imageArr = [info.open_images componentsSeparatedByString:@"-"];
-    if ([[imageArr firstObject] length]==0) {
-        imageArr = nil;
-    }
 }
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return imageArr.count+1;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.row==0) {
-        
         cell.textLabel.text = @"材料：布面油画\n尺寸：135cmx150cm\n细节图：";
-        if ([_info.plates integerValue]==1) {  // 横屏
-            cell.textLabel.text = @"材料：布面油画\n尺寸：68厘米x38厘米\n细节图：";
-        } else {
-            cell.textLabel.text = @"材料：布面油画\n尺寸：38厘米x68厘米\n细节图：";
-        }
-        
         cell.textLabel.numberOfLines = 0;
         
         NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:cell.textLabel.text];
@@ -167,16 +147,11 @@
     } else {
         CGFloat h = [self tableView:tableView heightForRowAtIndexPath:indexPath];
         UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, KSCREENWIDTH, h)];
-        image.contentMode = UIViewContentModeScaleToFill;
+        image.contentMode = UIViewContentModeScaleAspectFill;
         image.clipsToBounds = YES;
         [cell.contentView addSubview:image];
         
-        [image sd_setImageWithURL:[NSURL URLWithString:imageArr[indexPath.row-1]] placeholderImage:KZHANWEI completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            CGFloat height = [self tableView:tableView heightForRowAtIndexPath:indexPath];
-            if (height == 5) {
-                [tableView reloadData];
-            }
-        }];
+        [image sd_setImageWithURL:[NSURL URLWithString:self.info.image] placeholderImage:KZHANWEI];
     }
     return cell;
 }
@@ -185,16 +160,7 @@
     if (indexPath.row==0) {
         return 100;
     }
-    
-    SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    NSString* key = [manager cacheKeyForURL:[NSURL URLWithString:imageArr[indexPath.row-1]]];
-    SDImageCache* cache = [SDImageCache sharedImageCache];
-    //此方法会先从memory中取。
-    UIImage *image = [cache imageFromDiskCacheForKey:key];
-    if (image) {    
-        return KSCREENWIDTH*image.size.height/image.size.width;
-    }
-    return 5;
+    return KSCREENWIDTH*1080/1920;
 }
 
 - (void)sixinAction:(UIButton *)btn

@@ -203,6 +203,11 @@ DEF_NOTIFICATION(LOGIN)
                     [self clearCache];
                     self.userInfo = nil;
                     self.userInfo = api.resp.info;
+                    
+                    UserInfoModel * userInfoModel = [[UserInfoModel alloc] init];
+                    userInfoModel.uid =  self.userInfo.uid;
+                    [UserManager archiverModel:userInfoModel];
+                    
                     [self saveCache];
                     [self presentMessageTips:@"注册成功"];
                     [self postNotification:self.REGISTER withObject:api.resp.info];

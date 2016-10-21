@@ -185,7 +185,7 @@ CircleSearch *circleSearch;
     view.backgroundColor = [UIColor colorWithRed:236.0/255 green:236.0/255 blue:235.0/255 alpha:1];
     NSString *title = [self tableView:tableView titleForHeaderInSection:section];
     
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, view.bounds.size.width, view.bounds.size.height)];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, view.bounds.size.width - 30, view.bounds.size.height)];
     label.text = title;
     label.textColor = [UIColor blackColor];
     
