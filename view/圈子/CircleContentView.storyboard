@@ -37,11 +37,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="54" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="cKN-n7-rYo" customClass="TPKeyboardAvoidingTableView">
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="JDFCircleCell" rowHeight="64" id="91p-Qv-79r" customClass="JDFCircleCell">
-                                        <rect key="frame" x="0.0" y="120" width="375" height="64"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="JDFCircleCell" rowHeight="64" id="91p-Qv-79r" customClass="JDFCircleCell">
+                                        <rect key="frame" x="0.0" y="120" width="1000" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="91p-Qv-79r" id="HrT-CC-gJQ">
-                                            <frame key="frameInset" width="375" height="63"/>
+                                            <frame key="frameInset" width="1000" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ffz-j9-gWm">
@@ -197,7 +197,7 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <view key="backgroundView" contentMode="scaleToFill" id="07n-oC-8kC">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="280"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="279.5"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </view>
@@ -371,7 +371,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="122" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="lAT-lo-MEQ">
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="circleSearchTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="circleSearchTableViewCell" rowHeight="64" id="4Uo-wc-9vk" customClass="circleSearchTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="circleSearchTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="circleSearchTableViewCell" rowHeight="64" id="4Uo-wc-9vk" customClass="circleSearchTableViewCell">
                                         <rect key="frame" x="0.0" y="56" width="375" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Uo-wc-9vk" id="UA1-wK-mrm">

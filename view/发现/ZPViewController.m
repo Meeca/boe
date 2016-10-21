@@ -64,7 +64,7 @@
 ON_SIGNAL3(WorksModel, RELOADED, signal) {
     [collect.mj_header endRefreshing];
     [collect.mj_footer endRefreshing];
-//    [collect.mj_footer resetNoMoreData];
+    [collect.mj_footer resetNoMoreData];
     if (worksModel.loaded) {
         [collect.mj_footer endRefreshingWithNoMoreData];
     }

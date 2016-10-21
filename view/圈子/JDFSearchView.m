@@ -17,9 +17,9 @@
     
     CircleSearchViewController *circleSearchVC = [[UIStoryboard storyboardWithName:@"CircleContentView" bundle:nil] instantiateViewControllerWithIdentifier:@"CircleSearchViewController"];
     UINavigationController *naviVC = [[UINavigationController alloc] initWithRootViewController:circleSearchVC];
-//    [naviVC setNavigationBarHidden:YES animated:YES];
+    [naviVC setNavigationBarHidden:YES animated:YES];
     
-    [[self getCurrentViewController] presentViewController:naviVC animated:YES completion:^{
+    [[self getCurrentViewController] presentViewController:naviVC animated:NO completion:^{
         
     }];
     

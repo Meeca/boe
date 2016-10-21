@@ -10,7 +10,7 @@
 //    												
 // title:  boeProject
 // author: haozhiyu1990
-// date:   2016-10-12 15:12:30 +0000
+// date:   2016-10-20 17:55:31 +0000
 //
 
 #import "controller.h"
@@ -191,6 +191,7 @@ CONVERT_PROPERTY_CLASS( products_list, ArtistWorkList );
 
 @implementation DetailsInfo
 
+@synthesize athena = _athena;
 @synthesize classs = _classs;
 @synthesize coll_nums = _coll_nums;
 @synthesize collection = _collection;
@@ -207,6 +208,7 @@ CONVERT_PROPERTY_CLASS( products_list, ArtistWorkList );
 @synthesize material_nums = _material_nums;
 @synthesize material_price = _material_price;
 @synthesize material_sum = _material_sum;
+@synthesize open_images = _open_images;
 @synthesize p_id = _p_id;
 @synthesize pay_type = _pay_type;
 @synthesize pictureFrameTypeOne = _pictureFrameTypeOne;
@@ -2550,7 +2552,6 @@ CONVERT_PROPERTY_CLASS( info, ThemeList );
 @synthesize p_id = _p_id;
 @synthesize pay_type = _pay_type;
 @synthesize type = _type;
-@synthesize u_id = _u_id;
 
 - (BOOL)validate
 {

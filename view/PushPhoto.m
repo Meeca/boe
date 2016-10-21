@@ -51,7 +51,7 @@
     
     UIButton *push = [UIButton buttonWithType:UIButtonTypeCustom];
     push.titleLabel.font = [UIFont systemFontOfSize:13];
-    [push setTitle:@"推送" forState:UIControlStateNormal];
+    [push setTitle:@"多屏推送" forState:UIControlStateNormal];
     [push setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [push addTarget:self action:@selector(pushPhoto:) forControlEvents:UIControlEventTouchUpInside];
     push.layer.cornerRadius = 3;
@@ -250,9 +250,9 @@ ON_SIGNAL3(BaseModel, JPUSHINDEX, signal) {
     }
     NSString *e_id = [dvs componentsJoinedByString:@"-"];
     if (self.info) {
-        [baseModel app_php_Jpush_indexWithP_id:self.info.p_id e_id:e_id type:@"1" pay_type:_info.pay_type u_id:kUserId];
+        [baseModel app_php_Jpush_indexWithP_id:self.info.p_id e_id:e_id type:@"1" pay_type:_info.pay_type];
     } else {
-        [baseModel app_php_Jpush_indexWithP_id:self.p_idsStr e_id:e_id type:@"2" pay_type:self.pay_type u_id:kUserId];
+        [baseModel app_php_Jpush_indexWithP_id:self.p_idsStr e_id:e_id type:@"2" pay_type:self.pay_type];
     }
 }
 

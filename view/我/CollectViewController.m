@@ -135,7 +135,7 @@ ON_SIGNAL3(BaseModel, SHAREEQUIPMENTLIST, signal) {
     } else {
         if (_dataArray.count==1) {
             EquipmentList *list = _dataArray[0];
-            [baseModel app_php_Jpush_indexWithP_id:p_idsStr e_id:list.e_id type:@"2" pay_type:pay_type u_id:kUserId];
+            [baseModel app_php_Jpush_indexWithP_id:p_idsStr e_id:list.e_id type:@"2" pay_type:pay_type];
         } else {
             [self presentMessageTips:@"请先绑定设备"];
         }

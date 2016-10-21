@@ -41,9 +41,6 @@
 		04DAC3C41DB4F083002235A7 /* FORScrollViewEmptyAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAC3C01DB4F083002235A7 /* FORScrollViewEmptyAssistant.m */; };
 		04DAC3CA1DB4F483002235A7 /* EmptyView.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DAC3C91DB4F483002235A7 /* EmptyView.png */; };
 		04DAC3DF1DB7A7A0002235A7 /* MCTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAC3DE1DB7A7A0002235A7 /* MCTextView.m */; };
-		04DAC3EB1DB89BB1002235A7 /* QuanAearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAC3E91DB89BB1002235A7 /* QuanAearchViewController.m */; };
-		04DAC3EC1DB89BB1002235A7 /* QuanAearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DAC3EA1DB89BB1002235A7 /* QuanAearchViewController.xib */; };
-		04DAC6401DB8EDDB002235A7 /* delsys.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DAC63F1DB8EDDB002235A7 /* delsys.png */; };
 		2D26B4DB1D7BB8E3000D65B4 /* LTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D26B4D91D7BB8E3000D65B4 /* LTPickerView.m */; };
 		2D26B4DC1D7BB8E3000D65B4 /* LTPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D26B4DA1D7BB8E3000D65B4 /* LTPickerView.xib */; };
 		2D90E3421D845271001472EA /* FenLeiDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D90E3401D845271001472EA /* FenLeiDetailViewController.m */; };
@@ -912,10 +909,6 @@
 		04DAC3C91DB4F483002235A7 /* EmptyView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EmptyView.png; sourceTree = "<group>"; };
 		04DAC3DD1DB7A7A0002235A7 /* MCTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCTextView.h; sourceTree = "<group>"; };
 		04DAC3DE1DB7A7A0002235A7 /* MCTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCTextView.m; sourceTree = "<group>"; };
-		04DAC3E81DB89BB1002235A7 /* QuanAearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuanAearchViewController.h; sourceTree = "<group>"; };
-		04DAC3E91DB89BB1002235A7 /* QuanAearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuanAearchViewController.m; sourceTree = "<group>"; };
-		04DAC3EA1DB89BB1002235A7 /* QuanAearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuanAearchViewController.xib; sourceTree = "<group>"; };
-		04DAC63F1DB8EDDB002235A7 /* delsys.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delsys.png; sourceTree = "<group>"; };
 		1BADD449114815B1184AD96A /* Pods-jingdongfang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jingdongfang.debug.xcconfig"; path = "Pods/Target Support Files/Pods-jingdongfang/Pods-jingdongfang.debug.xcconfig"; sourceTree = "<group>"; };
 		2D26B4D81D7BB8E3000D65B4 /* LTPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTPickerView.h; sourceTree = "<group>"; };
 		2D26B4D91D7BB8E3000D65B4 /* LTPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPickerView.m; sourceTree = "<group>"; };
@@ -2643,16 +2636,6 @@
 				04DAC3DE1DB7A7A0002235A7 /* MCTextView.m */,
 			);
 			path = MCTextView;
-			sourceTree = "<group>";
-		};
-		04DAC3E71DB89B82002235A7 /* 搜索圈子 */ = {
-			isa = PBXGroup;
-			children = (
-				04DAC3E81DB89BB1002235A7 /* QuanAearchViewController.h */,
-				04DAC3E91DB89BB1002235A7 /* QuanAearchViewController.m */,
-				04DAC3EA1DB89BB1002235A7 /* QuanAearchViewController.xib */,
-			);
-			path = "搜索圈子";
 			sourceTree = "<group>";
 		};
 		2D26B4D71D7BB8E3000D65B4 /* LTPickerView */ = {
@@ -5042,7 +5025,6 @@
 				755C45C61D86DEE800659948 /* SystemDetaileViewController.h */,
 				755C45C71D86DEE800659948 /* SystemDetaileViewController.m */,
 				755C45C81D86DEE800659948 /* SystemDetaileViewController.xib */,
-				04DAC63F1DB8EDDB002235A7 /* delsys.png */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -5278,7 +5260,6 @@
 		757F327E1D69D251006D4887 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				04DAC3E71DB89B82002235A7 /* 搜索圈子 */,
 				7507BAAC1D7702FD0031ECE8 /* 圈儿成员 */,
 				75B880C31D6F10680093C51C /* 圈儿首页（我的圈子，热门圈子） */,
 				75B880C61D6F11EB0093C51C /* 圈儿名称（话题列表） */,
@@ -6019,7 +6000,6 @@
 				75C662531D7AD2250070A405 /* MessageCell.xib in Resources */,
 				4DA848FF1A903E0100D6B62B /* tutorial_background_03@2x.jpg in Resources */,
 				75A090461D5C6EF40096D19E /* BillViewController.xib in Resources */,
-				04DAC3EC1DB89BB1002235A7 /* QuanAearchViewController.xib in Resources */,
 				7513705D1D1BC31300B4C25A /* SeachViewController.xib in Resources */,
 				75A090231D5C42E20096D19E /* MyBuyViewController.xib in Resources */,
 				75C662581D7AD2250070A405 /* choose_n@2x.png in Resources */,
@@ -6062,7 +6042,6 @@
 				752096B41D59C1440006CF5A /* AreaViewController.xib in Resources */,
 				4D56885819EB65EB00459A1B /* icon_rightarrow@2x.png in Resources */,
 				7507BA861D76BF720031ECE8 /* UMSnsAccountViewController.xib in Resources */,
-				04DAC6401DB8EDDB002235A7 /* delsys.png in Resources */,
 				755546161D785ECB0011F46A /* UserCertification.storyboard in Resources */,
 				759415801D8544580089A8CE /* account.plist in Resources */,
 				2D90E3431D845271001472EA /* FenLeiDetailViewController.xib in Resources */,
@@ -6770,7 +6749,6 @@
 				4DC6BA9A1961C20700C87D1B /* Bee_ViewPackage.mm in Sources */,
 				4DC6BB2F1961C20700C87D1B /* BeeUIQuery+Miscellaneous.m in Sources */,
 				4DC6BA971961C20700C87D1B /* Bee_Model.mm in Sources */,
-				04DAC3EB1DB89BB1002235A7 /* QuanAearchViewController.m in Sources */,
 				4DC6BB7A1961C20700C87D1B /* NSObject+BeeProperty.mm in Sources */,
 				4DC6BB471961C20700C87D1B /* UIView+BeeUITemplate.m in Sources */,
 				4DC6BAAB1961C20700C87D1B /* BeeUIStack+BackwardCompatible.m in Sources */,

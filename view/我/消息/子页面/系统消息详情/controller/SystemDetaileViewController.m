@@ -10,7 +10,7 @@
 
 @interface SystemDetaileViewController (){
 
-    NSInteger  _type;
+    NSString * _type;
 
 }
 @property (weak, nonatomic) IBOutlet UILabel *timeLab;
@@ -25,30 +25,32 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"系统消息";
-        
-    self.navigationItem.rightBarButtonItem =[UIBarButtonItem itemWithImage:@"delsys" highImage:@"delsys" target:self action:@selector(deleteItemAction)];
-
+    
+    self.navigationItem.rightBarButtonItem =[UIBarButtonItem itemWithTitle:@"删除" target:self action:@selector(deleteItemAction)];
     /*
+     
      系统消息详情
+     
      get:/app.php/User/news_read
      n_id#消息id
-     */
+     
 
+     
+     */
+    
+    
+    
     
     [MCNetTool postWithUrl:@"/app.php/User/news_read" params:@{@"n_id":_n_id} hud:YES success:^(NSDictionary *requestDic, NSString *msg) {
         
         NSString * time =requestDic[@"created_at"];
         
+//        timestampToString
         _timeLab.text = [Tool timestampToString:time Format:@"yyyy-MM-dd HH:mm"];
         _contentLab.text = requestDic[@"title"];
-        _type = [requestDic[@"types"] integerValue];
+        _type = requestDic[@"types"];
+        [_iconImageView sd_setImageWithURL:[NSURL URLWithString:requestDic[@"image"]] placeholderImage:nil];
         
-        if (_type == 2) {
-            NSString * image = checkNULL(requestDic[@"image"]) ;
-        
-            [_iconImageView sd_setImageWithURL:[NSURL URLWithString:image] placeholderImage:nil];
-        }
-            
         
     } fail:^(NSString *error) {
         
@@ -71,7 +73,7 @@
 
 
     
-    [MCNetTool postWithUrl:@"/app.php/User/news_del" params:@{@"uid":kUserId,@"n_id":_n_id,@"types":@(_type)} hud:YES success:^(NSDictionary *requestDic, NSString *msg) {
+    [MCNetTool postWithUrl:@"/app.php/User/news_del" params:@{@"uid":kUserId,@"n_id":_n_id,@"types":_type} hud:YES success:^(NSDictionary *requestDic, NSString *msg) {
         
         [self showToastWithMessage:msg];
 
