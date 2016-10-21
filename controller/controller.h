@@ -10,7 +10,7 @@
 //    												
 // title:  boeProject
 // author: haozhiyu1990
-// date:   2016-10-12 15:12:30 +0000
+// date:   2016-10-21 10:06:21 +0000
 //
 
 #import "Bee.h"
@@ -126,6 +126,7 @@
 @end
 
 @interface DetailsInfo : BeeActiveObject
+@property (nonatomic, retain) NSString *			athena;
 @property (nonatomic, retain) NSString *			classs;
 @property (nonatomic, retain) NSString *			coll_nums;
 @property (nonatomic, retain) NSString *			collection;
@@ -142,6 +143,7 @@
 @property (nonatomic, retain) NSString *			material_nums;
 @property (nonatomic, retain) NSString *			material_price;
 @property (nonatomic, retain) NSString *			material_sum;
+@property (nonatomic, retain) NSString *			open_images;
 @property (nonatomic, retain) NSString *			p_id;
 @property (nonatomic, retain) NSString *			pay_type;
 @property (nonatomic, retain) NSString *			pictureFrameTypeOne;
@@ -719,7 +721,6 @@
 @property (nonatomic, retain) NSString *			pay_type;
 @property (nonatomic, retain) NSString *			type;
 @property (nonatomic, retain) NSString *			u_id;
-
 @end
 
 @interface RESP_APP_PHP_JPUSH_INDEX : BeeActiveObject
