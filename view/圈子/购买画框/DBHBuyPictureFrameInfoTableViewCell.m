@@ -75,7 +75,7 @@
 }
 
 #pragma mark - getters and setters
-- (void)setModel:(DBHBuyPictureFrameModelInfo *)model {
+- (void)setModel:(DBHBuyPictureFrameModel *)model {
     _model = model;
     
     [_topImageView sd_setImageWithURL:[NSURL URLWithString:_model.image]];

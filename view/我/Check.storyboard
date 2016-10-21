@@ -126,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ypd-bP-Lkz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="347" y="211"/>
+            <point key="canvasLocation" x="74" y="211"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="CvC-1M-Eyv">
@@ -203,6 +203,6 @@
     </scenes>
     <resources>
         <image name="B-6" width="20" height="20"/>
-        <image name="GALLERY APP-buy-ljj0727-12" width="256" height="358"/>
+        <image name="GALLERY APP-buy-ljj0727-12" width="610" height="320"/>
     </resources>
 </document>

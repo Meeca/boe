@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class DBHBuyPictureFrameModelInfo;
+#import "DBHBuyPictureFrameModel.h"
 
 @interface DBHBuyPictureFrameInfoTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UIImageView *topImageView;
 
-@property (nonatomic, strong) DBHBuyPictureFrameModelInfo *model;
+@property (nonatomic, strong) DBHBuyPictureFrameModel *model;
 
 @end
