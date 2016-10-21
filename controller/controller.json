@@ -438,7 +438,8 @@
                 "p_id" : "sfsdf",
                 "e_id" : "dsfds",
                 "type" : "sdf",
-                "pay_type": "sdfs"
+                "pay_type": "sdfs",
+                "u_id" : "sdfs"
             },
             "response": {
                 "result": "succ",
