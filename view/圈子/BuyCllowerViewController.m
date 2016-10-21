@@ -67,7 +67,7 @@
 
 
 - (void)subOrder:(UIButton *)btn {
-    if ([myRestMoney integerValue] == 0 && _payType ==3) {
+    if ([myRestMoney integerValue] == 0) {
         [self presentMessageTips:@"余额不足!"];
         return;
     }
@@ -453,7 +453,6 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row!=0) {
         _payType = indexPath.row;
-        
         [tableView reloadData];
     }
 }

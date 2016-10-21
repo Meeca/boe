@@ -14,6 +14,7 @@
 #import "JDFSquareCell.h"
 #import "CircleMembersFooterView.h"
 #import "IntroViewController.h"
+
 /** 标题栏的高度 */
 CGFloat const XMGTitlesViewH = 35;
 

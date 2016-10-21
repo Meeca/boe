@@ -139,10 +139,9 @@ ON_SIGNAL3(UserModel, VERIFYCODE, signal) {
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 50;
 }
-//  http://boe.ccifc.cn/app.php/User/agreement
+
 - (void)protocolAction:(UIGestureRecognizer *)tap {
-    
-     NIWebController *vc = [[NIWebController alloc] initWithURL:[NSURL URLWithString:[[ServerConfig sharedInstance].url stringByAppendingString:@"/app.php/User/agreement"]]];
+    NIWebController *vc = [[NIWebController alloc] initWithURL:[NSURL URLWithString:[[ServerConfig sharedInstance].url stringByAppendingString:@"/app.php/user/agreement"]]];
     vc.hidesBottomBarWhenPushed = YES;
     [Tool setBackButtonNoTitle:self];
     [self.navigationController pushViewController:vc animated:YES];
