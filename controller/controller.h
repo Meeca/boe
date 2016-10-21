@@ -160,6 +160,9 @@
 @property (nonatomic, retain) NSString *			years;
 @property (nonatomic, retain) NSString *			zambia;
 @property (nonatomic, retain) NSString *			zambia_nums;
+@property (nonatomic, retain) NSString *			sales_status;
+
+
 @end
 
 @interface EquipmentList : BeeActiveObject
@@ -721,6 +724,10 @@
 @property (nonatomic, retain) NSString *			pay_type;
 @property (nonatomic, retain) NSString *			type;
 @property (nonatomic, retain) NSString *			u_id;
+<<<<<<< HEAD
+
+=======
+>>>>>>> haozhiyu1990/master
 @end
 
 @interface RESP_APP_PHP_JPUSH_INDEX : BeeActiveObject

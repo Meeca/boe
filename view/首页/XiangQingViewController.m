@@ -26,6 +26,8 @@
 #import "YXScrollowActionSheet.h"
 #import "ShareModel.h"
 #import "UIImage+MJ.h"
+#import "OrderInfoModel.h"
+#import "BuySuccViewController.h"
 
 static NSString * const kCommentCellTableViewCellIdentifier = @"kCommentCellTableViewCellIdentifier";
 
@@ -206,7 +208,7 @@ ON_SIGNAL3(BaseModel, SHAREEQUIPMENTLIST, signal) {
     } else {
         if (_dataArray.count==1) {
             EquipmentList *list = _dataArray[0];
-            [baseModel app_php_Jpush_indexWithP_id:detailsInfo.p_id e_id:list.e_id type:@"1" pay_type:detailsInfo.pay_type];
+            [baseModel app_php_Jpush_indexWithP_id:detailsInfo.p_id e_id:list.e_id type:@"1" pay_type:detailsInfo.pay_type u_id:kUserId];
         } else {
             [self presentMessageTips:@"请先绑定设备"];
         }
@@ -297,8 +299,14 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
         zan.top = pictureName.top;
         zan.right = KSCREENWIDTH - x;
         
+        UILabel *auth = [[UILabel alloc] initWithFrame:CGRectMake(x, pictureName.bottom + 8, 0, 0)];
+        auth.text = detailsInfo.athena;
+        auth.font = font;
+        [auth sizeToFit];
+        [cell.contentView addSubview:auth];
+        
         NSArray *arr = @[detailsInfo.years?:@"", detailsInfo.classs?:@""];
-        UILabel *time = [[UILabel alloc] initWithFrame:CGRectMake(x, pictureName.bottom + 8, 0, 0)];
+        UILabel *time = [[UILabel alloc] initWithFrame:CGRectMake(x, auth.bottom + 8, 0, 0)];
         time.text = [arr componentsJoinedByString:@"  "];
         time.font = font;
         [time sizeToFit];
@@ -462,6 +470,10 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
             xianliang.backgroundColor = KAPPCOLOR;
             xianliang.titleLabel.font = [UIFont systemFontOfSize:13];
             [xianliang setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            
+            
+      
+            
             if (detailsInfo.pay_type.integerValue == 1)
             {
                 [xianliang setTitle:@"已购买" forState:UIControlStateNormal];
@@ -470,8 +482,11 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
             else
             {
                 [xianliang setTitle:@"限量收藏" forState:UIControlStateNormal];
-                xianliang.userInteractionEnabled = YES;
+                 xianliang.userInteractionEnabled = YES;
             }
+            
+            
+            
             
             [xianliang addTarget:self action:@selector(xianliangAction:) forControlEvents:UIControlEventTouchUpInside];
             xianliang.layer.masksToBounds = YES;
@@ -485,42 +500,53 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
             msg.text = [NSString stringWithFormat:@"%@人收藏/%@", detailsInfo.electronics_nume.length>0?detailsInfo.electronics_nume:@"0", detailsInfo.electronic_nums.length>0?detailsInfo.electronic_nums:@"0"];
             if (detailsInfo.electronics_nume >= detailsInfo.electronic_nums )
             {
-                xianliang.backgroundColor = [UIColor grayColor];
-                xianliang.enabled = NO;
-                [xianliang setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                if ([detailsInfo.electronic_nums isEqualToString:@"-1"]) {
+                    [xianliang setTitle:@"不限量收藏" forState:UIControlStateNormal];
+                }else{
+                    xianliang.backgroundColor = [UIColor grayColor];
+                    xianliang.enabled = NO;
+                    [xianliang setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                }
+
                 
             }
-     
+            
             [cell.contentView addSubview:msg];
             [msg sizeToFit];
             msg.center = xianliang.center;
             msg.right = xianliang.left - 10;
         } else if (indexPath.row==1) {
-            cell.textLabel.textColor = KAPPCOLOR;
-            cell.textLabel.text = [@"￥" stringByAppendingString:detailsInfo.material_price.length>0?detailsInfo.material_price:@"0"];
-            cell.textLabel.hidden = [detailsInfo.price_open isEqualToString:@"2"];
             
-            UIButton *buy = [UIButton buttonWithType:UIButtonTypeCustom];
-            buy.frame = CGRectMake(0, 10, 90, 30);
-            buy.titleLabel.font = [UIFont systemFontOfSize:13];
-            [buy setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-            [buy setTitle:@"真品购买" forState:UIControlStateNormal];
-            [buy addTarget:self action:@selector(buyAction:) forControlEvents:UIControlEventTouchUpInside];
-            buy.layer.masksToBounds = YES;
-            buy.layer.cornerRadius = 3;
-            buy.layer.borderColor = [UIColor grayColor].CGColor;
-            buy.layer.borderWidth = 1;
-            [cell.contentView addSubview:buy];
-            buy.right = KSCREENWIDTH - x;
+            if ([detailsInfo.sales_status integerValue] != 2) {
+
+                cell.textLabel.textColor = KAPPCOLOR;
+                cell.textLabel.text = [@"￥" stringByAppendingString:detailsInfo.material_price.length>0?detailsInfo.material_price:@"0"];
+                cell.textLabel.hidden = [detailsInfo.price_open isEqualToString:@"2"];
+                
+                UIButton *buy = [UIButton buttonWithType:UIButtonTypeCustom];
+                buy.frame = CGRectMake(0, 10, 90, 30);
+                buy.titleLabel.font = [UIFont systemFontOfSize:13];
+                [buy setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+                [buy setTitle:@"真品购买" forState:UIControlStateNormal];
+                [buy addTarget:self action:@selector(buyAction:) forControlEvents:UIControlEventTouchUpInside];
+                buy.layer.masksToBounds = YES;
+                buy.layer.cornerRadius = 3;
+                buy.layer.borderColor = [UIColor grayColor].CGColor;
+                buy.layer.borderWidth = 1;
+                [cell.contentView addSubview:buy];
+                buy.right = KSCREENWIDTH - x;
+                
+                UILabel *msg = [[UILabel alloc] initWithFrame:CGRectZero];
+                msg.font = [UIFont systemFontOfSize:13];
+                msg.textColor = [UIColor grayColor];
+                msg.text = [NSString stringWithFormat:@"%@件", detailsInfo.material_nums.length>0?detailsInfo.material_nums:@"0"];
+                [cell.contentView addSubview:msg];
+                [msg sizeToFit];
+                msg.center = buy.center;
+                msg.right = buy.left - 10;
             
-            UILabel *msg = [[UILabel alloc] initWithFrame:CGRectZero];
-            msg.font = [UIFont systemFontOfSize:13];
-            msg.textColor = [UIColor grayColor];
-            msg.text = [NSString stringWithFormat:@"%@件", detailsInfo.material_nums.length>0?detailsInfo.material_nums:@"0"];
-            [cell.contentView addSubview:msg];
-            [msg sizeToFit];
-            msg.center = buy.center;
-            msg.right = buy.left - 10;
+            }
+            
         } else if (indexPath.row==2) {
             UIButton *shang = [UIButton buttonWithType:UIButtonTypeCustom];
             shang.frame = CGRectMake(0, 10, 90, 30);
@@ -728,6 +754,11 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
         return contextHeight;
     } else if (indexPath.section==2) {
         return 60;
+    } else if (indexPath.section==3 && indexPath.row ==1) {
+        if ([detailsInfo.sales_status integerValue] == 2) {
+            return 0;
+        }
+        return 50;
     } else if (indexPath.section==4) {
         CGFloat h;
         UILabel *title = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -910,17 +941,78 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
 - (void)xianliangAction:(UIButton *)btn {
     [self.view endEditing:YES];
 
+    //  "pay_type": "1",              //限量收藏（1已购买，2未购买）
     if (detailsInfo.pay_type.integerValue == 1)
     {
         return;
     }
     
-    BuyCllowerViewController *vc = [[BuyCllowerViewController alloc] init];
-    vc.info = detailsInfo;
-    [Tool setBackButtonNoTitle:self];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+    if ([detailsInfo.electronic_price floatValue]  == 0) {
+        
+        
+        [self goodsBuy];
+        
+        
+    }else{
+    
+        BuyCllowerViewController *vc = [[BuyCllowerViewController alloc] init];
+        vc.info = detailsInfo;
+        [Tool setBackButtonNoTitle:self];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }
+
 }
+
+#pragma mark - 价格为0  直接支付成功
+
+- (void)goodsBuy{
+
+    
+    NSString *path = @"/app.php/Index/balance";
+    NSDictionary *params = @{
+                             @"uid" : kUserId,
+                             @"u_id" : kUserId,
+                             @"p_id" : detailsInfo.p_id,
+                             @"a_id" : @"",// 收货地址id
+                             @"price" : @(0),
+                             //                             @"price" : @"0.01",
+                             @"balance" : @(-1),//
+                             @"type" : @"1"/*@(_type)*/,
+                             @"content" : @"",// 备注内容
+                             };
+    
+    [MCNetTool postWithUrl:path params:params hud:YES success:^(NSDictionary *requestDic, NSString *msg){
+        
+        
+        OrderInfoModel * orderInfoModel = [OrderInfoModel yy_modelWithJSON:requestDic];
+        
+        
+        BuySuccViewController *vc = [[BuySuccViewController alloc] init];
+        vc.orderId = orderInfoModel.o_id;
+        BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
+        [Tool performBlock:^{
+            [self.navigationController presentViewController:nav animated:YES completion:^{
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }];
+        } afterDelay:1];
+        
+        
+    }fail:^(NSString *error) {
+        
+        
+    }];
+
+
+
+
+}
+
+
+
+
+
 
 - (void)buyAction:(UIButton *)btn {
     [self.view endEditing:YES];

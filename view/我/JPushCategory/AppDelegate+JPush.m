@@ -159,9 +159,13 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
         if (push_type == 6) {
             [self push:userInfo withAnimated:YES];
 
-        }else {
+        }else  if (push_type == 8) {
+        
+                    NSString * title = userInfo[@"aps"][@"alert"];     // 推送标题
+                    [self presentMessageTips:title];
             
             
+        }else{
             
             
             NSString * title = userInfo[@"aps"][@"alert"];     // 推送标题

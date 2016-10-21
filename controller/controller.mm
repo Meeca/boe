@@ -225,6 +225,7 @@ CONVERT_PROPERTY_CLASS( products_list, ArtistWorkList );
 @synthesize years = _years;
 @synthesize zambia = _zambia;
 @synthesize zambia_nums = _zambia_nums;
+@synthesize sales_status = _sales_status;
 
 CONVERT_PROPERTY_CLASS( comment_list, CommentInfo );
 CONVERT_PROPERTY_CLASS( guess_list, GuessInfo );
@@ -2552,6 +2553,7 @@ CONVERT_PROPERTY_CLASS( info, ThemeList );
 @synthesize p_id = _p_id;
 @synthesize pay_type = _pay_type;
 @synthesize type = _type;
+@synthesize u_id = _u_id;
 
 - (BOOL)validate
 {
