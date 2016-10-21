@@ -51,7 +51,7 @@ AS_SIGNAL(RCOMMENTADD)
 - (void)app_php_User_equipment_delWithMac_id:(NSString *)mac_id;
 
 //推送图像至设备
-- (void)app_php_Jpush_indexWithP_id:(NSString *)p_id e_id:(NSString *)e_id type:(NSString *)type pay_type:(NSString *)pay_type;
+- (void)app_php_Jpush_indexWithP_id:(NSString *)p_id e_id:(NSString *)e_id type:(NSString *)type pay_type:(NSString *)pay_type u_id:(NSString *)u_id;
 
 //发布评论
 - (void)app_php_Index_comment_add:(NSString *)p_id content:(NSString *)content;

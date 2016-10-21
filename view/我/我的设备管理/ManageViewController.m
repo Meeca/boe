@@ -115,7 +115,7 @@ ON_SIGNAL3(BaseModel, SHAREEQUIPMENTLIST, signal){
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     cell.textLabel.font = [UIFont systemFontOfSize:15];
-//    cell.textLabel.text = @"       Gallery 客厅";
+//    cell.textLabel.text = @"       iGallery 客厅";
     UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     img.center = CGPointMake(25, 55/2);
     img.contentMode = UIViewContentModeScaleAspectFit;
@@ -154,7 +154,7 @@ ON_SIGNAL3(BaseModel, SHAREEQUIPMENTLIST, signal){
         vc.hidesBottomBarWhenPushed = YES;
         vc.list = s;
         [Tool setBackButtonNoTitle:self];
-//        [self.navigationController pushViewController:vc animated:YES];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
