@@ -147,11 +147,11 @@ ON_SIGNAL3(UserModel, USERIMAGE, signal) {
             
             else
             {
-                if ([userInfoModel.type integerValue] == 1) {
+                if ([userInfoModel.type integerValue] == 3) {
                     cell.detailTextLabel.text = @"微信";
                 } else if ([userInfoModel.type integerValue] == 2) {
                     cell.detailTextLabel.text = @"QQ";
-                } else if ([userInfoModel.type integerValue] == 3) {
+                } else if ([userInfoModel.type integerValue] == 1) {
                     cell.detailTextLabel.text = @"新浪";
                 }
                 

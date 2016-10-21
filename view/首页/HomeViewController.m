@@ -42,7 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.navigationItem.title = @"iGallery";
+    self.navigationItem.title = @"iGALLERY";
 
     userModel = [UserModel modelWithObserver:self];
     [self observeNotification:userModel.LOGIN];
@@ -76,7 +76,7 @@
     [slide buildUI];
     
     [slide addObserver:self forKeyPath:@"userSelectedChannelID" options:NSKeyValueObservingOptionNew context:NULL];
-    NSArray *title = @[@"艺术精选", @"我的关注"];
+    NSArray *title = @[@"艺术精选", @"我的点赞"];
     header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KSCREENWIDTH, BANNERHEIGHT+44)];
     shadowImageView = [[UIImageView alloc] init];
     shadowImageView.backgroundColor = slide.tabItemSelectedColor;
@@ -208,7 +208,7 @@ ON_NOTIFICATION3(UserModel, REGISTER, notification) {
         return vc1;
     } else if (number == 1) {
         vc2 = [[FollowViewController alloc] init];
-        vc2.title = @"我的关注";
+        vc2.title = @"我的点赞";
         vc2.nav = self.navigationController;
         [vc2 setContentOffset:^(CGPoint point, BOOL isUp) {
             NSLog(@"我的关注 collect contentOffset  \n%@", NSStringFromCGPoint(point));
