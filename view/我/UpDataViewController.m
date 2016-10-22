@@ -308,27 +308,44 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
-    if (isAdd) {
-        UIImage *image = info[@"UIImagePickerControllerOriginalImage"];
+    NSString* mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+    if([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+        UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        UIImageOrientation imageOrientation = image.imageOrientation;
         
-        if (_block) {
-            _block(@[image]);
-            
-            [picker dismissViewControllerAnimated:YES completion:NULL];
-            [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
-            
+        if(imageOrientation != UIImageOrientationUp)
+        {
+            // 原始图片可以根据照相时的角度来显示，但UIImage无法判定，于是出现获取的图片会向左转９０度的现象。
+            // 以下为调整图片角度的部分
+            UIGraphicsBeginImageContext(image.size);
+            [image drawInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
+            image = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            // 调整图片角度完毕
         }
-    } else {
-        NSLog(@"%@", info);
+    
+    
+        if (isAdd) {
+            
+            if (_block) {
+                _block(@[image]);
+                
+                [picker dismissViewControllerAnimated:YES completion:NULL];
+                [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
+                
+            }
+        } else {
+            NSLog(@"%@", info);
+            
+            NSLog(@"image.size  %@", NSStringFromCGSize(image.size));
+            
+            PrintViewController *vc = [[PrintViewController alloc] init];
+            vc.image = image;
+            
+            [self.navigationController pushViewController:vc animated:YES];
+            [picker dismissViewControllerAnimated:YES completion:NULL];
+        }
         
-        UIImage *image = info[@"UIImagePickerControllerOriginalImage"];
-        NSLog(@"image.size  %@", NSStringFromCGSize(image.size));
-        
-        PrintViewController *vc = [[PrintViewController alloc] init];
-        vc.image = image;
-        
-        [self.navigationController pushViewController:vc animated:YES];
-        [picker dismissViewControllerAnimated:YES completion:NULL];
     }
 }
 

@@ -277,7 +277,7 @@ static NSString * const JDFSquareCellID = @"JDFSquareCell";
     }
     
     
-    cell.backgroundColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 
