@@ -14,6 +14,9 @@
 #import "ManageViewController.h"
 #import "SeachViewController.h"
 #import "LoginViewController.h"
+#import "IntroViewController.h"
+#import "ZTXQViewController.h"
+#import "HuoXQViewController.h"
 
 #import "DBHBuyPictureFrameViewController.h"
 
@@ -144,14 +147,47 @@ ON_NOTIFICATION3(UserModel, REGISTER, notification) {
         DBHBuyPictureFrameViewController *buyPictureFrameVC = [[DBHBuyPictureFrameViewController alloc] init];
         [Tool setBackButtonNoTitle:self];
         buyPictureFrameVC.hidesBottomBarWhenPushed = YES;
-        
         [self.navigationController pushViewController:buyPictureFrameVC animated:YES];
         return;
     }
-    NIWebController *vc = [[NIWebController alloc] initWithURL:[NSURL URLWithString:@"http://www.baidu.com"]];
-    [Tool setBackButtonNoTitle:self];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+    if ([model.types isEqualToString:@"2"]) {
+        // 艺术家
+        IntroViewController *vc = [[IntroViewController alloc] init];
+        vc.u_id =model.banner_url;
+//        [vc followerChanged:^{
+//            [self loadModel];
+//        }];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+        
+        return;
+    }
+    if ([model.types isEqualToString:@"3"]) {
+        
+        // 专题
+        ZTXQViewController *vc = [[ZTXQViewController alloc] init];
+        vc.s_id = model.banner_url;
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+        return;
+    }
+    if ([model.types isEqualToString:@"4"]) {
+        
+        // 活动
+        HuoXQViewController *vc = [[HuoXQViewController alloc] init];
+        vc.s_id = model.banner_url;
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+        return;
+    }
+    
+
+//    NIWebController *vc = [[NIWebController alloc] initWithURL:[NSURL URLWithString:model.banner_url]];
+//    [Tool setBackButtonNoTitle:self];
+//    vc.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - SUNSlideSwitchViewDelegate

@@ -111,7 +111,26 @@ ON_SIGNAL3(ZTModel, SPECIALREAD, signal) {
         name.centerY = icon.centerY;
         name.x = icon.right + 10;
         
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@/%@次阅读", _specialInfo.time.length>0?_specialInfo.time:@"未知时间", _specialInfo.read_num.length>0?_specialInfo.read_num:@"0"];
+        
+        UILabel * deaaLab = [[UILabel alloc]init];
+        deaaLab.text = [NSString stringWithFormat:@"%@/%@次阅读", _specialInfo.time.length>0?_specialInfo.time:@"未知时间", _specialInfo.read_num.length>0?_specialInfo.read_num:@"0"];
+        deaaLab.font = [UIFont systemFontOfSize:13];
+        [cell.contentView addSubview:deaaLab];
+        deaaLab.textAlignment = NSTextAlignmentRight;
+//        deaaLab.left =name.right + 10;
+        deaaLab.height = name.height;
+        deaaLab.textColor =cell.detailTextLabel.textColor;
+        [deaaLab sizeToFit];
+        deaaLab.right = KSCREENWIDTH - 10;
+        deaaLab.centerY = name.centerY;
+        name.width = KSCREENWIDTH - 10 - deaaLab.width - name.left;
+        
+        
+//        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@/%@次阅读", _specialInfo.time.length>0?_specialInfo.time:@"未知时间", _specialInfo.read_num.length>0?_specialInfo.read_num:@"0"];
+        
+        
+        
+        
     } else if (indexPath.row==1) {
         UIImageView *img = [[UIImageView alloc] init];
         img.contentMode = UIViewContentModeScaleAspectFill;

@@ -143,9 +143,10 @@
     _nameLab.top = _iconImageView.top;
     
     [_contentLab sizeToFit];
-    _contentLab.left = _iconImageView.right + 10;
     _contentLab.bottom = _iconImageView.bottom;
-    
+    _contentLab.right = KSCREENWIDTH-10;
+    _contentLab.left = _iconImageView.right + 10;
+    _contentLab.width = KSCREENWIDTH -10 - _iconImageView.right - 10;
     [_timeLab sizeToFit];
     _timeLab.centerY = _nameLab.centerY;
     _timeLab.right = self.width - 10;
