@@ -13,11 +13,24 @@
 
 //设置导航返回按扭没有文字
 + (void)setBackButtonNoTitle:(UIViewController *)vc {
-    UIBarButtonItem *returnButtonItem = [[UIBarButtonItem alloc] init];
-    returnButtonItem.title = @"";
-    returnButtonItem.tintColor = [UIColor grayColor];
-    vc.navigationItem.backBarButtonItem = returnButtonItem;
-    vc.navigationController.navigationBar.tintColor = [UIColor grayColor];
+    
+//    UIImage *backButtonImage =  [UIImage imageNamed:@"btn_back"];
+//     backButtonImage = [backButtonImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+////    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:backButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(didTapBackButton)];
+//    
+//    
+//    
+//    UIBarButtonItem *returnButtonItem = [[UIBarButtonItem alloc] init];
+//    returnButtonItem.title = @"";
+//    returnButtonItem.tintColor = [UIColor grayColor];
+//     vc.navigationItem.backBarButtonItem = returnButtonItem;
+//    vc.navigationController.navigationBar.tintColor = [UIColor grayColor];
+}
+
+- (void)didTapBackButton:(UIBarButtonItem *)item{
+
+    
+
 }
 
 //延迟执行的block
@@ -39,7 +52,7 @@
     [backBtn setFrame:CGRectMake(0, 10, 23, 34)];
     [backBtn setContentMode:UIViewContentModeScaleAspectFill];
     //    [backBtn setContentEdgeInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
-    [backBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [backBtn setImage:[UIImage imageNamed:@"back_btn"] forState:UIControlStateNormal];
     [backBtn addTarget:ctrl action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     ctrl.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
 }

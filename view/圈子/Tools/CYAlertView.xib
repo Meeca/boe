@@ -27,7 +27,7 @@
                                 <constraint firstAttribute="height" constant="35" id="SFz-Ja-flV"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" keyboardType="emailAddress" secureTextEntry="YES"/>
+                            <textInputTraits key="textInputTraits" keyboardType="namePhonePad" secureTextEntry="YES"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Edq-UO-uo5">
                             <color key="backgroundColor" red="0.10980392156862745" green="0.6705882352941176" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
