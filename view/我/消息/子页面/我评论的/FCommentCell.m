@@ -26,7 +26,7 @@
     [super awakeFromNib];
     // Initialization code
     
-    _iconImageView.layer.cornerRadius = _iconImageView.width/2;
+    _iconImageView.layer.cornerRadius = 30/2;
     _iconImageView.clipsToBounds = YES;
 
 }

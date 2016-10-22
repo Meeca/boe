@@ -55,7 +55,6 @@
     
 
     
-    [self loadMessageDataWithFirstPage:YES];
 
     [_tabelView headerAddMJRefresh:^{
         [self loadMessageDataWithFirstPage:YES];
@@ -77,6 +76,17 @@
 
 
 }
+
+
+- (void)viewWillAppear:(BOOL)animated{
+
+    [super viewWillAppear:animated];
+
+    [self loadMessageDataWithFirstPage:YES];
+
+
+}
+
 
 
 #pragma mark------请求消息中心接口

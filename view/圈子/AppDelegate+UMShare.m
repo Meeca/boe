@@ -110,9 +110,7 @@
     //  先注释掉友盟  的  测试 QQ 登陆
     //    return
    BOOL result =  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
-    
-    
-    
+        
     return [TencentOAuth HandleOpenURL:url] || result;
 }
 

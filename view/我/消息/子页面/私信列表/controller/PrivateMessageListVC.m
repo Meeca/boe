@@ -165,6 +165,7 @@
     
     [_footerView.deleateBtn tapControlEventTouchUpInsideWithBlock:^(UIButton *btn) {
         
+    
         
         NSLog(@"------  删除 ----  %@",_chooseArr);
         
@@ -174,43 +175,72 @@
         }
         
         
-        NSMutableArray * idArray = [NSMutableArray new];
         
-        [_chooseArr enumerateObjectsUsingBlock:^(SiXinModel * sixinModel, NSUInteger idx, BOOL * _Nonnull stop) {
-            [idArray addObject:sixinModel.u_id];
-        }];
- 
-        NSArray * array = [NSArray arrayWithArray:idArray];
         
-        NSString * idStr = [array componentsJoinedByString:@"-"];
-        /*
-         
-         删除私信
-         
-         get:/app.php/User/my_n_del
-         u_id#接受者id（id用 - 拼接）
-         uid#发送者id
-
-         
-         */
+        BlockUIAlertView *alert = [[BlockUIAlertView alloc] initWithTitle:@"提示" message:@"您确定删除选中的私信吗" cancelButtonTitle:@"取消" clickButton:^(NSInteger index) {
+            if (index == 1) {
+                [self deleteSiXin];
+            
+            }
+        } otherButtonTitles:@"确定"];
         
-        [MCNetTool postWithUrl:@"/app.php/User/my_n_del" params:@{@"u_id":idStr,@"uid":kUserId} hud:YES success:^(NSDictionary *requestDic, NSString *msg) {
-            
-            
-            [self showToastWithMessage:msg];
-            
-            [self editItemAction:_selectedBtn];
-            
-        } fail:^(NSString *error) {
-            
-            [self showToastWithMessage:error];
-
-        }];
-
+        [alert show];
+        
+        
+      
         
     }];
     
 }
+
+
+- (void)deleteSiXin{
+
+
+    NSMutableArray * idArray = [NSMutableArray new];
+    
+    [_chooseArr enumerateObjectsUsingBlock:^(SiXinModel * sixinModel, NSUInteger idx, BOOL * _Nonnull stop) {
+        [idArray addObject:sixinModel.u_id];
+    }];
+    
+    NSArray * array = [NSArray arrayWithArray:idArray];
+    
+    NSString * idStr = [array componentsJoinedByString:@"-"];
+    /*
+     
+     删除私信
+     
+     get:/app.php/User/my_n_del
+     u_id#接受者id（id用 - 拼接）
+     uid#发送者id
+     
+     
+     */
+    
+    [MCNetTool postWithUrl:@"/app.php/User/my_n_del" params:@{@"u_id":idStr,@"uid":kUserId} hud:YES success:^(NSDictionary *requestDic, NSString *msg) {
+        
+        
+        [self showToastWithMessage:msg];
+        
+        [self editItemAction:_selectedBtn];
+        
+        [self loadMessageDataWithFirstPage:YES];
+
+        
+        
+    } fail:^(NSString *error) {
+        
+        [self showToastWithMessage:error];
+        
+    }];
+
+
+
+
+}
+
+
+
 
 
 - (void)hidenFooterView{
