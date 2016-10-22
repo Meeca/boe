@@ -130,6 +130,9 @@
     [cla sizeToFit];
     cla.x = year.right + 10;
     cla.top = user.bottom + 5;
+    if (cla.right + 15 > self.width) {
+        cla.width = self.width - cla.left - 15;
+    }
 }
 
 - (void)zanClick:(UIButton *)button

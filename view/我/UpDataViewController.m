@@ -7,7 +7,6 @@
 //
 
 #import "UpDataViewController.h"
-#import <Photos/Photos.h>
 #import "PhotoCollecCell.h"
 #import "PrintViewController.h"
 
@@ -35,8 +34,45 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(back:)];
     self.navigationController.navigationBar.tintColor = [UIColor grayColor];
     
+    
+    PHAuthorizationStatus oldStatus = [PHPhotoLibrary authorizationStatus];
+    
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            switch (status) {
+                case PHAuthorizationStatusAuthorized: {
+                    //  相册
+                    [self loadImages];
+                    break;
+                }
+                    
+                case PHAuthorizationStatusDenied: {
+                    if (oldStatus == PHAuthorizationStatusNotDetermined) return;
+                    
+                    BlockUIAlertView *alert = [[BlockUIAlertView alloc] initWithTitle:@"" message:@"请前往->设置->隐私->相片，打开授权" cancelButtonTitle:@"确定" clickButton:^(NSInteger index) {
+                        
+                    } otherButtonTitles:nil];
+                    
+                    [alert show];
+                    break;
+                }
+                    
+                case PHAuthorizationStatusRestricted: {
+                    [self presentMessageTips:@"因系统原因，无法访问相册！"];
+                    break;
+                }
+                    
+                default:
+                    break;
+            }
+        });
+    }];
+    
     [self _initView];
     
+}
+
+- (void)loadImages {
     _dataImages = [NSMutableArray array];
     
     // 获取所有资源的集合，并按资源的创建时间排序
@@ -50,6 +86,7 @@
         [_dataImages addObject:asset];
     }];
     [self performSelectorOnMainThread:@selector(loacUI) withObject:nil waitUntilDone:YES];
+
 }
 
 - (void)loacUI {
@@ -128,20 +165,16 @@
         } else {
             cell.isHidSel = NO;
             cell.isSel = [selArr[indexPath.item-1] boolValue];
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                PHAsset *phAsset = _dataImages[indexPath.item - 1];
-                PHImageRequestOptions *phImageRequestOptions = [[PHImageRequestOptions alloc] init];
-                phImageRequestOptions.synchronous = YES;
-                // 在 PHImageManager 中，targetSize 等 size 都是使用 px 作为单位，因此需要对targetSize 中对传入的 Size 进行处理，宽高各自乘以 ScreenScale，从而得到正确的图片
-                PHImageManager *imageManager = [[PHImageManager alloc] init];
-                [imageManager requestImageForAsset:phAsset targetSize:CGSizeMake((KSCREENWIDTH-21)/3, (KSCREENWIDTH-21)/3) contentMode:PHImageContentModeDefault options:phImageRequestOptions resultHandler:^(UIImage *result, NSDictionary *info) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        NSLog(@"%@",NSStringFromCGSize(result.size));
-                        cell.image = result;
-                        [cell setNeedsLayout];
-                    });
-                }];
-            });
+            PHAsset *phAsset = _dataImages[indexPath.item - 1];
+            PHImageRequestOptions *phImageRequestOptions = [[PHImageRequestOptions alloc] init];
+            phImageRequestOptions.synchronous = YES;
+            // 在 PHImageManager 中，targetSize 等 size 都是使用 px 作为单位，因此需要对targetSize 中对传入的 Size 进行处理，宽高各自乘以 ScreenScale，从而得到正确的图片
+            PHImageManager *imageManager = [[PHImageManager alloc] init];
+            [imageManager requestImageForAsset:phAsset targetSize:CGSizeMake((KSCREENWIDTH-21)/3, (KSCREENWIDTH-21)/3) contentMode:PHImageContentModeDefault options:phImageRequestOptions resultHandler:^(UIImage *result, NSDictionary *info) {
+                NSLog(@"%@",NSStringFromCGSize(result.size));
+                cell.image = result;
+                [cell setNeedsLayout];
+            }];
         }
     } else {
         cell.isHidSel = YES;
@@ -149,20 +182,16 @@
             cell.image = [UIImage imageNamed:@"cheam"];
             [cell setNeedsLayout];
         } else {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                PHAsset *phAsset = _dataImages[indexPath.item - 1];
-                PHImageRequestOptions *phImageRequestOptions = [[PHImageRequestOptions alloc] init];
-                phImageRequestOptions.synchronous = YES;
-                // 在 PHImageManager 中，targetSize 等 size 都是使用 px 作为单位，因此需要对targetSize 中对传入的 Size 进行处理，宽高各自乘以 ScreenScale，从而得到正确的图片
-                PHImageManager *imageManager = [[PHImageManager alloc] init];
-                [imageManager requestImageForAsset:phAsset targetSize:CGSizeMake((KSCREENWIDTH-21)/3, (KSCREENWIDTH-21)/3) contentMode:PHImageContentModeDefault options:phImageRequestOptions resultHandler:^(UIImage *result, NSDictionary *info) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        NSLog(@"%@",NSStringFromCGSize(result.size));
-                        cell.image = result;
-                        [cell setNeedsLayout];
-                    });
-                }];
-            });
+            PHAsset *phAsset = _dataImages[indexPath.item - 1];
+            PHImageRequestOptions *phImageRequestOptions = [[PHImageRequestOptions alloc] init];
+            phImageRequestOptions.synchronous = YES;
+            // 在 PHImageManager 中，targetSize 等 size 都是使用 px 作为单位，因此需要对targetSize 中对传入的 Size 进行处理，宽高各自乘以 ScreenScale，从而得到正确的图片
+            PHImageManager *imageManager = [[PHImageManager alloc] init];
+            [imageManager requestImageForAsset:phAsset targetSize:CGSizeMake((KSCREENWIDTH-21)/3, (KSCREENWIDTH-21)/3) contentMode:PHImageContentModeDefault options:phImageRequestOptions resultHandler:^(UIImage *result, NSDictionary *info) {
+                NSLog(@"%@",NSStringFromCGSize(result.size));
+                cell.image = result;
+                [cell setNeedsLayout];
+            }];
         }
     }
     return cell;

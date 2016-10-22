@@ -12,6 +12,7 @@
 #import "OrderFooter.h"
 #import "OrderHeader.h"
 #import "OrderXQViewController.h"
+#import "TouSuViewController.h"
 
 @interface MyBuyViewController () <UITableViewDataSource, UITableViewDelegate> {
     BuyModel *buyModel;
@@ -27,6 +28,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"我购买的";
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"投诉" style:UIBarButtonItemStylePlain target:self action:@selector(touSu)];
     
     self.table.backgroundColor = RGB(234, 234, 234);
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.table.width, 10)];
@@ -59,6 +62,13 @@ ON_SIGNAL3(BuyModel, RELOADED, signal) {
         [self.table.mj_footer endRefreshingWithNoMoreData];
     }
     [self.table reloadData];
+}
+
+- (void)touSu {
+    TouSuViewController *vc = [[TouSuViewController alloc] init];
+    [Tool setBackButtonNoTitle:self];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource

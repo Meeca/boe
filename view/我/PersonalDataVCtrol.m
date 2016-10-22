@@ -96,6 +96,7 @@ ON_SIGNAL3(UserModel, USERIMAGE, signal) {
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat height = [self tableView:tableView heightForRowAtIndexPath:indexPath];
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
     cell.accessoryType = UITableViewCellAccessoryNone;
     cell.textLabel.font = [UIFont systemFontOfSize:16];
@@ -133,9 +134,10 @@ ON_SIGNAL3(UserModel, USERIMAGE, signal) {
         }
     } else if (indexPath.section==2) {
         if (indexPath.row==0) {
-            cell.textLabel.text = @"登录帐号";
-            
-            cell.detailTextLabel.text = kTel;
+            if (height) {                
+                cell.textLabel.text = @"登录帐号";
+                cell.detailTextLabel.text = kTel;
+            }
             
         } else if (indexPath.row==1) {
             cell.textLabel.text = @"帐号类型";
@@ -194,6 +196,9 @@ ON_SIGNAL3(UserModel, USERIMAGE, signal) {
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 2 && indexPath.row == 0) {
+        return 0;
+    }
     return 55;
 }
 
