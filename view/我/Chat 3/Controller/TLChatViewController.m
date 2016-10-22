@@ -289,7 +289,7 @@ UITableViewDataSource>{
 #pragma mark - 上传图片 然后发送
 - (void)sendImageWithImage:(UIImage *)image{
 
-    NSData * imageData = [[NSData alloc]init ];
+    NSData * imageData = [[NSData alloc] init];
     imageData = UIImageJPEGRepresentation(image, 1);
 
     

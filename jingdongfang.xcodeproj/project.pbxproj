@@ -849,6 +849,7 @@
 		75FE9B411D6C29B700FC1E78 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FE9B401D6C29B700FC1E78 /* DataModel.m */; };
 		75FE9B8C1D6CACE700FC1E78 /* circleSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FE9B8B1D6CACE700FC1E78 /* circleSearchTableViewCell.m */; };
 		CD7C33091DAE6F0700084EEA /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7C33081DAE6F0700084EEA /* NSString+Emoji.m */; };
+		CDE218001DBB4C3A005D84C2 /* TouSuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE217FF1DBB4C3A005D84C2 /* TouSuViewController.m */; };
 		E48DDE5D1DB6454400D8BD73 /* PrivateMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E48DDE5C1DB6454400D8BD73 /* PrivateMTableViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -2434,6 +2435,8 @@
 		75FE9B8B1D6CACE700FC1E78 /* circleSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = circleSearchTableViewCell.m; sourceTree = "<group>"; };
 		CD7C33071DAE6F0700084EEA /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
 		CD7C33081DAE6F0700084EEA /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
+		CDE217FE1DBB4C3A005D84C2 /* TouSuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouSuViewController.h; sourceTree = "<group>"; };
+		CDE217FF1DBB4C3A005D84C2 /* TouSuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouSuViewController.m; sourceTree = "<group>"; };
 		D9B37477A01F29A81B4BD158 /* libPods-jingdongfang.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-jingdongfang.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E48DDE5B1DB6454400D8BD73 /* PrivateMTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateMTableViewCell.h; sourceTree = "<group>"; };
 		E48DDE5C1DB6454400D8BD73 /* PrivateMTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateMTableViewCell.m; sourceTree = "<group>"; };
@@ -5438,6 +5441,8 @@
 				75A0901F1D5C42E20096D19E /* MyBuyViewController.h */,
 				75A090201D5C42E20096D19E /* MyBuyViewController.m */,
 				75A090211D5C42E20096D19E /* MyBuyViewController.xib */,
+				CDE217FE1DBB4C3A005D84C2 /* TouSuViewController.h */,
+				CDE217FF1DBB4C3A005D84C2 /* TouSuViewController.m */,
 				75A090241D5C4A080096D19E /* OrderHeader.h */,
 				75A090251D5C4A080096D19E /* OrderHeader.m */,
 				75A090271D5C4A180096D19E /* OrderFooter.h */,
@@ -6635,6 +6640,7 @@
 				3F7B77CB1D9BD3790055074E /* DBHRedEnvelopeListModelDataBase.m in Sources */,
 				4DC6BAD51961C20700C87D1B /* UILabel+UIDataBinding.m in Sources */,
 				757F32951D69E761006D4887 /* Response.m in Sources */,
+				CDE218001DBB4C3A005D84C2 /* TouSuViewController.m in Sources */,
 				4DC6BA9F1961C20700C87D1B /* UIImage+BeeExtension.m in Sources */,
 				4DC6BB161961C20700C87D1B /* BeeUISignal+SourceView.m in Sources */,
 				4DC6BB3D1961C20700C87D1B /* BeeViewModel+BeeUISignal.m in Sources */,
@@ -6984,8 +6990,8 @@
 				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zipingfang.jingdongfang;
 				PRODUCT_NAME = iGallery;
-				PROVISIONING_PROFILE = "f4fe9ed9-1e45-4dea-84f6-6668e7544b5a";
-				PROVISIONING_PROFILE_SPECIFIER = ZPF_Development;
+				PROVISIONING_PROFILE = "5ef06788-7678-4d4b-872f-f0fefa507dda";
+				PROVISIONING_PROFILE_SPECIFIER = boe_development;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
