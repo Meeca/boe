@@ -54,7 +54,7 @@
     header = [[UIView alloc] initWithFrame:CGRectZero];
     header.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:header];
-    
+    header.clipsToBounds  =YES;
     CGFloat iconWidth = 40;
     icon = [[UIImageView alloc] initWithFrame:CGRectMake(15, (60-iconWidth)/2, iconWidth, iconWidth)];
     icon.layer.cornerRadius = iconWidth/2;

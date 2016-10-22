@@ -61,6 +61,7 @@
                             <constraint firstAttribute="width" constant="60" id="RHb-cP-ae7"/>
                             <constraint firstAttribute="height" constant="20" id="j0Y-lh-BZ0"/>
                         </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <state key="normal" title="查看全文">
                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
