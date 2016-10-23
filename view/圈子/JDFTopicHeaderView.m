@@ -9,9 +9,12 @@
 #import "JDFTopicHeaderView.h"
 #import "CircleCommentTableViewController.h"
 #import "SDCycleScrollView.h"
+#import "SSPhotoBrowser.h"
+#import "AppDelegate.h"
 
-
-@interface JDFTopicHeaderView ()<SDCycleScrollViewDelegate>
+@interface JDFTopicHeaderView ()<SDCycleScrollViewDelegate, SSPhotoBrowserDelegate> {
+    NSArray *imageArr;
+}
 
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -33,6 +36,7 @@
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     self.iconImageView.layer.cornerRadius = 22;
     self.iconImageView.layer.masksToBounds = YES;
 //    self.conversImageView.backgroundColor = [UIColor whiteColor];
@@ -87,6 +91,7 @@
         self.praiseButton.selected = NO;
     }
     NSArray *images = [ctcrModel.image componentsSeparatedByString:@"-"];
+    imageArr = images;
     if (ctcrModel.image.length > 0)
     {
         self.conversImageView.hidden = NO;
@@ -119,19 +124,32 @@
     
     cycleScrollView.infiniteLoop = images.count > 1;
     
-    cycleScrollView.currentPageDotColor = [UIColor lightGrayColor];
+    cycleScrollView.currentPageDotColor = KAPPCOLOR;
     cycleScrollView.pageDotColor = [UIColor whiteColor];
     
     [self.conversImageView addSubview:cycleScrollView];
-    
+    self.conversImageView.userInteractionEnabled = YES;
     self.cycleScrollView = cycleScrollView;
 
     
 }
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 {
+    BaseTabBarController *ctrl = ((AppDelegate *)[UIApplication sharedApplication].delegate).ctrl;
     NSLog(@"%ld",(long)index);
+    SSPhotoBrowser *ss = [[SSPhotoBrowser alloc] initWithDelegate:self];
+    ss.numberOfPhotos = imageArr.count;
+    [ss setCurrentPhotoIndex:index];
+    [ss showInViewController:ctrl.selectedViewController];
 }
+
+#pragma mark - SSPhotoBrowserDelegate
+- (id<SSPhoto>)ss_photoBrowser:(SSPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
+    
+    NSLog(@"%d",(int)index);
+    return [SSPhoto photoWithURL:[NSURL URLWithString:imageArr[index]]];
+}
+
 
 //点赞按钮
 #pragma mark ------- 点赞请求接口

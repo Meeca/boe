@@ -58,9 +58,7 @@
     
     _imageUrls = [NSMutableArray new];
     
-    
-    UICollectionViewFlowLayout *layout = self.collectionView.collectionViewLayout;
-    
+    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     
     
 }
@@ -296,6 +294,30 @@
     return ns;
 }
 
+
+#pragma mark -  UICollectionElementKindSectionHeader
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    CGSize size = [self collectionView:collectionView layout:collectionView.collectionViewLayout referenceSizeForHeaderInSection:indexPath.section];
+    
+    if (kind == UICollectionElementKindSectionHeader) {
+        UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
+        UILabel *msg = [[UILabel alloc] initWithFrame:CGRectZero];
+        msg.text = @"*  上传图片，有图才有真相";
+        msg.textColor = [UIColor lightGrayColor];
+        msg.font = [UIFont systemFontOfSize:14];
+        [view addSubview:msg];
+        [msg sizeToFit];
+        msg.left = 15;
+        msg.centerY = size.height/2;
+        return view;
+    }
+    return nil;
+}
+//UICollectionViewFlowLayout
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    return CGSizeMake(KSCREENWIDTH, 30);
+}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {

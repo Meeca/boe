@@ -137,6 +137,9 @@ ON_SIGNAL3(BaseModel, JPUSHINDEX, signal) {
     [name sizeToFit];
     name.x = imgView.right + 15;
     name.top = imgView.top;
+    if (name.right > header.width) {
+        name.width = header.width - name.left - 15;
+    }
     
     UILabel *author = [[UILabel alloc] initWithFrame:CGRectZero];
     author.text = [@"作者 " stringByAppendingString:info.u_name?:@""];

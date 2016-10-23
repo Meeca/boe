@@ -121,7 +121,9 @@ ON_SIGNAL3(FindModel, RELOADED, signal) {
     if (findModel.loaded) {
         [collect.mj_footer endRefreshingWithNoMoreData];
     }
-    [collect reloadData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [collect reloadData];
+    });
 }
 
 ON_SIGNAL3(FindModel, CLASSSLIST, signal) {

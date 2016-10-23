@@ -82,7 +82,7 @@ static NSString * const kCollectionViewCellIdentifier = @"kCollectionViewCellIde
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     JDFClassificationModel * model = _dataArray[indexPath.row];
     
-    _itemClick(model.c_id.integerValue);
+    _itemClick(model.c_id.integerValue, model.title);
 }
 
 #pragma mark - getters and setters

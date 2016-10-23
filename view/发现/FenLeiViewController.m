@@ -70,13 +70,14 @@
  
     [self loadCircleDataWithFirstPage:YES hud:NO];
     
-    _history = [[JHCusomHistory alloc] initWithFrame:CGRectMake(0, (KSCREENWIDTH/3)+30, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) andItems:@[@"熊出没",@"死神来了19",@"钢铁侠0",@"海上钢琴师",@"最后一只恐龙",@"苍井空",@"假如爱有天意",@"好好先生",@"特种部队",@"生化危机",@"魔兽"] andItemClickBlock:^(NSInteger i) {
+    _history = [[JHCusomHistory alloc] initWithFrame:CGRectMake(0, (KSCREENWIDTH/3)+30, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) andItems:@[@"熊出没",@"死神来了19",@"钢铁侠0",@"海上钢琴师",@"最后一只恐龙",@"苍井空",@"假如爱有天意",@"好好先生",@"特种部队",@"生化危机",@"魔兽"] andItemClickBlock:^(NSInteger i, NSString *str) {
         
         
         /*        相应点击事件 i为点击的索引值         */
         FenLeiDetailViewController *vc = [[FenLeiDetailViewController alloc]init];
         vc.classId = [NSString stringWithFormat:@"%ld", i];
         vc.type = 4;
+        vc.title = str;
         vc.hidesBottomBarWhenPushed  = YES;
         [self.nav pushViewController:vc animated:YES];
     }];
@@ -137,20 +138,24 @@
 
 - (void)buttonClick:(UIButton *)button
 {
+    FenLeiDetailViewController *vc = [[FenLeiDetailViewController alloc]init];
+
     if (button.tag == 0)
     {
         //传世经典
+        vc.title = @"传世经典";
         
     }
     else if(button.tag == 1)
     {
         //当代名家
+        vc.title = @"当代名家";
     }
     else if(button.tag == 2)
     {
         //新锐艺术
+        vc.title = @"新锐艺术";
     }
-    FenLeiDetailViewController *vc = [[FenLeiDetailViewController alloc]init];
     vc.type = button.tag;
     vc.hidesBottomBarWhenPushed  = YES;
     [self.nav pushViewController:vc animated:YES];

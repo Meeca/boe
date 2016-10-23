@@ -13,5 +13,6 @@
 @interface JDFCircleConversCell : UITableViewCell
 
 @property (nonatomic, strong) Convers *convers;
+@property (nonatomic, copy) void(^ block)(Convers *convers);
 
 @end
