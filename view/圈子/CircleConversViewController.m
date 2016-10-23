@@ -176,6 +176,14 @@ JoinCircleOrNot *circleOrNot;
     Convers *convers = self.converses[indexPath.row];
     cell.convers = convers;
      u_id = convers.u_id;
+    
+    [cell setBlock:^(Convers *convers) {
+        CircleConversDetailViewController *circleConversDetailVC = [[UIStoryboard storyboardWithName:@"CircleContentView" bundle:nil]instantiateViewControllerWithIdentifier:@"CircleConversDetailViewController"];
+        
+        circleConversDetailVC.c_id = convers.coID;
+        [self.navigationController pushViewController:circleConversDetailVC animated:YES];
+    }];
+    
     return cell;
 }
 

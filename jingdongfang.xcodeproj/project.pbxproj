@@ -848,6 +848,16 @@
 		75FE9AF51D6AFDF100FC1E78 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FE9AF41D6AFDF100FC1E78 /* UserInfoModel.m */; };
 		75FE9B411D6C29B700FC1E78 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FE9B401D6C29B700FC1E78 /* DataModel.m */; };
 		75FE9B8C1D6CACE700FC1E78 /* circleSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FE9B8B1D6CACE700FC1E78 /* circleSearchTableViewCell.m */; };
+		CD1B9AC91DBD0C8B00102F8C /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B9AB51DBD0C8B00102F8C /* DACircularProgressView.m */; };
+		CD1B9ACA1DBD0C8B00102F8C /* DALabeledCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B9AB71DBD0C8B00102F8C /* DALabeledCircularProgressView.m */; };
+		CD1B9ACB1DBD0C8B00102F8C /* MWTapDetectingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B9AB91DBD0C8B00102F8C /* MWTapDetectingImageView.m */; };
+		CD1B9ACC1DBD0C8B00102F8C /* MWTapDetectingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B9ABB1DBD0C8B00102F8C /* MWTapDetectingView.m */; };
+		CD1B9ACD1DBD0C8B00102F8C /* SSImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B9ABD1DBD0C8B00102F8C /* SSImageScrollView.m */; };
+		CD1B9ACE1DBD0C8B00102F8C /* SSImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B9AC01DBD0C8B00102F8C /* SSImageView.m */; };
+		CD1B9ACF1DBD0C8B00102F8C /* SSPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B9AC21DBD0C8B00102F8C /* SSPhoto.m */; };
+		CD1B9AD01DBD0C8B00102F8C /* SSPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B9AC41DBD0C8B00102F8C /* SSPhotoBrowser.m */; };
+		CD1B9AD11DBD0C8B00102F8C /* SSPhotoBrowser_ImageError@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1B9AC51DBD0C8B00102F8C /* SSPhotoBrowser_ImageError@2x.png */; };
+		CD1B9AD21DBD0C8B00102F8C /* SSPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B9AC81DBD0C8B00102F8C /* SSPhotoViewController.m */; };
 		CD7C33091DAE6F0700084EEA /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7C33081DAE6F0700084EEA /* NSString+Emoji.m */; };
 		CDE218001DBB4C3A005D84C2 /* TouSuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE217FF1DBB4C3A005D84C2 /* TouSuViewController.m */; };
 		E48DDE5D1DB6454400D8BD73 /* PrivateMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E48DDE5C1DB6454400D8BD73 /* PrivateMTableViewCell.m */; };
@@ -2433,6 +2443,26 @@
 		75FE9B401D6C29B700FC1E78 /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		75FE9B8A1D6CACE700FC1E78 /* circleSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = circleSearchTableViewCell.h; sourceTree = "<group>"; };
 		75FE9B8B1D6CACE700FC1E78 /* circleSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = circleSearchTableViewCell.m; sourceTree = "<group>"; };
+		CD1B9AB41DBD0C8B00102F8C /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
+		CD1B9AB51DBD0C8B00102F8C /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
+		CD1B9AB61DBD0C8B00102F8C /* DALabeledCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALabeledCircularProgressView.h; sourceTree = "<group>"; };
+		CD1B9AB71DBD0C8B00102F8C /* DALabeledCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALabeledCircularProgressView.m; sourceTree = "<group>"; };
+		CD1B9AB81DBD0C8B00102F8C /* MWTapDetectingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWTapDetectingImageView.h; sourceTree = "<group>"; };
+		CD1B9AB91DBD0C8B00102F8C /* MWTapDetectingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWTapDetectingImageView.m; sourceTree = "<group>"; };
+		CD1B9ABA1DBD0C8B00102F8C /* MWTapDetectingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWTapDetectingView.h; sourceTree = "<group>"; };
+		CD1B9ABB1DBD0C8B00102F8C /* MWTapDetectingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWTapDetectingView.m; sourceTree = "<group>"; };
+		CD1B9ABC1DBD0C8B00102F8C /* SSImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSImageScrollView.h; sourceTree = "<group>"; };
+		CD1B9ABD1DBD0C8B00102F8C /* SSImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSImageScrollView.m; sourceTree = "<group>"; };
+		CD1B9ABF1DBD0C8B00102F8C /* SSImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSImageView.h; sourceTree = "<group>"; };
+		CD1B9AC01DBD0C8B00102F8C /* SSImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSImageView.m; sourceTree = "<group>"; };
+		CD1B9AC11DBD0C8B00102F8C /* SSPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPhoto.h; sourceTree = "<group>"; };
+		CD1B9AC21DBD0C8B00102F8C /* SSPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPhoto.m; sourceTree = "<group>"; };
+		CD1B9AC31DBD0C8B00102F8C /* SSPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPhotoBrowser.h; sourceTree = "<group>"; };
+		CD1B9AC41DBD0C8B00102F8C /* SSPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPhotoBrowser.m; sourceTree = "<group>"; };
+		CD1B9AC51DBD0C8B00102F8C /* SSPhotoBrowser_ImageError@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SSPhotoBrowser_ImageError@2x.png"; sourceTree = "<group>"; };
+		CD1B9AC61DBD0C8B00102F8C /* SSPhotoProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPhotoProtocol.h; sourceTree = "<group>"; };
+		CD1B9AC71DBD0C8B00102F8C /* SSPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPhotoViewController.h; sourceTree = "<group>"; };
+		CD1B9AC81DBD0C8B00102F8C /* SSPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPhotoViewController.m; sourceTree = "<group>"; };
 		CD7C33071DAE6F0700084EEA /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
 		CD7C33081DAE6F0700084EEA /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
 		CDE217FE1DBB4C3A005D84C2 /* TouSuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouSuViewController.h; sourceTree = "<group>"; };
@@ -3025,6 +3055,7 @@
 		4DC6B3C11961C0C300C87D1B /* util */ = {
 			isa = PBXGroup;
 			children = (
+				CD1B9AB21DBD0C8B00102F8C /* SSPhotoBrowser */,
 				CD7C33061DAE6ED400084EEA /* NSString+Emoji */,
 				7507BA181D76BF720031ECE8 /* UMengSocial */,
 				7530E2E21D73059600CFBC9F /* alipay */,
@@ -5912,6 +5943,49 @@
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
+		CD1B9AB21DBD0C8B00102F8C /* SSPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				CD1B9AB31DBD0C8B00102F8C /* DACircularProgress */,
+				CD1B9AB81DBD0C8B00102F8C /* MWTapDetectingImageView.h */,
+				CD1B9AB91DBD0C8B00102F8C /* MWTapDetectingImageView.m */,
+				CD1B9ABA1DBD0C8B00102F8C /* MWTapDetectingView.h */,
+				CD1B9ABB1DBD0C8B00102F8C /* MWTapDetectingView.m */,
+				CD1B9ABC1DBD0C8B00102F8C /* SSImageScrollView.h */,
+				CD1B9ABD1DBD0C8B00102F8C /* SSImageScrollView.m */,
+				CD1B9ABE1DBD0C8B00102F8C /* SSImageView */,
+				CD1B9AC11DBD0C8B00102F8C /* SSPhoto.h */,
+				CD1B9AC21DBD0C8B00102F8C /* SSPhoto.m */,
+				CD1B9AC31DBD0C8B00102F8C /* SSPhotoBrowser.h */,
+				CD1B9AC41DBD0C8B00102F8C /* SSPhotoBrowser.m */,
+				CD1B9AC51DBD0C8B00102F8C /* SSPhotoBrowser_ImageError@2x.png */,
+				CD1B9AC61DBD0C8B00102F8C /* SSPhotoProtocol.h */,
+				CD1B9AC71DBD0C8B00102F8C /* SSPhotoViewController.h */,
+				CD1B9AC81DBD0C8B00102F8C /* SSPhotoViewController.m */,
+			);
+			path = SSPhotoBrowser;
+			sourceTree = "<group>";
+		};
+		CD1B9AB31DBD0C8B00102F8C /* DACircularProgress */ = {
+			isa = PBXGroup;
+			children = (
+				CD1B9AB41DBD0C8B00102F8C /* DACircularProgressView.h */,
+				CD1B9AB51DBD0C8B00102F8C /* DACircularProgressView.m */,
+				CD1B9AB61DBD0C8B00102F8C /* DALabeledCircularProgressView.h */,
+				CD1B9AB71DBD0C8B00102F8C /* DALabeledCircularProgressView.m */,
+			);
+			path = DACircularProgress;
+			sourceTree = "<group>";
+		};
+		CD1B9ABE1DBD0C8B00102F8C /* SSImageView */ = {
+			isa = PBXGroup;
+			children = (
+				CD1B9ABF1DBD0C8B00102F8C /* SSImageView.h */,
+				CD1B9AC01DBD0C8B00102F8C /* SSImageView.m */,
+			);
+			path = SSImageView;
+			sourceTree = "<group>";
+		};
 		CD7C33061DAE6ED400084EEA /* NSString+Emoji */ = {
 			isa = PBXGroup;
 			children = (
@@ -6026,6 +6100,7 @@
 				7507BA821D76BF720031ECE8 /* UMSCommentInputControlleriPad.xib in Resources */,
 				4D02D5241B5395E600C92F60 /* PushConfig.plist in Resources */,
 				4D02D5831B539C8300C92F60 /* NimbusWebController.bundle in Resources */,
+				CD1B9AD11DBD0C8B00102F8C /* SSPhotoBrowser_ImageError@2x.png in Resources */,
 				75C662531D7AD2250070A405 /* MessageCell.xib in Resources */,
 				4DA848FF1A903E0100D6B62B /* tutorial_background_03@2x.jpg in Resources */,
 				75A090461D5C6EF40096D19E /* BillViewController.xib in Resources */,
@@ -6288,6 +6363,7 @@
 				75A405F51D818413008BD637 /* ChangeAttributeViewController.m in Sources */,
 				4DC6BB2D1961C20700C87D1B /* BeeUIQuery+Events.m in Sources */,
 				04CC329B1D81C496006A4752 /* JKNotifier.m in Sources */,
+				CD1B9ACA1DBD0C8B00102F8C /* DALabeledCircularProgressView.m in Sources */,
 				3F1F50AF1D9BCFF50030FF7B /* DBHBuyPictureFrameInfoTableViewCell.m in Sources */,
 				4DC6BAD31961C20700C87D1B /* UIButton+UIDataBinding.m in Sources */,
 				4DC6BB331961C20700C87D1B /* BeeUIQuery+Value.m in Sources */,
@@ -6354,6 +6430,7 @@
 				7507BAE21D7819AE0031ECE8 /* MailBindingViewController.m in Sources */,
 				759453BF1D70B03D00E80A33 /* TAPageControl.m in Sources */,
 				4D02D56C1B539C8300C92F60 /* NIBadgeView.m in Sources */,
+				CD1B9ACC1DBD0C8B00102F8C /* MWTapDetectingView.m in Sources */,
 				75A090291D5C4A180096D19E /* OrderFooter.m in Sources */,
 				751BED5D1D2FBBA1004A6BA8 /* TiCaiCell.m in Sources */,
 				4DC6BAAE1961C20700C87D1B /* UIViewController+LifeCycle.m in Sources */,
@@ -6371,6 +6448,7 @@
 				4DC6BAC51961C20700C87D1B /* CSSRuleSet.m in Sources */,
 				4DC6BBAB1961C20700C87D1B /* FMResultSet.m in Sources */,
 				7536EA0A1D29F8B50044C602 /* IWTextView.m in Sources */,
+				CD1B9ACD1DBD0C8B00102F8C /* SSImageScrollView.m in Sources */,
 				4DC6BAB41961C20700C87D1B /* Bee_UIStyle.m in Sources */,
 				4DC6BB221961C20700C87D1B /* UILabel+BeeUILayout.m in Sources */,
 				3F7B77D11D9BD3790055074E /* DBHRedEnvelopeModelInfo.m in Sources */,
@@ -6449,6 +6527,7 @@
 				4DC6BAEC1961C20700C87D1B /* Bee_UIPickerView.m in Sources */,
 				4DC6BB841961C20700C87D1B /* Bee_HTTPPackage.mm in Sources */,
 				7568413A1D8843D5006F9FBE /* JHCustomFlow.m in Sources */,
+				CD1B9AC91DBD0C8B00102F8C /* DACircularProgressView.m in Sources */,
 				75FE9AE51D6AEF5000FC1E78 /* MCHttp.m in Sources */,
 				7502B0541D34C0E1009BC5C6 /* DuoTuViewCell.m in Sources */,
 				75FE9AEF1D6AF77B00FC1E78 /* UITableView+MJRefresh.m in Sources */,
@@ -6458,6 +6537,7 @@
 				7507BADF1D78123F0031ECE8 /* GetCodeViewController.m in Sources */,
 				4DC6BBAE1961C20700C87D1B /* Reachability.m in Sources */,
 				4DC6BB731961C20700C87D1B /* NSDate+BeeExtension.mm in Sources */,
+				CD1B9AD01DBD0C8B00102F8C /* SSPhotoBrowser.m in Sources */,
 				4DC6BABE1961C20700C87D1B /* UIPageControl+BeeUIStyle.m in Sources */,
 				4DC6BB8C1961C20700C87D1B /* Bee_HTTPProtocol2.m in Sources */,
 				7568413E1D88511A006F9FBE /* JDFClassificationModel.m in Sources */,
@@ -6528,12 +6608,14 @@
 				754BD67F1D7C6F67001488DA /* JDFProduct.m in Sources */,
 				4DC6BBAD1961C20700C87D1B /* OpenUDID.m in Sources */,
 				4DC6BA8E1961C20700C87D1B /* Bee_MessageController.mm in Sources */,
+				CD1B9ACB1DBD0C8B00102F8C /* MWTapDetectingImageView.m in Sources */,
 				75FE9B411D6C29B700FC1E78 /* DataModel.m in Sources */,
 				75A8FF591D6F538D007FE784 /* UzysGroupPickerView.m in Sources */,
 				754081351D6EF05F00B5662A /* UIView+Frame.m in Sources */,
 				4DC6BB1F1961C20700C87D1B /* BeeUILayout+CSSElement.m in Sources */,
 				4DC6BB821961C20700C87D1B /* Bee_Network.m in Sources */,
 				7501CB1D1D30C366006625DD /* HomeModel.m in Sources */,
+				CD1B9ACF1DBD0C8B00102F8C /* SSPhoto.m in Sources */,
 				4D02D60A1B53A80300C92F60 /* ChooseLocationController.m in Sources */,
 				75FE9AB91D6A950600FC1E78 /* NSDictionary+HYBUnicodeReadable.m in Sources */,
 				759415861D8544580089A8CE /* TLPhotoPickerViewController.m in Sources */,
@@ -6638,6 +6720,7 @@
 				7594158A1D8544580089A8CE /* NSDate+Utils.m in Sources */,
 				755C45BE1D86B88400659948 /* UIImage+MJ.m in Sources */,
 				3F7B77CB1D9BD3790055074E /* DBHRedEnvelopeListModelDataBase.m in Sources */,
+				CD1B9ACE1DBD0C8B00102F8C /* SSImageView.m in Sources */,
 				4DC6BAD51961C20700C87D1B /* UILabel+UIDataBinding.m in Sources */,
 				757F32951D69E761006D4887 /* Response.m in Sources */,
 				CDE218001DBB4C3A005D84C2 /* TouSuViewController.m in Sources */,
@@ -6798,6 +6881,7 @@
 				4DC6BA951961C20700C87D1B /* BeeMessage+BeeXML.mm in Sources */,
 				7555461B1D785F3D0011F46A /* PhotoUpLoadAgreementViewController.m in Sources */,
 				4DC6BB4F1961C20700C87D1B /* Bee_SystemConfig.mm in Sources */,
+				CD1B9AD21DBD0C8B00102F8C /* SSPhotoViewController.m in Sources */,
 				4DC6BB961961C20700C87D1B /* ProcessingRequest.m in Sources */,
 				3F7B77D71D9BD39D0055074E /* LXKRegularExpressionTool.m in Sources */,
 				4D02D56E1B539C8300C92F60 /* NIButtonUtilities.m in Sources */,

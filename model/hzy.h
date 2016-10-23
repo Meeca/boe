@@ -52,7 +52,7 @@
 #define KSCREENHEIGHT  ([UIScreen mainScreen].bounds.size.height)
 #define KAPPCOLOR      ([UIColor colorWithRed:0.f/255.f green:171.f/255.f blue:230.f/255.f alpha:1])
 #define KSCALE(value)  (value * KSCREENWIDTH/1242)
-#define KZHANWEI       ([UIImage imageNamed:@""])
+#define KZHANWEI       ([UIImage imageNamed:@"bgimg"])
 #define BANNERHEIGHT   (KSCALE(620))
 #define INTROHEIGHT   (KSCALE(520))
 #define UPDATASUCC @"UPDATASUCC"

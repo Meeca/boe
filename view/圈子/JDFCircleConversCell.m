@@ -93,17 +93,20 @@
     
     cycleScrollView.infiniteLoop = images.count > 1;
     
-    cycleScrollView.currentPageDotColor = [UIColor lightGrayColor];
+    cycleScrollView.currentPageDotColor = KAPPCOLOR;
     cycleScrollView.pageDotColor = [UIColor whiteColor];
     
     [self.conversImageView addSubview:cycleScrollView];
-    
+    self.conversImageView.userInteractionEnabled = YES;
     self.cycleScrollView = cycleScrollView;
 }
 
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 {
     NSLog(@"%ld",(long)index);
+    if (self.block) {
+        self.block(self.convers);
+    }
 }
 
 @end

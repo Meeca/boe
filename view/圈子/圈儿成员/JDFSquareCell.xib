@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,39 +14,38 @@
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="79" height="75"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ob-dn-kY2">
-                        <rect key="frame" x="20" y="52" width="38" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8um-wD-g9H">
-                        <rect key="frame" x="14" y="5" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="Ymb-jt-N3W"/>
                             <constraint firstAttribute="height" constant="50" id="yje-b5-UZV"/>
                         </constraints>
                     </imageView>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REe-Mg-Wwj">
-                        <rect key="frame" x="49" y="10" width="20" height="19"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <state key="normal" image="B-12"/>
                         <state key="selected" image="B-13"/>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ob-dn-kY2">
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="REe-Mg-Wwj" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="1:4" id="EZs-T7-l4A"/>
                 <constraint firstItem="8um-wD-g9H" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="IYQ-xg-Ich"/>
-                <constraint firstItem="5ob-dn-kY2" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="PyJ-np-6ys"/>
+                <constraint firstItem="5ob-dn-kY2" firstAttribute="top" secondItem="8um-wD-g9H" secondAttribute="bottom" id="MeI-fE-KxU"/>
+                <constraint firstItem="5ob-dn-kY2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Slq-jt-CrY"/>
                 <constraint firstItem="REe-Mg-Wwj" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="1:4" id="XaX-rR-QG6"/>
+                <constraint firstAttribute="bottom" secondItem="5ob-dn-kY2" secondAttribute="bottom" id="fUf-O7-ATK"/>
                 <constraint firstAttribute="trailing" secondItem="REe-Mg-Wwj" secondAttribute="trailing" constant="10" id="iA6-q9-4ka"/>
                 <constraint firstItem="8um-wD-g9H" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="k4A-RR-rfG"/>
+                <constraint firstAttribute="trailing" secondItem="5ob-dn-kY2" secondAttribute="trailing" id="oen-j0-wUL"/>
                 <constraint firstItem="REe-Mg-Wwj" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="oiN-p5-rKd"/>
-                <constraint firstAttribute="bottom" secondItem="5ob-dn-kY2" secondAttribute="bottom" constant="5" id="vJi-b9-Sk5"/>
             </constraints>
             <size key="customSize" width="107" height="90"/>
             <connections>
@@ -53,7 +53,7 @@
                 <outlet property="iconView" destination="8um-wD-g9H" id="lJ9-0H-7ng"/>
                 <outlet property="nameView" destination="5ob-dn-kY2" id="pXM-fA-Rd2"/>
             </connections>
-            <point key="canvasLocation" x="-125.5" y="142.5"/>
+            <point key="canvasLocation" x="-64.5" y="-111.5"/>
         </collectionViewCell>
     </objects>
     <resources>

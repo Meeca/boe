@@ -18,7 +18,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void (^itemClickBlock)(NSInteger i);;
+typedef void (^itemClickBlock)(NSInteger i, NSString *str);;
 
 @interface JHCusomHistory : UIView
 
