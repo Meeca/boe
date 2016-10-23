@@ -51,7 +51,7 @@
     
     _page = 1;
     
-    self.navigationItem.title = @"圈儿";
+    self.navigationItem.title = @"圈子";
     [self addTableViewRefreshView];
     [self initUI];
     
@@ -167,7 +167,7 @@
 - (void)addCircle:(UIView *)item {
     
     [FTPopOverMenu showForSender:item
-                        withMenu:@[@"加入圈儿",@"新建一个圈儿"]
+                        withMenu:@[@"加入圈子",@"新建一个圈子"]
      //                  imageNameArray:@[@"setting_icon",@"setting_icon",@"setting_icon"]
                        doneBlock:^(NSInteger selectedIndex) {
                            
@@ -266,7 +266,7 @@
     {
         UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ID"];
         
-        cell.textLabel.text = @"您还没有加入任何圈儿";
+        cell.textLabel.text = @"您还没有加入任何圈子";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }

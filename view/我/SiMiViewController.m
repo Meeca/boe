@@ -27,6 +27,8 @@
     NSString *pay_type;
     NSMutableArray *imageUrlArr;
     NSMutableArray *_dataArray;
+    
+    HomeIndex *listModel;
 }
 
 @end
@@ -120,7 +122,17 @@ ON_SIGNAL3(BaseModel, SHAREEQUIPMENTLIST, signal) {
         view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.9];
         view.x = KSCREENWIDTH;
         view.p_idsStr = p_idsStr;
-        view.imgArr = imageUrlArr;
+        if (listModel) {
+            DetailsInfo *info = [DetailsInfo new];
+            info.image = listModel.image;
+            info.title = listModel.title;
+            info.u_name = listModel.u_name;
+            info.p_id = listModel.p_id;
+            info.pay_type = @"2";
+            view.info = info;
+        } else {
+            view.imgArr = imageUrlArr;
+        }
         view.dataArr = _dataArray;
         UIWindow *win = [UIApplication sharedApplication].keyWindow;
         [win addSubview:view];
@@ -166,6 +178,7 @@ ON_SIGNAL3(BaseModel, JPUSHINDEX, signal) {
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    listModel = nil;
     if (isEdit) {
         
         NSMutableArray *selIndexArr = [NSMutableArray array];
@@ -199,7 +212,7 @@ ON_SIGNAL3(BaseModel, JPUSHINDEX, signal) {
         [collectionView reloadData];
         
     } else {
-        HomeIndex *list = zuoPinModel.recommends[indexPath.item];
+        listModel = zuoPinModel.recommends[indexPath.item];
 //        XiangQingViewController *vc = [[XiangQingViewController alloc] init];
 //        vc.p_id = list.p_id;
 //        vc.hidesBottomBarWhenPushed = YES;
@@ -209,20 +222,30 @@ ON_SIGNAL3(BaseModel, JPUSHINDEX, signal) {
         [ctrl addTarget:self action:@selector(hiddenCtrl:) forControlEvents:UIControlEventTouchUpInside];
         
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectZero];
-        [imgView sd_setImageWithURL:[NSURL URLWithString:list.image] placeholderImage:KZHANWEI];
+        [imgView sd_setImageWithURL:[NSURL URLWithString:listModel.image] placeholderImage:KZHANWEI];
         imgView.contentMode = UIViewContentModeScaleAspectFill;
         imgView.layer.borderColor = [UIColor whiteColor].CGColor;
         imgView.layer.borderWidth = 15;
         imgView.layer.masksToBounds = YES;
         [ctrl addSubview:imgView];
         
-        if ([list.plates integerValue]==1) { // 横屏
-            imgView.frame = CGRectMake(0, 0, (KSCREENWIDTH-80)*1920/1080, KSCREENWIDTH-80);
+        if ([listModel.plates integerValue]==1) { // 横屏
+            imgView.frame = CGRectMake(0, 0, (KSCREENWIDTH-90)*1920/1080, KSCREENWIDTH-90);
             imgView.transform = CGAffineTransformMakeRotation(-M_PI/2);
         } else {  //竖屏
-            imgView.frame = CGRectMake(0, 0, KSCREENWIDTH-80, (KSCREENWIDTH-80)*1920/1080);
+            imgView.frame = CGRectMake(0, 0, KSCREENWIDTH-90, (KSCREENWIDTH-90)*1920/1080);
         }
-        imgView.center = CGPointMake(ctrl.width/2, ctrl.height/2);
+        imgView.center = CGPointMake(ctrl.width/2, ctrl.height/2-15);
+        
+        UIButton *push = [UIButton buttonWithType:UIButtonTypeCustom];
+        push.frame = CGRectMake(0, 0, KSCREENWIDTH, 44);
+        push.backgroundColor = KAPPCOLOR;
+        [push setTitle:@"推送到iGallery" forState:UIControlStateNormal];
+        [push setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [push addTarget:self action:@selector(pushPhoto:) forControlEvents:UIControlEventTouchUpInside];
+        push.titleLabel.font = [UIFont systemFontOfSize:16];
+        [ctrl addSubview:push];
+        push.bottom = ctrl.height;
         
         UIWindow *win = [UIApplication sharedApplication].keyWindow;
         [win addSubview:ctrl];
@@ -231,6 +254,20 @@ ON_SIGNAL3(BaseModel, JPUSHINDEX, signal) {
             ctrl.alpha = 1;
         }];
     }
+}
+
+- (void)pushPhoto:(UIButton *)btn {
+    
+    imageUrlArr = [NSMutableArray array];
+    [imageUrlArr addObject:listModel.image];
+
+    p_idsStr = nil;
+    p_idsStr = listModel.p_id;
+    
+    pay_type = nil;
+    pay_type = @"2";
+    
+    [baseModel app_php_User_equipment_list];
 }
 
 - (void)hiddenCtrl:(UIControl *)ctrl {

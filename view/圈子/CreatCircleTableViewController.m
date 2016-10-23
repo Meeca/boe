@@ -41,11 +41,11 @@
     
     
     if(_type == 1){
-        self.navigationItem.title = @"新建一个圈儿";
+        self.navigationItem.title = @"新建一个圈子";
         _isPrivate = YES;
         
     }else{
-        self.navigationItem.title = @"修改圈儿属性";
+        self.navigationItem.title = @"修改圈子属性";
         
         
         NSInteger  attribute = [_attribute integerValue];
@@ -191,14 +191,14 @@
     
     
     if (_type == 1) {
-        //创建一个圈儿
+        //创建一个圈子
         [self createQuan];
     }else{
-        //修改一个圈儿
+        //修改一个圈子
         [self changeQuan];
     }
 }
-#pragma mark - 新建一个圈儿
+#pragma mark - 新建一个圈子
 - (void)createQuan{
 
 
@@ -227,7 +227,7 @@
 
 
 
-#pragma mark - 修改一个圈儿
+#pragma mark - 修改一个圈子
 - (void)changeQuan{
     
     

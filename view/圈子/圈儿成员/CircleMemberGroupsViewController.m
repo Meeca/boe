@@ -23,6 +23,7 @@
     
     
     BOOL _isChooseBtn ;
+    NSMutableArray *selArr;
     
 }
 @property (nonatomic, weak) CircleMembersFooterView *circleMembersFooterView;
@@ -43,7 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
      [self addTableViewRefreshView];
-    self.navigationItem.title = @"圈儿成员";
+    self.navigationItem.title = @"圈子成员";
 //    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"管理" target:self action:@selector(manageButtonClick:)];
     _page = 1;
     _isChooseBtn = NO;
@@ -235,6 +236,9 @@
 #pragma mark PickerViewDelegate
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    BOOL sel = [selArr[indexPath.item] boolValue];
+    [selArr replaceObjectAtIndex:indexPath.item withObject:@(!sel)];
+    
     if ([self.disabledContactIds count]) {
         NSInteger item = indexPath.item;
         JDFSquareItem *contact = _contacts[item];
@@ -244,6 +248,9 @@
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    BOOL sel = [selArr[indexPath.item] boolValue];
+    [selArr replaceObjectAtIndex:indexPath.item withObject:@(!sel)];
+    
     if ([self.disabledContactIds count]) {
         NSInteger item = indexPath.item;
         JDFSquareItem *contact = _contacts[item];
@@ -258,6 +265,10 @@
         [self.selectedIndexSet addIndex:indexPath.item];
         JDFSquareItem *selectedItem =  _contacts[indexPath.item];
         [_selectedContactUids addObject:selectedItem.u_id];
+        
+//        BOOL sel = [selArr[indexPath.item] boolValue];
+//        [selArr removeObjectAtIndex:indexPath.item];
+//        [selArr insertObject:@(!sel) atIndex:indexPath.item];
      }else{
     
          NSLog(@"*********");
@@ -316,6 +327,11 @@
             });
             
         }];
+        
+        selArr = [NSMutableArray array];
+        for (int i=0; i<_contacts.count; i++) {
+            [selArr addObject:@(NO)];
+        }
     }else{
         
         [self hidenFooterView];
@@ -353,17 +369,39 @@
 }
 - (void)bottomBtnAction:(UIButton *)btn{
     
+    NSMutableArray *arr = [NSMutableArray array];
+    for (int i=0; i<selArr.count; i++) {
+        BOOL sel = [selArr[i] boolValue];
+        
+        if (sel) {
+            [arr addObject:@(i)];
+        }
+    }
+    
+    if (arr.count==0) {
+        [self presentMessageTips:@"请选择要操作的成员"];
+        return;
+    }
+    
+    NSMutableArray *dataArr = [NSMutableArray array];
+    for (NSNumber *index in arr) {
+        JDFSquareItem *contact = _contacts[[index integerValue]];
+        [dataArr addObject:contact.u_id];
+    }
+    
+    NSString *uidStr = [dataArr componentsJoinedByString:@"-"];
+    
     NSLog(@"______选中的人数组________\n%@",[self selectedContacts]);
     NSString *path = @"/app.php/Circles/join_del";
-    NSString *postUid;
-    if (_selectedContactUids.count > 1) {
-        postUid = [self array2string:_selectedContactUids];
-    } else {
-        postUid = _selectedContactUids[0];
-    }
+//    NSString *postUid;
+//    if (_selectedContactUids.count > 1) {
+//        postUid = [self array2string:_selectedContactUids];
+//    } else {
+//        postUid = _selectedContactUids[0];
+//    }
     NSDictionary *params = @{
                              @"c_id" :_cID,
-                             @"u_id" :postUid,
+                             @"u_id" :uidStr,
                              
                              };
 
