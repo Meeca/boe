@@ -28,7 +28,7 @@
     self.circleTitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16.0f];
     self.circleTitleLabel.font = [UIFont boldSystemFontOfSize:AUTOLAYOUTSIZE(16)];
     self.circleContentLabel.font = [UIFont systemFontOfSize:AUTOLAYOUTSIZE(14)];
-    self.circleConversNumLabel.font = [UIFont systemFontOfSize:AUTOLAYOUTSIZE(15)];
+    self.circleConversNumLabel.font = [UIFont systemFontOfSize:AUTOLAYOUTSIZE(13)];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -44,7 +44,7 @@
     NSString *title = circle.title.length > 10 ? [[circle.title substringToIndex:10] stringByAppendingString:@"..."] : circle.title;
     self.circleTitleLabel.text = title;
     self.circleContentLabel.text = circle.content;
-    self.circleConversNumLabel.text = [NSString stringWithFormat:@"%ld个新话题", (long)circle.conversNum];
+    self.circleConversNumLabel.text = [NSString stringWithFormat:@"%ld个话题", (long)circle.conversNum];
     [self.circleImageView sd_setImageWithURL:[NSURL URLWithString:circle.image] placeholderImage:[UIImage imageNamed:@"chatfrom_doctor_icon"]];
     self.lockImageView.hidden = circle.attributes == 1;
     

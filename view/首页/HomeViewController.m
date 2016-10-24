@@ -73,8 +73,8 @@
     userSelectedChannelID = 100;
     slide = [[SUNSlideSwitchView alloc] initWithFrame:CGRectMake(0, -44, KSCREENWIDTH, KSCREENHEIGHT-20-49)];
     slide.slideSwitchViewDelegate = self;
-    slide.tabItemNormalColor = [UIColor blackColor];
-    slide.tabItemSelectedColor = KAPPCOLOR;
+    slide.tabItemNormalColor = [UIColor darkGrayColor];
+    slide.tabItemSelectedColor = [UIColor blackColor];
     [self.view addSubview:slide];
     [slide buildUI];
     
@@ -91,18 +91,19 @@
         
         //计算下一个tab的x偏移量
         [button setTag:i+100];
-        if (i == 0) {
-            shadowImageView.frame = CGRectMake(0, button.height-2, button.width+20, 2);
-            shadowImageView.centerX = button.centerX;
-            shadowImageView.bottom = button.bottom;
-            button.selected = YES;
-        }
         [button setTitle:title[i] forState:UIControlStateNormal];
         button.titleLabel.font = [UIFont systemFontOfSize:15];
         [button setTitleColor:slide.tabItemNormalColor forState:UIControlStateNormal];
         [button setTitleColor:slide.tabItemSelectedColor forState:UIControlStateSelected];
         [button addTarget:self action:@selector(selectNameButton:) forControlEvents:UIControlEventTouchUpInside];
         [header addSubview:button];
+        if (i == 0) {
+            shadowImageView.frame = CGRectMake(0, button.height-2, button.width+20, 2);
+            shadowImageView.centerX = button.centerX;
+            shadowImageView.bottom = button.bottom;
+            button.selected = YES;
+            button.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+        }
     }
     header.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:header];
@@ -298,12 +299,14 @@ ON_NOTIFICATION3(UserModel, REGISTER, notification) {
             //取之前的按钮
             UIButton *lastButton = (UIButton *)[header viewWithTag:userSelectedChannelID];
             lastButton.selected = NO;
+            lastButton.titleLabel.font = [UIFont systemFontOfSize:15];
             //赋值按钮ID
             userSelectedChannelID = [new integerValue];
             UIButton *newButton = (UIButton *)[header viewWithTag:userSelectedChannelID];
             
             if (!newButton.selected) {
                 newButton.selected = YES;
+                newButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
                 [UIView animateWithDuration:0.25 animations:^{
                     shadowImageView.centerX = newButton.centerX;
                 }];
@@ -332,6 +335,7 @@ ON_NOTIFICATION3(UserModel, REGISTER, notification) {
         //取之前的按钮
         UIButton *lastButton = (UIButton *)[header viewWithTag:userSelectedChannelID];
         lastButton.selected = NO;
+        lastButton.titleLabel.font = [UIFont systemFontOfSize:15];
         //赋值按钮ID
         userSelectedChannelID = sender.tag;
     }
@@ -341,7 +345,8 @@ ON_NOTIFICATION3(UserModel, REGISTER, notification) {
         //设置新页出现
         [slide selectNameButton:sender];
         sender.selected = YES;
-        
+        sender.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+
         [UIView animateWithDuration:0.25 animations:^{
             shadowImageView.centerX = sender.centerX;
         }];

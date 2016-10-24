@@ -30,7 +30,8 @@
             numberLaber.textColor = [UIColor whiteColor];
 //        numberLaber.font = [UIFont fontWithName:@"" size:10];
         numberLaber.font = [UIFont fontWithName:@"STHeiti-Medium.ttc" size:8];
-            numberLaber.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:.7];
+            numberLaber.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"B-16-2"]];
+//        numberLaber.backgroundImage = [UIImage imageNamed:@"B-16-2"];
             numberLaber.textAlignment = UITextAlignmentCenter;
             [imgView addSubview:numberLaber];
         numberLaber.hidden = YES;
@@ -61,7 +62,8 @@
         numberLaber.hidden = NO;
     }
     
-    [imgView sd_setImageWithURL:[NSURL URLWithString:self.imgUrl] placeholderImage:KZHANWEI];
+    [imgView sd_setImageWithURL:[NSURL URLWithString:self.imgUrl]
+               placeholderImage:self.isGus ? [UIImage imageNamed:@"默认图片"] : KZHANWEI];
 }
 
 @end

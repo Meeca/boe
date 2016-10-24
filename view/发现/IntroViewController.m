@@ -87,14 +87,14 @@
     
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     backBtn.frame = CGRectMake(3, 20, 48, 48);
-    [backBtn setImage:[UIImage imageNamed:@"GALLERY icon  20160620-12"] forState:UIControlStateNormal];
+    [backBtn setImage:[UIImage imageNamed:@"A-sousuo-1"] forState:UIControlStateNormal];
     [backBtn setImageEdgeInsets:UIEdgeInsetsMake(2, 2, 2, 2)];
     [backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backBtn];
     
     UIButton *share = [UIButton buttonWithType:UIButtonTypeCustom];
     share.frame = CGRectMake(0, 22, 48, 48);
-    [share setImage:[UIImage imageNamed:@"GALLERY icon  20160620-13"] forState:UIControlStateNormal];
+    [share setImage:[UIImage imageNamed:@"A-fenxiang-1"] forState:UIControlStateNormal];
     [share setImageEdgeInsets:UIEdgeInsetsMake(2, 2, 2, 2)];
     [share addTarget:self action:@selector(shareBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:share];
@@ -102,8 +102,8 @@
     
     slider = [[MingRenSlider alloc] initWithFrame:CGRectMake(0, INTROHEIGHT+20, KSCREENWIDTH, KSCREENHEIGHT-49-20-INTROHEIGHT)];
     slider.slideSwitchViewDelegate = self;
-    slider.tabItemNormalColor = [UIColor grayColor];
-    slider.tabItemSelectedColor = [UIColor blackColor];
+    slider.tabItemNormalColor = [UIColor blackColor];
+    slider.tabItemSelectedColor = KAPPCOLOR;
     
     [self.view addSubview:slider];
     
@@ -116,7 +116,7 @@
     shadowImageView.backgroundColor = slider.tabItemSelectedColor;
     [header addSubview:shadowImageView];
     
-    NSArray *title = @[@"作品", @"简介", @"关注", @"粉丝"];
+    NSArray *title = @[@"简介", @"作品", @"关注", @"粉丝"];
 
     for (int i = 0; i < 4; i++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -205,7 +205,7 @@ ON_SIGNAL3(UserModel, COLLECTIONDEL, signal) {
     NSString *fansUnm = [NSString stringWithFormat:@"粉丝 %@", info.fans.length>0?info.fans:@"0"];
     
     for (UIView *sub in header.subviews) {
-        if (sub.tag == 100) { // 作品
+        if (sub.tag == 101) { // 作品
             [(UIButton *)sub setTitle:zpUnm forState:UIControlStateNormal];
         } else if (sub.tag == 102) { // 关注
             [(UIButton *)sub setTitle:gzUnm forState:UIControlStateNormal];
@@ -251,12 +251,12 @@ ON_SIGNAL3(UserModel, COLLECTIONDEL, signal) {
 }
 
 - (UIViewController *)slideSwitchView:(MingRenSlider *)view viewOfTab:(NSUInteger)number {
-    if (number == 0) {
+    if (number == 1) {
         vc1 = [[ZPViewController alloc] init];
         vc1.nav = self.navigationController;
         vc1.title = @"作品";
         return vc1;
-    } else if (number == 1) {
+    } else if (number == 0) {
         vc2 = [[JJViewController alloc] init];
         [vc2 loadDataSucc:^(ArtistInfo *info) {
             infos = info;

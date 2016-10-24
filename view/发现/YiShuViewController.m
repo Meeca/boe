@@ -43,7 +43,7 @@
     list.title = @"全部类别";
     list.c_id = @"0";
     classArr = [NSMutableArray arrayWithObject:list];
-    yishuArr = @[@"全部年代", @"当代", @"近现代", @"古代"];
+    yishuArr = @[@"全部艺术家", @"当代", @"近现代", @"古代"];
     platesArr = @[@"横竖屏", @"横屏", @"竖屏"];
     
     FindLayout *layout = [[FindLayout alloc] init];
@@ -62,7 +62,7 @@
     indexView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:indexView];
     
-    NSArray *title = @[@"全部类别", @"全部年代", @"横竖屏"];
+    NSArray *title = @[@"全部类别", @"全部艺术家", @"横竖屏"];
     for (int i=0; i<3; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(KSCREENWIDTH/3*i, 0, KSCREENWIDTH/3, 40);

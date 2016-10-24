@@ -79,8 +79,8 @@
     _model = model;
     
     [_topImageView sd_setImageWithURL:[NSURL URLWithString:_model.image]];
-    _nameLabel.text = _model.title;
-    _shopLabel.text = @"店店让";//_model.content;
+    _nameLabel.text = _model.title?@"iGallery高清电子画框":@"iGallery高清电子画框";
+    _shopLabel.text = @"iGallery旗舰店";//_model.content;
     _moneyLabel.text = [NSString stringWithFormat:@"￥%@", _model.price];
 }
 

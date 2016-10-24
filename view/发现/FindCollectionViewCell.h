@@ -15,6 +15,6 @@
 @property (strong,nonatomic)NSString *goumai;
 @property (strong,nonatomic)NSString *guanzhu;
 @property (assign ,nonatomic) BOOL isShow;
-
+@property (assign, nonatomic) BOOL isGus;
 @property (copy, nonatomic) NSIndexPath *index;
 @end

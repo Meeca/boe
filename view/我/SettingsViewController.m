@@ -44,7 +44,7 @@ DEF_NOTIFICATION(LOGOUT)
     logOut.layer.masksToBounds = YES;
     logOut.backgroundColor = [UIColor redColor];
     logOut.frame = CGRectMake(0, 0, KSCALE(1100), 44);
-    logOut.titleLabel.font = [UIFont systemFontOfSize:16];
+    logOut.titleLabel.font = [UIFont systemFontOfSize:20];
     [logOut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [logOut setTitle:@"退出登录" forState:UIControlStateNormal];
     [logOut addTarget:self action:@selector(logOutAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -168,17 +168,32 @@ DEF_NOTIFICATION(LOGOUT)
     }
     return cell;
 }
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if (section == 0)
-    {
-        return @"";
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    if (section == 0)
+//    {
+//        return @"";
+//    }
+//    
+//    return @"账户安全";
+//}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    CGFloat hei = [self tableView:tableView heightForHeaderInSection:section];
+    if (section == 0) {
+        return nil;
     }
-    
-    return @"账户安全";
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.width, hei)];
+    UILabel *view = [[UILabel alloc] initWithFrame:CGRectZero];
+    view.text = @"帐户安全";
+    view.font = [UIFont systemFontOfSize:15];
+    view.textColor = [UIColor grayColor];
+    [view sizeToFit];
+    view.left = 15;
+    view.centerY = hei/2;
+    [header addSubview:view];
+    return header;
 }
-
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -259,7 +274,14 @@ DEF_NOTIFICATION(LOGOUT)
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 15.f;
+    if (section==0) {
+        return 30;
+    }
+    return 50.f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return .01f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -274,7 +274,7 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
         
         UILabel *pictureName = [[UILabel alloc] initWithFrame:CGRectMake(x, 8, 0, 0)];
         pictureName.text = detailsInfo.title;
-        pictureName.font = [UIFont boldSystemFontOfSize:25];
+        pictureName.font = [UIFont boldSystemFontOfSize:23];
         [pictureName sizeToFit];
         [cell.contentView addSubview:pictureName];
         
@@ -298,6 +298,11 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
         [zan setTitleEdgeInsets:UIEdgeInsetsMake(0, 5, 0, -5)];
         zan.top = pictureName.top;
         zan.right = KSCREENWIDTH - x;
+        
+        pictureName.width = zan.left - 5 - pictureName.left;
+        pictureName.numberOfLines = 2;
+        CGSize si = [Tool getLabelSizeWithText:pictureName.text AndWidth:pictureName.width AndFont:pictureName.font attribute:nil];
+        pictureName.height = si.height;
         
         UILabel *auth = [[UILabel alloc] initWithFrame:CGRectMake(x, pictureName.bottom + 8, 0, 0)];
         auth.text = detailsInfo.athena;
@@ -353,10 +358,6 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
         if (contextHeight != heght) {
             contextHeight = heght;
             [tableView reloadData];
-        }
-        
-        if (pictureName.right > zan.left) {
-            pictureName.width = zan.left - 5 - pictureName.left;
         }
     } else if (indexPath.section==2) {
         cell.clipsToBounds = YES;
@@ -824,6 +825,7 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
     FindCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collect" forIndexPath:indexPath];
     GuessInfo *r = detailsInfo.guess_list[indexPath.item];
     cell.imgUrl = r.image;
+    cell.isGus = YES;
     [cell setNeedsLayout];
     return cell;
 }
