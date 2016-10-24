@@ -26,7 +26,7 @@
     UICollectionView *imgsCollectView;
     
     NSInteger photoIndex;
-    
+    UIView *view;
 }
 @property (weak, nonatomic) IBOutlet UITextField *topicContentTextField;
 
@@ -58,9 +58,26 @@
     
     _imageUrls = [NSMutableArray new];
     
-    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
+//    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     
+    view = [[UIView alloc] initWithFrame:CGRectMake(90, 20, 150, 100)];
     
+    UILabel *lable = [[UILabel alloc] initWithFrame:CGRectZero];
+    lable.text = @"上传图片";
+    lable.font = [UIFont systemFontOfSize:15];
+    lable.textColor = [UIColor darkGrayColor];
+    [lable sizeToFit];
+    [view addSubview:lable];
+    
+    UILabel *lable1 = [[UILabel alloc] initWithFrame:CGRectZero];
+    lable1.text = @"有图才有真相";
+    lable1.font = [UIFont systemFontOfSize:14];
+    lable1.textColor = [UIColor lightGrayColor];
+    [lable1 sizeToFit];
+    [view addSubview:lable1];
+    lable1.top = lable.bottom + 5;
+    
+    [self.collectionView addSubview:view];
 }
 - (IBAction)addPicture:(id)sender{
     if (self.images.count >= 9) {
@@ -70,13 +87,32 @@
     UpDataViewController *vc = [[UpDataViewController alloc] init];
     [vc currentCount:_imageUrls.count block:^(NSArray *arr) {
         [self.images addObjectsFromArray:arr];
-        
+        [self chke];
         [self.collectionView reloadData];
         NSLog(@"photo - %@",arr);
     }];
     BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
     vc.title = @"选择图片";
     [self presentViewController:nav animated:YES completion:NULL];
+}
+
+- (void)chke {
+    if (self.images.count == 0) {
+        view.hidden = NO;
+    } else {
+        view.hidden = YES;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return 20;
+    }
+    return 10;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return .01f;
 }
 
 - (void)endEditing
@@ -297,27 +333,27 @@
 
 #pragma mark -  UICollectionElementKindSectionHeader
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    CGSize size = [self collectionView:collectionView layout:collectionView.collectionViewLayout referenceSizeForHeaderInSection:indexPath.section];
-    
-    if (kind == UICollectionElementKindSectionHeader) {
-        UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
-        UILabel *msg = [[UILabel alloc] initWithFrame:CGRectZero];
-        msg.text = @"*  上传图片，有图才有真相";
-        msg.textColor = [UIColor lightGrayColor];
-        msg.font = [UIFont systemFontOfSize:14];
-        [view addSubview:msg];
-        [msg sizeToFit];
-        msg.left = 15;
-        msg.centerY = size.height/2;
-        return view;
-    }
-    return nil;
-}
-//UICollectionViewFlowLayout
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    return CGSizeMake(KSCREENWIDTH, 30);
-}
+//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+//    CGSize size = [self collectionView:collectionView layout:collectionView.collectionViewLayout referenceSizeForHeaderInSection:indexPath.section];
+//    
+//    if (kind == UICollectionElementKindSectionHeader) {
+//        UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
+//        UILabel *msg = [[UILabel alloc] initWithFrame:CGRectZero];
+//        msg.text = @"*  上传图片，有图才有真相";
+//        msg.textColor = [UIColor lightGrayColor];
+//        msg.font = [UIFont systemFontOfSize:14];
+//        [view addSubview:msg];
+//        [msg sizeToFit];
+//        msg.left = 15;
+//        msg.centerY = size.height/2;
+//        return view;
+//    }
+//    return nil;
+//}
+////UICollectionViewFlowLayout
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+//    return CGSizeMake(KSCREENWIDTH, 30);
+//}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {

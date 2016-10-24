@@ -162,13 +162,31 @@ ON_SIGNAL3(BaseModel, SHAREEQUIPMENTLIST, signal){
     return 55;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section==0) {
-        return @"我的iGallery";
-    } else if (section==1) {
-        return @"分享的iGallery";
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    if (section==0) {
+//        return @"我的iGallery";
+//    } else if (section==1) {
+//        return @"分享的iGallery";
+//    }
+//    return nil;
+//}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    CGFloat height = [self tableView:tableView heightForHeaderInSection:section];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.width, height)];
+    UILabel *msg = [[UILabel alloc] initWithFrame:CGRectZero];
+    msg.font = [UIFont systemFontOfSize:14];
+    msg.textColor = [UIColor grayColor];
+    [view addSubview:msg];
+    if (section == 0) {
+        msg.text = @"我的iGallery";
+    } else {
+        msg.text = @"分享的iGallery";
     }
-    return nil;
+    [msg sizeToFit];
+    msg.left  = 15;
+    msg.centerY = height/2;
+    return view;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {

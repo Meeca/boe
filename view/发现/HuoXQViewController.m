@@ -95,6 +95,7 @@ ON_SIGNAL3(HuoDongModel, ACTIVITYREAD, signal) {
     if (indexPath.row==0) {
         UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, KSCREENWIDTH, [self tableView:tableView heightForRowAtIndexPath:indexPath])];
         img.contentMode = UIViewContentModeScaleAspectFill;
+        img.clipsToBounds = YES;
         [cell.contentView addSubview:img];
         
         [img sd_setImageWithURL:[NSURL URLWithString:info.image] placeholderImage:KZHANWEI];
