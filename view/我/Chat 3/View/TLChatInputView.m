@@ -174,12 +174,29 @@ TLPhotoPickerDelegate>
 
 #pragma - mark UIImagePickerControllerDelegate
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    [self.chatVc dismissViewControllerAnimated:YES completion:^{
+    
+    NSString* mediaType=[info objectForKey:UIImagePickerControllerMediaType];
+    if([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+        UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        UIImageOrientation imageOrientation = image.imageOrientation;
         
-           if (self.sendImageAction) self.sendImageAction(image);
+        if(imageOrientation != UIImageOrientationUp)
+        {
+            // 原始图片可以根据照相时的角度来显示，但UIImage无法判定，于是出现获取的图片会向左转９０度的现象。
+            // 以下为调整图片角度的部分
+            UIGraphicsBeginImageContext(image.size);
+            [image drawInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
+            image = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            // 调整图片角度完毕
+        }
         
-    }];
+        [self.chatVc dismissViewControllerAnimated:YES completion:^{
+            
+            if (self.sendImageAction) self.sendImageAction(image);
+            
+        }];
+    }
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     [self.chatVc dismissViewControllerAnimated:YES completion:nil];

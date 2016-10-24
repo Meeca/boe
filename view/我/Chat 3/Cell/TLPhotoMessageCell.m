@@ -80,6 +80,7 @@ static  CGFloat fitImgHeight = 150;
     
 
 }
+
 -(UIImageView *)photoImageView{
     if (!_photoImageView) {
         _photoImageView = [[UIImageView alloc] init];

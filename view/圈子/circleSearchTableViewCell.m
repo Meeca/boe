@@ -47,4 +47,13 @@
     self.titleLabel.text = circleSearchModel.title;
     
 }
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    if (self.titleLabel.right>self.width) {
+        self.titleLabel.width = self.width-self.titleLabel.left-25;
+    }
+}
+
 @end

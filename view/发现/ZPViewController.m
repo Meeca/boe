@@ -15,6 +15,8 @@
     WorksModel *worksModel;
     
     UICollectionView *collect;
+    
+    UILabel *msg;
 }
 
 @end
@@ -68,14 +70,31 @@ ON_SIGNAL3(WorksModel, RELOADED, signal) {
     if (worksModel.loaded) {
         [collect.mj_footer endRefreshingWithNoMoreData];
     }
+    [self hidden];
     collect.mj_footer.hidden = NO;
     if (worksModel.recommends.count==0) {
         collect.mj_footer.hidden = YES;
-        [self presentMessageTips:@"暂无数据"];
+        [self show];
     }
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [collect reloadData];
     });
+}
+
+- (void)show {
+    if (!msg) {
+        msg = [[UILabel alloc] initWithFrame:CGRectZero];
+        msg.text = @"好像什么也没有哎。。。";
+        msg.textColor = [UIColor grayColor];
+        [msg sizeToFit];
+    }
+    
+    [self.view addSubview:msg];
+    msg.center = CGPointMake(self.view.width/2, self.view.height/2);
+}
+
+- (void)hidden {
+    [msg removeFromSuperview];
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout, UICollectionViewDataSource

@@ -25,6 +25,7 @@
     NSMutableArray *ticaiSelArr;  //  多选
     UICollectionView *imgsCollectView;
     
+    NSInteger photoIndex;
     
 }
 @property (weak, nonatomic) IBOutlet UITextField *topicContentTextField;
@@ -57,23 +58,18 @@
     
     _imageUrls = [NSMutableArray new];
     
-    
-    UICollectionViewFlowLayout *layout = self.collectionView.collectionViewLayout;
-    
+    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     
     
 }
 - (IBAction)addPicture:(id)sender{
-    if (_images.count >= 9) {
+    if (self.images.count >= 9) {
         [self showToastWithMessage:@"最多可选9张"];
         return;
     }
     UpDataViewController *vc = [[UpDataViewController alloc] init];
     [vc currentCount:_imageUrls.count block:^(NSArray *arr) {
-        for (UIImage * image in arr) {
-//            UIImage *image = [UIImage imageWithCGImage:[asset aspectRatioThumbnail]];
-            [_images addObject:image];
-        }
+        [self.images addObjectsFromArray:arr];
         
         [self.collectionView reloadData];
         NSLog(@"photo - %@",arr);
@@ -92,6 +88,7 @@
 #pragma mark - Table view data source
 - (IBAction)Publish:(id)sender
 {
+    [self.view endEditing:YES];
     NSLog(@"你点击了发布按钮");
     if (self.topicContentTextField.text.length == 0) {
         
@@ -118,34 +115,97 @@
         
     }else{
         
-        [_images enumerateObjectsUsingBlock:^(UIImage * obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            
-            [self uploadImageDataWith:obj];
-        }];
+        photoIndex = 0;
+        
+        [self upData];
+//        [self.images enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//            
+//            __block UIImage *img = nil;
+//            
+//            if ([obj isKindOfClass:[PHAsset class]]) {
+//                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//                    PHAsset *phAsset = obj;
+//                    PHImageRequestOptions *phImageRequestOptions = [[PHImageRequestOptions alloc] init];
+//                    phImageRequestOptions.synchronous = YES;
+//                    PHImageManager *imageManager = [[PHImageManager alloc] init];
+//                    [imageManager requestImageForAsset:phAsset targetSize:CGSizeMake(KSCREENWIDTH/3, KSCREENWIDTH/3) contentMode:PHImageContentModeDefault options:phImageRequestOptions resultHandler:^(UIImage *result, NSDictionary *info) {
+//                        dispatch_async(dispatch_get_main_queue(), ^{
+//                            NSLog(@"img size %@  dic %@",NSStringFromCGSize(result.size), info);
+//                            img = result;
+//                            
+//                            [self uploadImageDataWith:img];
+//                        });
+//                    }];
+//                });
+//                
+//            } else {
+//                img = (UIImage *)obj;
+//            }
+//            
+//            [self uploadImageDataWith:img];
+//        }];
     }
 }
 
 
+- (void)upData {
+    UIWindow *win = [UIApplication sharedApplication].keyWindow;
+    [win presentLoadingTips:@"图片上传中..."];
 
+    if ([self.images[photoIndex] isKindOfClass:[PHAsset class]]) {
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            PHAsset *phAsset = self.images[photoIndex];
+            PHImageRequestOptions *phImageRequestOptions = [[PHImageRequestOptions alloc] init];
+            phImageRequestOptions.synchronous = YES;
+            phImageRequestOptions.networkAccessAllowed = YES;
+            phImageRequestOptions.resizeMode = PHImageRequestOptionsResizeModeExact;
+            PHImageManager *imageManager = [[PHImageManager alloc] init];
+            [imageManager requestImageForAsset:phAsset targetSize:CGSizeMake(KSCREENWIDTH, KSCREENWIDTH) contentMode:PHImageContentModeDefault options:phImageRequestOptions resultHandler:^(UIImage *result, NSDictionary *info) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSLog(@"img size %@  dic %@",NSStringFromCGSize(result.size), info);
+                    if (!result) {
+                        [win presentMessageTips:@"上传失败"];
+                        return;
+                    }
+                    [self uploadImageDataWith:result];
+                    
+                });
+            }];
+        });
+    } else {
+        [self uploadImageDataWith:self.images[photoIndex]];
+    }
+    
+}
 
 
 // 上传话题图片
 -(void)uploadImageDataWith:(UIImage *)image{
-    
+    UIWindow *win = [UIApplication sharedApplication].keyWindow;
     
     NSData *data = UIImageJPEGRepresentation(image, 1);
     
     NSDictionary *parameters = @{@"type" : @"1",@"plates":@"2"};
     //
+    NSString *msg = [NSString stringWithFormat:@"图片上传中(%@/%@)...", @(photoIndex+1), @(self.images.count)];
+    [win presentLoadingTips:msg];
+
     [MCHttp uploadDataWithURLStr:@"/app.php/Index/image_add" withDic:parameters imageKey:@"image" withData:data uploadProgress:^(float progress) {
         
     } success:^(NSDictionary *requestDic, NSString *msg) {
-        
         urlContent ++;
-        
+
+        photoIndex++;
         [_imageUrls addObject:requestDic[@"image_url"]];
+        if (photoIndex<self.images.count) {
+            [self upData];
+            return;
+        }
         
-        if (_imageUrls.count == _images.count) {
+//        [_imageUrls addObject:requestDic[@"image_url"]];
+        
+        if (_imageUrls.count == self.images.count) {
             [self upQuanziDataWithImages:_imageUrls];
         }
         
@@ -153,9 +213,10 @@
         
         
     } failure:^(NSString *error) {
-        
+        [win presentMessageTips:@"上传失败"];
+
         urlContent ++;
-        if (urlContent == _images.count) {
+        if (urlContent == self.images.count) {
             [self upQuanziDataWithImages:_imageUrls];
         }
         
@@ -209,7 +270,10 @@
 //         [viewControllers removeObjectsInArray:array];
 //         
 //         self.navigationController.viewControllers = viewControllers;
-//         
+         UIWindow *win = [UIApplication sharedApplication].keyWindow;
+         
+         [win dismissTips];
+
          
          [self.navigationController popViewControllerAnimated:YES];
      }failure:^(NSString *error) {
@@ -230,6 +294,30 @@
     return ns;
 }
 
+
+#pragma mark -  UICollectionElementKindSectionHeader
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    CGSize size = [self collectionView:collectionView layout:collectionView.collectionViewLayout referenceSizeForHeaderInSection:indexPath.section];
+    
+    if (kind == UICollectionElementKindSectionHeader) {
+        UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
+        UILabel *msg = [[UILabel alloc] initWithFrame:CGRectZero];
+        msg.text = @"*  上传图片，有图才有真相";
+        msg.textColor = [UIColor lightGrayColor];
+        msg.font = [UIFont systemFontOfSize:14];
+        [view addSubview:msg];
+        [msg sizeToFit];
+        msg.left = 15;
+        msg.centerY = size.height/2;
+        return view;
+    }
+    return nil;
+}
+//UICollectionViewFlowLayout
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    return CGSizeMake(KSCREENWIDTH, 30);
+}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -252,8 +340,24 @@
     {
         JDFConversCreateCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"JDFConversCreateCell" forIndexPath:indexPath];
         
-        UIImage *image = self.images[indexPath.item];
-        cell.photoImage = image;
+//        UIImage *image = self.images[indexPath.item];
+//        cell.photoImage = image;
+//        
+        
+        if ([self.images[indexPath.item] isKindOfClass:[PHAsset class]]) {
+            PHAsset *phAsset = self.images[indexPath.item];
+            PHImageRequestOptions *phImageRequestOptions = [[PHImageRequestOptions alloc] init];
+            phImageRequestOptions.synchronous = YES;
+            PHImageManager *imageManager = [[PHImageManager alloc] init];
+            [imageManager requestImageForAsset:phAsset targetSize:CGSizeMake(KSCREENWIDTH/3, KSCREENWIDTH/3) contentMode:PHImageContentModeDefault options:phImageRequestOptions resultHandler:^(UIImage *result, NSDictionary *info) {
+                NSLog(@"img size %@  dic %@",NSStringFromCGSize(result.size), info);
+                cell.photoImage = result;
+                [cell setNeedsLayout];
+            }];
+        } else {
+            cell.photoImage = self.images[indexPath.item];
+            [cell setNeedsLayout];
+        }
         
         return cell;
     }
@@ -296,7 +400,7 @@
     } else if (collectionView==imgsCollectView) {
         BlockUIAlertView *alert = [[BlockUIAlertView alloc] initWithTitle:@"" message:@"您确定移除这张图片" cancelButtonTitle:@"取消" clickButton:^(NSInteger index) {
             if (index==1) {
-                [_images removeObjectAtIndex:indexPath.item];
+                [self.images removeObjectAtIndex:indexPath.item];
                 [collectionView deleteItemsAtIndexPaths:@[indexPath]];
                 [Tool performBlock:^{
                     [self.collectionView reloadData];
@@ -312,13 +416,13 @@
 {
     
     
-    //        for (UIImage * img in _images) {
+    //        for (UIImage * img in self.images) {
     //
     //
     //        }
     //
     //
-    //        for (NSInteger i  = 0; i < _images.count; i ++) {
+    //        for (NSInteger i  = 0; i < self.images.count; i ++) {
     //
     //        }
     //

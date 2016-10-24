@@ -29,6 +29,7 @@ CircleSearch *circleSearch;
 @property (weak, nonatomic) IBOutlet UIView *emptyView;
 @property (nonatomic, strong) CircleSearch *circle;
 
+@property (weak, nonatomic) IBOutlet UILabel *msgLable;
 
 @end
 
@@ -49,7 +50,15 @@ CircleSearch *circleSearch;
     
 //    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(endEditing)];
 //    [self.view addGestureRecognizer:tap];
+    self.msgLable.hidden = YES;
     
+    [self.searchCircle addTarget:self action:@selector(changed:) forControlEvents:UIControlEventEditingChanged];
+}
+
+- (void)changed:(UITextField *)text {
+    if (text == self.searchCircle) {
+        self.msgLable.hidden = YES;
+    }
 }
 
 - (void)endEditing
@@ -147,15 +156,20 @@ CircleSearch *circleSearch;
          NSArray * myList = [NSArray yy_modelArrayWithClass:[CircleSearch class] json:result];
          
          firstPage?[_searchCicles setArray:myList]:[_searchCicles addObjectsFromArray:myList];
-         if (msg.length == 0) {
-             [self showToastWithMessage:@"加载成功"];
-         }
-         else if(msg.length > 0)
-         {
-             [self showToastWithMessage:msg];
-             
-         }
+//         if (msg.length == 0) {
+//             [self showToastWithMessage:@"加载成功"];
+//         }
+//         else if(msg.length > 0)
+//         {
+//             [self showToastWithMessage:msg];
+//             
+//         }
          [self refreshViews];
+         if (myList.count == 0) {
+             self.msgLable.hidden = NO;
+         } else {
+             self.msgLable.hidden = YES;
+         }
      }
                       fail:^(NSString *error)
      {

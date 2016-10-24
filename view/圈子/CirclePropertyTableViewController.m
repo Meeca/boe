@@ -50,7 +50,7 @@ PictureUpLoad *pictureUpLoad;
     [super viewDidLoad];
     self.iconImageView.layer.cornerRadius = 20;
     self.iconImageView.layer.masksToBounds = YES;
-    self.title =@"圈儿属性";
+    self.title =@"圈子属性";
     
 }
 - (void)viewWillAppear:(BOOL)animated

@@ -47,7 +47,7 @@ static NSString * const JDFSquareCellID = @"JDFSquareCell";
     
     [super viewDidLoad];
     
-    self.title = @"圈儿成员";
+    self.title = @"圈子成员";
     
     _page = 1;
     _isChooseBtn = NO;
@@ -277,7 +277,7 @@ static NSString * const JDFSquareCellID = @"JDFSquareCell";
     }
     
     
-    cell.backgroundColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 

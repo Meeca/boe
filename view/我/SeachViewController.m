@@ -26,7 +26,12 @@
 {
     UISearchBar *seach;
     BOOL _isSearch;
+    
+    UILabel *pListMsg;
+    UILabel *uListMsg;
+    UILabel *newlistMsg;
 }
+
 @property (weak, nonatomic) IBOutlet UIView *infoView;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *buttons;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -90,6 +95,9 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [seach becomeFirstResponder];
     });
+    
+    self.actistTableView.separatorInset = UIEdgeInsetsMake(0, KSCREENWIDTH, 0, 0);
+    self.aticleTableView.separatorInset = UIEdgeInsetsMake(0, KSCREENWIDTH, 0, 0);
 }
 //下拉刷新
 
@@ -258,18 +266,30 @@
              self.pList = nil;
              self.uList = nil;
              self.newlist = nil;
+             [self showplMsg];
+             [self showulMsg];
+             [self shownewMsg];
              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                  [self.collectionView reloadData];
                  [self.actistTableView reloadData];
                  [self.aticleTableView reloadData];
              });
-             [self showToastWithMessage:msg];
+//             [self showToastWithMessage:msg];
          }
          else{
+             [self hidden];
              NSArray *pList = [requestDic objectForKey:@"p_list"];
              NSArray *uList = [requestDic objectForKey:@"u_list"];
              NSArray *newList = [requestDic objectForKey:@"new_list"];
-             
+             if (pList.count == 0) {
+                 [self showplMsg];
+             }
+             if (uList.count == 0) {
+                 [self showulMsg];
+             }
+             if (newList.count == 0) {
+                 [self shownewMsg];
+             }
              NSMutableArray *mPList = [NSMutableArray array];
              for (NSDictionary *dict in pList)
              {
@@ -310,6 +330,48 @@
          
          
      }];
+}
+
+- (void)showplMsg {
+    if (!pListMsg) {
+        pListMsg = [[UILabel alloc] initWithFrame:CGRectZero];
+        pListMsg.text = @"没有更多数据";
+        [pListMsg sizeToFit];
+        
+        pListMsg.center = self.collectionView.center;
+    }
+    
+    [self.collectionView.superview addSubview:pListMsg];
+}
+
+- (void)showulMsg {
+    if (!uListMsg) {
+        uListMsg = [[UILabel alloc] initWithFrame:CGRectZero];
+        uListMsg.text = @"没有更多数据";
+        [uListMsg sizeToFit];
+        
+        uListMsg.center = self.actistTableView.center;
+    }
+    
+    [self.actistTableView.superview addSubview:uListMsg];
+}
+
+- (void)shownewMsg {
+    if (!newlistMsg) {
+        newlistMsg = [[UILabel alloc] initWithFrame:CGRectZero];
+        newlistMsg.text = @"没有更多数据";
+        [newlistMsg sizeToFit];
+        
+        newlistMsg.center = self.aticleTableView.center;
+    }
+    
+    [self.aticleTableView.superview addSubview:newlistMsg];
+}
+
+- (void)hidden {
+    [pListMsg removeFromSuperview];
+    [uListMsg removeFromSuperview];
+    [newlistMsg removeFromSuperview];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
@@ -354,6 +416,7 @@
         if (cell == nil)
         {
             cell = [[[UINib nibWithNibName:@"JDFArtistCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
+            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
         }
         
         JDFArtist *artist = self.uList[indexPath.row];
@@ -374,6 +437,7 @@
         if (cell == nil)
         {
             cell = [[[UINib nibWithNibName:@"JDFStoryCell" bundle:nil] instantiateWithOwner:nil options:nil] lastObject];
+            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
         }
         
         JDFStory *story = self.newlist[indexPath.row];

@@ -16,6 +16,7 @@
     NSString *followerId;
 
     UserModel *userModel;
+    UILabel *msg;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
@@ -59,12 +60,29 @@ ON_SIGNAL3(FollowerModel, RELOADED, signal) {
     if (follwer.loaded) {
         [self.table.mj_footer endRefreshingWithNoMoreData];
     }
+    [self hidden];
     self.table.mj_footer.hidden = NO;
     if (follwer.recommends.count==0) {
         self.table.mj_footer.hidden = YES;
-        [self presentMessageTips:@"暂无数据"];
+        [self show];
     }
     [self.table reloadData];
+}
+
+- (void)show {
+    if (!msg) {
+        msg = [[UILabel alloc] initWithFrame:CGRectZero];
+        msg.text = @"好像什么也没有哎。。。";
+        msg.textColor = [UIColor grayColor];
+        [msg sizeToFit];
+    }
+    
+    [self.view addSubview:msg];
+    msg.center = CGPointMake(self.view.width/2, self.view.height/2);
+}
+
+- (void)hidden {
+    [msg removeFromSuperview];
 }
 
 ON_SIGNAL3(UserModel, COLLECTIONADD, signal) {

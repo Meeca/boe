@@ -84,9 +84,9 @@ UITableViewDataSource>{
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshNewMessageList:) name:@"siMessageNotificationKey" object:nil];
-    //
-     [self loadCircleDataWithFirstPage:YES hud:NO];
     
+    [self loadCircleDataWithFirstPage:YES hud:NO];
+    //
    
     MJRefreshNormalHeader * header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
@@ -147,8 +147,11 @@ UITableViewDataSource>{
 
             }
             
-            [self.chatTableView reloadData];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.chatTableView reloadData];
+            });
             
+            [self.chatTableView reloadData];
             firstPage?[self scrollToBottom]:nil;
             
             firstPage?nil:[_chatTableView headerEndRefresh];
@@ -201,7 +204,7 @@ UITableViewDataSource>{
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
  
      MessageModel * messageModel = self.messages[indexPath.row];
-    MessageModel *lastMessageModel = [self lasetMsgWithIndex:indexPath.row];
+//    MessageModel *lastMessageModel = [self lasetMsgWithIndex:indexPath.row];
     
     NSString * cellIdentifier;
     if (messageModel.type == 1) {
@@ -224,7 +227,6 @@ UITableViewDataSource>{
 //    };
 //    
     [cell updateMessage:messageModel showDate:(messageModel.created_at - messageModel.created_at > 60 * 5 * 1000)];
-    
     return cell;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -244,6 +246,7 @@ UITableViewDataSource>{
     CGFloat height = [tableView fd_heightForCellWithIdentifier:cellIdentifier cacheByIndexPath:indexPath configuration:^(TLMessageCell *cell) {
         [cell updateMessage:messageModel showDate:(messageModel.created_at - lastMessageModel.created_at > 60 * 5 * 1000)];
     }];
+    NSLog(@"    ~~~~~~~~~~~~~~~~  %@", @(height).stringValue);
     return height;
 }
 
@@ -280,6 +283,11 @@ UITableViewDataSource>{
                              };
     [MCNetTool postWithUrl:path params:params hud:YES success:^(NSDictionary *requestDic, NSString *msg) {
         
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self.chatTableView reloadData];
+        });
+        
     } fail:^(NSString *error) {
         
     }];
@@ -289,7 +297,7 @@ UITableViewDataSource>{
 #pragma mark - 上传图片 然后发送
 - (void)sendImageWithImage:(UIImage *)image{
 
-    NSData * imageData = [[NSData alloc]init ];
+    NSData * imageData = [[NSData alloc] init];
     imageData = UIImageJPEGRepresentation(image, 1);
 
     

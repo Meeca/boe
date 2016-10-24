@@ -176,19 +176,27 @@ JoinCircleOrNot *circleOrNot;
     Convers *convers = self.converses[indexPath.row];
     cell.convers = convers;
      u_id = convers.u_id;
+    
+    [cell setBlock:^(Convers *convers) {
+        CircleConversDetailViewController *circleConversDetailVC = [[UIStoryboard storyboardWithName:@"CircleContentView" bundle:nil]instantiateViewControllerWithIdentifier:@"CircleConversDetailViewController"];
+        
+        circleConversDetailVC.c_id = convers.coID;
+        [self.navigationController pushViewController:circleConversDetailVC animated:YES];
+    }];
+    
     return cell;
 }
 
 - (void)changeBtndStateWithIsType:(BOOL )type{
     
     
-    _btnTitles =  type? @[@"圈儿属性",@"圈儿成员", @"加入圈儿"]: @[@"圈儿属性",@"圈儿成员", @"退出圈儿"];
+    _btnTitles =  type? @[@"圈子属性",@"圈子成员", @"加入圈子"]: @[@"圈子属性",@"圈子成员", @"退出圈子"];
 }
 
 - (void)moreAction:(UIButton *)button
 {
     [FTPopOverMenu showForSender:button
-                        withMenu: _btnTitles /*@[@"圈儿属性",@"圈儿成员", @"加入圈儿"]*/
+                        withMenu: _btnTitles /*@[@"圈子属性",@"圈子成员", @"加入圈子"]*/
                        doneBlock:^(NSInteger selectedIndex) {
                            
                            NSLog(@"done block. do something. selectedIndex : %ld", (long)selectedIndex);
@@ -223,7 +231,7 @@ JoinCircleOrNot *circleOrNot;
                                    [MCNetTool postWithUrl:path params:params hud:YES success:^(NSDictionary *requestDic, NSString *msg)
                                     {
                                         _isType =([circleOrNot.types integerValue] == 2?YES:NO);
-                                        [self showToastWithMessage:@"加入圈儿成功"];
+                                        [self showToastWithMessage:@"加入圈子成功"];
                                         _isType =!_isType;
                                         
                                         [self changeBtndStateWithIsType:_isType];
@@ -268,7 +276,7 @@ JoinCircleOrNot *circleOrNot;
                            
                        }];
 }
-#pragma mark -------加载圈儿属性
+#pragma mark -------加载圈子属性
 - (void)loadCircleAttribute
 {
     
@@ -302,7 +310,7 @@ JoinCircleOrNot *circleOrNot;
 {
     //跳到新建话题页面
     if ([circleOrNot.types integerValue] == 2) {
-        [self showToastWithMessage:@"请先加入圈儿"];
+        [self showToastWithMessage:@"请先加入圈子"];
     }
     else{
     
