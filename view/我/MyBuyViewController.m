@@ -29,7 +29,9 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"我购买的";
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"投诉" style:UIBarButtonItemStylePlain target:self action:@selector(touSu)];
+    UIBarButtonItem *shu = [[UIBarButtonItem alloc] initWithTitle:@"投诉" style:UIBarButtonItemStylePlain target:self action:@selector(touSu)];
+    self.navigationController.navigationBar.tintColor = [UIColor grayColor];
+    self.navigationItem.rightBarButtonItem = shu;
     
     self.table.backgroundColor = RGB(234, 234, 234);
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.table.width, 10)];

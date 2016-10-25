@@ -115,7 +115,8 @@ ON_SIGNAL3(UserModel, USERIMAGE, signal) {
             cell.accessoryView = icon;
         } else if (indexPath.row==1) {
             cell.textLabel.text = @"昵称";
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.detailTextLabel.text = kNike;
 
         } else if (indexPath.row==2) {
             cell.textLabel.text = @"简介";
@@ -136,7 +137,7 @@ ON_SIGNAL3(UserModel, USERIMAGE, signal) {
         if (indexPath.row==0) {
             if (height) {                
                 cell.textLabel.text = @"登录帐号";
-                cell.detailTextLabel.text = kTel;
+                cell.detailTextLabel.text = userInfoModel.tel;
             }
             
         } else if (indexPath.row==1) {
@@ -188,7 +189,7 @@ ON_SIGNAL3(UserModel, USERIMAGE, signal) {
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 15.01f;
+    return 12.01f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -197,6 +198,13 @@ ON_SIGNAL3(UserModel, USERIMAGE, signal) {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 2 && indexPath.row == 0) {
+        if ([userInfoModel.type integerValue] == 1) {
+            return 0;
+        } else if ([userInfoModel.type integerValue] == 2) {
+            return 0;
+        } else if ([userInfoModel.type integerValue] == 3) {
+            return 0;
+        }
         return 0;
     }
     return 55;

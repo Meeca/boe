@@ -31,6 +31,8 @@
     _jubaoContent = @"";
     _titles = @[@"色情",@"欺诈",@"谣言",@"政治敏感",@"隐私犯罪",@"侵权(抄袭，盗用)"];
     _moreTextField.placeholder = @"多行输入";
+    
+    self.navigationItem.rightBarButtonItem.tintColor = KAPPCOLOR;
 }
 
 
@@ -41,6 +43,10 @@
 -(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 40;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return .01f;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -72,8 +78,9 @@
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, [self tableView:tableView heightForHeaderInSection:section])];
-    view.backgroundColor = [UIColor colorWithRed:236.0/255 green:236.0/255 blue:236.0/255 alpha:1];
+    view.backgroundColor = [UIColor clearColor];
     NSString *title = [self tableView:tableView titleForHeaderInSection:section];
     
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, view.bounds.size.width, view.bounds.size.height)];

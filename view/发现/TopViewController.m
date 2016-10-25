@@ -112,7 +112,7 @@ ON_SIGNAL3(TopModel, RANKINGLIST, signal) {
     } else if (section==1) {
         title.text = @"点赞排行榜TOP 10";
     } else if (section==2) {
-        title.text = @"关注排行榜TOP 10";
+        title.text = @"推送排行榜TOP 10";
     }
     
     [title sizeToFit];
