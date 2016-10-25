@@ -39,7 +39,7 @@
     [self.contentView addSubview:icon];
     
     name = [[UILabel alloc] initWithFrame:CGRectZero];
-    name.font = [UIFont boldSystemFontOfSize:16];
+    name.font = [UIFont systemFontOfSize:15];
     name.textColor = [UIColor blackColor];
     [self.contentView addSubview:name];
     

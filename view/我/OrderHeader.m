@@ -57,18 +57,81 @@
     name.centerY = self.height/2;
     
     state.textColor = KAPPCOLOR;
-    if ([info.state integerValue]==0) {  //未支付
-        state.text = @"等待付款";
-    } else if ([info.state integerValue]==1) {  //已支付
-        state.text = @"等待发货";
-    } else if ([info.state integerValue]==2) {  //未发货
-        state.text = @"等待发货";
-    } else if ([info.state integerValue]==3) {  //已发货
-        state.text = @"待确认收货";
-    } else if ([info.state integerValue]==4) {  //确认收货
-        state.text = @"已完成";
-        state.textColor = [UIColor blackColor];
+    
+//    if([info.types integerValue] == 2){
+//        
+//        if ([info.state integerValue]==0) {  //未支付
+//            state.text = @"等待付款";
+//        } else if ([info.state integerValue]==1) {  //已支付
+//            state.text = @"等待发货";
+//        } else if ([info.state integerValue]==2) {  //未发货
+//            state.text = @"等待发货";
+//        } else if ([info.state integerValue]==3) {  //已发货
+//            state.text = @"待确认收货";
+//        } else if ([info.state integerValue]==4) {  //确认收货
+//            state.text = @"已完成";
+//            state.textColor = [UIColor blackColor];
+//        }
+//    
+//    }else{
+//    
+//
+//    
+//        
+//        
+//        
+//        if ([info.state integerValue]==0) {  //未支付
+//            state.text = @"等待付款";
+//        }
+//        //        else if ([info.state integerValue]==1) {  //已支付
+//        //            state.text = @"等待发货";
+//        //        } else if ([info.state integerValue]==2) {  //未发货
+//        //            state.text = @"等待发货";
+//        //        } else if ([info.state integerValue]==3) {  //已发货
+//        //            state.text = @"待确认收货";
+//        //        }
+//        else{
+//            
+//            //            if ([info.state integerValue]==4) {  //确认收货
+//            state.text = @"已完成";
+//            state.textColor = [UIColor blackColor];
+//        }
+//
+//    }
+    
+    
+    if ([info.types integerValue] == 1) {
+        
+        if ([info.state integerValue]==0) {  //未支付
+            state.text = @"等待付款";
+        }
+        else if ([info.state integerValue]==1) {  //已支付
+            state.text = @"已支付";
+        } else if ([info.state integerValue]==2) {  //未发货
+            state.text = @"已完成";
+        }
+        
+    }else{
+        
+        if ([info.state integerValue]==0) {  //未支付
+            state.text = @"等待付款";
+        } else if ([info.state integerValue]==1) {  //已支付
+            state.text = @"等待发货";
+        } else if ([info.state integerValue]==2) {  //未发货
+            state.text = @"等待发货";
+        } else if ([info.state integerValue]==3) {  //已发货
+            state.text = @"待确认收货";
+        } else if ([info.state integerValue]==4) {  //确认收货
+            state.text = @"已完成";
+            state.textColor = [UIColor blackColor];
+        }
+        
+        
     }
+
+    
+    
+    
     [state sizeToFit];
     state.right = self.width-15;
     state.centerY = self.height/2;

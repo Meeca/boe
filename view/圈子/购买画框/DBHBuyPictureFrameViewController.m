@@ -63,6 +63,13 @@ static NSString * const kBuyPictureFrameImageTableViewCellIdentifier = @"kBuyPic
     
     [self setUI];
     [self loadData];
+    
+    
+    [self loadPictureFrameInfoWityType:@"1"];
+    
+//    [self loadPictureFrameInfoWityType:@"2"];
+
+    
 }
 
 #pragma mark - ui
@@ -91,6 +98,9 @@ static NSString * const kBuyPictureFrameImageTableViewCellIdentifier = @"kBuyPic
     [MCNetTool postWithUrl:urlString params:paramters hud:YES success:^(NSDictionary *requestDic, NSString *msg) {
         _model = [DBHBuyPictureFrameModel mj_objectWithKeyValues:requestDic];
         
+        
+        self.navigationItem.title = _model.title;
+
         [_tableView reloadData];
         
     } fail:^(NSString *error) {
@@ -114,14 +124,8 @@ static NSString * const kBuyPictureFrameImageTableViewCellIdentifier = @"kBuyPic
         
         if ([type isEqualToString:@"1"]) {
             [self loadPictureFrameInfoWityType:@"2"];
-        } else {
-            UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
-            
-            [rootVC.view addSubview:self.buyPictureFrameView];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [_buyPictureFrameView viewShow];
-            });
         }
+      
     } fail:^(NSString *error) {
         
     }];
@@ -205,9 +209,18 @@ static NSString * const kBuyPictureFrameImageTableViewCellIdentifier = @"kBuyPic
     //    vc.userId = _model;
     [self.navigationController pushViewController:vc animated:YES];
 }
+#pragma mark - 立即购买
 - (void)buyAction:(UIButton *)btn {
     // 立即购买
-    [self loadPictureFrameInfoWityType:@"1"];
+//    [self loadPictureFrameInfoWityType:@"1"];
+    
+    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    
+    [rootVC.view addSubview:self.buyPictureFrameView];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_buyPictureFrameView viewShow];
+    });
+ 
 }
 
 #pragma mark - private methods
