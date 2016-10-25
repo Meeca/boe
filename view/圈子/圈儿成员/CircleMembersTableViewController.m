@@ -53,8 +53,7 @@ static NSString * const JDFSquareCellID = @"JDFSquareCell";
     _isChooseBtn = NO;
     _dict = [NSMutableDictionary dictionary];
     
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"管理" target:self action:@selector(manageButtonClick:)];
-    
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"完成" target:self action:@selector(manageButtonClick:)];
     
     self.automaticallyAdjustsScrollViewInsets = YES ;
     self.squareItems = [NSMutableArray new];
@@ -167,7 +166,7 @@ static NSString * const JDFSquareCellID = @"JDFSquareCell";
     NSDictionary *params = @{
                              @"c_id" : self.cID,
                              @"page" :@(_page),
-                             @"pagecount" : @"20",
+                             @"pagecount" : @"20000",
                              };
     [MCNetTool postWithUrl:path params:params hud:YES success:^(NSDictionary *requestDic, NSString *msg)
      
@@ -182,12 +181,17 @@ static NSString * const JDFSquareCellID = @"JDFSquareCell";
          NSArray * array = [NSArray yy_modelArrayWithClass:[JDFSquareItem class] json:result];
          
          firstPage?[_squareItems  setArray:array]:[_squareItems addObjectsFromArray:array];
+         
+         
+//         self.navigationItem.title = [NSString stringWithFormat:@"成员(%@)",@(_squareItems.count)];
+         
+         
          // 刷新表格
          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
              [_collectionView reloadData];
          });
          
-         if (array.count < 20) {
+         if (array.count < 20000) {
              [self.collectionView hidenFooter];
          }
          [self.collectionView headerEndRefresh];

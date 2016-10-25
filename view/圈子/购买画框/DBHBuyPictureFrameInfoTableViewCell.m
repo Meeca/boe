@@ -66,7 +66,8 @@
     }];
     [_shopLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_nameLabel);
-        make.top.equalTo(_nameLabel.mas_bottom).offset(AUTOLAYOUTSIZE(5));
+        make.top.equalTo(_nameLabel.mas_bottom).offset(AUTOLAYOUTSIZE(10));
+        make.right.offset(-10);
     }];
     [_moneyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_nameLabel).offset(AUTOLAYOUTSIZE(10));
@@ -77,10 +78,9 @@
 #pragma mark - getters and setters
 - (void)setModel:(DBHBuyPictureFrameModel *)model {
     _model = model;
-    
-    [_topImageView sd_setImageWithURL:[NSURL URLWithString:_model.image]];
-    _nameLabel.text = _model.title?@"iGallery高清电子画框":@"iGallery高清电子画框";
-    _shopLabel.text = @"iGallery旗舰店";//_model.content;
+     [_topImageView sd_setImageWithURL:[NSURL URLWithString:_model.image] placeholderImage:[UIImage imageNamed:@"DBHBuy"]];
+    _nameLabel.text = _model.title;//?@"iGallery高清电子画框":@"iGallery高清电子画框";
+    _shopLabel.text =_model.content;// @"iGallery旗舰店";//_model.content;
     _moneyLabel.text = [NSString stringWithFormat:@"￥%@", _model.price];
 }
 
@@ -111,6 +111,7 @@
         _shopLabel = [[UILabel alloc] init];
         _shopLabel.font = [UIFont systemFontOfSize:AUTOLAYOUTSIZE(15)];
         _shopLabel.textColor = [UIColor grayColor];
+        _shopLabel.numberOfLines = 0;
     }
     return _shopLabel;
 }

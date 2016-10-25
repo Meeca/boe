@@ -45,6 +45,7 @@
 		04DAC3EC1DB89BB1002235A7 /* QuanAearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DAC3EA1DB89BB1002235A7 /* QuanAearchViewController.xib */; };
 		04DAC6401DB8EDDB002235A7 /* delsys.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DAC63F1DB8EDDB002235A7 /* delsys.png */; };
 		04DAC6481DB9008B002235A7 /* DBHBuyPictureFrameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DAC6471DB9008B002235A7 /* DBHBuyPictureFrameModel.m */; };
+		04DAC79C1DBEF2D7002235A7 /* DBHBuy.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DAC79B1DBEF2D7002235A7 /* DBHBuy.png */; };
 		2D26B4DB1D7BB8E3000D65B4 /* LTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D26B4D91D7BB8E3000D65B4 /* LTPickerView.m */; };
 		2D26B4DC1D7BB8E3000D65B4 /* LTPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D26B4DA1D7BB8E3000D65B4 /* LTPickerView.xib */; };
 		2D90E3421D845271001472EA /* FenLeiDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D90E3401D845271001472EA /* FenLeiDetailViewController.m */; };
@@ -930,6 +931,7 @@
 		04DAC63F1DB8EDDB002235A7 /* delsys.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delsys.png; sourceTree = "<group>"; };
 		04DAC6461DB9008B002235A7 /* DBHBuyPictureFrameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBHBuyPictureFrameModel.h; sourceTree = "<group>"; };
 		04DAC6471DB9008B002235A7 /* DBHBuyPictureFrameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBHBuyPictureFrameModel.m; sourceTree = "<group>"; };
+		04DAC79B1DBEF2D7002235A7 /* DBHBuy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DBHBuy.png; sourceTree = "<group>"; };
 		1BADD449114815B1184AD96A /* Pods-jingdongfang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jingdongfang.debug.xcconfig"; path = "Pods/Target Support Files/Pods-jingdongfang/Pods-jingdongfang.debug.xcconfig"; sourceTree = "<group>"; };
 		2D26B4D81D7BB8E3000D65B4 /* LTPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTPickerView.h; sourceTree = "<group>"; };
 		2D26B4D91D7BB8E3000D65B4 /* LTPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPickerView.m; sourceTree = "<group>"; };
@@ -2704,6 +2706,7 @@
 		3F1F50991D9BCFF50030FF7B /* 购买画框 */ = {
 			isa = PBXGroup;
 			children = (
+				04DAC79B1DBEF2D7002235A7 /* DBHBuy.png */,
 				3F1F509A1D9BCFF50030FF7B /* DBHBuyPictureFrameDataModels.h */,
 				3F1F509B1D9BCFF50030FF7B /* DBHBuyPictureFrameImageTableViewCell.h */,
 				3F1F509C1D9BCFF50030FF7B /* DBHBuyPictureFrameImageTableViewCell.m */,
@@ -6028,7 +6031,7 @@
 				ORGANIZATIONNAME = "ZhiYu Hao";
 				TargetAttributes = {
 					4D18513A1961B01200C098AF = {
-						DevelopmentTeam = N5VEQG6NJG;
+						DevelopmentTeam = 6GYN7E2YTH;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -6142,6 +6145,7 @@
 				75196E7F1D1A2DC0002D403B /* FindViewController.xib in Resources */,
 				4DA848FB1A903E0100D6B62B /* background-gradient@2x.png in Resources */,
 				756841441D887508006F9FBE /* ViewContent.storyboard in Resources */,
+				04DAC79C1DBEF2D7002235A7 /* DBHBuy.png in Resources */,
 				75C662511D7AD2250070A405 /* MessageViewController.xib in Resources */,
 				75E42A001D51F09200C9910E /* ZTXQViewController.xib in Resources */,
 				752096B41D59C1440006CF5A /* AreaViewController.xib in Resources */,
@@ -7031,8 +7035,8 @@
 				CLANG_ENABLE_MODULES = NO;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Fengming Hu (62HKHDP579)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fengming Hu (62HKHDP579)";
-				DEVELOPMENT_TEAM = N5VEQG6NJG;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6GYN7E2YTH;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7074,8 +7078,8 @@
 				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zipingfang.jingdongfang;
 				PRODUCT_NAME = iGallery;
-				PROVISIONING_PROFILE = "5ef06788-7678-4d4b-872f-f0fefa507dda";
-				PROVISIONING_PROFILE_SPECIFIER = boe_development;
+				PROVISIONING_PROFILE = "f4fe9ed9-1e45-4dea-84f6-6668e7544b5a";
+				PROVISIONING_PROFILE_SPECIFIER = ZPF_Development;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -7090,8 +7094,8 @@
 				CLANG_ENABLE_MODULES = NO;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Zipingfang Information Technology Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Zipingfang Information Technology Co., Ltd.";
-				DEVELOPMENT_TEAM = HC6K8FDE97;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7133,8 +7137,8 @@
 				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zipingfang.jingdongfang;
 				PRODUCT_NAME = iGallery;
-				PROVISIONING_PROFILE = "c6747bdb-5ee3-4b34-b921-b7dfb39d60a4";
-				PROVISIONING_PROFILE_SPECIFIER = ZPF_DISTRIBUTION;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};

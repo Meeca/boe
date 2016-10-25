@@ -131,7 +131,7 @@
     NSDictionary *params = @{
                              @"c_id" : self.cID,
                              @"page" :@(_page),
-                             @"pagecount" : @"20",
+                             @"pagecount" : @"20000",
                              };
     [MCNetTool postWithUrl:path params:params hud:YES success:^(NSDictionary *requestDic, NSString *msg)
      
@@ -152,12 +152,16 @@
              [self.navigationController popToRootViewControllerAnimated:YES];
              
          }
+         
+         self.navigationItem.title = [NSString stringWithFormat:@"成员(%@)",@(_contacts.count)];
+
+         
          // 刷新表格
          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
              [_contactsPickerView reloadData];
          });
          
-         if (array.count < 20) {
+         if (array.count < 20000) {
              [_contactsPickerView hidenFooter];
          }
          [_contactsPickerView headerEndRefresh];
@@ -332,6 +336,11 @@
         for (int i=0; i<_contacts.count; i++) {
             [selArr addObject:@(NO)];
         }
+        
+        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"完成"target:self action:@selector(manageButtonClick:)];
+
+        
+        
     }else{
         
         [self hidenFooterView];
@@ -342,6 +351,10 @@
 
 
 - (void)hidenFooterView{
+    
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"管理"target:self action:@selector(manageButtonClick:)];
+
+    
      [UIView animateWithDuration:0.25 animations:^{
         _circleMembersFooterView.frame = CGRectMake(0, KSCREENHEIGHT, KSCREENWIDTH, 44);
     } completion:^(BOOL finished) {

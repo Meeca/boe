@@ -86,6 +86,7 @@ ON_SIGNAL3(UserModel, PREREAD, signal) {
 ON_SIGNAL3(UserModel, PAYREAD, signal) {
     [self.table.mj_header endRefreshing];
     info = signal.object;
+    
     [self.table reloadData];
     
     [self cheak];
@@ -176,7 +177,29 @@ ON_SIGNAL3(UserModel, PAYREAD, signal) {
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    
+    NSInteger types = [info.types integerValue];
+
+    if (section == 0) {
+        return 1;
+     }
+    if (section == 1) {
+        if (types != 1) {
+            return 1;
+        }
+        return 0;
+    }
+    if (section == 2) {
+        
+        if (types != 1) {
+            return 1;
+        }
+        return 0;
+    }
+    if (section == 3) {
+        return 1;
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -193,19 +216,38 @@ ON_SIGNAL3(UserModel, PAYREAD, signal) {
         UILabel *state = [[UILabel alloc] initWithFrame:CGRectZero];
         state.font = [UIFont systemFontOfSize:15];
         state.textColor = KAPPCOLOR;
-        if ([info.state integerValue]==0) {  //未支付
-            state.text = @"等待付款";
-        } else if ([info.state integerValue]==1) {  //已支付
-            state.text = @"等待发货";
-        } else if ([info.state integerValue]==2) {  //未发货
-            state.text = @"等待发货";
-        } else if ([info.state integerValue]==3) {  //已发货
-            state.text = @"待确认收货";
-        } else if ([info.state integerValue]==4) {  //确认收货
-            state.text = @"已完成";
-            state.textColor = [UIColor blackColor];
+        
+        
+        if ([info.types integerValue] == 1) {
+          
+            if ([info.state integerValue]==0) {  //未支付
+                state.text = @"等待付款";
+            }
+            else if ([info.state integerValue]==1) {  //已支付
+                state.text = @"已支付";
+            } else if ([info.state integerValue]==2) {  //未发货
+                state.text = @"已完成";
+            }
+            
+        }else{
+        
+            if ([info.state integerValue]==0) {  //未支付
+                state.text = @"等待付款";
+            } else if ([info.state integerValue]==1) {  //已支付
+                state.text = @"等待发货";
+            } else if ([info.state integerValue]==2) {  //未发货
+                state.text = @"等待发货";
+            } else if ([info.state integerValue]==3) {  //已发货
+                state.text = @"待确认收货";
+            } else if ([info.state integerValue]==4) {  //确认收货
+                state.text = @"已完成";
+                state.textColor = [UIColor blackColor];
+            }
+
+        
         }
-        [state sizeToFit];
+        
+              [state sizeToFit];
         [cel.contentView addSubview:state];
 
         UILabel *time = [[UILabel alloc] initWithFrame:CGRectZero];

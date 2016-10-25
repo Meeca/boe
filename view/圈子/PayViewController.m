@@ -182,7 +182,10 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
 }
 
 - (void)sureAction:(UIButton *)btn {
-    if ([myRestMoney integerValue] == 0) {
+    
+    
+    
+    if ([myRestMoney integerValue] == 0 && _payType == 3) {
         [self presentMessageTips:@"余额不足!"];
         return;
     }
@@ -303,13 +306,12 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
     //    product_name#订单名称
     //
     
+    NSMutableDictionary * params = [NSMutableDictionary new];
+    params[@"orderids"] = orderPayModel.orders;
+    params[@"order_price"] = orderPayModel.price;
+    params[@"product_name"] = orderPayModel.title;
     
-    NSDictionary * dictionary = @{@"orderids":orderPayModel.orders,
-                                  @"order_price":orderPayModel.price,
-                                  @"product_name":orderPayModel.title};
-    
-    
-    [MCHttp postPayRequestURLStr:@"http://boe.ccifc.cn/app.php/Wx/index" withDic:dictionary success:^(NSDictionary *requestDic, NSString *msg) {
+    [MCHttp postPayRequestURLStr:@"http://boe.ccifc.cn/app.php/Wx/index" withDic:params success:^(NSDictionary *requestDic, NSString *msg) {
         
         
         NSLog(@"---  %@",requestDic);
