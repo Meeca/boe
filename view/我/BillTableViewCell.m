@@ -66,7 +66,7 @@
     NSAttributedString *str = [[NSAttributedString alloc] initWithString:time.text attributes:@{NSParagraphStyleAttributeName:paragraphStyle}];
     time.attributedText = str;
     [time sizeToFit];
-    time.x = 15;
+    time.x = 10;
     time.centerY = self.height/2;
     
     if ([info.type integerValue]==1) { //收
@@ -82,7 +82,7 @@
     
     name.text = info.title.length>0?info.title:@" ";
     [name sizeToFit];
-    
+//    name.width = 
     if ([info.types integerValue]==1) {  //购买类型（1购买收藏，2真品购买，3打赏）
         type.text = @"电子收藏";
     } else if ([info.types integerValue]==2) {

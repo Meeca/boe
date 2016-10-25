@@ -182,6 +182,9 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
 }
 
 - (void)sureAction:(UIButton *)btn {
+    
+    
+    
     if ([myRestMoney integerValue] == 0) {
         [self presentMessageTips:@"余额不足!"];
         return;

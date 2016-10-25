@@ -6028,7 +6028,7 @@
 				ORGANIZATIONNAME = "ZhiYu Hao";
 				TargetAttributes = {
 					4D18513A1961B01200C098AF = {
-						DevelopmentTeam = N5VEQG6NJG;
+						DevelopmentTeam = 6GYN7E2YTH;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -7031,8 +7031,8 @@
 				CLANG_ENABLE_MODULES = NO;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Fengming Hu (62HKHDP579)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fengming Hu (62HKHDP579)";
-				DEVELOPMENT_TEAM = N5VEQG6NJG;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6GYN7E2YTH;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7074,8 +7074,8 @@
 				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zipingfang.jingdongfang;
 				PRODUCT_NAME = iGallery;
-				PROVISIONING_PROFILE = "5ef06788-7678-4d4b-872f-f0fefa507dda";
-				PROVISIONING_PROFILE_SPECIFIER = boe_development;
+				PROVISIONING_PROFILE = "f4fe9ed9-1e45-4dea-84f6-6668e7544b5a";
+				PROVISIONING_PROFILE_SPECIFIER = ZPF_Development;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -7090,8 +7090,8 @@
 				CLANG_ENABLE_MODULES = NO;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Zipingfang Information Technology Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Zipingfang Information Technology Co., Ltd.";
-				DEVELOPMENT_TEAM = HC6K8FDE97;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7133,8 +7133,8 @@
 				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zipingfang.jingdongfang;
 				PRODUCT_NAME = iGallery;
-				PROVISIONING_PROFILE = "c6747bdb-5ee3-4b34-b921-b7dfb39d60a4";
-				PROVISIONING_PROFILE_SPECIFIER = ZPF_DISTRIBUTION;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};

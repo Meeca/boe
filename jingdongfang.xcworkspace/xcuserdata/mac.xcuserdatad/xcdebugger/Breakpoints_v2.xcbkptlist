@@ -42,7 +42,7 @@
                   moduleName = "iGallery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/fenghongjian/Documents/OschinaGit/git_boe/boe/view/%E5%9C%88%E5%AD%90/CircleViewController.m"
-                  timestampString = "498827811.96192"
+                  timestampString = "499050973.255812"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "361"
@@ -57,7 +57,7 @@
                   moduleName = "iGallery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/fenghongjian/Documents/OschinaGit/git_boe/boe/view/%E5%9C%88%E5%AD%90/CircleViewController.m"
-                  timestampString = "498827811.964133"
+                  timestampString = "499050973.257512"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "362"
@@ -80,6 +80,38 @@
             startingLineNumber = "208"
             endingLineNumber = "208"
             landmarkName = "-upDataSucc:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "view/&#x5708;&#x5b50;/PayViewController.m"
+            timestampString = "499051091.567329"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "-sureAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "view/&#x5708;&#x5b50;/PayViewController.m"
+            timestampString = "499051092.319154"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "-sureAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
