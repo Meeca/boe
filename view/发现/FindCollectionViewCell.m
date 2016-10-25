@@ -51,15 +51,19 @@
     if (_isShow) {
         if (self.index.section == 0) {
             numberLaber.text = [NSString stringWithFormat:@"%@人收藏",_shoucang.length>0?_shoucang:@"0"];
+            numberLaber.hidden = YES;
         } else if (self.index.section == 1) {
             numberLaber.text = [NSString stringWithFormat:@"%@人点赞",_goumai.length>0?_goumai:@"0"];
+            numberLaber.hidden = NO;
+
         } else if (self.index.section == 2) {
             numberLaber.text = [NSString stringWithFormat:@"%@人推送",_guanzhu.length>0?_guanzhu:@"0"];
+            numberLaber.hidden = NO;
+
         }
         
         
         
-        numberLaber.hidden = NO;
     }
     
     [imgView sd_setImageWithURL:[NSURL URLWithString:self.imgUrl]

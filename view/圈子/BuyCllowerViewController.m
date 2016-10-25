@@ -137,10 +137,7 @@
     
     [MCNetTool postWithUrl:path params:params hud:YES success:^(NSDictionary *requestDic, NSString *msg){
         
-        
         OrderInfoModel * orderInfoModel = [OrderInfoModel yy_modelWithJSON:requestDic];
-        
-        
         
         orderId = orderInfoModel.o_id;
         if(_payType == 1){  //1.  支付宝
