@@ -47,6 +47,23 @@
         [self showToastWithMessage:@"请输入正确的邮箱"];
         return;
     }
+    NSArray *arr = [self.mainInput.text componentsSeparatedByString:@"@"];
+    if (arr.count!=2) {
+        [self showToastWithMessage:@"请输入正确的邮箱"];
+        return;
+    }
+    if (arr.count==2) {
+        NSArray *arr2 = [arr[1] componentsSeparatedByString:@"."];
+        if (arr2.count!=2) {
+            [self showToastWithMessage:@"请输入正确的邮箱"];
+            return;
+        }
+        if (!([arr2.lastObject isEqualToString:@"com"] || [arr2.lastObject isEqualToString:@"cn"] || [arr2.lastObject isEqualToString:@"net"])) {
+            [self showToastWithMessage:@"请输入正确的邮箱"];
+            return;
+        }
+    }
+    
     NSString *path = @"/app.php/User/email";
     NSDictionary *params = @{
                              @"uid" : kUserId,
