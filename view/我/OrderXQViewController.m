@@ -218,10 +218,22 @@ ON_SIGNAL3(UserModel, PAYREAD, signal) {
         state.textColor = KAPPCOLOR;
         
         
+        
+        CGFloat  nowTime = [NSDate  timeStamp];
+        
+        
+        
         if ([info.types integerValue] == 1) {
           
             if ([info.state integerValue]==0) {  //未支付
-                state.text = @"等待付款";
+                
+                if (nowTime  -  [info.created_at floatValue] > (60*30) ) {
+                    state.text = @"订单失败";
+                }else{
+                    state.text = @"等待付款";
+
+                }
+
             }
             else if ([info.state integerValue]==1) {  //已支付
                 state.text = @"已支付";
@@ -232,7 +244,12 @@ ON_SIGNAL3(UserModel, PAYREAD, signal) {
         }else{
         
             if ([info.state integerValue]==0) {  //未支付
-                state.text = @"等待付款";
+                if (nowTime  -  [info.created_at floatValue] > (60*30) ) {
+                    state.text = @"订单失败";
+                }else{
+                    state.text = @"等待付款";
+                    
+                }
             } else if ([info.state integerValue]==1) {  //已支付
                 state.text = @"等待发货";
             } else if ([info.state integerValue]==2) {  //未发货

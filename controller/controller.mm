@@ -226,6 +226,10 @@ CONVERT_PROPERTY_CLASS( products_list, ArtistWorkList );
 @synthesize zambia = _zambia;
 @synthesize zambia_nums = _zambia_nums;
 @synthesize sales_status = _sales_status;
+@synthesize open_images_kg = _open_images_kg;
+
+
+
 
 CONVERT_PROPERTY_CLASS( comment_list, CommentInfo );
 CONVERT_PROPERTY_CLASS( guess_list, GuessInfo );

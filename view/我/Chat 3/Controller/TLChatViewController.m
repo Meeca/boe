@@ -299,16 +299,24 @@ UITableViewDataSource>{
 
     NSData * imageData = [[NSData alloc] init];
     imageData = UIImageJPEGRepresentation(image, 1);
-
-    
-      NSDictionary *params = @{
+    NSDictionary *params = @{
                              @"image":image,
                               };
      [MCNetTool uploadDataWithURLStr:@"/app.php/User/image_add" withDic:params imageKey:@"image" withData:imageData uploadProgress:^(NSString *progress) {
 
+         
+         
+         [self  showProgress:[progress floatValue]];
+         
+         
+         DeLog(@"----  %@",progress);
+         
     } success:^(NSDictionary *requestDic, NSString *msg) {
 
         NSString * imageUrl = requestDic[@"image_url"];
+        
+        
+        [self.view endEditing:YES];
         
          [self sendSixinMessage:imageUrl withMessageType:2];
         

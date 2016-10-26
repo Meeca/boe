@@ -110,6 +110,7 @@
         
        // DeLog(@"+++++++++++++++++++++  %.f",progress);
         
+        loadProgress(@(progress*100));
         
     } success:^(NSDictionary *requestDic, NSString *msg) {
         

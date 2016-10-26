@@ -61,6 +61,12 @@
 //极光推送的key
 #define JPUSH_APP_KEY @"0d137a96526fbde25b79c78a"
 
+#ifdef DEBUG
+#define fString [NSString stringWithFormat:@"%s", __FILE__].lastPathComponent
+#define DeLog(...) printf("%s -->  %s---> 第%d行:\n\n %s\n\n", [fString UTF8String],__FUNCTION__ ,__LINE__, [[NSString stringWithFormat:__VA_ARGS__] UTF8String]);
+#else
+#define DeLog(...)
+#endif
 
 
 #define kBaseUrl @"http://boe.ccifc.cn/"

@@ -280,7 +280,6 @@ ON_SIGNAL3(UserModel, USERINFO, signal) {
                 
             }
 
-            
             img.image = [UIImage imageNamed:@"C-2-03-3"];
             [cell.contentView addSubview:img];
         }

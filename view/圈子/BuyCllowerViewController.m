@@ -340,7 +340,6 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
     [author sizeToFit];
     author.x = imgView.right + 10;
     author.top = name.bottom + 8;
-    
     UILabel *num = [[UILabel alloc] initWithFrame:CGRectZero];
     num.text = [NSString stringWithFormat:@"%@人收藏/%@", info.electronics_nume.length>0?info.electronics_nume:@"0", info.electronic_nums.length>0?info.electronic_nums:@"0"];
     num.font = [UIFont systemFontOfSize:15];
@@ -358,6 +357,10 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
     [price sizeToFit];
     price.right = KSCREENWIDTH - 20;
     price.centerY = header.height/2;
+    
+    
+    author.width =  KSCREENWIDTH - author.left - 10-price.width-8;
+
     
     self.table.tableHeaderView = header;
 }
