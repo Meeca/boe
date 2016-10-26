@@ -435,7 +435,9 @@ ON_SIGNAL3(UserModel, PAYREAD, signal) {
         detailsInfo.p_id = info.p_id;
         detailsInfo.electronic_price = info.price;
         
-        vc.info = detailsInfo;
+        vc.orders = info.orders;
+
+        vc.detailsInfo = detailsInfo;
         [Tool setBackButtonNoTitle:self];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];

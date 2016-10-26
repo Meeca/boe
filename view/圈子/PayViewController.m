@@ -223,7 +223,7 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
                              //@"price" : goodsPrice,
                              @"price" : balance,
                              @"balance" : balance,//
-                             @"type" : @"3"/*@(_type)*/,
+                             @"type" : @"3"/*@(_type)*/,// type#购买类型（1购买收藏，2真品购买，3打赏）
                              @"content" : @"",// 备注内容
                              };
     

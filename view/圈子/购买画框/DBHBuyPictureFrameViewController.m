@@ -227,11 +227,10 @@ static NSString * const kBuyPictureFrameImageTableViewCellIdentifier = @"kBuyPic
 - (void)buyPictureFrameWithShopInfo:(DetailsInfo *)model {
     QueRenViewController *vc = [[QueRenViewController alloc] init];
     vc.isBuyPictureFrame = YES;
-    
     model.u_name = _model.title;
     model.p_id = _model.p_id;
     model.image = _model.image;
-    vc.info = model;
+    vc.detailsInfo = model;
     [Tool setBackButtonNoTitle:self];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
