@@ -55,7 +55,7 @@
     [bar addSubview:all];
     
     NSMutableAttributedString *str1 = [[NSMutableAttributedString alloc] initWithString:@"合计："];
-    NSMutableAttributedString *str2 = [[NSMutableAttributedString alloc] initWithString:[@"￥" stringByAppendingString:self.info.material_sum ? self.info.material_sum : (self.info.material_price.length>0?self.info.material_price:@"0")]];
+    NSMutableAttributedString *str2 = [[NSMutableAttributedString alloc] initWithString:[@"￥" stringByAppendingString:self.detailsInfo.material_sum ? self.detailsInfo.material_sum : (self.detailsInfo.material_price.length>0?self.detailsInfo.material_price:@"0")]];
     
     [str1 addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15], NSForegroundColorAttributeName:[UIColor blackColor]} range:NSMakeRange(0, str1.length)];
     [str2 addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18], NSForegroundColorAttributeName:KAPPCOLOR} range:NSMakeRange(0, str2.length)];
@@ -195,7 +195,7 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
             cell1 = [[ListTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"ListTableViewCell.h"];
             
         }
-        cell1.data = self.info;
+        cell1.data = self.detailsInfo;
         [cell1 setNeedsLayout];
         return cell1;
     } else if (indexPath.section==2) {
@@ -321,7 +321,7 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
         [view addSubview:img];
         
         UILabel *name = [[UILabel alloc] initWithFrame:CGRectZero];
-        name.text = self.info.u_name.length>0?self.info.u_name:@" ";
+        name.text = self.detailsInfo.u_name.length>0?self.detailsInfo.u_name:@" ";
         name.font = [UIFont systemFontOfSize:15];
         [name sizeToFit];
         [view addSubview:name];
@@ -424,7 +424,7 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
      type#购买类型（1购买收藏，2真品购买，3打赏）
      content#备注
      */
-    DetailsInfo *goodsInfo = self.info;
+    DetailsInfo *goodsInfo = self.detailsInfo;
     // 商品价格
     NSString *goodsPrice = goodsInfo.electronic_price;
     // balance#使用余额支付（不使用 0，使用传使用的数值，余额使用规则：当余额大于或等于支付金额时，balance值传支付金额，当余额小于支付金额时balance传当前余额）
@@ -442,13 +442,13 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
         NSString *path = @"/app.php/Index/balance_frame";
         NSDictionary *params = @{
                                  @"uid" : kUserId,
-                                 @"p_id" : self.info.p_id,
+                                 @"p_id" : self.detailsInfo.p_id,
                                  @"a_id" : @"",// 收货地址id
                                  @"price" : goodsPrice,
-                                 @"nums" : self.info.material_num,
+                                 @"nums" : self.detailsInfo.material_num,
                                  //                             @"price" : @"0.01",
                                  @"balance" : balance,//
-                                 @"attri" : [NSString stringWithFormat:@"%@-%@", self.info.pictureFrameTypeOne, self.info.pictureFrameTypeTwo],
+                                 @"attri" : [NSString stringWithFormat:@"%@-%@", self.detailsInfo.pictureFrameTypeOne, self.detailsInfo.pictureFrameTypeTwo],
                                  @"content" : @"",// 备注内容
                                  };
         
@@ -490,18 +490,38 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
         }];
     } else {
         NSString *path = @"/app.php/Index/balance";
-        NSDictionary *params = @{
-                                 @"uid" : kUserId,
-                                 @"u_id" : self.info.u_id,
-                                 @"p_id" : self.info.p_id,
-                                 @"a_id" : @"",// 收货地址id
-                                 @"price" : goodsPrice,
-                                 //                             @"price" : @"0.01",
-                                 @"balance" : balance,//
-                                 @"type" : @"1"/*@(_type)*/,
-                                 @"content" : @"",// 备注内容
-                                 };
+//        NSDictionary *params = @{
+//                                 @"uid" : kUserId,
+//                                 @"u_id" : self.detailsInfo.u_id,
+//                                 @"p_id" : self.detailsInfo.p_id,
+//                                 @"a_id" : @"",// 收货地址id
+//                                 @"price" : goodsPrice,
+//                                 //                             @"price" : @"0.01",
+//                                 @"balance" : balance,//
+//                                 @"type" : @"1"/*@(_type)*/,
+//                                 @"content" : @"",// 备注内容
+//                                 };
+//        
+//        
         
+        NSMutableDictionary * params = [NSMutableDictionary new];
+   
+        params[@"uid"] = kUserId;
+        params[@"u_id"] = self.detailsInfo.u_id;
+        params[@"p_id"] = self.detailsInfo.p_id;
+        params[@"a_id"] = infos.a_id;//// 收货地址id
+        params[@"price"] = goodsPrice;
+        params[@"balance"] = balance;
+        params[@"type"] = @(_type);
+        params[@"content"] = massage;// 备注内容
+        
+        if (_orders.length != 0) {
+            params[@"orders"] = _orders;
+        }
+        
+        
+        
+
         [MCNetTool postWithUrl:path params:params hud:YES success:^(NSDictionary *requestDic, NSString *msg){
             
             
@@ -515,7 +535,6 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
                 [self aliPayWith:orderInfoModel];
                 
             }
-            
             
             if(_payType == 2){  // 2 微信
                 

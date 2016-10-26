@@ -85,6 +85,8 @@
         num.right = price.right;
         num.centerY = type.centerY;
         
+        
+        
     } else if ([self.data isMemberOfClass:[OrderInfo class]]) {
         OrderInfo *info = self.data;
 

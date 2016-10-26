@@ -248,7 +248,7 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
         }
     }
 }
-
+#pragma mark - 个人中心
 - (void)tapAct {
     IntroViewController *vc = [[IntroViewController alloc] init];
     vc.u_id = detailsInfo.u_id;
@@ -360,6 +360,8 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
             [tableView reloadData];
         }
     } else if (indexPath.section==2) {
+        
+        // 作者信息
         cell.clipsToBounds = YES;
         CGFloat iconWidth = 40;
         UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(x, (60-iconWidth)/2, iconWidth, iconWidth)];
@@ -461,6 +463,9 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
             name.width = shixin.left - 5 - name.left;
         }
     } else if (indexPath.section==3) {
+        
+        
+        // 购买信息  --  收藏--真品--打赏
         if (indexPath.row==0) {
             cell.textLabel.textColor = KAPPCOLOR;
             cell.textLabel.text = [@"￥" stringByAppendingString:detailsInfo.electronic_price.length>0?detailsInfo.electronic_price:@"0"];
@@ -579,6 +584,9 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
             msg.right = shang.left - 10;
         }
     } else if (indexPath.section==4) {
+        
+        //  @"猜您喜欢";
+        
         UILabel *title = [[UILabel alloc] initWithFrame:CGRectZero];
         title.text = @"猜您喜欢";
         title.font = font;
@@ -623,6 +631,9 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
         send.centerY = h/2;
     } else if (indexPath.section >= 6) {
         if (indexPath.row == 0) {
+            
+            
+            
             CommentCell *comCell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell.h"];
             if (comCell==nil) {
                 comCell = [[CommentCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"CommentCell.h"];
@@ -635,9 +646,11 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
                 vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];
             }];
-
             [comCell setNeedsLayout];
             return comCell;
+            
+            
+            
         } else {
             DBHCommentCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCommentCellTableViewCellIdentifier forIndexPath:indexPath];
             
@@ -666,6 +679,32 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+//    if (indexPath.section == 5) {
+//        
+//        DeLog(@"--------------       一级评论")
+//        //  一级评论
+//        
+//        
+//        [self sendCommentUIType:NO];
+//        
+//    }
+//    
+//    if(indexPath.section > 5){
+//    
+//        if (indexPath.row == 0) {
+//            
+//            
+//            DeLog(@" -------------       二级评论")
+//
+//            [self sendCommentUIType:YES];
+//
+//        }
+//    
+//    }
+   
+    
+    
     if (indexPath.section >= 5) {
         if (indexPath.row != 0) {
             return;
@@ -684,9 +723,16 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
         } else {
             isTop = NO;
             
+            
+            DeLog(@"----------  %ld",indexPath.row);
+            
             CommentInfo *commentInfo = detailsInfo.comment_list[indexPath.row];
             placeholder = [NSString stringWithFormat:@"@%@:",commentInfo.nike];
+            
         }
+        
+        
+        
         NSLog(@"我来说两句 rect:%@", NSStringFromCGRect(selRect));
         if (!imView) {
             imView = [[UIView alloc] initWithFrame:CGRectMake(0, KSCREENHEIGHT, KSCREENWIDTH, 50)];
@@ -731,6 +777,27 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
         imText.text = placeholder;
     }
 }
+
+
+
+/**
+ 评论UI
+
+ @param isErComment 是否是二级评论
+ */
+- (void)sendCommentUIType:(BOOL )isErComment{
+
+
+
+    
+
+
+}
+
+
+
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 6 + detailsInfo.comment_list.count;
@@ -1105,6 +1172,9 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
 - (void)keyboardHide:(NSNotification *)not {
     [self.table setContentOffset:CGPointMake(0, currtOff)];
 }
+
+#pragma mark - 发表评论
+
 
 - (void)sendAcion:(UIGestureRecognizer *)tap {
     
