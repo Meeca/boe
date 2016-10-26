@@ -26,6 +26,8 @@
 #import "UIViewController+MBShow.h"
 #import "UITableView+MJRefresh.h"
 #import "MJExtension.h"
+#import "NSObject+PDHud.h"
+
 //  判断 字符串是否为 NULL 或者 nil
 
 #define checkNULL(__X__) checkNull(__X__,@"")

@@ -18,18 +18,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"图片上传及销售结算协议";
+    self.title = @"IGallery销售平台服务协议";
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
                                                          forBarMetrics:UIBarMetricsDefault];
     
     
 
     self.webView.backgroundColor = [UIColor colorWithRed:236.0/255 green:236.0/255 blue:236.0/255 alpha:1];
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"xieyi" ofType:@"html"];
-    NSString *htmlString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    [self.webView loadHTMLString:htmlString baseURL:[NSURL URLWithString:path]];
-
+//    NSString *path = [[NSBundle mainBundle]pathForResource:@"xieyi" ofType:@"html"];
+//    NSString *htmlString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+//    [self.webView loadHTMLString:htmlString baseURL:[NSURL URLWithString:path]];
+    
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kBaseUrl,@"app.php/User/pay_agreement"]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+    
 }
+
 
 - (void)viewWillAppear:(BOOL)animated
 {

@@ -42,7 +42,7 @@
                   moduleName = "iGallery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/fenghongjian/Documents/OschinaGit/git_boe/boe/view/%E5%9C%88%E5%AD%90/CircleViewController.m"
-                  timestampString = "499056792.500855"
+                  timestampString = "499151372.691871"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "361"
@@ -57,7 +57,7 @@
                   moduleName = "iGallery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/fenghongjian/Documents/OschinaGit/git_boe/boe/view/%E5%9C%88%E5%AD%90/CircleViewController.m"
-                  timestampString = "499056792.502223"
+                  timestampString = "499151372.693229"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "362"
@@ -65,22 +65,6 @@
                   offsetFromSymbolStart = "12">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "view/&#x6211;/MeViewController.m"
-            timestampString = "498819249.449036"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
-            landmarkName = "-upDataSucc:"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -106,7 +90,7 @@
                   moduleName = "iGallery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/fenghongjian/Documents/OschinaGit/git_boe/boe/view/%E5%9C%88%E5%AD%90/%E5%9C%88%E5%84%BF%E6%88%90%E5%91%98/CircleMembersTableViewController.m"
-                  timestampString = "499056792.508433"
+                  timestampString = "499151372.696296"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "190"
@@ -121,7 +105,7 @@
                   moduleName = "iGallery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/fenghongjian/Documents/OschinaGit/git_boe/boe/view/%E5%9C%88%E5%AD%90/%E5%9C%88%E5%84%BF%E6%88%90%E5%91%98/CircleMembersTableViewController.m"
-                  timestampString = "499056792.509989"
+                  timestampString = "499151372.697631"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "190"
@@ -186,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "view/&#x6211;/OrderHeader.m"
-            timestampString = "499056434.117603"
+            timestampString = "499139837.541918"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "-layoutSubviews"
             landmarkType = "7">
          </BreakpointContent>
@@ -201,13 +185,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "view/&#x6211;/OrderXQViewController.m"
-            timestampString = "499056791.19671"
+            filePath = "view/&#x6211;/OrderHeader.m"
+            timestampString = "499139838.293953"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
-            landmarkName = "-tableView:numberOfRowsInSection:"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "-layoutSubviews"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

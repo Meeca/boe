@@ -464,31 +464,14 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
         if (indexPath.row==0) {
             cell.textLabel.textColor = KAPPCOLOR;
             cell.textLabel.text = [@"￥" stringByAppendingString:detailsInfo.electronic_price.length>0?detailsInfo.electronic_price:@"0"];
-            cell.textLabel.hidden = [detailsInfo.price_open isEqualToString:@"2"];
+            cell.textLabel.hidden =NO;// [detailsInfo.price_open isEqualToString:@"2"];
             
             UIButton *xianliang = [UIButton buttonWithType:UIButtonTypeCustom];
             xianliang.frame = CGRectMake(0, 10, 90, 30);
-            xianliang.backgroundColor = KAPPCOLOR;
             xianliang.titleLabel.font = [UIFont systemFontOfSize:13];
             [xianliang setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            
-            
-      
-            
-            if (detailsInfo.pay_type.integerValue == 1)
-            {
-                [xianliang setTitle:@"已购买" forState:UIControlStateNormal];
-                xianliang.userInteractionEnabled = NO;
-            }
-            else
-            {
-                [xianliang setTitle:@"限量收藏" forState:UIControlStateNormal];
-                 xianliang.userInteractionEnabled = YES;
-            }
-            
-            
-            
-            
+            xianliang.backgroundColor = KAPPCOLOR;
+ 
             [xianliang addTarget:self action:@selector(xianliangAction:) forControlEvents:UIControlEventTouchUpInside];
             xianliang.layer.masksToBounds = YES;
             xianliang.layer.cornerRadius = 3;
@@ -498,19 +481,43 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
             UILabel *msg = [[UILabel alloc] initWithFrame:CGRectZero];
             msg.font = [UIFont systemFontOfSize:13];
             msg.textColor = [UIColor grayColor];
-            msg.text = [NSString stringWithFormat:@"%@人收藏/%@", detailsInfo.electronics_nume.length>0?detailsInfo.electronics_nume:@"0", detailsInfo.electronic_nums.length>0?detailsInfo.electronic_nums:@"0"];
-            if (detailsInfo.electronics_nume >= detailsInfo.electronic_nums )
-            {
-                if ([detailsInfo.electronic_nums isEqualToString:@"-1"]) {
-                    [xianliang setTitle:@"不限量收藏" forState:UIControlStateNormal];
-                }else{
-                    xianliang.backgroundColor = [UIColor grayColor];
-                    xianliang.enabled = NO;
-                    [xianliang setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                }
+            msg.text = [NSString stringWithFormat:@"%@人收藏/%@", detailsInfo.electronics_nume.length>0?detailsInfo.electronics_nume:@"0", [detailsInfo.electronic_nums integerValue] < 1?@"无限制":detailsInfo.electronic_nums];
 
-                
+            
+            if (detailsInfo.pay_type.integerValue == 1){
+                [xianliang setTitle:@"已购买" forState:UIControlStateNormal];
+                xianliang.userInteractionEnabled = NO;
             }
+            else
+            {
+                
+                if ([detailsInfo.electronic_nums integerValue] < 1) {
+                    [xianliang setTitle:@"限量收藏" forState:UIControlStateNormal];
+                    
+                }else{
+                    
+                    if([detailsInfo.electronics_nume integerValue] >= [detailsInfo.electronic_nums integerValue]){
+                        // 购买量大于等于库存
+                        xianliang.backgroundColor = [UIColor grayColor];
+                        [xianliang setTitle:@"限量收藏" forState:UIControlStateNormal];
+                        xianliang.enabled = NO;
+                        [xianliang setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                        
+                    }else{
+                        
+                        [xianliang setTitle:@"限量收藏" forState:UIControlStateNormal];
+                        [xianliang setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                        xianliang.backgroundColor = KAPPCOLOR;
+                        xianliang.userInteractionEnabled = YES;
+                    }
+                }
+            }
+            
+            
+            
+            
+
+        
             
             [cell.contentView addSubview:msg];
             [msg sizeToFit];
@@ -518,7 +525,7 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
             msg.right = xianliang.left - 10;
         } else if (indexPath.row==1) {
             
-            if ([detailsInfo.sales_status integerValue] != 2) {
+            if ([detailsInfo.sales_status integerValue] == 2) {
 
                 cell.textLabel.textColor = KAPPCOLOR;
                 cell.textLabel.text = [@"￥" stringByAppendingString:detailsInfo.material_price.length>0?detailsInfo.material_price:@"0"];
@@ -757,9 +764,9 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
         return 60;
     } else if (indexPath.section==3 && indexPath.row ==1) {
         if ([detailsInfo.sales_status integerValue] == 2) {
-            return 0;
+            return 50;
         }
-        return 50;
+        return 0;
     } else if (indexPath.section==4) {
         CGFloat h;
         UILabel *title = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -971,11 +978,10 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
 
 - (void)goodsBuy{
 
-    
     NSString *path = @"/app.php/Index/balance";
     NSDictionary *params = @{
                              @"uid" : kUserId,
-                             @"u_id" : kUserId,
+                             @"u_id" : detailsInfo.u_id,
                              @"p_id" : detailsInfo.p_id,
                              @"a_id" : @"",// 收货地址id
                              @"price" : @(0),

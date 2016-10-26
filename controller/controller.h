@@ -161,6 +161,7 @@
 @property (nonatomic, retain) NSString *			zambia;
 @property (nonatomic, retain) NSString *			zambia_nums;
 @property (nonatomic, retain) NSString *			sales_status;
+@property (nonatomic, retain) NSString *			open_images_kg;
 
 
 @end

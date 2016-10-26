@@ -9,11 +9,15 @@
 #import "MCHttp.h"
 #import "AFNetworking.h"
 #import "MCCacheTool.h"
+
 #ifdef DEBUG
-#define MCLog(...) NSLog(__VA_ARGS__) //如果不需要打印数据，把这__  NSLog(__VA_ARGS__) ___注释了
+#define fString [NSString stringWithFormat:@"%s", __FILE__].lastPathComponent
+#define MCLog(...) printf("%s -->  %s---> 第%d行:\n\n %s\n\n", [fString UTF8String],__FUNCTION__ ,__LINE__, [[NSString stringWithFormat:__VA_ARGS__] UTF8String]);
 #else
 #define MCLog(...)
 #endif
+
+
 
 static NSString * const successInfo = @"";
 static NSString * const failureInfo = @"没有网络连接";
