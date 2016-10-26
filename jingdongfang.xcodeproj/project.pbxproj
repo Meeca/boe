@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0422C5831DC03EEF002F7B11 /* NSObject+PDHud.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422C57F1DC03EEF002F7B11 /* NSObject+PDHud.m */; };
+		0422C5841DC03EEF002F7B11 /* PDHud.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0422C5801DC03EEF002F7B11 /* PDHud.bundle */; };
+		0422C5851DC03EEF002F7B11 /* PDHud.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422C5821DC03EEF002F7B11 /* PDHud.m */; };
+		0422C5901DC03EFF002F7B11 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422C5881DC03EFF002F7B11 /* SVIndefiniteAnimatedView.m */; };
+		0422C5911DC03EFF002F7B11 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422C58A1DC03EFF002F7B11 /* SVProgressAnimatedView.m */; };
+		0422C5921DC03EFF002F7B11 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0422C58B1DC03EFF002F7B11 /* SVProgressHUD.bundle */; };
+		0422C5931DC03EFF002F7B11 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422C58D1DC03EFF002F7B11 /* SVProgressHUD.m */; };
+		0422C5941DC03EFF002F7B11 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422C58F1DC03EFF002F7B11 /* SVRadialGradientLayer.m */; };
+		0422C5971DC06659002F7B11 /* SizeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422C5961DC06659002F7B11 /* SizeModel.m */; };
 		04CC325C1D81957B006A4752 /* ChangeDeviceNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CC325A1D81957B006A4752 /* ChangeDeviceNameViewController.m */; };
 		04CC325D1D81957B006A4752 /* ChangeDeviceNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CC325B1D81957B006A4752 /* ChangeDeviceNameViewController.xib */; };
 		04CC32611D819642006A4752 /* FBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CC32601D819642006A4752 /* FBaseViewController.m */; };
@@ -865,6 +874,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0422C57E1DC03EEF002F7B11 /* NSObject+PDHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PDHud.h"; sourceTree = "<group>"; };
+		0422C57F1DC03EEF002F7B11 /* NSObject+PDHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PDHud.m"; sourceTree = "<group>"; };
+		0422C5801DC03EEF002F7B11 /* PDHud.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PDHud.bundle; sourceTree = "<group>"; };
+		0422C5811DC03EEF002F7B11 /* PDHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDHud.h; sourceTree = "<group>"; };
+		0422C5821DC03EEF002F7B11 /* PDHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDHud.m; sourceTree = "<group>"; };
+		0422C5871DC03EFF002F7B11 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		0422C5881DC03EFF002F7B11 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		0422C5891DC03EFF002F7B11 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		0422C58A1DC03EFF002F7B11 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		0422C58B1DC03EFF002F7B11 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		0422C58C1DC03EFF002F7B11 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		0422C58D1DC03EFF002F7B11 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		0422C58E1DC03EFF002F7B11 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		0422C58F1DC03EFF002F7B11 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		0422C5951DC06659002F7B11 /* SizeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeModel.h; sourceTree = "<group>"; };
+		0422C5961DC06659002F7B11 /* SizeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizeModel.m; sourceTree = "<group>"; };
 		04CC32591D81957B006A4752 /* ChangeDeviceNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeDeviceNameViewController.h; sourceTree = "<group>"; };
 		04CC325A1D81957B006A4752 /* ChangeDeviceNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeDeviceNameViewController.m; sourceTree = "<group>"; };
 		04CC325B1D81957B006A4752 /* ChangeDeviceNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeDeviceNameViewController.xib; sourceTree = "<group>"; };
@@ -2525,6 +2550,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0422C57D1DC03EEF002F7B11 /* PDHud */ = {
+			isa = PBXGroup;
+			children = (
+				0422C5861DC03EFF002F7B11 /* SVProgressHUD */,
+				0422C57E1DC03EEF002F7B11 /* NSObject+PDHud.h */,
+				0422C57F1DC03EEF002F7B11 /* NSObject+PDHud.m */,
+				0422C5801DC03EEF002F7B11 /* PDHud.bundle */,
+				0422C5811DC03EEF002F7B11 /* PDHud.h */,
+				0422C5821DC03EEF002F7B11 /* PDHud.m */,
+			);
+			path = PDHud;
+			sourceTree = "<group>";
+		};
+		0422C5861DC03EFF002F7B11 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				0422C5871DC03EFF002F7B11 /* SVIndefiniteAnimatedView.h */,
+				0422C5881DC03EFF002F7B11 /* SVIndefiniteAnimatedView.m */,
+				0422C5891DC03EFF002F7B11 /* SVProgressAnimatedView.h */,
+				0422C58A1DC03EFF002F7B11 /* SVProgressAnimatedView.m */,
+				0422C58B1DC03EFF002F7B11 /* SVProgressHUD.bundle */,
+				0422C58C1DC03EFF002F7B11 /* SVProgressHUD.h */,
+				0422C58D1DC03EFF002F7B11 /* SVProgressHUD.m */,
+				0422C58E1DC03EFF002F7B11 /* SVRadialGradientLayer.h */,
+				0422C58F1DC03EFF002F7B11 /* SVRadialGradientLayer.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		04CC32581D819540006A4752 /* 修改设备名称 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4738,6 +4792,8 @@
 				7523CFF91D5AFDA400C74318 /* BuyZViewController.h */,
 				7523CFFA1D5AFDA400C74318 /* BuyZViewController.m */,
 				7523CFFB1D5AFDA400C74318 /* BuyZViewController.xib */,
+				0422C5951DC06659002F7B11 /* SizeModel.h */,
+				0422C5961DC06659002F7B11 /* SizeModel.m */,
 				7523CFFE1D5B0B7000C74318 /* QueRenViewController.h */,
 				7523CFFF1D5B0B7000C74318 /* QueRenViewController.m */,
 				7523D0001D5B0B7000C74318 /* QueRenViewController.xib */,
@@ -4885,6 +4941,7 @@
 		7535A2C71D1D1C160050F9E0 /* 消息 */ = {
 			isa = PBXGroup;
 			children = (
+				0422C57D1DC03EEF002F7B11 /* PDHud */,
 				7594155A1D8544580089A8CE /* Chat 3 */,
 				75A405EA1D815054008BD637 /* 私信首页聊天接口 */,
 				75C6625E1D7AD2610070A405 /* UIButton+Block.h */,
@@ -6137,9 +6194,11 @@
 				7507BA981D76BF730031ECE8 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				4DA849001A903E0100D6B62B /* tutorial_background_04@2x.jpg in Resources */,
 				75AAB6311D7C0EA000B7BF94 /* CircleMemberGroupsViewController.xib in Resources */,
+				0422C5921DC03EFF002F7B11 /* SVProgressHUD.bundle in Resources */,
 				75EF735E1D6DA94A00E4CD63 /* JDFTopicHeaderView.xib in Resources */,
 				4DC6B3BB1961BC9F00C87D1B /* Images.xcassets in Resources */,
 				75A090411D5C69310096D19E /* WalletViewController.xib in Resources */,
+				0422C5841DC03EEF002F7B11 /* PDHud.bundle in Resources */,
 				759453AA1D709ADE00E80A33 /* CYAlertView.xib in Resources */,
 				75A7F7131D7EB42600859FCD /* login.png in Resources */,
 				75196E7F1D1A2DC0002D403B /* FindViewController.xib in Resources */,
@@ -6349,6 +6408,7 @@
 				7568415D1D894709006F9FBE /* AgainTooicViewController.m in Sources */,
 				4DC6BB081961C20700C87D1B /* Bee_UICameraView.m in Sources */,
 				4DC6BB281961C20700C87D1B /* Bee_UIQuery.m in Sources */,
+				0422C5831DC03EEF002F7B11 /* NSObject+PDHud.m in Sources */,
 				75196E6D1D1A2A91002D403B /* BaseNavigationController.m in Sources */,
 				CD7C33091DAE6F0700084EEA /* NSString+Emoji.m in Sources */,
 				4DC6BB0B1961C20700C87D1B /* Bee_UIMatrixView.m in Sources */,
@@ -6380,6 +6440,7 @@
 				04DAC3C31DB4F083002235A7 /* FOREmptyAssistantConfiger.m in Sources */,
 				7530E3191D73059600CFBC9F /* NSDataEx.m in Sources */,
 				4DC6BAB91961C20700C87D1B /* UIActivityIndicatorView+BeeUIStyle.m in Sources */,
+				0422C5911DC03EFF002F7B11 /* SVProgressAnimatedView.m in Sources */,
 				4DC6BB601961C20700C87D1B /* BeeDatabase+BeeActiveRecord.m in Sources */,
 				4DC6BB131961C20700C87D1B /* UIView+BeeUICell.m in Sources */,
 				4DC6BAF71961C20700C87D1B /* Bee_UIToolbar.m in Sources */,
@@ -6454,6 +6515,7 @@
 				7536EA0A1D29F8B50044C602 /* IWTextView.m in Sources */,
 				CD1B9ACD1DBD0C8B00102F8C /* SSImageScrollView.m in Sources */,
 				4DC6BAB41961C20700C87D1B /* Bee_UIStyle.m in Sources */,
+				0422C5971DC06659002F7B11 /* SizeModel.m in Sources */,
 				4DC6BB221961C20700C87D1B /* UILabel+BeeUILayout.m in Sources */,
 				3F7B77D11D9BD3790055074E /* DBHRedEnvelopeModelInfo.m in Sources */,
 				4DC6BB181961C20700C87D1B /* UIViewController+BeeUISignal.m in Sources */,
@@ -6560,6 +6622,7 @@
 				04D3EEE51D86F7CF002C2B9B /* SiXinModel.m in Sources */,
 				7564F7BA1D50AF0700A46736 /* FSViewController.m in Sources */,
 				4DC6BAAF1961C20700C87D1B /* UIViewController+Metrics.m in Sources */,
+				0422C5941DC03EFF002F7B11 /* SVRadialGradientLayer.m in Sources */,
 				3F1F50B51D9BCFF50030FF7B /* DBHBuyPictureFrameView.m in Sources */,
 				75A0901A1D5C3EC90096D19E /* BuyModel.m in Sources */,
 				4DC6BB2E1961C20700C87D1B /* BeeUIQuery+Manipulation.m in Sources */,
@@ -6640,6 +6703,7 @@
 				4DC6BB9E1961C20700C87D1B /* Bee_Service.m in Sources */,
 				4DC6BB861961C20700C87D1B /* Bee_HTTPClientConfig.m in Sources */,
 				4DC6BAC21961C20700C87D1B /* UIView+BeeUIStyle.m in Sources */,
+				0422C5901DC03EFF002F7B11 /* SVIndefiniteAnimatedView.m in Sources */,
 				754081271D6E918500B5662A /* CirclesRead.m in Sources */,
 				755546131D7856650011F46A /* FeedBackViewController.m in Sources */,
 				4DC6BB921961C20700C87D1B /* Bee_HTTPUtility2.m in Sources */,
@@ -6671,6 +6735,7 @@
 				3F7B77B11D9BD2F80055074E /* DBHCollectionViewCell.m in Sources */,
 				4D02D5701B539C8300C92F60 /* NIDataStructures.m in Sources */,
 				7555460C1D782F9E0011F46A /* GetCodeModel.m in Sources */,
+				0422C5851DC03EEF002F7B11 /* PDHud.m in Sources */,
 				75196E831D1A2DD9002D403B /* CircleViewController.m in Sources */,
 				4D02D56B1B539C8300C92F60 /* NSMutableAttributedString+NimbusAttributedLabel.m in Sources */,
 				75EF73561D6DA2DC00E4CD63 /* CircleConversDetailViewController.m in Sources */,
@@ -6907,6 +6972,7 @@
 				7579BAA71D73D8AB004940A7 /* CircleTopicConverseRead.m in Sources */,
 				75A7F7191D7EED1E00859FCD /* UserCertificition.m in Sources */,
 				4DC6BB2B1961C20700C87D1B /* BeeUIQuery+Dimensions.m in Sources */,
+				0422C5931DC03EFF002F7B11 /* SVProgressHUD.m in Sources */,
 				75E7202B1D83C5EF004EAA4F /* YXCustomActionSheet.m in Sources */,
 				4DC6BAC91961C20700C87D1B /* CSSParser.m in Sources */,
 				759453BD1D70B03D00E80A33 /* TAAnimatedDotView.m in Sources */,
@@ -7094,8 +7160,8 @@
 				CLANG_ENABLE_MODULES = NO;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Zipingfang Information Technology Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = HC6K8FDE97;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7137,8 +7203,8 @@
 				OTHER_LIBTOOLFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zipingfang.jingdongfang;
 				PRODUCT_NAME = iGallery;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "c6747bdb-5ee3-4b34-b921-b7dfb39d60a4";
+				PROVISIONING_PROFILE_SPECIFIER = ZPF_DISTRIBUTION;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};

@@ -116,7 +116,8 @@
     shadowImageView.backgroundColor = slider.tabItemSelectedColor;
     [header addSubview:shadowImageView];
     
-    NSArray *title = @[@"简介", @"作品", @"关注", @"粉丝"];
+//    NSArray *title = @[@"简介", @"作品", @"关注", @"粉丝"];
+    NSArray *title = @[ @"作品",@"简介", @"关注", @"粉丝"];
 
     for (int i = 0; i < 4; i++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -205,8 +206,11 @@ ON_SIGNAL3(UserModel, COLLECTIONDEL, signal) {
     NSString *fansUnm = [NSString stringWithFormat:@"粉丝 %@", info.fans.length>0?info.fans:@"0"];
     
     for (UIView *sub in header.subviews) {
-        if (sub.tag == 101) { // 作品
+        if (sub.tag == 100) { // 作品
             [(UIButton *)sub setTitle:zpUnm forState:UIControlStateNormal];
+        }else
+        if (sub.tag == 101) { // 作品
+            [(UIButton *)sub setTitle:@"简介" forState:UIControlStateNormal];
         } else if (sub.tag == 102) { // 关注
             [(UIButton *)sub setTitle:gzUnm forState:UIControlStateNormal];
         } else if (sub.tag == 103) { // 粉丝
@@ -251,12 +255,12 @@ ON_SIGNAL3(UserModel, COLLECTIONDEL, signal) {
 }
 
 - (UIViewController *)slideSwitchView:(MingRenSlider *)view viewOfTab:(NSUInteger)number {
-    if (number == 1) {
+    if (number == 0) {
         vc1 = [[ZPViewController alloc] init];
         vc1.nav = self.navigationController;
         vc1.title = @"作品";
         return vc1;
-    } else if (number == 0) {
+    } else if (number == 1) {
         vc2 = [[JJViewController alloc] init];
         [vc2 loadDataSucc:^(ArtistInfo *info) {
             infos = info;
@@ -379,7 +383,7 @@ ON_SIGNAL3(UserModel, COLLECTIONDEL, signal) {
     
     NSLog(@"-----  %ld",index);
     
-    [ShareModel shareUMengWithVC:self withPlatform:index withTitle:infos.nike withShareTxt:infos.content withImage:_shareImage withID:infos.u_id withType:3 withUrl:nil success:^(NSDictionary *requestDic) {
+    [ShareModel shareUMengWithVC:self withPlatform:index withTitle:[NSString stringWithFormat:@"%@的iGallery主页",infos.nike] withShareTxt:infos.content withImage:_shareImage withID:infos.u_id withType:3 withUrl:nil success:^(NSDictionary *requestDic) {
         
         
     } failure:^(NSString *error) {

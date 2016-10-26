@@ -9,6 +9,7 @@
 #import "BuyZViewController.h"
 #import "QueRenViewController.h"
 #import "TLChatViewController.h"
+#import "SizeModel.h"
 
 @interface BuyZViewController () <UITableViewDelegate, UITableViewDataSource> {
     
@@ -17,7 +18,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
-//@property (copy,nonatomic)NSString *detailInfo;
+@property (strong,nonatomic)NSMutableArray *sizeModelArray;
 @end
 
 @implementation BuyZViewController
@@ -27,6 +28,7 @@
     // Do any additional setup after loading the view from its nib.
     
     self.title = @"真品购买";
+    
     
     UIView *bar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KSCREENWIDTH, 44)];
     [self.view addSubview:bar];
@@ -77,6 +79,9 @@
         _info = info;
     }
     
+    _sizeModelArray = [[NSMutableArray alloc]init];
+
+
     CGFloat wid = 80;
     header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KSCREENWIDTH, wid+40)];
     UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 0, wid, wid)];
@@ -136,6 +141,22 @@
     if ([[imageArr firstObject] length]==0) {
         imageArr = nil;
     }
+    NSArray * kgArray = [_info.open_images_kg componentsSeparatedByString:@"-"];
+    
+    if([[kgArray firstObject] length]!=0){
+        
+        [kgArray enumerateObjectsUsingBlock:^(NSString * size, NSUInteger idx, BOOL * _Nonnull stop) {
+            SizeModel * sizeModel = [[SizeModel alloc]init];
+            NSArray * sizeArray = [size componentsSeparatedByString:@"*"];
+            sizeModel.kuan =[sizeArray[0] floatValue];
+            sizeModel.gao =[sizeArray[1] floatValue];
+            [_sizeModelArray addObject:sizeModel];
+        }];
+        
+        [self.table reloadData];
+    }
+
+    
 }
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
@@ -165,17 +186,17 @@
         
         cell.textLabel.attributedText = str;
     } else {
-        CGFloat h = [self tableView:tableView heightForRowAtIndexPath:indexPath];
-        UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, KSCREENWIDTH, h)];
+        CGFloat imageHeight = [self tableView:tableView heightForRowAtIndexPath:indexPath];
+        UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, KSCREENWIDTH, imageHeight)];
         image.contentMode = UIViewContentModeScaleToFill;
         image.clipsToBounds = YES;
         [cell.contentView addSubview:image];
         
         [image sd_setImageWithURL:[NSURL URLWithString:imageArr[indexPath.row-1]] placeholderImage:KZHANWEI completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            CGFloat height = [self tableView:tableView heightForRowAtIndexPath:indexPath];
-            if (height == 5) {
-                [tableView reloadData];
-            }
+//            CGFloat height = [self tableView:tableView heightForRowAtIndexPath:indexPath];
+//            if (height == 5) {
+//                [tableView reloadData];
+//            }
         }];
     }
     return cell;
@@ -186,16 +207,29 @@
         return 100;
     }
     
-    SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    NSString* key = [manager cacheKeyForURL:[NSURL URLWithString:imageArr[indexPath.row-1]]];
-    SDImageCache* cache = [SDImageCache sharedImageCache];
-    //此方法会先从memory中取。
-    UIImage *image = [cache imageFromDiskCacheForKey:key];
     
-    if (image) {
-        return KSCREENWIDTH*image.size.height/image.size.width;
-    }
-    return 5;
+    
+//    if (_sizeModelArray.count != 0) {
+        SizeModel * sizeModel =  _sizeModelArray[indexPath.row- 1];
+        
+        CGFloat height = XMGScreenW / sizeModel.kuan  * sizeModel.gao;
+        return height;
+
+//    }else{
+//    
+//        return 0;
+//    }
+    
+//    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+//    NSString* key = [manager cacheKeyForURL:[NSURL URLWithString:imageArr[indexPath.row-1]]];
+//    SDImageCache* cache = [SDImageCache sharedImageCache];
+//    //此方法会先从memory中取。
+//    UIImage *image = [cache imageFromDiskCacheForKey:key];
+//    
+//    if (image) {
+//        return KSCREENWIDTH*image.size.height/image.size.width;
+//    }
+//    return 0;
 }
 
 - (void)sixinAction:(UIButton *)btn
