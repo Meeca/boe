@@ -63,7 +63,7 @@
     view = [[UIView alloc] initWithFrame:CGRectMake(90, 20, 150, 100)];
     
     UILabel *lable = [[UILabel alloc] initWithFrame:CGRectZero];
-    lable.text = @"上传图片";
+    lable.text = @"* 上传图片";
     lable.font = [UIFont systemFontOfSize:15];
     lable.textColor = [UIColor darkGrayColor];
     [lable sizeToFit];

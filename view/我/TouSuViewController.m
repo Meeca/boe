@@ -37,7 +37,7 @@
     UILabel *tel = [[UILabel alloc] initWithFrame:CGRectZero];
     tel.font = [UIFont boldSystemFontOfSize:28];
     tel.textColor = KAPPCOLOR;
-    tel.text = @"400-000-000";
+    tel.text = @"400-668-1000";
     [self.view addSubview:tel];
     [tel sizeToFit];
     tel.center = msg.center;
