@@ -102,9 +102,9 @@ ON_SIGNAL3(UserModel, USERNIKE, signal) {
             return;
         }
         
-        if (textView.text.length > 12) {
-            [self presentMessageTips:@"最多可输入12个字"];
-            NSRange range = [textView.text rangeOfComposedCharacterSequenceAtIndex:12];
+        if (textView.text.length > 10) {
+            [self presentMessageTips:@"最多可输入10个字"];
+            NSRange range = [textView.text rangeOfComposedCharacterSequenceAtIndex:10];
             textView.text = [textView.text substringToIndex:range.location];
         }
 

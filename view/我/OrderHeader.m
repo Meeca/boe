@@ -145,13 +145,13 @@
         
         
     }
-
-    
-    
     
     [state sizeToFit];
     state.right = self.width-15;
     state.centerY = self.height/2;
+    
+    name.width = XMGScreenW - name.left - state.width - 8 - 5;
+
 }
 
 /*

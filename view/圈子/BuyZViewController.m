@@ -247,7 +247,8 @@
 //    }
     
     QueRenViewController *vc = [[QueRenViewController alloc] init];
-    vc.info = self.info;
+    vc.detailsInfo = self.info;
+    vc.type = 2;
     [Tool setBackButtonNoTitle:self];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
