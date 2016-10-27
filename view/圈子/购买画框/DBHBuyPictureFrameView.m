@@ -45,8 +45,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = COLOR(0, 0, 0, 0.6);
-        _sizeIndex = -1;
-        _frameIndex = -1;
         [self setUI];
     }
     return self;
@@ -250,11 +248,15 @@
     self.model.material_num = _buyPictureFrameNumberView.number;
     self.model.electronic_price = [self.moneyLabel.text substringFromIndex:1];
     
-    DBHBuyPictureFrameSizeInfoModelInfo *sizeModel = _pictureFrameSizeArray[_sizeIndex];
-    self.model.pictureFrameTypeOne = sizeModel.aId;
+    if (_sizeIndex>=0) {
+        DBHBuyPictureFrameSizeInfoModelInfo *sizeModel = _pictureFrameSizeArray[_sizeIndex];
+        self.model.pictureFrameTypeOne = sizeModel.aId;
+    }
     
-    DBHBuyPictureFrameSizeInfoModelInfo *borderModel = _pictureFrameBorderArray[_frameIndex];
-    self.model.pictureFrameTypeTwo = borderModel.aId;
+    if (_frameIndex>=0) {        
+        DBHBuyPictureFrameSizeInfoModelInfo *borderModel = _pictureFrameBorderArray[_frameIndex];
+        self.model.pictureFrameTypeTwo = borderModel.aId;
+    }
     
     _clickBuyButtonBlock(self.model);
     
@@ -264,7 +266,10 @@
 #pragma mark - private methods
 - (void)viewShow {
     _buyPictureFrameNumberView.number = @"1";
- 
+    _sizeIndex = -1;
+    _frameIndex = -1;
+    [self.collectView reloadData];
+    
     [UIView animateWithDuration:0.25 animations:^{
         _whiteView.bottom = self.height;
     }];
