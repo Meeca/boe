@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -8,11 +8,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="circleTopicCommentTableViewCell" rowHeight="-1" id="KGk-i7-Jjw" customClass="circleTopicCommentTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="circleTopicCommentTableViewCell" rowHeight="191" id="KGk-i7-Jjw" customClass="circleTopicCommentTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="349"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="320" height="156"/>
+                <frame key="frameInset" width="320" height="348"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="userName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9e-U4-Bgb">
@@ -52,17 +52,17 @@
                         </connections>
                     </button>
                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大会及时反馈等哈看是否还会对是否回家哈开始的复合卡还是房价的哈斯卡对方    " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgH-TJ-S52">
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQG-Xe-a6z">
+                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQG-Xe-a6z">
                         <constraints>
-                            <constraint firstAttribute="width" constant="60" id="RHb-cP-ae7"/>
-                            <constraint firstAttribute="height" constant="20" id="j0Y-lh-BZ0"/>
+                            <constraint firstAttribute="width" constant="200" id="RHb-cP-ae7"/>
+                            <constraint firstAttribute="height" constant="200" id="j0Y-lh-BZ0"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <state key="normal" title="查看全文">
+                        <state key="normal">
                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <connections>
@@ -77,13 +77,12 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="eQG-Xe-a6z" secondAttribute="bottom" constant="5" id="56a-LC-EYk"/>
                     <constraint firstAttribute="trailing" secondItem="hgH-TJ-S52" secondAttribute="trailing" constant="20" id="8Tb-RZ-edY"/>
                     <constraint firstItem="P9e-U4-Bgb" firstAttribute="leading" secondItem="dsi-d0-PYT" secondAttribute="trailing" constant="8" id="A8u-sp-3br"/>
                     <constraint firstItem="x8C-Ra-0FW" firstAttribute="top" secondItem="dsi-d0-PYT" secondAttribute="top" id="ABu-nd-pt0"/>
                     <constraint firstItem="eQG-Xe-a6z" firstAttribute="top" secondItem="hgH-TJ-S52" secondAttribute="bottom" constant="10" id="Edq-A5-NM0"/>
                     <constraint firstItem="FFd-N7-dke" firstAttribute="leading" secondItem="dsi-d0-PYT" secondAttribute="trailing" constant="10" id="I78-qn-aOo"/>
-                    <constraint firstItem="hgH-TJ-S52" firstAttribute="top" secondItem="FFd-N7-dke" secondAttribute="bottom" constant="20" id="M3D-J0-7pN"/>
+                    <constraint firstItem="hgH-TJ-S52" firstAttribute="top" secondItem="FFd-N7-dke" secondAttribute="bottom" constant="10" id="M3D-J0-7pN"/>
                     <constraint firstAttribute="trailing" secondItem="AZX-Vc-jLI" secondAttribute="trailing" constant="20" id="MOj-Gw-yq3"/>
                     <constraint firstItem="dsi-d0-PYT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="T4J-yU-Z1t"/>
                     <constraint firstItem="P9e-U4-Bgb" firstAttribute="top" secondItem="dsi-d0-PYT" secondAttribute="top" id="Wnx-SN-E8q"/>
@@ -105,7 +104,7 @@
                 <outlet property="viewBtn" destination="eQG-Xe-a6z" id="SSq-JK-x9m"/>
                 <outlet property="zanCountLabel" destination="x8C-Ra-0FW" id="bHB-kD-0KO"/>
             </connections>
-            <point key="canvasLocation" x="51" y="263"/>
+            <point key="canvasLocation" x="51" y="258"/>
         </tableViewCell>
     </objects>
     <resources>

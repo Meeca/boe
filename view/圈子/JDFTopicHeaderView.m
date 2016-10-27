@@ -11,6 +11,7 @@
 #import "SDCycleScrollView.h"
 #import "SSPhotoBrowser.h"
 #import "AppDelegate.h"
+#import "AgainCommentViewController.h"
 
 @interface JDFTopicHeaderView ()<SDCycleScrollViewDelegate, SSPhotoBrowserDelegate> {
     NSArray *imageArr;
@@ -205,10 +206,16 @@
  
     NSLog(@"你点击了评论按钮");
     
-    CircleCommentTableViewController *conversVC = [[UIStoryboard storyboardWithName:@"CircleContentView" bundle:nil] instantiateViewControllerWithIdentifier:@"CircleCommentTableViewController"];
-    conversVC.coId = _ctcrModel.co_id;
+    AgainCommentViewController * vc = [[AgainCommentViewController alloc]initWithNibName:@"AgainCommentViewController" bundle:nil];
+     vc.coId = _ctcrModel.co_id;
+    [[self viewController1].navigationController pushViewController:vc animated:YES];
+
     
-    [[self viewController1].navigationController pushViewController:conversVC animated:YES];
+//    
+//    CircleCommentTableViewController *conversVC = [[UIStoryboard storyboardWithName:@"CircleContentView" bundle:nil] instantiateViewControllerWithIdentifier:@"CircleCommentTableViewController"];
+//    conversVC.coId = _ctcrModel.co_id;
+//    
+//    [[self viewController1].navigationController pushViewController:conversVC animated:YES];
     
 }
 

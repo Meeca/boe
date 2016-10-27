@@ -218,65 +218,15 @@ static NSString * const kCommentCellTableViewCellIdentifier = @"kCommentCellTabl
     return _headerView;
 }
 
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-//{
-//    if (section == 0)
-//    {
-//        return @"我的圈子";
-//    }
-//    
-//    return @"热门圈子";
-//}
-
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//
-// 
-//    static NSString *CellIdentiferId = @"circleTopicCommentTableViewCell";
-//    circleTopicCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentiferId];
-//    if (cell == nil){
-//        cell = [[[NSBundle mainBundle]loadNibNamed:@"circleTopicCommentTableViewCell" owner:nil options:nil]lastObject];
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    }
-//    
-//     return cell;
-//
-//
-//
-//}
-
 #pragma mark ------ 数据源方法和代理方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.commentArray.count;
+    return _commentArray.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     DBHTopicModelCommsList *model = self.commentArray[section];
     
     return model.rCommentList.count + 1;
-}
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 162;
-//}
-
-
-#pragma mark - event responds
-- (void)respondsLeftMenuItem {
-    // 回复
-    AgainTooicViewController *Again = [[UIStoryboard storyboardWithName:@"Again" bundle:nil] instantiateViewControllerWithIdentifier:@"AgainTooicViewController"];
-    
-    Again.comm_id = _com_id;
-    Again.cid = _model.coId;
-    Again.name = _name;
-    Again.isOther = YES;
-    
-    [self.navigationController pushViewController:Again animated:YES];
-}
-- (void)respondsRightMenuItem {
-    // 删除
-    [self deletecopyItemClicked];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -288,49 +238,53 @@ static NSString * const kCommentCellTableViewCellIdentifier = @"kCommentCellTabl
             cell = [[[NSBundle mainBundle]loadNibNamed:@"circleTopicCommentTableViewCell" owner:nil options:nil]lastObject];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        
+        cell.isShow = YES;
         DBHTopicModelCommsList *model = self.commentArray[indexPath.section];
         cell.model = model;
-        
-//        Comms_List *comms = _commentsLists[indexPath.row];
-//        self.commID = comms.comm_id;
-//        cell.commsList = comms;
-        //    [cell.contentLabel addGestureRecognizer: [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longTap:)]];
-        
-//        UILongPressGestureRecognizer * longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longTap:)];
-//        [cell.contentLabel addGestureRecognizer:longPress];
+
         return cell;
     } else {
         DBHTopicModelCommsList *model = self.commentArray[indexPath.section];
         DBHTopicModelRCommentList *otherModel = model.rCommentList[indexPath.row - 1];
         
         DBHCommentCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCommentCellTableViewCellIdentifier forIndexPath:indexPath];
-//        cell.object = model.uName;
-        cell.otherModel = otherModel;
-        
+         cell.otherModel = otherModel;
         [cell hideSeparation];
         
         return cell;
     }
-    
+    return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row != 0) {
+    
+    if (indexPath.row ==0) {
+        
+        DBHTopicModelCommsList *model = self.commentArray[indexPath.section];
+        CGFloat imageHeight = 0;
+        if (model.image.length != 0) {
+            imageHeight = 200 + 10 + 10;
+        }else{
+            imageHeight = 20 ;
+        }
+        return [Tool getLabelSizeWithText:model.title AndWidth:KSCREENWIDTH - 40 AndFont:[UIFont systemFontOfSize:15] attribute:nil].height + imageHeight + 74;
+        
+    }else  {
         CommentInfo *commen = [[CommentInfo alloc] init];
         DBHTopicModelCommsList *model = self.commentArray[indexPath.section];
         DBHTopicModelRCommentList *otherModel = model.rCommentList[indexPath.row - 1];
         commen.content = [NSString stringWithFormat:@"@@%@:%@", model.uName, otherModel.title];
         return [Tool getCommentHeight:commen];
     }
-    return UITableViewAutomaticDimension;
+    
+    return 0;
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         DBHTopicModelCommsList *model = self.commentArray[indexPath.section];
         circleTopicCommentTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        
         _com_id = model.commId;
         _commID = model.commId;
         _name = model.uName;
@@ -360,6 +314,22 @@ static NSString * const kCommentCellTableViewCellIdentifier = @"kCommentCellTabl
 
 
 
+#pragma mark - event responds
+- (void)respondsLeftMenuItem {
+    // 回复
+    AgainTooicViewController *Again = [[UIStoryboard storyboardWithName:@"Again" bundle:nil] instantiateViewControllerWithIdentifier:@"AgainTooicViewController"];
+    
+    Again.comm_id = _com_id;
+    Again.cid = _model.coId;
+    Again.name = _name;
+    Again.isOther = YES;
+    
+    [self.navigationController pushViewController:Again animated:YES];
+}
+- (void)respondsRightMenuItem {
+    // 删除
+    [self deletecopyItemClicked];
+}
 
 
 -(void)longTap:(UILongPressGestureRecognizer *)longRecognizer
@@ -431,10 +401,7 @@ static NSString * const kCommentCellTableViewCellIdentifier = @"kCommentCellTabl
 }
 -(void)copyItemClicked:(id)sender{
     NSLog(@"回复");
-//    CircleCommentTableViewController *conversVC = [[UIStoryboard storyboardWithName:@"CircleContentView" bundle:nil] instantiateViewControllerWithIdentifier:@"CircleCommentTableViewController"];
-//    conversVC.coId = _c_id;
-//    
-//    [self.navigationController pushViewController:conversVC animated:YES];
+ 
     AgainTooicViewController *Again = [[UIStoryboard storyboardWithName:@"Again" bundle:nil] instantiateViewControllerWithIdentifier:@"AgainTooicViewController"];
     Again.coId = _c_id;
     Again.cooId = _commID;
