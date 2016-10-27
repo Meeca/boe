@@ -214,9 +214,14 @@ static NSString * const kBuyPictureFrameImageTableViewCellIdentifier = @"kBuyPic
     // 立即购买
 //    [self loadPictureFrameInfoWityType:@"1"];
     
+    
+    
+    
     UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
     
     [rootVC.view addSubview:self.buyPictureFrameView];
+    _buyPictureFrameView.price = [_model.price integerValue];
+    [_buyPictureFrameView setNeedsLayout];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [_buyPictureFrameView viewShow];
     });
@@ -295,24 +300,5 @@ static NSString * const kBuyPictureFrameImageTableViewCellIdentifier = @"kBuyPic
     }
     return _pictureFrameBorderArray;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @end

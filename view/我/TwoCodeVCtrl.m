@@ -26,7 +26,6 @@
 
 @implementation TwoCodeVCtrl
 
-/*
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"扫一扫";
