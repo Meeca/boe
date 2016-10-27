@@ -20,6 +20,9 @@
 //@property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) UIView *bottomLineView;
 
+
+
+
 @end
 
 @implementation DBHCommentCellTableViewCell
@@ -42,7 +45,7 @@
     [self.contentView addSubview:self.objectLabel];
 //    [self.contentView addSubview:self.contentLabel];
     [self.contentView addSubview:self.bottomLineView];
-    
+ 
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.offset(35);
         make.left.offset(50);
@@ -62,6 +65,8 @@
 //        make.left.equalTo(_objectLabel.mas_right);
 //        make.centerY.equalTo(_objectLabel);
 //    }];
+    
+ 
     [_bottomLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_headImageView).offset(10);
         make.right.offset(- 15);
@@ -97,6 +102,10 @@
     } else {
         _objectLabel.text = _otherModel.title;
     }
+    
+ 
+
+    
 }
 - (void)setObject:(NSString *)object {
     _object = object;
@@ -179,5 +188,8 @@
     }
     return _bottomLineView;
 }
+
+
+
 
 @end

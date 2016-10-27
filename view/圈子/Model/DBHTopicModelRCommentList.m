@@ -14,6 +14,7 @@ NSString *const kDBHTopicModelRCommentListTitle = @"title";
 NSString *const kDBHTopicModelRCommentListRId = @"r_id";
 NSString *const kDBHTopicModelRCommentListUImage = @"u_image";
 NSString *const kDBHTopicModelRCommentListCreatedAt = @"created_at";
+NSString *const kDBHTopicModelRCommentListU_image = @"image";
 
 
 @interface DBHTopicModelRCommentList ()
@@ -30,6 +31,7 @@ NSString *const kDBHTopicModelRCommentListCreatedAt = @"created_at";
 @synthesize rId = _rId;
 @synthesize uImage = _uImage;
 @synthesize createdAt = _createdAt;
+@synthesize image = _image;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
@@ -50,6 +52,7 @@ NSString *const kDBHTopicModelRCommentListCreatedAt = @"created_at";
             self.rId = [self objectOrNilForKey:kDBHTopicModelRCommentListRId fromDictionary:dict];
             self.uImage = [self objectOrNilForKey:kDBHTopicModelRCommentListUImage fromDictionary:dict];
             self.createdAt = [self objectOrNilForKey:kDBHTopicModelRCommentListCreatedAt fromDictionary:dict];
+            self.image = [self objectOrNilForKey:kDBHTopicModelRCommentListU_image fromDictionary:dict];
 
     }
     
@@ -66,6 +69,7 @@ NSString *const kDBHTopicModelRCommentListCreatedAt = @"created_at";
     [mutableDict setValue:self.rId forKey:kDBHTopicModelRCommentListRId];
     [mutableDict setValue:self.uImage forKey:kDBHTopicModelRCommentListUImage];
     [mutableDict setValue:self.createdAt forKey:kDBHTopicModelRCommentListCreatedAt];
+    [mutableDict setValue:self.image forKey:kDBHTopicModelRCommentListU_image];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -95,6 +99,8 @@ NSString *const kDBHTopicModelRCommentListCreatedAt = @"created_at";
     self.rId = [aDecoder decodeObjectForKey:kDBHTopicModelRCommentListRId];
     self.uImage = [aDecoder decodeObjectForKey:kDBHTopicModelRCommentListUImage];
     self.createdAt = [aDecoder decodeObjectForKey:kDBHTopicModelRCommentListCreatedAt];
+    self.image = [aDecoder decodeObjectForKey:kDBHTopicModelRCommentListU_image];
+
     return self;
 }
 
@@ -107,6 +113,8 @@ NSString *const kDBHTopicModelRCommentListCreatedAt = @"created_at";
     [aCoder encodeObject:_rId forKey:kDBHTopicModelRCommentListRId];
     [aCoder encodeObject:_uImage forKey:kDBHTopicModelRCommentListUImage];
     [aCoder encodeObject:_createdAt forKey:kDBHTopicModelRCommentListCreatedAt];
+    [aCoder encodeObject:_image forKey:kDBHTopicModelRCommentListU_image];
+
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -121,6 +129,8 @@ NSString *const kDBHTopicModelRCommentListCreatedAt = @"created_at";
         copy.rId = [self.rId copyWithZone:zone];
         copy.uImage = [self.uImage copyWithZone:zone];
         copy.createdAt = [self.createdAt copyWithZone:zone];
+        copy.image = [self.image copyWithZone:zone];
+
     }
     
     return copy;

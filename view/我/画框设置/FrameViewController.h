@@ -12,4 +12,8 @@
 
 @property (nonatomic, strong) EquipmentList *list;
 
+
+
+
+
 @end

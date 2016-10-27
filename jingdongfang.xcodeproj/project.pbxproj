@@ -16,6 +16,15 @@
 		0422C5931DC03EFF002F7B11 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422C58D1DC03EFF002F7B11 /* SVProgressHUD.m */; };
 		0422C5941DC03EFF002F7B11 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422C58F1DC03EFF002F7B11 /* SVRadialGradientLayer.m */; };
 		0422C5971DC06659002F7B11 /* SizeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422C5961DC06659002F7B11 /* SizeModel.m */; };
+		0422C59B1DC1FD1E002F7B11 /* AgainCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422C5991DC1FD1E002F7B11 /* AgainCommentViewController.m */; };
+		0422C59C1DC1FD1E002F7B11 /* AgainCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0422C59A1DC1FD1E002F7B11 /* AgainCommentViewController.xib */; };
+		0422C5A01DC201B3002F7B11 /* Again.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0422C59D1DC201B3002F7B11 /* Again.storyboard */; };
+		0422C5A11DC201B3002F7B11 /* AgainTooicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422C59F1DC201B3002F7B11 /* AgainTooicViewController.m */; };
+		0422C5A51DC20910002F7B11 /* CircleConversDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422C5A31DC20910002F7B11 /* CircleConversDetailCell.m */; };
+		0422C5A61DC20910002F7B11 /* CircleConversDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0422C5A41DC20910002F7B11 /* CircleConversDetailCell.xib */; };
+		0422C5AA1DC22208002F7B11 /* AvatarBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422C5A91DC22208002F7B11 /* AvatarBrowser.m */; };
+		0422C5AE1DC22A75002F7B11 /* FrameShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0422C5AC1DC22A75002F7B11 /* FrameShareViewController.m */; };
+		0422C5AF1DC22A75002F7B11 /* FrameShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0422C5AD1DC22A75002F7B11 /* FrameShareViewController.xib */; };
 		04CC325C1D81957B006A4752 /* ChangeDeviceNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CC325A1D81957B006A4752 /* ChangeDeviceNameViewController.m */; };
 		04CC325D1D81957B006A4752 /* ChangeDeviceNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CC325B1D81957B006A4752 /* ChangeDeviceNameViewController.xib */; };
 		04CC32611D819642006A4752 /* FBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CC32601D819642006A4752 /* FBaseViewController.m */; };
@@ -707,8 +716,6 @@
 		7568414E1D892D3D006F9FBE /* CheckExceptionalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7568414D1D892D3D006F9FBE /* CheckExceptionalViewController.m */; };
 		756841511D892D6E006F9FBE /* Check.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 756841501D892D6E006F9FBE /* Check.storyboard */; };
 		756841541D893576006F9FBE /* CheckDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 756841531D893576006F9FBE /* CheckDetailViewController.m */; };
-		7568415A1D894639006F9FBE /* Again.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 756841591D894639006F9FBE /* Again.storyboard */; };
-		7568415D1D894709006F9FBE /* AgainTooicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7568415C1D894709006F9FBE /* AgainTooicViewController.m */; };
 		756841601D894EE2006F9FBE /* checkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7568415F1D894EE2006F9FBE /* checkModel.m */; };
 		7579BAA71D73D8AB004940A7 /* CircleTopicConverseRead.m in Sources */ = {isa = PBXBuildFile; fileRef = 7579BAA61D73D8AB004940A7 /* CircleTopicConverseRead.m */; };
 		7579BAAB1D73DA84004940A7 /* circleTopicCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7579BAA91D73DA84004940A7 /* circleTopicCommentTableViewCell.m */; };
@@ -891,6 +898,20 @@
 		0422C58F1DC03EFF002F7B11 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		0422C5951DC06659002F7B11 /* SizeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeModel.h; sourceTree = "<group>"; };
 		0422C5961DC06659002F7B11 /* SizeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizeModel.m; sourceTree = "<group>"; };
+		0422C5981DC1FD1E002F7B11 /* AgainCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgainCommentViewController.h; sourceTree = "<group>"; };
+		0422C5991DC1FD1E002F7B11 /* AgainCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgainCommentViewController.m; sourceTree = "<group>"; };
+		0422C59A1DC1FD1E002F7B11 /* AgainCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AgainCommentViewController.xib; sourceTree = "<group>"; };
+		0422C59D1DC201B3002F7B11 /* Again.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Again.storyboard; sourceTree = "<group>"; };
+		0422C59E1DC201B3002F7B11 /* AgainTooicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgainTooicViewController.h; sourceTree = "<group>"; };
+		0422C59F1DC201B3002F7B11 /* AgainTooicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgainTooicViewController.m; sourceTree = "<group>"; };
+		0422C5A21DC20910002F7B11 /* CircleConversDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleConversDetailCell.h; sourceTree = "<group>"; };
+		0422C5A31DC20910002F7B11 /* CircleConversDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleConversDetailCell.m; sourceTree = "<group>"; };
+		0422C5A41DC20910002F7B11 /* CircleConversDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleConversDetailCell.xib; sourceTree = "<group>"; };
+		0422C5A81DC22208002F7B11 /* AvatarBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarBrowser.h; sourceTree = "<group>"; };
+		0422C5A91DC22208002F7B11 /* AvatarBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarBrowser.m; sourceTree = "<group>"; };
+		0422C5AB1DC22A75002F7B11 /* FrameShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameShareViewController.h; sourceTree = "<group>"; };
+		0422C5AC1DC22A75002F7B11 /* FrameShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrameShareViewController.m; sourceTree = "<group>"; };
+		0422C5AD1DC22A75002F7B11 /* FrameShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FrameShareViewController.xib; sourceTree = "<group>"; };
 		04CC32591D81957B006A4752 /* ChangeDeviceNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeDeviceNameViewController.h; sourceTree = "<group>"; };
 		04CC325A1D81957B006A4752 /* ChangeDeviceNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeDeviceNameViewController.m; sourceTree = "<group>"; };
 		04CC325B1D81957B006A4752 /* ChangeDeviceNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeDeviceNameViewController.xib; sourceTree = "<group>"; };
@@ -2199,9 +2220,6 @@
 		756841501D892D6E006F9FBE /* Check.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Check.storyboard; sourceTree = "<group>"; };
 		756841521D893576006F9FBE /* CheckDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDetailViewController.h; sourceTree = "<group>"; };
 		756841531D893576006F9FBE /* CheckDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDetailViewController.m; sourceTree = "<group>"; };
-		756841591D894639006F9FBE /* Again.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Again.storyboard; sourceTree = "<group>"; };
-		7568415B1D894709006F9FBE /* AgainTooicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgainTooicViewController.h; sourceTree = "<group>"; };
-		7568415C1D894709006F9FBE /* AgainTooicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgainTooicViewController.m; sourceTree = "<group>"; };
 		7568415E1D894EE2006F9FBE /* checkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = checkModel.h; sourceTree = "<group>"; };
 		7568415F1D894EE2006F9FBE /* checkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = checkModel.m; sourceTree = "<group>"; };
 		7579BAA51D73D8AB004940A7 /* CircleTopicConverseRead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleTopicConverseRead.h; sourceTree = "<group>"; };
@@ -2582,6 +2600,15 @@
 			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
+		0422C5A71DC22208002F7B11 /* AvatarBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				0422C5A81DC22208002F7B11 /* AvatarBrowser.h */,
+				0422C5A91DC22208002F7B11 /* AvatarBrowser.m */,
+			);
+			path = AvatarBrowser;
+			sourceTree = "<group>";
+		};
 		04CC32581D819540006A4752 /* 修改设备名称 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2607,6 +2634,9 @@
 				04CC32631D819CEE006A4752 /* FrameViewController.h */,
 				04CC32641D819CEE006A4752 /* FrameViewController.m */,
 				04CC32651D819CEE006A4752 /* FrameViewController.xib */,
+				0422C5AB1DC22A75002F7B11 /* FrameShareViewController.h */,
+				0422C5AC1DC22A75002F7B11 /* FrameShareViewController.m */,
+				0422C5AD1DC22A75002F7B11 /* FrameShareViewController.xib */,
 				04CC32681D819D03006A4752 /* FrameViewModel.h */,
 				04CC32691D819D03006A4752 /* FrameViewModel.m */,
 			);
@@ -2725,8 +2755,12 @@
 		04DAC3CB1DB4F939002235A7 /* 话题列表 */ = {
 			isa = PBXGroup;
 			children = (
+				0422C5A71DC22208002F7B11 /* AvatarBrowser */,
 				75EF73541D6DA2DC00E4CD63 /* CircleConversDetailViewController.h */,
 				75EF73551D6DA2DC00E4CD63 /* CircleConversDetailViewController.m */,
+				0422C5A21DC20910002F7B11 /* CircleConversDetailCell.h */,
+				0422C5A31DC20910002F7B11 /* CircleConversDetailCell.m */,
+				0422C5A41DC20910002F7B11 /* CircleConversDetailCell.xib */,
 			);
 			name = "话题列表";
 			sourceTree = "<group>";
@@ -5329,9 +5363,12 @@
 		756841561D894607006F9FBE /* 再次评论 */ = {
 			isa = PBXGroup;
 			children = (
-				756841591D894639006F9FBE /* Again.storyboard */,
-				7568415B1D894709006F9FBE /* AgainTooicViewController.h */,
-				7568415C1D894709006F9FBE /* AgainTooicViewController.m */,
+				0422C59D1DC201B3002F7B11 /* Again.storyboard */,
+				0422C59E1DC201B3002F7B11 /* AgainTooicViewController.h */,
+				0422C59F1DC201B3002F7B11 /* AgainTooicViewController.m */,
+				0422C5981DC1FD1E002F7B11 /* AgainCommentViewController.h */,
+				0422C5991DC1FD1E002F7B11 /* AgainCommentViewController.m */,
+				0422C59A1DC1FD1E002F7B11 /* AgainCommentViewController.xib */,
 			);
 			name = "再次评论";
 			sourceTree = "<group>";
@@ -6127,6 +6164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04CC32891D81B10A006A4752 /* SearchDeviceListViewController.xib in Resources */,
+				0422C5A61DC20910002F7B11 /* CircleConversDetailCell.xib in Resources */,
 				7564F7B11D50AEF100A46736 /* JJViewController.xib in Resources */,
 				751BED571D2F729F004A6BA8 /* PasswordViewController.xib in Resources */,
 				75BF44C81D86E4560092C98D /* FCommentListViewController.xib in Resources */,
@@ -6179,8 +6217,10 @@
 				4D02D60E1B53A80300C92F60 /* NavigateController.xib in Resources */,
 				75A8FF551D6F538D007FE784 /* UzysAssetPickerController.bundle in Resources */,
 				4D56885719EB65EB00459A1B /* icon_rightarrow.png in Resources */,
+				0422C59C1DC1FD1E002F7B11 /* AgainCommentViewController.xib in Resources */,
 				04CC328E1D81B359006A4752 /* SearchDeviceCell.xib in Resources */,
 				753724381D4F159D00428008 /* MingRenViewController.xib in Resources */,
+				0422C5AF1DC22A75002F7B11 /* FrameShareViewController.xib in Resources */,
 				751F765C1D586F2A00E292D9 /* HuoXQViewController.xib in Resources */,
 				7535A2F01D1D24970050F9E0 /* MyOrderViewController.xib in Resources */,
 				754BD67C1D7C6E4A001488DA /* SearchProductCell.xib in Resources */,
@@ -6211,6 +6251,7 @@
 				756841441D887508006F9FBE /* ViewContent.storyboard in Resources */,
 				04DAC79C1DBEF2D7002235A7 /* DBHBuy.png in Resources */,
 				75C662511D7AD2250070A405 /* MessageViewController.xib in Resources */,
+				0422C5A01DC201B3002F7B11 /* Again.storyboard in Resources */,
 				75E42A001D51F09200C9910E /* ZTXQViewController.xib in Resources */,
 				752096B41D59C1440006CF5A /* AreaViewController.xib in Resources */,
 				4D56885819EB65EB00459A1B /* icon_rightarrow@2x.png in Resources */,
@@ -6259,7 +6300,6 @@
 				754BD68F1D7C7381001488DA /* JDFArtistCell.xib in Resources */,
 				4DEC76E11983A6C100E33532 /* controller.md in Resources */,
 				7501CB2F1D30F546006625DD /* HandViewController.xib in Resources */,
-				7568415A1D894639006F9FBE /* Again.storyboard in Resources */,
 				7535A2FF1D1D2BDD0050F9E0 /* UpDataViewController.xib in Resources */,
 				75196E901D1A67A1002D403B /* ChoiceViewController.xib in Resources */,
 				753724471D4F167D00428008 /* FenLeiViewController.xib in Resources */,
@@ -6322,6 +6362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0422C5AE1DC22A75002F7B11 /* FrameShareViewController.m in Sources */,
 				75A0904C1D5C73330096D19E /* BillTableViewCell.m in Sources */,
 				4DC6BABF1961C20700C87D1B /* UIScrollView+BeeUIStyle.m in Sources */,
 				752957301D334A5800949A44 /* SliderViewController.m in Sources */,
@@ -6410,7 +6451,6 @@
 				75EF734A1D6D9B6800E4CD63 /* Convers.m in Sources */,
 				4DEC77041983BF6F00E33532 /* Tool.m in Sources */,
 				04CC32951D81BD7E006A4752 /* AppDelegate+JPush.m in Sources */,
-				7568415D1D894709006F9FBE /* AgainTooicViewController.m in Sources */,
 				4DC6BB081961C20700C87D1B /* Bee_UICameraView.m in Sources */,
 				4DC6BB281961C20700C87D1B /* Bee_UIQuery.m in Sources */,
 				0422C5831DC03EEF002F7B11 /* NSObject+PDHud.m in Sources */,
@@ -6653,6 +6693,7 @@
 				75196E8F1D1A67A0002D403B /* ChoiceViewController.m in Sources */,
 				4DC6BAF91961C20700C87D1B /* Bee_UIView.m in Sources */,
 				4DC6BAA71961C20700C87D1B /* BeeUIBoard+ModalStack.m in Sources */,
+				0422C5A51DC20910002F7B11 /* CircleConversDetailCell.m in Sources */,
 				4DD048F01BC75D2800CBFC60 /* ZPF_YRJSONAdapter.m in Sources */,
 				4DC6BB611961C20700C87D1B /* NSArray+BeeActiveRecord.m in Sources */,
 				4DC6BBB31961C20700C87D1B /* CXMLDocument_PrivateExtensions.m in Sources */,
@@ -6662,6 +6703,7 @@
 				2D90E3421D845271001472EA /* FenLeiDetailViewController.m in Sources */,
 				4DC6BACC1961C20700C87D1B /* Bee_UIAnimationAlpha.m in Sources */,
 				4D02D57C1B539C8300C92F60 /* NIPaths.m in Sources */,
+				0422C59B1DC1FD1E002F7B11 /* AgainCommentViewController.m in Sources */,
 				7579BAAB1D73DA84004940A7 /* circleTopicCommentTableViewCell.m in Sources */,
 				75C662501D7AD2250070A405 /* MessageViewController.m in Sources */,
 				4DC6BB6C1961C20700C87D1B /* Bee_SystemInfo.mm in Sources */,
@@ -6708,6 +6750,7 @@
 				7564F7A31D508B6C00A46736 /* IntroViewController.m in Sources */,
 				4DC6BB9E1961C20700C87D1B /* Bee_Service.m in Sources */,
 				4DC6BB861961C20700C87D1B /* Bee_HTTPClientConfig.m in Sources */,
+				0422C5A11DC201B3002F7B11 /* AgainTooicViewController.m in Sources */,
 				4DC6BAC21961C20700C87D1B /* UIView+BeeUIStyle.m in Sources */,
 				0422C5901DC03EFF002F7B11 /* SVIndefiniteAnimatedView.m in Sources */,
 				754081271D6E918500B5662A /* CirclesRead.m in Sources */,
@@ -6944,6 +6987,7 @@
 				4DC6BB7A1961C20700C87D1B /* NSObject+BeeProperty.mm in Sources */,
 				4DC6BB471961C20700C87D1B /* UIView+BeeUITemplate.m in Sources */,
 				4DC6BAAB1961C20700C87D1B /* BeeUIStack+BackwardCompatible.m in Sources */,
+				0422C5AA1DC22208002F7B11 /* AvatarBrowser.m in Sources */,
 				4DC6BB941961C20700C87D1B /* Bee_HTTPWorklet2.m in Sources */,
 				4DC6BA901961C20700C87D1B /* Bee_Routine.mm in Sources */,
 				4DC6BACF1961C20700C87D1B /* Bee_UIAnimationStyling.m in Sources */,

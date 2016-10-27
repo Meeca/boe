@@ -54,6 +54,8 @@
     [self.contentView addSubview:_timeLab];
     
     _numlab = [[UILabel alloc] initWithFrame:CGRectZero];
+    _numlab.textColor = [UIColor whiteColor];
+    _numlab.font = [UIFont systemFontOfSize:13];
     [self.contentView addSubview:_numlab];
     
 }
@@ -66,6 +68,9 @@
     _nameLab.text = siXinModel.name;
     _contentLab.text = siXinModel.title;
     _timeLab.text = [Tool timestampToString:siXinModel.times Format:@"MM月dd日 HH:mm"];
+    
+    
+ 
     
     if(siXinModel.count != 0){
         _numlab.text = [NSString stringWithFormat:@"%ld",siXinModel.count];;
@@ -152,13 +157,18 @@
     _timeLab.right = self.width - 10;
     
     
-    _numlab.frame = CGRectMake(0, 0, 13, 13);
+    _numlab.frame = CGRectMake(0, 0, 16, 16);
     _numlab.top = _iconImageView.top;
-    _numlab.right = _iconImageView.right;
+    
+    
+    
+    _numlab.right = _iconImageView.right + 8;
     
     _numlab.backgroundColor = [UIColor redColor];
     _numlab.layer.cornerRadius = _numlab.width/2;
     _numlab.layer.masksToBounds = YES;
+    _numlab.textAlignment = NSTextAlignmentCenter;
+    
     
     _iconImageView.layer.cornerRadius = _iconImageView.width/2;
     _iconImageView.layer.masksToBounds = YES;

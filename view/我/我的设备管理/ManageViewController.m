@@ -11,6 +11,10 @@
 #import "TwoCodeVCtrl.h"
 #import "BaseModel.h"
 #import "ManageModel.h"
+#import "FrameShareViewController.h"
+
+
+
 
 @interface ManageViewController () <UITableViewDelegate, UITableViewDataSource> {
     BaseModel *baseModel;
@@ -150,11 +154,19 @@ ON_SIGNAL3(BaseModel, SHAREEQUIPMENTLIST, signal){
     }
     else if (indexPath.section==1){
         EquipmentList *s = _shareToMeDeviceArray[indexPath.row];
-        FrameViewController *vc = [[FrameViewController alloc] init];
+        
+        
+        FrameShareViewController *vc = [[FrameShareViewController alloc] initWithNibName:@"FrameShareViewController" bundle:nil];
         vc.hidesBottomBarWhenPushed = YES;
         vc.list = s;
         [Tool setBackButtonNoTitle:self];
         [self.navigationController pushViewController:vc animated:YES];
+        
+//        FrameViewController *vc = [[FrameViewController alloc] init];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        vc.list = s;
+//        [Tool setBackButtonNoTitle:self];
+//        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 

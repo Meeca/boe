@@ -523,7 +523,7 @@ DEF_SIGNAL(RCOMMENTADD)
                     return;
                 }
                 else{
-                    [self presentMessageTips:@"推送成功"];
+                    [self presentMessageTips:api.resp.msg];
                     [self sendUISignal:self.JPUSHINDEX];
                 }
             }
