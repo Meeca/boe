@@ -367,7 +367,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1151"
             endingLineNumber = "1151"
-            landmarkName = "-sendAcion:"
+            landmarkName = "-keyboardShow:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -383,8 +383,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "957"
             endingLineNumber = "957"
-            landmarkName = "-tapAction:"
-            landmarkType = "7">
+            landmarkName = "@implementation XiangQingViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
