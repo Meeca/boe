@@ -14,7 +14,7 @@
     [super awakeFromNib];
     
     _numLab.backgroundColor = [UIColor redColor];
-    _numLab.layer.cornerRadius = _numLab.width/2;
+    _numLab.layer.cornerRadius = 15/2;
     _numLab.clipsToBounds = YES;
     
     // Initialization code
