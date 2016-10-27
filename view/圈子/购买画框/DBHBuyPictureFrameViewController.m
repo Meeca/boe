@@ -214,6 +214,9 @@ static NSString * const kBuyPictureFrameImageTableViewCellIdentifier = @"kBuyPic
     // 立即购买
 //    [self loadPictureFrameInfoWityType:@"1"];
     
+    
+    
+    
     UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
     
     [rootVC.view addSubview:self.buyPictureFrameView];
