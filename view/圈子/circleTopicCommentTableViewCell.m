@@ -11,6 +11,8 @@
 #import "ViewAllContentViewController.h"
 
 #import "DBHTopicModelCommsList.h"
+#import "AvatarBrowser.h"
+
 
 @interface circleTopicCommentTableViewCell()
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
@@ -52,7 +54,6 @@
         
         self.zanCountLabel.text  = _model.zamNum;
     }
-    self.contentLabel.text = _model.title;
     
     //    self.heartButton.selected = _commsList.zam_type == 2;
     if ([_model.zamType isEqual:@2]) {
@@ -62,15 +63,39 @@
     {
         self.heartButton.selected = NO;
     }
-    if (self.contentLabel.text.length < 40) {
+    
+//    if (self.contentLabel.text.length < 40) {
+//        
+//        self.viewBtn.hidden = YES;
+//    }
+//    else
+//    {
+//        _contentLabel.numberOfLines=3;
+//        self.viewBtn.hidden = NO;
+//    }
+    
+    
+    self.contentLabel.text = _model.title;
+_contentLabel.numberOfLines=0;
+    
+    self.viewBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    if (model.image.length != 0) {
+
+        [_viewBtn sd_setImageWithURL:[NSURL URLWithString:model.image] forState:UIControlStateNormal placeholderImage:nil];
         
-        self.viewBtn.hidden = YES;
-    }
-    else
-    {
-        _contentLabel.numberOfLines=3;
-        self.viewBtn.hidden = NO;
-    }
+        
+        _viewBtn.hidden = NO;
+        
+
+    }else{
+        _viewBtn.hidden = YES;
+     }
+
+    
+    
+    
+    
 }
 
 //"comm_id": "1",                 //评论id
@@ -174,18 +199,37 @@
 - (IBAction)viewAllArticleAction:(UIButton *)sender {
     
     NSLog(@"你点击了查看全文按钮");
-//    ViewAllContentViewController *circleConversDetailVC = [[UIStoryboard storyboardWithName:@"ViewContent" bundle:nil]instantiateViewControllerWithIdentifier:@"ViewAllContentViewController"];
-//
-//    [self pushViewController:circleConversDetailVC animated:YES];
-    ViewAllContentViewController *circleSearchVC = [[UIStoryboard storyboardWithName:@"ViewContent" bundle:nil] instantiateViewControllerWithIdentifier:@"ViewAllContentViewController"];
-    UINavigationController *naviVC = [[UINavigationController alloc] initWithRootViewController:circleSearchVC];
-    circleSearchVC.content = _contentLabel.text;
-    [naviVC setNavigationBarHidden:NO animated:YES];
     
-    [[self getCurrentViewController] presentViewController:naviVC animated:YES completion:^{
+    if(_isShow){
+    
+        AvatarBrowser *browser = [[AvatarBrowser alloc] initWithImage:_viewBtn.imageView.image view:_viewBtn];
         
-    }];
+        [browser show];
 
+    }else{
+    
+    
+        
+        
+        //    ViewAllContentViewController *circleConversDetailVC = [[UIStoryboard storyboardWithName:@"ViewContent" bundle:nil]instantiateViewControllerWithIdentifier:@"ViewAllContentViewController"];
+        //
+        //    [self pushViewController:circleConversDetailVC animated:YES];
+        ViewAllContentViewController *circleSearchVC = [[UIStoryboard storyboardWithName:@"ViewContent" bundle:nil] instantiateViewControllerWithIdentifier:@"ViewAllContentViewController"];
+        UINavigationController *naviVC = [[UINavigationController alloc] initWithRootViewController:circleSearchVC];
+        circleSearchVC.content = _contentLabel.text;
+        [naviVC setNavigationBarHidden:NO animated:YES];
+        
+        [[self getCurrentViewController] presentViewController:naviVC animated:YES completion:^{
+            
+        }];
+        
+
+    
+    }
+    
+    
+
+    
     
 }
 

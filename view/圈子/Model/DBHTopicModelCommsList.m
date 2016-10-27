@@ -18,6 +18,7 @@ NSString *const kDBHTopicModelCommsListTitle = @"title";
 NSString *const kDBHTopicModelCommsListZamType = @"zam_type";
 NSString *const kDBHTopicModelCommsListUId = @"u_id";
 NSString *const kDBHTopicModelCommsListUImage = @"u_image";
+NSString *const kDBHTopicModelCommsListU_Image = @"image";
 
 
 @interface DBHTopicModelCommsList ()
@@ -37,6 +38,7 @@ NSString *const kDBHTopicModelCommsListUImage = @"u_image";
 @synthesize zamType = _zamType;
 @synthesize uId = _uId;
 @synthesize uImage = _uImage;
+@synthesize image = _image;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
@@ -72,6 +74,7 @@ NSString *const kDBHTopicModelCommsListUImage = @"u_image";
             self.zamType = [self objectOrNilForKey:kDBHTopicModelCommsListZamType fromDictionary:dict];
             self.uId = [self objectOrNilForKey:kDBHTopicModelCommsListUId fromDictionary:dict];
             self.uImage = [self objectOrNilForKey:kDBHTopicModelCommsListUImage fromDictionary:dict];
+        self.image = [self objectOrNilForKey:kDBHTopicModelCommsListU_Image fromDictionary:dict];
 
     }
     
@@ -101,6 +104,7 @@ NSString *const kDBHTopicModelCommsListUImage = @"u_image";
     [mutableDict setValue:self.zamType forKey:kDBHTopicModelCommsListZamType];
     [mutableDict setValue:self.uId forKey:kDBHTopicModelCommsListUId];
     [mutableDict setValue:self.uImage forKey:kDBHTopicModelCommsListUImage];
+    [mutableDict setValue:self.image forKey:kDBHTopicModelCommsListU_Image];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -133,6 +137,8 @@ NSString *const kDBHTopicModelCommsListUImage = @"u_image";
     self.zamType = [aDecoder decodeObjectForKey:kDBHTopicModelCommsListZamType];
     self.uId = [aDecoder decodeObjectForKey:kDBHTopicModelCommsListUId];
     self.uImage = [aDecoder decodeObjectForKey:kDBHTopicModelCommsListUImage];
+    self.image = [aDecoder decodeObjectForKey:kDBHTopicModelCommsListU_Image];
+
     return self;
 }
 
@@ -148,6 +154,8 @@ NSString *const kDBHTopicModelCommsListUImage = @"u_image";
     [aCoder encodeObject:_zamType forKey:kDBHTopicModelCommsListZamType];
     [aCoder encodeObject:_uId forKey:kDBHTopicModelCommsListUId];
     [aCoder encodeObject:_uImage forKey:kDBHTopicModelCommsListUImage];
+    [aCoder encodeObject:_image forKey:kDBHTopicModelCommsListU_Image];
+
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -165,6 +173,8 @@ NSString *const kDBHTopicModelCommsListUImage = @"u_image";
         copy.zamType = [self.zamType copyWithZone:zone];
         copy.uId = [self.uId copyWithZone:zone];
         copy.uImage = [self.uImage copyWithZone:zone];
+        copy.image = [self.image copyWithZone:zone];
+
     }
     
     return copy;

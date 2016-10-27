@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSString *rId;
 @property (nonatomic, strong) NSString *uImage;
 @property (nonatomic, strong) NSString *createdAt;
+@property (nonatomic, strong) NSString *image;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
