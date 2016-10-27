@@ -16,6 +16,7 @@ typedef void(^ClickBuyButtonBlock)(DetailsInfo *model);
 
 @property (nonatomic, strong) NSArray *pictureFrameSizeArray;
 @property (nonatomic, strong) NSArray *pictureFrameBorderArray;
+@property (nonatomic, assign) NSInteger price;
 
 - (void)viewShow;
 
