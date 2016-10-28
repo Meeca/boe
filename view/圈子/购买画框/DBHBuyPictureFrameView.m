@@ -13,31 +13,27 @@
 #import "Masonry.h"
 
 #import "DBHBuyPictureFrameSizeInfoModelInfo.h"
+#import "BuyFrameViewCell.h"
 
 #define COLOR(R,G,B,A) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:A]
 #define  SCREENWIDTH [UIScreen mainScreen].bounds.size.width
 #define AUTOLAYOUTSIZE(size) ((size) * (SCREENWIDTH / 375))
 
-@interface DBHBuyPictureFrameView ()
+@interface DBHBuyPictureFrameView () <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource> {
+    CGFloat height;
+}
 
 @property (nonatomic, strong) UIView *whiteView;
 @property (nonatomic, strong) UILabel *selectSpecificationLabel;
 @property (nonatomic, strong) UILabel *moneyLabel;
-@property (nonatomic, strong) UILabel *sizeLabel;
-@property (nonatomic, strong) UIButton *sizeButtonOne;
-@property (nonatomic, strong) UIButton *sizeButtonTwo;
-@property (nonatomic, strong) UILabel *borderLabel;
-@property (nonatomic, strong) UIButton *borderButtonOne;
-@property (nonatomic, strong) UIButton *borderButtonTwo;
 @property (nonatomic, strong) UILabel *numberLabel;
 @property (nonatomic, strong) DBHBuyPictureFrameNumberView *buyPictureFrameNumberView;
 @property (nonatomic, strong) UIButton *buyButton;
-
 @property (nonatomic, copy) ClickBuyButtonBlock clickBuyButtonBlock;
-
-@property (nonatomic, assign) NSInteger price;
-
 @property (nonatomic, strong) DetailsInfo *model;
+@property (nonatomic, strong) UICollectionView *collectView;
+@property (nonatomic, assign) NSInteger sizeIndex;
+@property (nonatomic, assign) NSInteger frameIndex;
 
 @end
 
@@ -49,11 +45,17 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = COLOR(0, 0, 0, 0.6);
-        _price = 3000;
-        
         [self setUI];
     }
     return self;
+}
+
+- (void)setPrice:(NSInteger)price {
+    if (_price != price) {
+        _price = price;
+    }
+    
+    _moneyLabel.text = [@"￥" stringByAppendingString:@(price).stringValue];
 }
 
 #pragma mark - touches
@@ -70,81 +72,172 @@
     [self viewHide];
 }
 
+#pragma mark - UICollectionViewDelegateFlowLayout, UICollectionViewDataSource
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 2;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    if (section == 0) {
+        return self.pictureFrameSizeArray.count;
+    }
+    return self.pictureFrameBorderArray.count;
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    BuyFrameViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"picAtt" forIndexPath:indexPath];
+    if (indexPath.section == 0) {
+        DBHBuyPictureFrameSizeInfoModelInfo *sizeModel = self.pictureFrameSizeArray[indexPath.item];
+        cell.sizeModel = sizeModel;
+        cell.selected = NO;
+        if (_sizeIndex == indexPath.item) {
+            cell.selected = YES;
+        }
+    } else {
+        DBHBuyPictureFrameSizeInfoModelInfo *sizeModel = self.pictureFrameBorderArray[indexPath.item];
+        cell.sizeModel = sizeModel;
+        cell.selected = NO;
+        if (_frameIndex == indexPath.item) {
+            cell.selected = YES;
+        }
+    }
+    [cell setNeedsLayout];
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        DBHBuyPictureFrameSizeInfoModelInfo *sizeModel = self.pictureFrameSizeArray[indexPath.item];
+        if ([sizeModel.sock integerValue]<=0) {
+            return;
+        }
+        _sizeIndex = indexPath.item;
+        
+        NSInteger pri = _price;
+        
+        if (_frameIndex>=0) {
+            DBHBuyPictureFrameSizeInfoModelInfo *sizeModel = self.pictureFrameBorderArray[_frameIndex];
+            pri += [sizeModel.price integerValue];
+        }
+        _moneyLabel.text = [NSString stringWithFormat:@"￥%ld", (pri+[sizeModel.price integerValue])*[_buyPictureFrameNumberView.number integerValue]];
+    } else {
+        DBHBuyPictureFrameSizeInfoModelInfo *sizeModel = self.pictureFrameBorderArray[indexPath.item];
+        if ([sizeModel.sock integerValue]<=0) {
+            return;
+        }
+        _frameIndex = indexPath.item;
+        NSInteger pri = _price;
+
+        if (_sizeIndex>=0) {
+            DBHBuyPictureFrameSizeInfoModelInfo *sizeModel = self.pictureFrameSizeArray[_sizeIndex];
+            pri += [sizeModel.price integerValue];
+        }
+        _moneyLabel.text = [NSString stringWithFormat:@"￥%ld", (pri+[sizeModel.price integerValue])*[_buyPictureFrameNumberView.number integerValue]];
+    }
+    [collectionView reloadData];
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    CGSize size = [self collectionView:collectionView layout:collectionView.collectionViewLayout referenceSizeForHeaderInSection:indexPath.section];
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
+        [header removeAllSubviews];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+        [header addSubview:label];
+        label.textColor = COLOR(158, 154, 153, 1);
+        label.font = [UIFont boldSystemFontOfSize:AUTOLAYOUTSIZE(15)];
+        if (indexPath.section == 0) {
+            label.text = @"尺寸";
+            [label sizeToFit];
+        } else {
+            label.text = @"外框";
+            [label sizeToFit];
+            label.bottom = size.height;
+        }
+        return header;
+    }
+    return nil;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        DBHBuyPictureFrameSizeInfoModelInfo *sizeModel = self.pictureFrameSizeArray[indexPath.item];
+        
+        CGSize size = [Tool getLabelSizeWithText:sizeModel.title AndWidth:collectionView.width AndFont:[UIFont boldSystemFontOfSize:AUTOLAYOUTSIZE(15)] attribute:nil];
+        
+        return CGSizeMake(size.width+=30, size.height+=30);
+    } else {
+        DBHBuyPictureFrameSizeInfoModelInfo *sizeModel = self.pictureFrameBorderArray[indexPath.item];
+        
+        CGSize size = [Tool getLabelSizeWithText:sizeModel.title AndWidth:collectionView.width AndFont:[UIFont boldSystemFontOfSize:AUTOLAYOUTSIZE(15)] attribute:nil];
+        
+        return CGSizeMake(size.width+=30, size.height+=30);
+        
+    }
+    return CGSizeZero;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    if (section == 1) {
+        return UIEdgeInsetsMake(AUTOLAYOUTSIZE(20), 0, 0, 0);
+    }
+    return UIEdgeInsetsZero;
+}
+
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    CGSize size = [Tool getLabelSizeWithText:@"外框" AndWidth:collectionView.width AndFont:[UIFont boldSystemFontOfSize:AUTOLAYOUTSIZE(15)] attribute:nil];
+    return CGSizeMake(collectionView.width, size.height+AUTOLAYOUTSIZE(20));
+}
+
 #pragma mark - ui
 - (void)setUI {
     [self addSubview:self.whiteView];
-    [self addSubview:self.selectSpecificationLabel];
-    [self addSubview:self.moneyLabel];
-    [self addSubview:self.sizeLabel];
-    [self addSubview:self.sizeButtonOne];
-    [self addSubview:self.sizeButtonTwo];
-    [self addSubview:self.borderLabel];
-    [self addSubview:self.borderButtonOne];
-    [self addSubview:self.borderButtonTwo];
-    [self addSubview:self.numberLabel];
-    [self addSubview:self.buyPictureFrameNumberView];
-    [self addSubview:self.buyButton];
+    [self.whiteView addSubview:self.selectSpecificationLabel];
+    [self.whiteView addSubview:self.moneyLabel];
+    [self.whiteView addSubview:self.collectView];
+    [self.whiteView addSubview:self.numberLabel];
+    [self.whiteView addSubview:self.buyPictureFrameNumberView];
+    [self.whiteView addSubview:self.buyButton];
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
     
-    [_whiteView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(self);
-        make.height.offset(AUTOLAYOUTSIZE(365));
-        make.centerX.equalTo(self);
-        make.bottom.offset(AUTOLAYOUTSIZE(365));
-    }];
-    [_selectSpecificationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_whiteView).offset(AUTOLAYOUTSIZE(20));
-        make.top.equalTo(_whiteView).offset(AUTOLAYOUTSIZE(18));
-    }];
-    [_moneyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(_selectSpecificationLabel);
-        make.right.offset(- AUTOLAYOUTSIZE(20));
-    }];
-    [_sizeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_selectSpecificationLabel);
-        make.top.equalTo(_selectSpecificationLabel.mas_bottom).offset(AUTOLAYOUTSIZE(28));
-    }];
-    [_sizeButtonOne mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.offset(AUTOLAYOUTSIZE(65));
-        make.height.equalTo(_sizeButtonOne.mas_width).multipliedBy(0.49);
-        make.left.equalTo(_sizeLabel);
-        make.top.equalTo(_sizeLabel.mas_bottom).offset(AUTOLAYOUTSIZE(15));
-    }];
-    [_sizeButtonTwo mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.equalTo(_sizeButtonOne);
-        make.left.equalTo(_sizeButtonOne.mas_right).offset(AUTOLAYOUTSIZE(10));
-        make.centerY.equalTo(_sizeButtonOne);
-    }];
-    [_borderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_selectSpecificationLabel);
-        make.top.equalTo(_sizeButtonOne.mas_bottom).offset(AUTOLAYOUTSIZE(22));
-    }];
-    [_borderButtonOne mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.offset(AUTOLAYOUTSIZE(80));
-        make.height.equalTo(_sizeButtonOne);
-        make.left.equalTo(_borderLabel);
-        make.top.equalTo(_borderLabel.mas_bottom).offset(AUTOLAYOUTSIZE(15));
-    }];
-    [_borderButtonTwo mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.equalTo(_sizeButtonOne);
-        make.centerY.equalTo(_borderButtonOne);
-        make.left.equalTo(_borderButtonOne.mas_right).offset(AUTOLAYOUTSIZE(10));
-    }];
-    [_numberLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_selectSpecificationLabel);
-        make.top.equalTo(_borderButtonOne.mas_bottom).offset(AUTOLAYOUTSIZE(32));
-    }];
-    [_buyPictureFrameNumberView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.offset(AUTOLAYOUTSIZE(136));
-        make.height.equalTo(_buyPictureFrameNumberView.mas_width).multipliedBy(0.25);
-        make.centerY.equalTo(_numberLabel);
-        make.right.offset(- AUTOLAYOUTSIZE(25));
-    }];
-    [_buyButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(self);
-        make.height.offset(AUTOLAYOUTSIZE(50));
-        make.centerX.equalTo(self);
-        make.bottom.equalTo(_whiteView);
-    }];
+    if (height == 0 || height != self.collectView.contentSize.height) {
+        height = self.collectView.contentSize.height;
+        [self.collectView reloadData];
+        [self setNeedsLayout];
+    }
+    
+    _whiteView.frame = CGRectMake(0, 0, self.width, AUTOLAYOUTSIZE(365));
+    
+    [_selectSpecificationLabel sizeToFit];
+    _selectSpecificationLabel.left = AUTOLAYOUTSIZE(20);
+    _selectSpecificationLabel.top = AUTOLAYOUTSIZE(18);
+    
+    [_moneyLabel sizeToFit];
+    _moneyLabel.width +=  50;
+    _moneyLabel.centerY = _selectSpecificationLabel.centerY;
+    _moneyLabel.right = self.width - AUTOLAYOUTSIZE(20);
+    
+    _collectView.frame = CGRectMake(AUTOLAYOUTSIZE(20), _selectSpecificationLabel.bottom + AUTOLAYOUTSIZE(28), self.width-AUTOLAYOUTSIZE(40), height);
+    
+    [_numberLabel sizeToFit];
+    _numberLabel.left = AUTOLAYOUTSIZE(20);
+    _numberLabel.top = _collectView.bottom+AUTOLAYOUTSIZE(32);
+    
+    _buyPictureFrameNumberView.frame = CGRectMake(0, 0, AUTOLAYOUTSIZE(136), AUTOLAYOUTSIZE(136)/4);
+    _buyPictureFrameNumberView.centerY = _numberLabel.centerY;
+    _buyPictureFrameNumberView.right = self.width - AUTOLAYOUTSIZE(25);
+    
+    _buyButton.frame = CGRectMake(0, 0, self.width, AUTOLAYOUTSIZE(50));
+    _buyButton.top = _numberLabel.bottom + AUTOLAYOUTSIZE(25);
+    
+    _whiteView.height = _buyButton.bottom;
+    _whiteView.top = self.height;
 }
 
 #pragma mark - event responds
@@ -155,70 +248,35 @@
     self.model.material_num = _buyPictureFrameNumberView.number;
     self.model.electronic_price = [self.moneyLabel.text substringFromIndex:1];
     
-    DBHBuyPictureFrameSizeInfoModelInfo *sizeModel = _pictureFrameSizeArray[_sizeButtonOne.selected ? 0 : 1];
-    self.model.pictureFrameTypeOne = sizeModel.aId;
+    if (_sizeIndex>=0) {
+        DBHBuyPictureFrameSizeInfoModelInfo *sizeModel = _pictureFrameSizeArray[_sizeIndex];
+        self.model.pictureFrameTypeOne = sizeModel.aId;
+    }
     
-    DBHBuyPictureFrameSizeInfoModelInfo *borderModel = _pictureFrameBorderArray[_borderButtonOne.selected ? 0 : 1];
-    self.model.pictureFrameTypeTwo = borderModel.aId;
+    if (_frameIndex>=0) {        
+        DBHBuyPictureFrameSizeInfoModelInfo *borderModel = _pictureFrameBorderArray[_frameIndex];
+        self.model.pictureFrameTypeTwo = borderModel.aId;
+    }
     
     _clickBuyButtonBlock(self.model);
     
     [self viewHide];
 }
-- (void)respondsToSizeButton:(UIButton *)sender {
-    // 选择尺寸
-    DBHBuyPictureFrameSizeInfoModelInfo *model = _pictureFrameSizeArray[1];
-    if (sender.tag == 200) {
-        _price -= model.price.integerValue;
-    } else {
-        _price += model.price.integerValue;
-    }
-    _moneyLabel.text = [NSString stringWithFormat:@"￥%ld", _price * _buyPictureFrameNumberView.number.integerValue];
-    
-    sender.selected = YES;
-    sender.userInteractionEnabled = NO;
-    
-    UIButton *otherButton = [self viewWithTag:401 - sender.tag];
-    otherButton.selected = NO;
-    otherButton.userInteractionEnabled = YES;
-}
-- (void)respondsToBorderButton:(UIButton *)sender {
-    // 选择外框
-    DBHBuyPictureFrameSizeInfoModelInfo *model = _pictureFrameBorderArray[1];
-    if (sender.tag == 202) {
-        _price -= model.price.integerValue;
-    } else {
-        _price += model.price.integerValue;
-    }
-    _moneyLabel.text = [NSString stringWithFormat:@"￥%ld", _price * _buyPictureFrameNumberView.number.integerValue];
-    
-    sender.selected = YES;
-    sender.userInteractionEnabled = NO;
-    
-    UIButton *otherButton = [self viewWithTag:405 - sender.tag];
-    otherButton.selected = NO;
-    otherButton.userInteractionEnabled = YES;
-}
 
 #pragma mark - private methods
 - (void)viewShow {
     _buyPictureFrameNumberView.number = @"1";
-    
-    [_whiteView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.offset(0);
-    }];
+    _sizeIndex = -1;
+    _frameIndex = -1;
+    [self.collectView reloadData];
     
     [UIView animateWithDuration:0.25 animations:^{
-        [self layoutIfNeeded];
+        _whiteView.bottom = self.height;
     }];
 }
 - (void)viewHide {
-    [_whiteView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.offset(AUTOLAYOUTSIZE(365));
-    }];
-    
     [UIView animateWithDuration:0.25 animations:^{
-        [self layoutIfNeeded];
+        _whiteView.top = self.height;
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
     }];
@@ -246,98 +304,30 @@
 - (UILabel *)moneyLabel {
     if (!_moneyLabel) {
         _moneyLabel = [[UILabel alloc] init];
-        _moneyLabel.text = @"￥3000";
         _moneyLabel.textColor = COLOR(21, 175, 228, 1);
         _moneyLabel.font = [UIFont boldSystemFontOfSize:AUTOLAYOUTSIZE(20)];
+        _moneyLabel.textAlignment = NSTextAlignmentRight;
     }
     return _moneyLabel;
 }
-- (UILabel *)sizeLabel {
-    if (!_sizeLabel) {
-        _sizeLabel = [[UILabel alloc] init];
-        _sizeLabel.text = @"尺寸";
-        _sizeLabel.textColor = COLOR(158, 154, 153, 1);
-        _sizeLabel.font = [UIFont boldSystemFontOfSize:AUTOLAYOUTSIZE(15)];
+
+- (UICollectionView *)collectView {
+    if (!_collectView) {
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        layout.minimumLineSpacing = AUTOLAYOUTSIZE(10);
+        layout.minimumInteritemSpacing = AUTOLAYOUTSIZE(10);
+        _collectView = [[UICollectionView alloc] initWithFrame:CGRectMake(AUTOLAYOUTSIZE(20), self.width-AUTOLAYOUTSIZE(40), self.width-AUTOLAYOUTSIZE(40), 100) collectionViewLayout:layout];
+        _collectView.backgroundColor = [UIColor whiteColor];
+        
+        _collectView.delegate = self;
+        _collectView.dataSource = self;
+        
+        [_collectView registerClass:[BuyFrameViewCell class] forCellWithReuseIdentifier:@"picAtt"];
+        [_collectView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     }
-    return _sizeLabel;
+    return _collectView;
 }
-- (UIButton *)sizeButtonOne {
-    if (!_sizeButtonOne) {
-        _sizeButtonOne = [UIButton buttonWithType:UIButtonTypeCustom];
-        _sizeButtonOne.tag = 200;
-        _sizeButtonOne.titleLabel.font = [UIFont systemFontOfSize:AUTOLAYOUTSIZE(15)];
-        _sizeButtonOne.selected = YES;
-        _sizeButtonOne.userInteractionEnabled = NO;
-        _sizeButtonOne.layer.cornerRadius = AUTOLAYOUTSIZE(3);
-        [_sizeButtonOne setTitle:@"32寸" forState:UIControlStateNormal];
-        [_sizeButtonOne setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [_sizeButtonOne setTitleColor:COLOR(21, 175, 228, 1) forState:UIControlStateSelected];
-        [_sizeButtonOne setBackgroundImage:[UIImage imageNamed:@"hui"] forState:UIControlStateNormal];
-        [_sizeButtonOne setBackgroundImage:[UIImage imageNamed:@"hui"] forState:UIControlStateHighlighted];
-        [_sizeButtonOne setBackgroundImage:[UIImage imageNamed:@"lan"] forState:UIControlStateSelected];
-        [_sizeButtonOne addTarget:self action:@selector(respondsToSizeButton:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _sizeButtonOne;
-}
-- (UIButton *)sizeButtonTwo {
-    if (!_sizeButtonTwo) {
-        _sizeButtonTwo = [UIButton buttonWithType:UIButtonTypeCustom];
-        _sizeButtonTwo.tag = 201;
-        _sizeButtonTwo.titleLabel.font = [UIFont systemFontOfSize:AUTOLAYOUTSIZE(15)];
-        _sizeButtonTwo.layer.cornerRadius = AUTOLAYOUTSIZE(3);
-        [_sizeButtonTwo setTitle:@"55寸" forState:UIControlStateNormal];
-        [_sizeButtonTwo setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [_sizeButtonTwo setTitleColor:COLOR(21, 175, 228, 1) forState:UIControlStateSelected];
-        [_sizeButtonTwo setBackgroundImage:[UIImage imageNamed:@"hui"] forState:UIControlStateNormal];
-        [_sizeButtonTwo setBackgroundImage:[UIImage imageNamed:@"hui"] forState:UIControlStateHighlighted];
-        [_sizeButtonTwo setBackgroundImage:[UIImage imageNamed:@"lan"] forState:UIControlStateSelected];
-        [_sizeButtonTwo addTarget:self action:@selector(respondsToSizeButton:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _sizeButtonTwo;
-}
-- (UILabel *)borderLabel {
-    if (!_borderLabel) {
-        _borderLabel = [[UILabel alloc] init];
-        _borderLabel.text = @"外框";
-        _borderLabel.textColor = COLOR(158, 154, 153, 1);
-        _borderLabel.font = [UIFont boldSystemFontOfSize:AUTOLAYOUTSIZE(15)];
-    }
-    return _borderLabel;
-}
-- (UIButton *)borderButtonOne {
-    if (!_borderButtonOne) {
-        _borderButtonOne = [UIButton buttonWithType:UIButtonTypeCustom];
-        _borderButtonOne.tag = 202;
-        _borderButtonOne.titleLabel.font = [UIFont systemFontOfSize:AUTOLAYOUTSIZE(15)];
-        _borderButtonOne.layer.cornerRadius = AUTOLAYOUTSIZE(3);
-        _borderButtonOne.selected = YES;
-        _borderButtonOne.userInteractionEnabled = NO;
-        [_borderButtonOne setTitle:@"原木色" forState:UIControlStateNormal];
-        [_borderButtonOne setTitleColor:COLOR(178, 168, 166, 1) forState:UIControlStateNormal];
-        [_borderButtonOne setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
-        [_borderButtonOne setBackgroundImage:[UIImage imageNamed:@"xu"] forState:UIControlStateNormal];
-        [_borderButtonOne setBackgroundImage:[UIImage imageNamed:@"xu"] forState:UIControlStateHighlighted];
-        [_borderButtonOne setBackgroundImage:[UIImage imageNamed:@"hui"] forState:UIControlStateSelected];
-        [_borderButtonOne addTarget:self action:@selector(respondsToBorderButton:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _borderButtonOne;
-}
-- (UIButton *)borderButtonTwo {
-    if (!_borderButtonTwo) {
-        _borderButtonTwo = [UIButton buttonWithType:UIButtonTypeCustom];
-        _borderButtonTwo.tag = 203;
-        _borderButtonTwo.titleLabel.font = [UIFont systemFontOfSize:AUTOLAYOUTSIZE(15)];
-        _borderButtonTwo.layer.cornerRadius = AUTOLAYOUTSIZE(3);
-        [_borderButtonTwo setTitle:@"金属" forState:UIControlStateNormal];
-        [_borderButtonTwo setTitleColor:COLOR(178, 168, 166, 1) forState:UIControlStateNormal];
-        [_borderButtonTwo setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
-        [_borderButtonTwo setBackgroundImage:[UIImage imageNamed:@"xu"] forState:UIControlStateNormal];
-        [_borderButtonTwo setBackgroundImage:[UIImage imageNamed:@"xu"] forState:UIControlStateHighlighted];
-        [_borderButtonTwo setBackgroundImage:[UIImage imageNamed:@"hui"] forState:UIControlStateSelected];
-        [_borderButtonTwo addTarget:self action:@selector(respondsToBorderButton:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _borderButtonTwo;
-}
+
 - (UILabel *)numberLabel {
     if (!_numberLabel) {
         _numberLabel = [[UILabel alloc] init];
@@ -351,7 +341,16 @@
     if (!_buyPictureFrameNumberView) {
         _buyPictureFrameNumberView = [[DBHBuyPictureFrameNumberView alloc] init];
         [_buyPictureFrameNumberView clickButtonBlock:^(NSInteger number) {
-            _moneyLabel.text = [NSString stringWithFormat:@"￥%ld", _price * number];
+            NSInteger pri = _price;
+            if (_sizeIndex>=0) {
+                DBHBuyPictureFrameSizeInfoModelInfo *sizeModel = self.pictureFrameSizeArray[_sizeIndex];
+                pri += [sizeModel.price integerValue];
+            }
+            if (_frameIndex>=0) {
+                DBHBuyPictureFrameSizeInfoModelInfo *sizeModel = self.pictureFrameBorderArray[_frameIndex];
+                pri += [sizeModel.price integerValue];
+            }
+            _moneyLabel.text = [NSString stringWithFormat:@"￥%ld", pri * number];
         }];
     }
     return _buyPictureFrameNumberView;

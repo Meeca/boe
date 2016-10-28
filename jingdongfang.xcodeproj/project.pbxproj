@@ -875,6 +875,7 @@
 		CD1B9AD01DBD0C8B00102F8C /* SSPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B9AC41DBD0C8B00102F8C /* SSPhotoBrowser.m */; };
 		CD1B9AD11DBD0C8B00102F8C /* SSPhotoBrowser_ImageError@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1B9AC51DBD0C8B00102F8C /* SSPhotoBrowser_ImageError@2x.png */; };
 		CD1B9AD21DBD0C8B00102F8C /* SSPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B9AC81DBD0C8B00102F8C /* SSPhotoViewController.m */; };
+		CD6343F21DC25AE90048D38D /* BuyFrameViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6343F11DC25AE90048D38D /* BuyFrameViewCell.m */; };
 		CD7C33091DAE6F0700084EEA /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7C33081DAE6F0700084EEA /* NSString+Emoji.m */; };
 		CDE218001DBB4C3A005D84C2 /* TouSuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE217FF1DBB4C3A005D84C2 /* TouSuViewController.m */; };
 		E48DDE5D1DB6454400D8BD73 /* PrivateMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E48DDE5C1DB6454400D8BD73 /* PrivateMTableViewCell.m */; };
@@ -2508,6 +2509,8 @@
 		CD1B9AC61DBD0C8B00102F8C /* SSPhotoProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPhotoProtocol.h; sourceTree = "<group>"; };
 		CD1B9AC71DBD0C8B00102F8C /* SSPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPhotoViewController.h; sourceTree = "<group>"; };
 		CD1B9AC81DBD0C8B00102F8C /* SSPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPhotoViewController.m; sourceTree = "<group>"; };
+		CD6343F01DC25AE90048D38D /* BuyFrameViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyFrameViewCell.h; sourceTree = "<group>"; };
+		CD6343F11DC25AE90048D38D /* BuyFrameViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyFrameViewCell.m; sourceTree = "<group>"; };
 		CD7C33071DAE6F0700084EEA /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
 		CD7C33081DAE6F0700084EEA /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
 		CDE217FE1DBB4C3A005D84C2 /* TouSuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouSuViewController.h; sourceTree = "<group>"; };
@@ -2813,6 +2816,8 @@
 				3F1F50A91D9BCFF50030FF7B /* DBHBuyPictureFrameSizeInfoModelInfo.m */,
 				3F1F50AA1D9BCFF50030FF7B /* DBHBuyPictureFrameView.h */,
 				3F1F50AB1D9BCFF50030FF7B /* DBHBuyPictureFrameView.m */,
+				CD6343F01DC25AE90048D38D /* BuyFrameViewCell.h */,
+				CD6343F11DC25AE90048D38D /* BuyFrameViewCell.m */,
 				3F1F50AC1D9BCFF50030FF7B /* DBHBuyPictureFrameViewController.h */,
 				3F1F50AD1D9BCFF50030FF7B /* DBHBuyPictureFrameViewController.m */,
 				04DAC6461DB9008B002235A7 /* DBHBuyPictureFrameModel.h */,
@@ -6558,6 +6563,7 @@
 				0422C5971DC06659002F7B11 /* SizeModel.m in Sources */,
 				4DC6BB221961C20700C87D1B /* UILabel+BeeUILayout.m in Sources */,
 				3F7B77D11D9BD3790055074E /* DBHRedEnvelopeModelInfo.m in Sources */,
+				CD6343F21DC25AE90048D38D /* BuyFrameViewCell.m in Sources */,
 				4DC6BB181961C20700C87D1B /* UIViewController+BeeUISignal.m in Sources */,
 				4DC6BB691961C20700C87D1B /* Bee_Runtime.mm in Sources */,
 				4DC6BB141961C20700C87D1B /* Bee_UISignal.m in Sources */,
@@ -7204,7 +7210,7 @@
 				CLANG_ENABLE_MODULES = NO;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Zipingfang Information Technology Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Zipingfang Information Technology Co., Ltd.";
 				DEVELOPMENT_TEAM = HC6K8FDE97;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

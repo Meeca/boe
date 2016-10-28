@@ -653,7 +653,6 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
             
         } else {
             DBHCommentCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCommentCellTableViewCellIdentifier forIndexPath:indexPath];
-            
             CommentInfo *commen = detailsInfo.comment_list[indexPath.section - 6];
             ReCommentInfo *reCommen = commen.r_comment_list[indexPath.row - 1];
             CommentInfo *model = [[CommentInfo alloc] init];
@@ -726,7 +725,7 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
             
             DeLog(@"----------  %ld",indexPath.row);
             
-            CommentInfo *commentInfo = detailsInfo.comment_list[indexPath.row];
+            CommentInfo *commentInfo = detailsInfo.comment_list[indexPath.section-6];
             placeholder = [NSString stringWithFormat:@"@%@:",commentInfo.nike];
             
         }
