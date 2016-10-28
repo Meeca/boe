@@ -248,6 +248,10 @@
     return [self getLabelSizeWithText:info.content AndWidth:KSCREENWIDTH-75 AndFont:[UIFont systemFontOfSize:15] attribute:nil].height+25+50;
 }
 
+
+
+
+
 - (void)back {
     
 }

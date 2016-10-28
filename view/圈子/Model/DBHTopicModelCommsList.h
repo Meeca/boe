@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSString *zamType;
 @property (nonatomic, strong) NSString *uId;
 @property (nonatomic, strong) NSString *uImage;
+@property (nonatomic, strong) NSString *image;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

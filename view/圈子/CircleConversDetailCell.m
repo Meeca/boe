@@ -1,29 +1,18 @@
 //
-//  MessageCell.m
+//  CircleConversDetailCell.m
 //  jingdongfang
 //
-//  Created by mac on 16/9/3.
+//  Created by mac on 16/10/27.
 //  Copyright © 2016年 ZhiYu Hao. All rights reserved.
 //
 
-#import "MessageCell.h"
+#import "CircleConversDetailCell.h"
 
-@implementation MessageCell
+@implementation CircleConversDetailCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
-    _numLab.backgroundColor = [UIColor redColor];
-    _numLab.layer.cornerRadius = 15/2;
-    _numLab.clipsToBounds = YES;
-    
     // Initialization code
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    
-    _titileLab.text = self.str;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

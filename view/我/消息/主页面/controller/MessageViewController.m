@@ -20,7 +20,7 @@
     NSInteger _page;
     NSMutableArray * _dataArray;
     
-    NSString * num;
+    NSInteger   _comm_num;
 
 }
 @property (weak, nonatomic) IBOutlet UITableView *tabelView;
@@ -66,14 +66,12 @@
     }];
     
     
-    
 }
 - (void)sixinItemAction:(UIBarButtonItem *)item{
 
     PrivateMessageListVC * vc = [[PrivateMessageListVC alloc]initWithNibName:@"PrivateMessageListVC" bundle:nil];
     
     [self.navigationController pushViewController:vc animated:YES];
-
 
 }
 
@@ -117,7 +115,7 @@
         if (![msg isEqualToString:@"暂无数据"]) {
             _page ++;
             
-            num = requestDic[@"comm_num"];
+            _comm_num = [requestDic[@"comm_num"] integerValue];
             
             NSArray * array = [SystemMessageModel mj_objectArrayWithKeyValuesArray:requestDic[@"new_list"]];
             first?[_dataArray setArray:array]:[_dataArray addObjectsFromArray:array];
@@ -156,12 +154,13 @@
         cell.str = arr[indexPath.row];
         if(indexPath.row == 0){
             
-            if ([num isEqualToString:@"0"]) {
+            if (_comm_num == 0) {
                 cell.numLab.hidden = YES;
              }else{
-                cell.numLab.text = num;
+                cell.numLab.text = [NSString stringWithFormat:@"%@",@(_comm_num)];
                 cell.numLab.hidden = NO;
              }
+            
         }else{
             cell.numLab.hidden = YES;
         }
@@ -169,7 +168,6 @@
         return cell;
     }
     MessageContentCell *cell =[tableView dequeueReusableCellWithIdentifier:@"MessageContentCell"];
-    
     SystemMessageModel * systemMessageModel = _dataArray[indexPath.row];
     cell.contentLab.text = systemMessageModel.title;
     return cell;

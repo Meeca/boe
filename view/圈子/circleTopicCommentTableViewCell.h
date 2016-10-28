@@ -19,4 +19,9 @@
 
 @property (nonatomic, strong) DBHTopicModelCommsList *model;
 
+
+@property (nonatomic ,assign)BOOL isShow;// 圈子评论
+
+
+
 @end
