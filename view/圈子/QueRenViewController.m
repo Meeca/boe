@@ -46,6 +46,9 @@
     
     self.title = @"确认订单";
     index = 1;
+    
+    _payType = 1;
+    
     UIView *bar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KSCREENWIDTH, 44)];
     [self.view addSubview:bar];
     bar.backgroundColor = [UIColor whiteColor];
@@ -195,6 +198,7 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
             cell1 = [[ListTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"ListTableViewCell.h"];
             
         }
+        cell1.priceNum = self.detailsInfo.material_sum;
         cell1.data = self.detailsInfo;
         [cell1 setNeedsLayout];
         return cell1;
@@ -440,17 +444,31 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
     
     if (_isBuyPictureFrame) {
         NSString *path = @"/app.php/Index/balance_frame";
-        NSDictionary *params = @{
-                                 @"uid" : kUserId,
-                                 @"p_id" : self.detailsInfo.p_id,
-                                 @"a_id" : @"",// 收货地址id
-                                 @"price" : goodsPrice,
-                                 @"nums" : self.detailsInfo.material_num,
-                                 //                             @"price" : @"0.01",
-                                 @"balance" : balance,//
-                                 @"attri" : [NSString stringWithFormat:@"%@-%@", self.detailsInfo.pictureFrameTypeOne, self.detailsInfo.pictureFrameTypeTwo],
-                                 @"content" : @"",// 备注内容
-                                 };
+//        NSDictionary *params = @{
+//                                 @"uid" : kUserId,
+//                                 @"p_id" : self.detailsInfo.p_id,
+//                                 @"a_id" : @"",// 收货地址id
+//                                 @"price" : goodsPrice,
+//                                 @"nums" : self.detailsInfo.material_num,
+//                                 //                             @"price" : @"0.01",
+//                                 @"balance" : balance,//
+//                                 @"attri" : [NSString stringWithFormat:@"%@-%@", self.detailsInfo.pictureFrameTypeOne, self.detailsInfo.pictureFrameTypeTwo],
+//                                 @"content" : @"",// 备注内容
+//                                 };
+        
+        
+        NSMutableDictionary * params = [NSMutableDictionary new];
+        
+        params[@"uid"] = kUserId;
+        params[@"p_id"] = self.detailsInfo.p_id;
+        params[@"a_id"] = infos.a_id;//// 收货地址id
+        params[@"price"] = goodsPrice;
+        params[@"nums"] = self.detailsInfo.material_num;
+
+        params[@"balance"] = balance;
+        params[@"attri"] = [NSString stringWithFormat:@"%@-%@", self.detailsInfo.pictureFrameTypeOne, self.detailsInfo.pictureFrameTypeTwo];
+        params[@"content"] = checkNULL(massage);// 备注内容
+
         
         [MCNetTool postWithUrl:path params:params hud:YES success:^(NSDictionary *requestDic, NSString *msg){
             

@@ -11,6 +11,8 @@
 
 @interface NickViewController () <UITableViewDataSource, UITableViewDelegate> {
     UserModel *userModel;
+    
+    UITextField * _textfiled;
 }
 
 @property (weak, nonatomic) IBOutlet TPKeyboardAvoidingTableView *table;
@@ -56,15 +58,20 @@ ON_SIGNAL3(UserModel, USERNIKE, signal) {
     textView.layer.borderColor = [UIColor grayColor].CGColor;
     textView.layer.borderWidth = 1;
     textView.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [textView addTarget:self action:@selector(textChange:) forControlEvents:UIControlEventEditingChanged];
-    [textView addTarget:self action:@selector(textBeainEditing:) forControlEvents:UIControlEventEditingDidBegin];
-    [textView addTarget:self action:@selector(textEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
+//    [textView addTarget:self action:@selector(textChange:) forControlEvents:UIControlEventEditingChanged];
+//    [textView addTarget:self action:@selector(textBeainEditing:) forControlEvents:UIControlEventEditingDidBegin];
+//    [textView addTarget:self action:@selector(textEndEditing:) forControlEvents:UIControlEventEditingDidEnd];
     textView.tag = indexPath.row;
     textView.placeholder = @"请输入昵称";
     textView.text = self.nick;
     textView.keyboardType = UIKeyboardTypeDefault;
     [cell.contentView addSubview:textView];
-
+    _textfiled =textView;
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(textFiledEditChanged:)
+//                                                name:@"UITextFieldTextDidChangeNotification"
+//                                              object:textView];
+//    
+    
     return cell;
 }
 
@@ -77,6 +84,44 @@ ON_SIGNAL3(UserModel, USERNIKE, signal) {
     [view addSubview:foot];
     return view;
 }
+
+-(void)textFiledEditChanged:(NSNotification *)obj{
+    UITextField *textField = (UITextField *)obj.object;
+    
+    NSString *toBeString = textField.text;
+    NSString *lang = [[UITextInputMode currentInputMode] primaryLanguage]; // 键盘输入模式
+    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+        UITextRange *selectedRange = [textField markedTextRange];
+        //获取高亮部分
+        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        if (!position) {
+            if (toBeString.length > 10) {
+                textField.text = [toBeString substringToIndex:10];
+            }
+        }
+        // 有高亮选择的字符串，则暂不对文字进行统计和限制
+        else{
+            
+        }
+    }
+    // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+    else{
+        if (toBeString.length > 20) {
+            textField.text = [toBeString substringToIndex:20];
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 55;
@@ -133,7 +178,11 @@ ON_SIGNAL3(UserModel, USERNIKE, signal) {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self
+                                                   name:@"UITextFieldTextDidChangeNotification"
+                                                 object:_textfiled];
+}
 /*
 #pragma mark - Navigation
 

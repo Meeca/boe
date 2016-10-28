@@ -62,6 +62,8 @@
         
         DetailsInfo *info = self.data;
         
+        
+         
         [imageView sd_setImageWithURL:[NSURL URLWithString:info.image] placeholderImage:KZHANWEI];
         imageView.frame = CGRectMake(15, 15, self.height-30, self.height-30);
         
@@ -70,12 +72,16 @@
         name.x = imageView.right + 10;
         name.y = imageView.top + 5;
         
-        type.text = @"真品购买";
+        type.text = @"画框购买";
         [type sizeToFit];
         type.x = imageView.right + 10;
         type.top = name.bottom + 5;
+
+        //        price.text = [@"￥" stringByAppendingString:info.material_price.length>0?info.material_price:@"0"];
         
-        price.text = [@"￥" stringByAppendingString:info.material_price.length>0?info.material_price:@"0"];
+        price.text = [@"￥" stringByAppendingString:_priceNum>0?_priceNum:@"0"];
+
+        
         [price sizeToFit];
         price.right = self.width - 15;
         price.centerY = name.centerY;

@@ -6130,7 +6130,7 @@
 				ORGANIZATIONNAME = "ZhiYu Hao";
 				TargetAttributes = {
 					4D18513A1961B01200C098AF = {
-						DevelopmentTeam = 6GYN7E2YTH;
+						DevelopmentTeam = HC6K8FDE97;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -7210,7 +7210,7 @@
 				CLANG_ENABLE_MODULES = NO;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Zipingfang Information Technology Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Zipingfang Information Technology Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = HC6K8FDE97;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

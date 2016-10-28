@@ -218,22 +218,33 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
     }
     
     NSString *path = @"/app.php/Index/balance";
-    NSDictionary *params = @{
-                             @"uid" : kUserId,
-                             @"u_id" : self.info.u_id,
-                             @"p_id" : self.info.p_id,
-                             @"a_id" : @"",// 收货地址id
-                             @"price" : _price,
-                             @"balance" : balance,//
-                             @"type" : @"3"/*@(_type)*/,// type#购买类型（1购买收藏，2真品购买，3打赏）
-                             @"content" : _massage,// 备注内容
-                             };
+//    NSDictionary *params = @{
+//                             @"uid" : kUserId,
+//                             @"u_id" : self.info.u_id,
+//                             @"p_id" : self.info.p_id,
+//                             @"a_id" : @"",// 收货地址id
+//                             @"price" : _price,
+//                             @"balance" : balance,//
+//                             @"type" : @"3"/*@(_type)*/,// type#购买类型（1购买收藏，2真品购买，3打赏）
+//                             @"content" : _massage,// 备注内容
+//                             };
+//    
+    
+    NSMutableDictionary * params = [NSMutableDictionary new];
+    params[@"uid"] = kUserId;
+    params[@"u_id"] = self.info.u_id;
+    params[@"p_id"] = self.info.p_id;
+    params[@"a_id"] = @"";
+    params[@"price"] = _price;
+    params[@"balance"] = balance;
+    params[@"type"] = @"3";
+     params[@"content"] = checkNULL(_massage);
+
     
     [MCNetTool postWithUrl:path params:params hud:YES success:^(NSDictionary *requestDic, NSString *msg){
         
         
         OrderInfoModel * orderInfoModel = [OrderInfoModel yy_modelWithJSON:requestDic];
-        
         
         
 //        orderId = orderInfoModel.o_id;

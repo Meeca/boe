@@ -10,4 +10,7 @@
 
 @interface ListTableViewCell : UITableViewCell
 
+
+@property (nonatomic,copy)NSString * priceNum;
+
 @end
