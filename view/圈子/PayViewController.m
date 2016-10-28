@@ -47,6 +47,8 @@
     index = 1;
     self.table.backgroundColor = RGB(234, 234, 234);
     
+    _payType = 1;
+    
     userModel = [UserModel modelWithObserver:self];
     
     self.table.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
@@ -187,6 +189,7 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
     
     if ([myRestMoney integerValue] == 0 && _payType == 3) {
         [self presentMessageTips:@"余额不足!"];
+        
         return;
     }
     
@@ -220,11 +223,10 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
                              @"u_id" : self.info.u_id,
                              @"p_id" : self.info.p_id,
                              @"a_id" : @"",// 收货地址id
-                             //@"price" : goodsPrice,
-                             @"price" : balance,
+                             @"price" : _price,
                              @"balance" : balance,//
                              @"type" : @"3"/*@(_type)*/,// type#购买类型（1购买收藏，2真品购买，3打赏）
-                             @"content" : @"",// 备注内容
+                             @"content" : _massage,// 备注内容
                              };
     
     [MCNetTool postWithUrl:path params:params hud:YES success:^(NSDictionary *requestDic, NSString *msg){
@@ -309,7 +311,7 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
     NSMutableDictionary * params = [NSMutableDictionary new];
     params[@"orderids"] = orderPayModel.orders;
     params[@"order_price"] = orderPayModel.price;
-    params[@"product_name"] = orderPayModel.title;
+    params[@"product_name"] = checkNull(orderPayModel.title, @"打赏");
     
     [MCHttp postPayRequestURLStr:@"http://boe.ccifc.cn/app.php/Wx/index" withDic:params success:^(NSDictionary *requestDic, NSString *msg) {
         
