@@ -42,7 +42,7 @@
                   moduleName = "iGallery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/fenghongjian/Documents/OschinaGit/git_boe/boe/view/%E5%9C%88%E5%AD%90/CircleViewController.m"
-                  timestampString = "499264665.194968"
+                  timestampString = "499316376.293193"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "361"
@@ -57,7 +57,7 @@
                   moduleName = "iGallery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/fenghongjian/Documents/OschinaGit/git_boe/boe/view/%E5%9C%88%E5%AD%90/CircleViewController.m"
-                  timestampString = "499264665.196703"
+                  timestampString = "499316376.294834"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "362"
@@ -90,7 +90,7 @@
                   moduleName = "iGallery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/fenghongjian/Documents/OschinaGit/git_boe/boe/view/%E5%9C%88%E5%AD%90/%E5%9C%88%E5%84%BF%E6%88%90%E5%91%98/CircleMembersTableViewController.m"
-                  timestampString = "499264665.199959"
+                  timestampString = "499316376.297997"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "190"
@@ -105,7 +105,7 @@
                   moduleName = "iGallery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/fenghongjian/Documents/OschinaGit/git_boe/boe/view/%E5%9C%88%E5%AD%90/%E5%9C%88%E5%84%BF%E6%88%90%E5%91%98/CircleMembersTableViewController.m"
-                  timestampString = "499264665.201458"
+                  timestampString = "499316376.299493"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "190"
@@ -169,38 +169,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "view/&#x5708;&#x5b50;/QueRenViewController.m"
-            timestampString = "499155736.885574"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "406"
-            endingLineNumber = "406"
-            landmarkName = "-subAction:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "view/&#x5708;&#x5b50;/BuyZViewController.m"
-            timestampString = "499158879.578784"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
-            landmarkName = "-buyAction:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "view/&#x5708;&#x5b50;/&#x8d2d;&#x4e70;&#x753b;&#x6846;/DBHBuyPictureFrameViewController.m"
             timestampString = "499158809.755924"
             startingColumnNumber = "9223372036854775807"
@@ -208,150 +176,6 @@
             startingLineNumber = "229"
             endingLineNumber = "229"
             landmarkName = "-buyPictureFrameWithShopInfo:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "view/&#x5708;&#x5b50;/QueRenViewController.m"
-            timestampString = "499158877.628922"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "view/&#x5708;&#x5b50;/PayViewController.m"
-            timestampString = "499159887.97638"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
-            landmarkName = "-sureAction:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "view/&#x5708;&#x5b50;/PayViewController.m"
-            timestampString = "499159889.826053"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
-            landmarkName = "-sureAction:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "view/&#x5708;&#x5b50;/PayViewController.m"
-            timestampString = "499159890.771008"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
-            landmarkName = "-sureAction:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "view/&#x5708;&#x5b50;/PayViewController.m"
-            timestampString = "499159928.968873"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
-            landmarkName = "-sureAction:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[PayViewController sureAction:]"
-                  moduleName = "iGallery"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/fenghongjian/Documents/OschinaGit/git_boe/boe/view/%E5%9C%88%E5%AD%90/PayViewController.m"
-                  timestampString = "499264665.229851"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "230"
-                  endingLineNumber = "230"
-                  offsetFromSymbolStart = "2492">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__32-[PayViewController sureAction:]_block_invoke"
-                  moduleName = "iGallery"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/fenghongjian/Documents/OschinaGit/git_boe/boe/view/%E5%9C%88%E5%AD%90/PayViewController.m"
-                  timestampString = "499264665.231241"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "230"
-                  endingLineNumber = "230"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "view/&#x5708;&#x5b50;/PayViewController.m"
-            timestampString = "499159933.168855"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
-            landmarkName = "-sureAction:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "view/&#x5708;&#x5b50;/PayViewController.m"
-            timestampString = "499160025.606125"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
-            landmarkName = "-sureAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
