@@ -214,11 +214,8 @@
                                   @"product_name":orderPayModel.title};
     
     
-    [MCHttp postPayRequestURLStr:@"http://boe.ccifc.cn/app.php/Wx/index" withDic:dictionary success:^(NSDictionary *requestDic, NSString *msg) {
+    [MCHttp postPayRequestURLStr:@"http://igallery.boe.com/app.php/Wx/index" withDic:dictionary success:^(NSDictionary *requestDic, NSString *msg) {
         
-        
-        NSLog(@"---  %@",requestDic);
-
 
         WXProduct * wxProduct = [WXProduct yy_modelWithJSON:requestDic];
         [[WeiXinPayManager sharedManager]weiXinPay:wxProduct];

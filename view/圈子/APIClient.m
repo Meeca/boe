@@ -24,7 +24,7 @@
 
 @implementation APIClient
 
-static NSString * const APIBaseURLString = @"http://boe.ccifc.cn/";
+static NSString * const APIBaseURLString = @"http://igallery.boe.com/";
 
 + (instancetype)sharedClient
 {

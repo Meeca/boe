@@ -11,7 +11,7 @@
 #import "Masonry.h"
 #import "DBHRedEnvelopeModelInfo.h"
 
-#define JINGDONGFANGURL @"http://boe.ccifc.cn/"
+#define JINGDONGFANGURL @"http://igallery.boe.com/"
 #define  SCREENWIDTH [UIScreen mainScreen].bounds.size.width
 #define  SCREENHEIGHT [UIScreen mainScreen].bounds.size.height
 #define AUTOLAYOUTSIZE(size) ((size) * (SCREENWIDTH / 375))

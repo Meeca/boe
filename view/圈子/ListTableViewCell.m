@@ -79,7 +79,7 @@
 
         //        price.text = [@"￥" stringByAppendingString:info.material_price.length>0?info.material_price:@"0"];
         
-        price.text = [@"￥" stringByAppendingString:_priceNum>0?_priceNum:@"0"];
+        price.text = [@"￥" stringByAppendingString:info.material_price.length>0?info.material_price:@"0"];
 
         
         [price sizeToFit];

@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) DetailsInfo *info;
 
+@property (nonatomic,assign)NSInteger type;// 1真品购买 2 限量搜藏
+
 @end

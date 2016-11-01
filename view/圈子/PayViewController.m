@@ -324,7 +324,7 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
     params[@"order_price"] = orderPayModel.price;
     params[@"product_name"] = checkNull(orderPayModel.title, @"打赏");
     
-    [MCHttp postPayRequestURLStr:@"http://boe.ccifc.cn/app.php/Wx/index" withDic:params success:^(NSDictionary *requestDic, NSString *msg) {
+    [MCHttp postPayRequestURLStr:@"http://igallery.boe.com/app.php/Wx/index" withDic:params success:^(NSDictionary *requestDic, NSString *msg) {
         
         
         NSLog(@"---  %@",requestDic);

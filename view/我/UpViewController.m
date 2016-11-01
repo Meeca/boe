@@ -1090,7 +1090,7 @@ ON_SIGNAL3(BaseModel, WORKSADD, signal) {
         }
     }
     
-    NSString *urlstr = [@"http://boe.ccifc.cn/" stringByAppendingString:@"/app.php/Index/image_add"];
+    NSString *urlstr = [@"http://ig.boe.com/" stringByAppendingString:@"/app.php/Index/image_add"];
     
     NSString *url = [urlstr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
@@ -1163,7 +1163,7 @@ ON_SIGNAL3(BaseModel, WORKSADD, signal) {
 }
 
 - (void)upPhotoImage:(UIImage *)image {
-    NSString *urlstr = [@"http://boe.ccifc.cn/" stringByAppendingString:@"/app.php/Index/image_add"];
+    NSString *urlstr = [@"http://ig.boe.com/" stringByAppendingString:@"/app.php/Index/image_add"];
     NSString *url = [urlstr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSData *data = UIImageJPEGRepresentation(image, 1);
     

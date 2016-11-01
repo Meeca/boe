@@ -243,7 +243,7 @@ ON_SIGNAL3(UserModel, USERIMAGE, signal) {
     NSLog(@"%@", infoo);
     UIImage *image = infoo[UIImagePickerControllerEditedImage];
     
-    NSString *urlstr = [@"http://boe.ccifc.cn/" stringByAppendingString:@"/app.php/Index/image_add"];
+    NSString *urlstr = [@"http://ig.boe.com/" stringByAppendingString:@"/app.php/Index/image_add"];
     
     NSString *url = [urlstr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     

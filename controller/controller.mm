@@ -5486,7 +5486,7 @@ DEF_INT( CONFIG_PRODUCTION,	2 )
 
 - (NSString *)developmentUrl
 {
-	return @"http://boe.ccifc.cn/";
+	return @"http://igallery.boe.com/";
 }
 
 - (NSString *)testUrl

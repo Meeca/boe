@@ -69,7 +69,7 @@
 #endif
 
 
-#define kBaseUrl @"http://boe.ccifc.cn/"
+#define kBaseUrl @"http://igallery.boe.com"
 
 ////友盟appkey
 //#define kMOBCLICKKEY @"5704e612e0f55a7726002c09"

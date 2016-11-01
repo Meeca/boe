@@ -45,9 +45,7 @@
     [super viewWillAppear:animated];
 
 }
-
-//http://boe.ccifc.cn//app.php/User/equipment_info?uid=115&e_id=206
-
+ 
 - (void)loadDeviceInfoData{
 
     [MCNetTool postWithUrl:@"/app.php/User/equipment_info" params:@{@"uid":kUserId,@"e_id":self.list.e_id} hud:YES success:^(NSDictionary *requestDic, NSString *msg) {

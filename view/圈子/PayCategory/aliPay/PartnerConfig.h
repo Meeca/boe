@@ -85,7 +85,7 @@
 //收款支付宝账号
  #define SellerID  @"igallery@boe.com.cn"  //
    //回调url
-#define NotifyURL [NSString stringWithFormat:@"http://boe.ccifc.cn/app.php/Alipay/index"]
+#define NotifyURL [NSString stringWithFormat:@"http://igallery.boe.com/app.php/Alipay/index"]
 
 //应用注册scheme,在xxx-Info.plist定义 1> URL types --- 2>  URL Schemes
 #define schemeUrl @"jingdongfang"

@@ -58,11 +58,18 @@
     [bar addSubview:all];
     
     NSMutableAttributedString *str1 = [[NSMutableAttributedString alloc] initWithString:@"合计："];
-    NSMutableAttributedString *str2 = [[NSMutableAttributedString alloc] initWithString:[@"￥" stringByAppendingString:self.detailsInfo.material_sum ? self.detailsInfo.material_sum : (self.detailsInfo.material_price.length>0?self.detailsInfo.material_price:@"0")]];
+    
+    
+ 
+//    NSMutableAttributedString *str2 = [[NSMutableAttributedString alloc] initWithString:[@"￥" stringByAppendingString:self.detailsInfo.material_sum ? self.detailsInfo.material_sum : (self.detailsInfo.material_price.length>0?self.detailsInfo.material_price:@"0")]];
+    
+    NSMutableAttributedString *str2 = [[NSMutableAttributedString alloc] initWithString:[@"￥" stringByAppendingString:(self.detailsInfo.material_price.length>0?self.detailsInfo.material_price:@"0")]];
+    
     
     [str1 addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15], NSForegroundColorAttributeName:[UIColor blackColor]} range:NSMakeRange(0, str1.length)];
     [str2 addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18], NSForegroundColorAttributeName:KAPPCOLOR} range:NSMakeRange(0, str2.length)];
     [str1 appendAttributedString:str2];
+    
     
     all.attributedText = str1;
     [all sizeToFit];
@@ -430,7 +437,10 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
      */
     DetailsInfo *goodsInfo = self.detailsInfo;
     // 商品价格
-    NSString *goodsPrice = goodsInfo.electronic_price;
+//    NSString *goodsPrice = goodsInfo.electronic_price;
+    NSString *goodsPrice = goodsInfo.material_price;
+
+    
     // balance#使用余额支付（不使用 0，使用传使用的数值，余额使用规则：当余额大于或等于支付金额时，balance值传支付金额，当余额小于支付金额时balance传当前余额）
     NSString *balance = @"0";
     if(_payType == 3){
@@ -616,7 +626,7 @@ ON_SIGNAL3(UserModel, INDEXBALANCE, signal) {
                                   @"product_name":orderPayModel.title};
     
     
-    [MCHttp postPayRequestURLStr:@"http://boe.ccifc.cn/app.php/Wx/index" withDic:dictionary success:^(NSDictionary *requestDic, NSString *msg) {
+    [MCHttp postPayRequestURLStr:@"http://igallery.boe.com/app.php/Wx/index" withDic:dictionary success:^(NSDictionary *requestDic, NSString *msg) {
         
         
         NSLog(@"---  %@",requestDic);

@@ -1087,7 +1087,7 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
 
 
 
-
+#pragma mark - 真品购买
 - (void)buyAction:(UIButton *)btn {
     [self.view endEditing:YES];
 
@@ -1098,6 +1098,7 @@ ON_SIGNAL3(BaseModel, RCOMMENTADD, signal) {
     }
     
     BuyZViewController *vc = [[BuyZViewController alloc] init];
+    vc.type = 1;
     vc.info = detailsInfo;
     [Tool setBackButtonNoTitle:self];
     vc.hidesBottomBarWhenPushed = YES;

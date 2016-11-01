@@ -42,7 +42,7 @@
                   moduleName = "iGallery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/fenghongjian/Documents/OschinaGit/git_boe/boe/view/%E5%9C%88%E5%AD%90/CircleViewController.m"
-                  timestampString = "499330492.395905"
+                  timestampString = "499658703.702217"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "361"
@@ -57,7 +57,7 @@
                   moduleName = "iGallery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/fenghongjian/Documents/OschinaGit/git_boe/boe/view/%E5%9C%88%E5%AD%90/CircleViewController.m"
-                  timestampString = "499330492.397557"
+                  timestampString = "499658703.703576"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "362"
@@ -90,7 +90,7 @@
                   moduleName = "iGallery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/fenghongjian/Documents/OschinaGit/git_boe/boe/view/%E5%9C%88%E5%AD%90/%E5%9C%88%E5%84%BF%E6%88%90%E5%91%98/CircleMembersTableViewController.m"
-                  timestampString = "499330492.400467"
+                  timestampString = "499658703.706366"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "190"
@@ -105,7 +105,7 @@
                   moduleName = "iGallery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/fenghongjian/Documents/OschinaGit/git_boe/boe/view/%E5%9C%88%E5%AD%90/%E5%9C%88%E5%84%BF%E6%88%90%E5%91%98/CircleMembersTableViewController.m"
-                  timestampString = "499330492.401768"
+                  timestampString = "499658703.707725"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "190"
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "view/&#x9996;&#x9875;/XiangQingViewController.m"
-            timestampString = "499161051.751219"
+            timestampString = "499614285.076026"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1151"
-            endingLineNumber = "1151"
+            startingLineNumber = "1152"
+            endingLineNumber = "1152"
             landmarkName = "-keyboardShow:"
             landmarkType = "7">
          </BreakpointContent>
@@ -191,8 +191,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "957"
             endingLineNumber = "957"
-            landmarkName = "@implementation XiangQingViewController"
-            landmarkType = "3">
+            landmarkName = "-scrollowActionSheetButtonClick:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -219,38 +219,6 @@
             continueAfterRunningActions = "No"
             scope = "0"
             stopOnStyle = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "view/&#x5708;&#x5b50;/QueRenViewController.m"
-            timestampString = "499330318.620524"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "534"
-            endingLineNumber = "534"
-            landmarkName = "-subAction:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "view/&#x5708;&#x5b50;/ListTableViewCell.m"
-            timestampString = "499330318.620524"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "-layoutSubviews"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
